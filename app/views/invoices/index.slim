@@ -1,12 +1,24 @@
 .row
   .col-md-12
     h1 = I18n.t('invoices.index.header')
-    .warpper
+    .clearfix
       .pull-right.range-query
-        = simple_form_for(invoices_path, method: :get) do |f|
-          f.input 'search[date_form]', as: :text, @search.date_from
-          f.input 'search[date_to]', as: :text, @search.date_to
-          f.button :submit, class: 'btn-primary'
+        = simple_form_for(:search, url: invoices_path, method: :get, html: { class: 'form-inline' }) do |f|
+          = f.input :date_from, as: :string
+          /input_html: { value: localize(f.object.date_from, format: "%d/%m/%Y") } 
+          = f.input :date_to, as: :string
+          = f.button :submit, class: 'btn-primary', label: false
+
+    /.clearfix    
+      .pull-right.range-query
+        .form-inline
+          = form_tag(invoices_path, method: :get) do
+            .form-group
+              = text_field_tag 'search[date_form]', @search.date_from, class: 'form-control'
+            .form-group
+              = text_field_tag 'search[date_to]', @search.date_to, class: 'form-control'
+            .form-group
+              = submit_tag 'Search', class: 'btn btn-primary'      
 
     - unless @invoices.empty?
       .table-responsive
