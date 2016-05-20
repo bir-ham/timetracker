@@ -1,6 +1,13 @@
 .row
   .col-md-12
     h1 = I18n.t('invoices.index.header')
+    .warpper
+      .pull-right.range-query
+        = simple_form_for(invoices_path, method: :get) do |f|
+          f.input 'search[date_form]', as: :text, @search.date_from
+          f.input 'search[date_to]', as: :text, @search.date_to
+          f.button :submit, class: 'btn-primary'
+
     - unless @invoices.empty?
       .table-responsive
         table.table.table-striped
