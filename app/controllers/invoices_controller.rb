@@ -1,7 +1,10 @@
 class InvoicesController < ApplicationController 
+  before_action :set_invoice, only: [:show, :edit, :upate, :destroy]
   
   def index
-    @invoices = Invoice.all
+    #@invoices = Invoice.all
+    @search = InvoiceSearch.new(params[:search])
+    @invoices = @search.scope
   end
 
   def new
