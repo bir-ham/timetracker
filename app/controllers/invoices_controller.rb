@@ -1,4 +1,5 @@
 class InvoicesController < ApplicationController 
+  before_action :set_invoice, only: [:show, :edit, :upate, :destroy]
   
   def index
     #@invoices = Invoice.all
