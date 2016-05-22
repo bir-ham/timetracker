@@ -35,19 +35,18 @@ Rails.application.configure do
   # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
 
   # Config for Sparkpost
-  #config.action_mailer.raise_delivery_errors = true
-  #config.action_mailer.default_url_options = { host: 'www.fuzu.com', protocol: 'https' }
-
-  #ActionMailer::Base.smtp_settings = {
-  #  address: 'smtp.sparkpostmail.com',
-  #  port: 587,
-  #  enable_starttls_auto: true,
-  #  user_name: 'SMTP_Injection',
-  #  password: ENV['SPARKPOST_PASSWORD']
-  #}
-  #ActionMailer::Base.delivery_method = :smtp
-  #ActionMailer::Base.default charset: 'utf-8'
-
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default_url_options = { host: 'www.toolsio.com', protocol: 'https' }
+  ActionMailer::Base.delivery_method = :smtp
+  ActionMailer::Base.default charset: 'utf-8'
+  
+  ActionMailer::Base.smtp_settings = {
+    address: 'smtp.sparkpostmail.com',
+    port: 587,
+    enable_starttls_auto: true,
+    #user_name: 'SMTP_Injection',
+    #password: ENV['SPARKPOST_PASSWORD']
+  }
 
   # Specifies the header that your server uses for sending files.
   # config.action_dispatch.x_sendfile_header = "X-Sendfile" # for apache
