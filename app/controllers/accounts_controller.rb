@@ -12,7 +12,7 @@ class AccountsController < ApplicationController
         Apartment::Tenant.create(@account.subdomain)
         Apartment::Tenant.switch!(@account.subdomain)
         @account.save
-        redirect_to new_user_session_url(subdomain: @account.subdomain)
+        redirect_to new_user_session_url(subdomain: @account.subdomain),  notice: I18n.t('devise.registrations.signed_up_but_unconfirmed')
       else
         render action: 'new'
       end
