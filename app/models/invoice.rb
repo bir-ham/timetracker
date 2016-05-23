@@ -3,7 +3,7 @@ class Invoice < ActiveRecord::Base
   validates :date_of_an_invoice, presence: true
   validates :deadline, presence: true, allow_nil: true
   validates :payment_term, presence: true, allow_nil: true
-  validates :interest_on_arrears, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 100, message: 'Interest on arrears 
+  validates :interest_in_arrears, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 100, message: 'Interest on arrears 
     percentage should be between 0 and 100' }, allow_nil: true
   validates :reference_number, presence: true, 
     uniqueness: true,
