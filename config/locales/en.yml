@@ -47,9 +47,6 @@ en:
     new:
       header: Create an Account
       prompt: All fields are mandatory. Enter correct information.
-    create: 
-      success_confirmation: Your account has been created and a confirmation email has been sent to your email. Go to your email and 
-        Click the 'Confirm my account' in order to continue.   
   projects:
     index:
       header: Projects
