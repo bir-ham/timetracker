@@ -57,7 +57,7 @@ describe 'invoices' do
     expect(page).to have_text 'specify a deadline or a payment term. Not both empty, nor both filled'
   end 
   
-  describe 'when user has invoice' do
+  describe 'when invoice exists' do
     before(:each) do
       @invoice = create(:invoice, deadline: '2016-02-20', payment_term: '') 
       visit invoices_path
@@ -108,11 +108,4 @@ describe 'invoices' do
     end  
   end  
 
-  it 'displays invoice validations' do
-    visit invoices_path
-    click_link I18n.t('invoices.index.add_new_invoice_button')
-
-    click_button I18n.t('invoices.new.create_invoice_button')
-    expect(page).to have_text "can't be blank"
-  end
 end
