@@ -9,9 +9,9 @@ nav.navbar.navbar-default.navbar-fixed-top
         span.icon-bar
     
     #navbar.navbar-collapse.collapse  
-      .navbar-right
+      ul.nav.navbar-nav.navbar-right
         li.dropdown.open
-          a class="dropdown-toggle" id="top-right-corner-dropdown-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"
+          a href="#" class="dropdown-toggle" id="top-right-corner-dropdown-menu" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"
             = icon ('user')
             |&nbsp;
             = current_user.first_name
@@ -37,12 +37,12 @@ nav.navbar.navbar-default.navbar-fixed-top
         li class = ('active' if is_controller_name? 'projects')
           = link_to I18n.t('projects.index.header'), projects_path
         
-        li.dropdown.open
-          a class="dropdown-toggle" id="users-dropdown-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"  
+        li.dropdown.open class = ('active' if (is_controller_name? 'users') || (is_controller_name? 'customers')) 
+          a href="#" class="dropdown-toggle" id="users-dropdown-menu" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"  
             |Users
             span.caret
           ul.dropdown-menu aria-labelledby="users-dropdown-menu"
-            li class = ('active' if current_page? users_path)
+            li 
               = link_to I18n.t('users.index.header'), users_path
-            li class = ('active' if is_controller_name? 'customers')
+            li 
               = link_to I18n.t('customers.index.header'), customers_path  

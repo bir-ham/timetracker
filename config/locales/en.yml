@@ -51,7 +51,7 @@ en:
     index:
       header: Projects
       no_entries: No entries yet!
-      empty_projects: You don't have any projects yet
+      empty_projects: You have no projects yet
       create_new_project_button: Create new project
     new:
       header: New Project
@@ -68,7 +68,8 @@ en:
   customers:
     index: 
       header: Customers
-      add_new_customer_button: Add new customer    
+      add_new_customer_button: Add new customer  
+      empty_customers: You have no customers yet  
     new:
       header: New customer
       name: Name
@@ -88,7 +89,7 @@ en:
     index:
       header: Invoices
       are_you_sure: Are you sure?
-      empty_invoices: You don't have any invoices yet
+      empty_invoices: You have no invoices yet
       add_new_invoice_button: Add new invoice
     new:
       header: New Invoice

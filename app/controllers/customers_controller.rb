@@ -2,7 +2,7 @@ class CustomersController < ApplicationController
   #before_action :set_invoice, only: [:show, :edit, :upate, :destroy]
   
   def index
-    @customers = customer.all
+    @customers = Customer.all
     #@search = InvoiceSearch.new(params[:search])
     #@invoices = @search.scope
   end

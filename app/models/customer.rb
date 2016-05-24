@@ -5,10 +5,10 @@ class Customer < ActiveRecord::Base
     should be between 10 and 15' }
   validates :email, presence: true, uniqueness: true, allow_nil: true
   validates :address, length: { maximum: 100, 
-      too_long: "%{count} characters is the maximum allowed"
+      too_long: "%{count} characters is the maximum allowed" }
 
   validate :choose_xand_contact
-
+  
   private
   def choose_xand_contact
     if phone_number.blank? ^ email.blank?
