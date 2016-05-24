@@ -31,7 +31,7 @@ describe 'invoices' do
     expect(page).to have_text 'ABB'
   end
 
-  it 'does not allow user to create invoices' do
+  it 'display invoice validations' do
     visit invoices_path
     click_link I18n.t('invoices.index.add_new_invoice_button')
 
