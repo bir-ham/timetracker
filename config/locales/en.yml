@@ -65,6 +65,14 @@ en:
       authorized_user: Authorized user
       invite_user: Invite User
       email: Email
+  customers:
+    index: 
+      header: Customers
+      add_new_customer_button: Add new customer    
+    new:
+      notice_add: Customer info added   
+    update: 
+      notice_update: Customer info updated  
   invoices:
     index:
       header: Invoices

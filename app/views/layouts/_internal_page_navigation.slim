@@ -10,19 +10,18 @@ nav.navbar.navbar-default.navbar-fixed-top
     
     #navbar.navbar-collapse.collapse  
       .navbar-right
-        .dropdown
-          .dropdown-toggle id="top-right-corner-dropdown-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"
+        li.dropdown.open
+          a class="dropdown-toggle" id="top-right-corner-dropdown-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"
             = icon ('user')
             |&nbsp;
             = current_user.first_name
             span.caret
           ul.dropdown-menu aria-labelledby="top-right-corner-dropdown-menu"
-            li
-              li 
-                = link_to '#'
-                  = icon ('gear')
-                  |&nbsp
-                  = I18n.t('settings.index.header')
+            li 
+              = link_to '#'
+                = icon ('gear')
+                |&nbsp
+                = I18n.t('settings.index.header')
 
             li.divider role="separator"  
             li  
@@ -37,5 +36,13 @@ nav.navbar.navbar-default.navbar-fixed-top
           = link_to I18n.t('invoices.index.header'), invoices_path
         li class = ('active' if is_controller_name? 'projects')
           = link_to I18n.t('projects.index.header'), projects_path
-        li class = ('active' if current_page? users_path)
-          = link_to I18n.t('users.index.header'), users_path
+        
+        li.dropdown.open
+          a class="dropdown-toggle" id="users-dropdown-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"  
+            |Users
+            span.caret
+          ul.dropdown-menu aria-labelledby="users-dropdown-menu"
+            li class = ('active' if current_page? users_path)
+              = link_to I18n.t('users.index.header'), users_path
+            li class = ('active' if is_controller_name? 'customers')
+              = link_to I18n.t('customers.index.header'), customers_path  
