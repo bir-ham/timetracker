@@ -8,11 +8,11 @@ class CustomersController < ApplicationController
   end
 
   def new
-    @customer = customer.new
+    @customer = Customer.new
   end
 
   def create
-    @customer = customer.new(customer_params)
+    @customer = Customer.new(customer_params)
     if @customer.save
       redirect_to customers_path, notice: I18n.t('customers.create.notice_create')
     else
@@ -22,16 +22,16 @@ class CustomersController < ApplicationController
 
   # GET /invoices/1
   def show 
-    @customer = customer.find(params[:id]) 
+    @customer = Customer.find(params[:id]) 
   end
 
   # GET /invoices/1/edit
   def edit
-    @customer = customer.find(params[:id]) 
+    @customer = Customer.find(params[:id]) 
   end
 
   def update
-    @invoice = customer.find(params[:id]) 
+    @invoice = Customer.find(params[:id]) 
     if @invoice.update_attributes(invoice_params)
       flash.now[:success] = I18n.t('customers.update.success_update')
       render :show
@@ -41,7 +41,7 @@ class CustomersController < ApplicationController
   end
 
   def destroy
-    @invoice = customer.find(params[:id]) 
+    @invoice = Customer.find(params[:id]) 
     if @invoice.destroy
       redirect_to customers_url, notice: I18n.t('customers.destroy.success_delete')
     else

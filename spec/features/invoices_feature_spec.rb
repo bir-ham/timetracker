@@ -2,11 +2,11 @@ require 'rails_helper'
 
 describe 'invoices' do
   let!(:account) { create(:account_with_schema) }
-  let(:user) { account.owner }
+  let(:confirmed_user) { account.owner }
 
-  before do
+  before do    
     set_subdomain(account.subdomain)
-    sign_user_in(user)
+    sign_user_in(confirmed_user)
   end
 
   it 'allows user to create invoices' do

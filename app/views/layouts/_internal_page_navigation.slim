@@ -10,7 +10,7 @@ nav.navbar.navbar-default.navbar-fixed-top
     
     #navbar.navbar-collapse.collapse  
       ul.nav.navbar-nav.navbar-right
-        li.dropdown.open
+        li.dropdown
           a href="#" class="dropdown-toggle" id="top-right-corner-dropdown-menu" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"
             = icon ('user')
             |&nbsp;
@@ -37,7 +37,7 @@ nav.navbar.navbar-default.navbar-fixed-top
         li class = ('active' if is_controller_name? 'projects')
           = link_to I18n.t('projects.index.header'), projects_path
         
-        li.dropdown.open class = ('active' if (is_controller_name? 'users') || (is_controller_name? 'customers')) 
+        li.dropdown class = ('active' if (is_controller_name? 'users') || (is_controller_name? 'customers')) 
           a href="#" class="dropdown-toggle" id="users-dropdown-menu" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"  
             |Users
             span.caret

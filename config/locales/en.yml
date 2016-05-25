@@ -85,6 +85,8 @@ en:
       notice_update: Customer updated  
     destroy: 
       success_delete: Customer deleted  
+    create: 
+      notice_create: Customer created  
   invoices:
     index:
       header: Invoices

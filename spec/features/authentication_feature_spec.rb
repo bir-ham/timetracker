@@ -10,7 +10,7 @@ describe 'user authentication' do
     expect(page).to have_content('Signed in successfully')
   end
 
-  it 'does not allow signin with valid credentials' do
+  it 'does not allow signin with invalid credentials' do
     sign_user_in(user, subdomain: account.subdomain, password: 'wrong pw')
     expect(page).to have_content('Invalid email or password')
   end

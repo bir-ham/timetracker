@@ -7,7 +7,8 @@ describe 'invitations' do
   before do
   	set_subdomain(account.subdomain)
   	sign_user_in(user)
-  	visit users_path
+
+    visit users_path     
   end
 
   it 'validates email' do
