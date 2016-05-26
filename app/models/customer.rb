@@ -1,5 +1,5 @@
 class Customer < ActiveRecord::Base
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: { case_sensitive: false }
   validates :phone_number, presence: true, uniqueness: true, allow_blank: true,
     format: { with: /\A[0-9]+$\z/, on: :create, message: 'wrong phone number format' },
     length: { minimum: 10, maximum: 15, message: 'phone number must be b/n 10 to 15 characters' }
@@ -12,7 +12,7 @@ class Customer < ActiveRecord::Base
   
   private
   def any_present
-    if %w(phone_number email).all?{|attr| self[attr].blank?}
+    if phone_number.blank? and email.blank?
       errors.add(:base, 'add a phone number or an email. Not both empty')        
     end
   end  
