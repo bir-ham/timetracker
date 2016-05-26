@@ -61,7 +61,7 @@ class InvoicesController < ApplicationController
 
   def import
     Invoice.import(params[:file])
-    redirect_to invoices_path, notice: I18n.t('invoices.create.notice_create')
+    redirect_to invoices_path, notice: I18n.t('invoices.import.notice_import')
   end
 
   private
