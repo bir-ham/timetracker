@@ -11,10 +11,10 @@ class Invoice < ActiveRecord::Base
   validates :description, length: { maximum: 300,
     too_long: "%{count} characters is the maximum allowed" }
 
-  validate :choose_xor_date
+  validate :choose_xor_deadline_payment_term
 
   private
-  def choose_xor_date
+  def choose_xor_deadline_payment_term
     unless deadline.blank? ^ payment_term.blank?
       errors.add(:base, 'specify a deadline or a payment term. Not both empty, nor both filled')        
     end

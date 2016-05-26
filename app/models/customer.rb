@@ -8,10 +8,10 @@ class Customer < ActiveRecord::Base
   validates :address, length: { maximum: 100, 
       too_long: "%{count} characters is the maximum allowed" }
 
-  validate :any_present
+  validate :any_or_both_phone_email
   
   private
-  def any_present
+  def any_or_both_phone_email
     if phone_number.blank? and email.blank?
       errors.add(:base, 'add a phone number or an email. Not both empty')        
     end
