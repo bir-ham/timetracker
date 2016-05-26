@@ -31,8 +31,8 @@ class CustomersController < ApplicationController
   end
 
   def update
-    @invoice = Customer.find(params[:id]) 
-    if @invoice.update_attributes(invoice_params)
+    @customer = Customer.find(params[:id]) 
+    if @customer.update_attributes(customer_params)
       flash.now[:success] = I18n.t('customers.update.success_update')
       render :show
     else
@@ -41,8 +41,8 @@ class CustomersController < ApplicationController
   end
 
   def destroy
-    @invoice = Customer.find(params[:id]) 
-    if @invoice.destroy
+    @customer = Customer.find(params[:id]) 
+    if @customer.destroy
       redirect_to customers_url, notice: I18n.t('customers.destroy.success_delete')
     else
       flash.now[:error] = I18n.t('invoices.distroy.error_delete')

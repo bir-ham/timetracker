@@ -82,9 +82,10 @@ en:
     show: 
       header: Edit customer    
     update: 
-      notice_update: Customer updated  
+      success_update: Customer updated  
     destroy: 
       success_delete: Customer deleted  
+      confirmation_msg: Are you sure to delete this customer?
     create: 
       notice_create: Customer created  
   invoices:

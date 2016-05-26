@@ -23,7 +23,7 @@
             td = @customer.address
               
     .btn-toolbar      
-      = link_to :back, class: 'btn btn-black' do
+      = link_to customers_path, class: 'btn btn-black' do
         = icon ('angle-left')
         |&nbsp; 
         = I18n.t('button.back') 

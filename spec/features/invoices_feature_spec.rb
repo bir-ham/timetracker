@@ -63,15 +63,13 @@ describe 'invoices' do
       visit invoices_path
    
       click_link I18n.t('button.show')
-    end   
-
-    it 'allows invoice to be shown' do 
       expect(page).to have_text @invoice.date_of_an_invoice 
       expect(page).to have_text @invoice.customer
       expect(page).to have_text @invoice.reference_number
     
+      expect(page).to have_link I18n.t('button.delete')
       expect(page).to have_link I18n.t('button.edit')
-    end
+    end   
 
     it 'allows invoice to be edited' do
       click_link I18n.t('button.edit')
@@ -92,19 +90,18 @@ describe 'invoices' do
 
     it 'allows invoice to be deleted' do
       click_link I18n.t('button.delete')
-      wait_until_javascript_loads do
-        expect(page).to have_text I18n.t('invoices.destroy.confirmation_msg')     
+      
+      expect(page).to have_text I18n.t('invoices.destroy.confirmation_msg')     
      
-        page.has_css?('.modal-footer')
-        binding.pry
+      wait_until_modal_dialog_javascript_loads do
         within('.modal-footer') do 
           click_link I18n.t('button.delete')
         end
-
-        expect(page).to have_text I18n.t('invoices.destroy.success_delete')
-        expect(page).to_not have_text @invoice.date_of_an_invoice
-        expect(page).to_not have_text @invoice.customer
-      end       
+      end  
+        
+      expect(page).to have_text I18n.t('invoices.destroy.success_delete')
+      expect(page).to_not have_text @invoice.date_of_an_invoice
+      expect(page).to_not have_text @invoice.customer     
     end  
   end  
 

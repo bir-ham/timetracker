@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'invitations' do
+describe 'customers' do
   let!(:account) { create(:account_with_schema) }
   let(:user) { account.owner }
 
@@ -15,59 +15,57 @@ describe 'invitations' do
     click_link I18n.t('customers.index.add_new_customer_button')
 
     fill_in "Name", with: "Alex"
-    fill_in "Phone", with: "12345678910"
+    fill_in "Phone number", with: "12345678910"
     fill_in "Email", with: "alex@example.com"
-    fill_in "Phone", with: "Kifle ketam: Bole, Kebele: 21, House number: 324"
+    fill_in "Address", with: "Kifle ketam: Bole, Kebele: 21, House number: 324"
     
     submit_form
 
-    expect(page).to have_text I18n.t('customers.new.notice_create')
+    expect(page).to have_text I18n.t('customers.create.notice_create')
     expect(page).to have_text "Alex"
   end
 
   it "displays customer validations" do
     click_link I18n.t('customers.index.add_new_customer_button')
+    submit_form
     expect(page).to have_text "can't be blank"
   end
 
-  describe 'when invoice exists' do
+  describe 'when customer exists' do
     before(:each) do
       @customer = create(:customer) 
-      visit invoices_path
+      visit customers_path
    
       click_link I18n.t('button.show')
+      expect(page).to have_text @customer.name 
+    
+      expect(page).to have_link I18n.t('button.delete')
+      expect(page).to have_link I18n.t('button.edit')
     end  
     
     it "allows customers to be edited" do
-      customer = create(:customer)
-
-      within('#user_dropdown_menu') do
-        select_generic(I18n.t('customers.index.header'), from: 'dropdown-menu')
-      end  
       click_link I18n.t('button.edit')
 
       fill_in "Name", with: "Alex edited"
       submit_form
 
-      expect(page).to have_text I18n.t('customers.update.notice_update')
+      expect(page).to have_text I18n.t('customers.update.success_update')
       expect(page).to have_text "Alex edited"
     end
 
     it 'allows customer to be deleted' do
       click_link I18n.t('button.delete')
-      wait_until_javascript_loads do
-        expect(page).to have_text I18n.t('invoices.destroy.confirmation_msg')     
-     
-        page.has_css?('.modal-footer')
-        binding.pry
-        within('.modal-footer') do 
-          click_link I18n.t('button.delete')
-        end
+      
+      expect(page).to have_css('.modal-dialog', count: 30)     
+      sleep(5)
+      expect(page).to have_text I18n.t('customers.destroy.confirmation_msg') 
 
-        expect(page).to have_text I18n.t('customers.destroy.success_delete')
-        expect(page).to_not have_text @customer.name
-        expect(page).to_not have_text @customer.phone_number
-      end       
+      within('.modal-footer') do 
+        click_link I18n.t('button.delete')
+      end
+            
+      expect(page).to have_text I18n.t('customers.destroy.success_delete')
+      expect(page).to_not have_text @customer.name      
     end  
   end 
 

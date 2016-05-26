@@ -10,6 +10,7 @@ RSpec.describe Invoice, type: :model do
     it { should allow_value('', nil).for(:interest_in_arrears) }
     it { should allow_value('', nil).for(:description) }
     it { should allow_value('1').for(:interest_in_arrears) }
+    it { should_not allow_value('101').for(:interest_in_arrears) }
     it { should allow_value('lorem').for(:description) }
 
     it 'fails validation with both deadline and payment_term filled' do 
