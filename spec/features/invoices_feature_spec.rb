@@ -18,11 +18,11 @@ describe 'invoices' do
     fill_in 'Description', with: 'Lorem lipsum'
     
     within('.invoice_date_of_an_invoice') do 
-      select_date(Date.today, from: 'invoice_date_of_an_invoice')
+      select_date(Date.tomorrow, from: 'invoice_date_of_an_invoice')
     end
     #select_date_and_time(DateTime.now, from: 'invoice_deadline')
     within('.invoice_deadline') do
-      select_date(Date.today, from: 'invoice_deadline')
+      select_date(Date.tomorrow, from: 'invoice_deadline')
     end
       
     submit_form
@@ -44,22 +44,23 @@ describe 'invoices' do
     end 
 
     within('.invoice_date_of_an_invoice') do 
-      select_date(Date.today, from: 'invoice_date_of_an_invoice')
+      select_date(Date.tomorrow, from: 'invoice_date_of_an_invoice')
     end
 
     within('.invoice_deadline') do
-      select_date(Date.today, from: 'invoice_deadline')
+      select_date(7.days.ago, from: 'invoice_deadline')
     end
       
     submit_form
     
     expect(page).to have_text 'is not a number'
+    expect(page).to have_text "can't be in the past"
     expect(page).to have_text 'specify a deadline or a payment term. Not both empty, nor both filled'
   end 
   
   describe 'when invoice exists' do
     before(:each) do
-      @invoice = create(:invoice, deadline: '2016-02-20', payment_term: '') 
+      @invoice = create(:invoice, deadline: Date.tomorrow, payment_term: '') 
       visit invoices_path
    
       click_link I18n.t('button.show')
@@ -79,7 +80,7 @@ describe 'invoices' do
       fill_in 'Description', with: 'Lorem lipsum edited'
 
       within('.invoice_deadline') do
-        select_date(Date.today, from: 'invoice_deadline')
+        select_date(Date.tomorrow, from: 'invoice_deadline')
       end
 
       submit_form

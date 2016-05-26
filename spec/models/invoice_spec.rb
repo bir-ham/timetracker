@@ -14,12 +14,14 @@ RSpec.describe Invoice, type: :model do
     it { should allow_value('lorem').for(:description) }
 
     it 'fails validation with both deadline and payment_term filled' do 
-      invoice_with_deadline = build(:invoice, deadline: '2016-02-20', payment_term: '')
+      invoice_with_deadline = build(:invoice, deadline: Date.current.tomorrow, payment_term: '')
       invoice_with_payment_term = build(:invoice, deadline: '', payment_term: '2')
-      invoice_with_deadline_and_payment_term = build(:invoice, deadline: '2016-02-20', payment_term: '2')
+      invoice_with_deadline_and_payment_term = build(:invoice, deadline: Date.current.tomorrow, payment_term: '2')
+      invoice_with_past_deadline = build(:invoice, deadline: 7.days.ago, payment_term: '')
       expect(invoice_with_deadline).to be_valid
       expect(invoice_with_payment_term).to be_valid
       expect(invoice_with_deadline_and_payment_term).to be_invalid
+      expect(invoice_with_past_deadline).to be_invalid
     end
   end
 

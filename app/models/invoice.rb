@@ -12,6 +12,7 @@ class Invoice < ActiveRecord::Base
     too_long: "%{count} characters is the maximum allowed" }
 
   validate :choose_xor_deadline_payment_term
+  validate :date_of_an_invoice_or_deadline_cannot_be_in_the_past
 
   private
   def choose_xor_deadline_payment_term
@@ -19,5 +20,14 @@ class Invoice < ActiveRecord::Base
       errors.add(:base, 'specify a deadline or a payment term. Not both empty, nor both filled')        
     end
   end  
+
+  def date_of_an_invoice_or_deadline_cannot_be_in_the_past
+    if date_of_an_invoice.present? && date_of_an_invoice < Date.today
+      errors.add(:date_of_an_invoice, "can't be in the past")
+    end  
+    if deadline.present? && deadline < Date.today
+      errors.add(:deadline, "can't be in the past")  
+    end
+  end    
 
 end
