@@ -1,0 +1,27 @@
+= simple_form_for(@customer,
+              html: { class: 'form-horizontal' },
+              warpper: :horizontal_form,
+              warpper_mappings: {  check_boxes: :horizontal_radio_and_checkboxes,
+                radio_buttons: :horizontal_radio_and_checkboxes,
+                file: :horizontal_file_input,
+                boolean: :horizontal_boolean} ) do |f|
+  = f.input :name, wrapper: :horizontal_form    
+
+  fieldset.custom-fieldset 
+    legend.custom-legend You must give at least a Phone number or an Email
+    - unless @customer.errors[:base].empty?
+      .has-error      
+        = f.input :phone_number, wrapper: :horizontal_form, input_html: { min: 10, max: 15 }
+        = f.input :email, wrapper: :horizontal_form
+        .col-sm-3
+        .col-sm-9
+          span.help-block = @customer.errors[:base][0]
+    - else
+      = f.input :phone_number, wrapper: :horizontal_form, input_html: { min: 10, max: 15 }
+      = f.input :email, wrapper: :horizontal_form
+
+  = f.input :address, wrapper: :horizontal_form
+
+  .btn-toolbar
+    = link_to I18n.t('button.cancel'), customers_path, class: 'btn btn-danger'  
+    = f.button :submit, class: 'btn-primary'

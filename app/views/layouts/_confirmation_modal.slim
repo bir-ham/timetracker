@@ -6,14 +6,21 @@
           |&times;
         h4.modal-title Confirmation
       .modal-body
-        p.text-warning. = I18n.t('invoices.destroy.confirmation_msg')
+        - case controller.controller_name
+        - when 'invoices'  
+          p.text-warning = I18n.t('invoices.destroy.confirmation_msg')
+        - when 'customers'  
+          p.text-warning = I18n.t('customers.destroy.confirmation_msg')  
        
-        /p Do you want to save changes you made to document before closing?
-        /p.text-warning.
-          small If you don't save, your changes will be lost.
       .modal-footer
         button type="button" class="btn btn-black" data-dismiss="modal"
           = I18n.t('button.cancel')
-        = link_to I18n.t('button.delete'), invoices_path+'/replacableId', method: :delete, class: 'btn btn-danger'
+        - case controller.controller_name
+        - when 'invoices'  
+          = link_to I18n.t('button.delete'), invoices_path+'/replacableId', method: :delete, class: 'btn btn-danger'
+        - when 'customers'  
+          = link_to I18n.t('button.delete'), customers_path+'/replacableId', method: :delete, class: 'btn btn-danger'
+        - else
+          | Unknown contoller name
 
        

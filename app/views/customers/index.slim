@@ -1,0 +1,36 @@
+.row
+  .col-sm-12
+    h1 = I18n.t('customers.index.header')
+
+    - unless @customers.empty?
+      .table-responsive
+        table.table.table-striped
+          thead
+            tr
+              th = I18n.t('customers.new.name')
+              th = I18n.t('customers.new.phone_number')
+              th = I18n.t('customers.new.email')
+              th = I18n.t('customers.new.address')
+              th = I18n.t('button.show')
+          tbody
+            - @customers.each do |customer|
+              tr
+                td = customer.name 
+                td = customer.phone_number
+                td = customer.email
+                td = customer.address
+                td
+                  = link_to customer, class: 'btn btn-info btn-sm' do
+                    = icon('eye')
+                    |&nbsp; 
+                    = I18n.t('button.show')
+     
+    - else
+      p.text-danger = I18n.t('customers.index.empty_customers')
+
+    .btn-toolbar  
+      = link_to new_customer_path, class: 'btn btn-primary'
+        = icon('plus')
+        |&nbsp;
+        = I18n.t('customers.index.add_new_customer_button')
+

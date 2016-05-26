@@ -1,0 +1,41 @@
+.row
+  .col-md-6
+    h1 = I18n.t('customers.show.header')
+    .well.well-sm
+      table.table-condensed.table-list-view
+        tbody
+          tr
+            td 
+              Strong Name:
+            td = @customer.name
+          tr
+            td 
+              Strong Phone number:
+            td = @customer.phone_number
+          tr
+            td 
+              Strong Email:
+            td 
+              = @customer.email  
+          tr
+            td 
+              Strong Address:
+            td = @customer.address
+              
+    .btn-toolbar      
+      = link_to customers_path, class: 'btn btn-black' do
+        = icon ('angle-left')
+        |&nbsp; 
+        = I18n.t('button.back') 
+        
+      = link_to '#confirmation-modal-container', class: 'btn btn-danger confirmation-button', data: { id: @customer.id } do
+        = icon('trash')
+        |&nbsp;
+        = I18n.t('button.delete')
+
+      = link_to edit_customer_path(@customer), class: 'btn btn-primary' do
+        = icon('pencil-square-o white')
+        |&nbsp;
+        = I18n.t('button.edit')       
+
+== render 'layouts/confirmation_modal'        

@@ -14,6 +14,12 @@ describe 'account creation' do
     expect(page.current_url).to include(subdomain)
   end
 
+  it 'allows user to confirm account' do
+    open_email 'birhanu@gmail.com'
+    visit_in_email 'Confirm my account'
+
+    expect(page).to have_text I18n.t('devise.confirmations.confirmed')
+  end  
   it 'allows account followup creation' do
     subdomain2 = "#{subdomain}2"
     sign_up(subdomain2)
