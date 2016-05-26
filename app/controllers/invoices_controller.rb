@@ -59,11 +59,15 @@ class InvoicesController < ApplicationController
     end  
   end
 
-  private
+  def import
+    Invoice.import(params[:file])
+    redirect_to invoices_path, notice: I18n.t('invoices.create.notice_create')
+  end
 
-  def invoice_params
-    params.require(:invoice).permit(:customer, :salesperson, :date_of_an_invoice, 
-      :deadline, :payment_term, :interest_on_arrears, :reference_number, :description)
-  end  
+  private
+    def invoice_params
+      params.require(:invoice).permit(:customer, :salesperson, :date_of_an_invoice, 
+        :deadline, :payment_term, :interest_on_arrears, :reference_number, :description)
+    end  
 
 end

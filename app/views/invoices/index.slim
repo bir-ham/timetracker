@@ -56,9 +56,9 @@
     - else
       p.text-danger = I18n.t('invoices.index.empty_invoices')
     h4 Import Invoices:
-    = simple_form_for( url: import_invoices_path, multipart: true, html: { class: 'form-inline'} ) do
-      f.input :file
-      f.button :submit, label: 'Upload Invoices', clas: 'btn btn-primary'
+    = simple_form_for(:invoices, url: import_invoices_path, multipart: true, html: { class: 'form-inline'} ) do |f|
+      = f.input :file
+      = f.button :submit, label: 'Upload Invoices', clas: 'btn btn-primary'
 
     .btn-toolbar  
       = link_to new_invoice_path, class: 'btn btn-primary'
