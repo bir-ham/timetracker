@@ -5,7 +5,7 @@ class InvoicesController < ApplicationController
     @invoices = Invoice.all
 
     search_params = params[:search]
-    unless search_params.nil?
+    unless search_params.blank?
       @search = InvoiceSearch.new(search_params)
       @invoices = @search.scope
     end
@@ -60,8 +60,12 @@ class InvoicesController < ApplicationController
   end
 
   def import
-    Invoice.import(params[:file])
-    redirect_to invoices_path, notice: I18n.t('invoices.import.notice_import')
+    import = Invoice.import(params[:file])
+    if import[:errors].present?
+      redirect_to invoices_path, alert: import[:errors] 
+    else 
+      redirect_to invoices_path, notice: I18n.t('invoices.import.notice_import')
+    end  
   end
 
   private
