@@ -59,6 +59,17 @@ abbr, accronym {
   }
 }
 
+.btn-bordered {
+  color: $turquoise;
+  background-color: $white;
+  border-color: $turquoise;
+  &:hover, &.focus {
+    color: $white;
+    background-color: $light-turquoise;
+    border-color: $turquoise;
+  }
+}
+
 .btn-danger {
   background-color: $red;
   border-color: $red;

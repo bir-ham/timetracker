@@ -50,16 +50,19 @@
 
       h4 Export Invoices:
       .btn-toolbar
-        = link_to "Download CSV", invoices_path(format: "csv"), class: 'btn btn-default btn-sm' 
-        = link_to "Download Excel", invoices_path(format: "xls"), class: 'btn btn-default btn-sm'               
+        = link_to "Download CSV", invoices_path(format: "csv"), class: 'btn btn-bordered btn-sm' 
+        = link_to "Download Excel", invoices_path(format: "xls"), class: 'btn btn-bordered btn-sm'               
      
     - else
       p.text-danger = I18n.t('invoices.index.empty_invoices')
     h4 Import Invoices:
-    = simple_form_for(:invoices, url: import_invoices_path, multipart: true, html: { class: 'form-inline'} ) do |f|
-      = f.file_field :file
-      = f.button :submit, 'Upload Invoices', clas: 'btn btn-primary'
-
+    = simple_form_for( :file, url: import_invoices_path, html: { multipart: true, class: 'form-inline'} ) do |f|
+      = f.input :file, as: :file, label: false
+      = f.button :submit, 'Upload Invoices', class: 'btn btn-bordered btn-sm'
+    /= form_tag import_invoices_path, multipart: true do 
+      = file_field_tag :file
+      = submit_tag 'Upload file'
+                
     .btn-toolbar  
       = link_to new_invoice_path, class: 'btn btn-primary'
         = icon('plus')
