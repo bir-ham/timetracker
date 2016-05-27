@@ -40,6 +40,9 @@ class Invoice < ActiveRecord::Base
       return :errors => 'File type not supported. Only .xls and .csv formats allowed'   
     rescue NoMethodError => e
       return :errors => 'No file selected'   
+    rescue ActiveRecord::RecordInvalid => e
+      binding.pry_remote
+      return :errors => 'Arg'     
     rescue Exception => e
       return :errors => e.message   
     end
