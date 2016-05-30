@@ -32,19 +32,20 @@ class Invoice < ActiveRecord::Base
     end  
 
   def self.import(file)
-    begin      
+    begin
       CSV.foreach(file.path, headers: true) do |row|
-        Invoice.create! row.to_hash  
-      end  
+        Invoice.create! row.to_hash
+      end
     rescue CSV::MalformedCSVError => e
-      return :errors => 'File type not supported. Only .xls and .csv formats allowed'   
+      return :errors => 'File type not supported. Only .xls and .csv formats allowed'
     rescue NoMethodError => e
-      return :errors => 'No file selected'   
+      return :errors => 'No file selected'
     rescue ActiveRecord::RecordInvalid => e
-      binding.pry_remote
-      return :errors => 'Arg'     
+      tokens = e.message.split(':')
+      err_msgs = tokens[1].split(',')
+      return :errors =>  err_msgs
     rescue Exception => e
-      return :errors => e.message   
+      return :errors => e.message
     end
   end
 

@@ -61,7 +61,7 @@ class InvoicesController < ApplicationController
 
   def import
     import = Invoice.import(params[:file])
-    if import[:errors].present?
+    if !import.nil? && import[:errors].present?
       redirect_to invoices_path, alert: import[:errors] 
     else 
       redirect_to invoices_path, notice: I18n.t('invoices.import.notice_import')
