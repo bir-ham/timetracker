@@ -1,0 +1,31 @@
+h1 Invoice Import
+
+p A CSV or Excel file can be used to import records. The first row should be the column name. The following columns are allowed.
+
+ul
+  - Invoice.columns.each do |column| 
+    - if column.name.in? ["id", *Invoice.attribute_names]
+      li
+        strong = column.name 
+        |&nbsp;-&nbsp;
+        = column.type.to_s.titleize
+        |&nbsp;type
+
+p 
+  |If an 
+  strong id
+  |is supplied it will update the matching record instead of creating a new one.
+
+= form_for @invoice_import do |f| 
+  - if @invoice_import.errors.any? 
+    #error_explanation
+      h2 
+        = pluralize(@invoice_import.errors.count, "error") 
+        |prohibited this import from completing:
+      ul
+        = @invoice_import.errors.full_messages.each do |msg| 
+          li = msg
+
+  .field
+    = f.file_field :file
+  = f.submit "Import" 

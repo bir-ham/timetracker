@@ -59,30 +59,6 @@ class InvoicesController < ApplicationController
     end  
   end
 
-  def import
-    #import = Invoice.import(params[:file])
-    #if !import.nil? && import[:errors].present?
-    #  redirect_to invoices_path, alert: import[:errors] 
-    #else 
-    #  redirect_to invoices_path, notice: I18n.t('invoices.import.notice_import')
-    #end  
-
-    invoice_import = InvoiceImport.load_imported_invoices(params[:file])
-    if invoice_import.any? && invoice_import.is_a?(Hash)
-      @errors = Array.new
-      invoice_import.each do |key, value|
-        if key.to_s.eql?("errors")
-          @errors.push(value)
-        else  
-          @errors.push("#{key} " + value.join(', '))
-        end  
-      end
-      redirect_to invoices_path, alert: @errors 
-    else 
-      redirect_to invoices_path, notice: I18n.t('invoices.import.notice_import')
-    end  
-  end
-
   private
     def invoice_params
       params.require(:invoice).permit(:customer, :salesperson, :date_of_an_invoice, 
