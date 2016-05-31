@@ -8,7 +8,7 @@ module LayoutHelper
           concat content_tag(:button, content_tag(:span, '&times;'.html_safe, aria: { hidden: 'true' }), class: 'close', data: { dismiss: 'alert' }, aria: { label: 'Close' })
           if msgs.is_a?(Array)
             for msg in msgs
-              concat content_tag(:span, '-' +msg, class: 'visible-sm-block visible-md-block visible-lg-block')
+              concat content_tag(:span, '* ' +msg, class: 'visible-sm-block visible-md-block visible-lg-block')
             end
           else
             concat content_tag(:span, msgs)
