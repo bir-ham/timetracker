@@ -38,10 +38,10 @@
               tr
                 td = invoice.id
                 td = invoice.customer 
-                td = invoice.date_of_an_invoice.strftime("%m/%d/%Y")
+                td = invoice.date_of_an_invoice.strftime("%d/%m/%Y")
                 td 
                   /= invoice.salesperson
-                td = invoice.deadline
+                td = invoice.deadline ? invoice.deadline.strftime("%d/%m/%Y") : ''
                 td 
                 td 
                 td

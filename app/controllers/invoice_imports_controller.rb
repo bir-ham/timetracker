@@ -8,8 +8,6 @@ class InvoiceImportsController < ApplicationController
     if @invoice_import.save
       redirect_to invoices_path, notice: I18n.t('invoice_imports.create.success_import')
     elsif @invoice_import.errors.any? 
-      #= pluralize(@invoice_import.errors.count, "error") 
-      #|&nbsp;prohibited this import from completing:
       flash.now[:alert] = @invoice_import.errors.messages[:base]
       render :index
     end
