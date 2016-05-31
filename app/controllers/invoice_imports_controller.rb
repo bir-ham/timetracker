@@ -1,5 +1,5 @@
 class InvoiceImportsController < ApplicationController
-  def new
+  def index
     @invoice_import = InvoiceImport.new
   end
 
@@ -7,10 +7,13 @@ class InvoiceImportsController < ApplicationController
     @invoice_import = InvoiceImport.new(params[:invoice_import])
     if @invoice_import.save
       redirect_to invoices_path, notice: "Imported products successfully."
-    else
-      render :new
+    elsif @invoice_import.errors.any? 
+      #= pluralize(@invoice_import.errors.count, "error") 
+      #|&nbsp;prohibited this import from completing:
+      flash.now[:alert] = @invoice_import.errors.messages[:base]
+      render :index
     end
   end
 
-  
+
 end

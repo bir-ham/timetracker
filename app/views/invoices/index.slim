@@ -62,7 +62,7 @@
     /= form_tag import_invoices_path, multipart: true do 
       = file_field_tag :file
       = submit_tag 'Upload file'
-    = link_to "Import products", new_invoice_import_path  
+    = link_to "Import products", invoice_imports_path  
                 
     .btn-toolbar  
       = link_to new_invoice_path, class: 'btn btn-primary'

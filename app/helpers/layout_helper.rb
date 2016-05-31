@@ -7,11 +7,11 @@ module LayoutHelper
         concat(content_tag(:div, msgs, class: "alert alert-#{name} alert-dismissible", role: "alert") do
           concat content_tag(:button, content_tag(:span, '&times;'.html_safe, aria: { hidden: 'true' }), class: 'close', data: { dismiss: 'alert' }, aria: { label: 'Close' })
           if msgs.is_a?(Array)
-            for msg in msgs
-              concat content_tag(:span, '* ' +msg, class: 'visible-sm-block visible-md-block visible-lg-block')
-            end
+            concat(content_tag(:ul) do 
+              msgs.collect {|msg| concat(content_tag(:li, msg, class: ''))}
+            end)
           else
-            concat content_tag(:span, msgs)
+            concat content_tag(:ul, content_tag(:li, msgs, class: ''))
           end
         end)
       end

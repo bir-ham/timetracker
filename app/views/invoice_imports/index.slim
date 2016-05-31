@@ -17,14 +17,6 @@ p
   |is supplied it will update the matching record instead of creating a new one.
 
 = form_for @invoice_import do |f| 
-  - if @invoice_import.errors.any? 
-    #error_explanation
-      h2 
-        = pluralize(@invoice_import.errors.count, "error") 
-        |prohibited this import from completing:
-      ul
-        = @invoice_import.errors.full_messages.each do |msg| 
-          li = msg
 
   .field
     = f.file_field :file
