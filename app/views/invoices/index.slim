@@ -25,6 +25,7 @@
         table.table.table-striped
           thead
             tr
+              th = I18n.t('invoices.new.id')
               th = I18n.t('invoices.new.customer')
               th = I18n.t('invoices.new.date_of_an_invoice')
               th = I18n.t('invoices.new.salesperson')
@@ -35,6 +36,7 @@
           tbody
             - @invoices.each do |invoice|
               tr
+                td = invoice.id
                 td = invoice.customer 
                 td = invoice.date_of_an_invoice.strftime("%m/%d/%Y")
                 td 

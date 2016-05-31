@@ -6,7 +6,7 @@ class InvoiceImportsController < ApplicationController
   def create
     @invoice_import = InvoiceImport.new(params[:invoice_import])
     if @invoice_import.save
-      redirect_to invoices_path, notice: "Imported products successfully."
+      redirect_to invoices_path, notice: I18n.t('invoice_imports.create.success_import')
     elsif @invoice_import.errors.any? 
       #= pluralize(@invoice_import.errors.count, "error") 
       #|&nbsp;prohibited this import from completing:

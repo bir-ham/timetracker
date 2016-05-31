@@ -16,8 +16,9 @@ p
   strong id
   |is supplied it will update the matching record instead of creating a new one.
 
-= form_for @invoice_import do |f| 
+= simple_form_for(@invoice_import, html: { class: 'form-inline' }) do |f| 
 
-  .field
-    = f.file_field :file
-  = f.submit "Import" 
+  .form-group
+    = f.input :file, as: :file
+  .form-group  
+    = f.button :submit, 'Import' 

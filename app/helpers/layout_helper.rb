@@ -7,11 +7,12 @@ module LayoutHelper
         concat(content_tag(:div, msgs, class: "alert alert-#{name} alert-dismissible", role: "alert") do
           concat content_tag(:button, content_tag(:span, '&times;'.html_safe, aria: { hidden: 'true' }), class: 'close', data: { dismiss: 'alert' }, aria: { label: 'Close' })
           if msgs.is_a?(Array)
+            concat content_tag(:p, msgs.count.to_s+ ' erros:', class: '')
             concat(content_tag(:ul) do 
               msgs.collect {|msg| concat(content_tag(:li, msg, class: ''))}
             end)
           else
-            concat content_tag(:ul, content_tag(:li, msgs, class: ''))
+            concat content_tag(:span, msgs, class: '')
           end
         end)
       end
@@ -30,12 +31,12 @@ module LayoutHelper
     return true if controller.action_name == action_name
   end
 
-  def is_footer_visible?
-    first_condition = controller_name != "sessions" && (controller_name != "accounts" && action_name != "create" ) &&
-    (controller_name != "invitaions" && action_name != "edit" )
+  def is_footer_hidden?
+    sessions = controller_name == "sessions" 
+    accounts_create = controller_name == "accounts" && action_name == "create"
+    invitations_edit = controller_name == "invitaions" && action_name == "edit"
 
-    first_condition
-
+    return false if sessions || accounts_create || invitations_edit
   end
 
 end
