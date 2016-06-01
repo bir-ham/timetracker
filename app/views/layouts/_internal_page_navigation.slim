@@ -1,4 +1,87 @@
-nav.navbar.navbar-default.navbar-fixed-top
+.logo
+  = link_to I18n.t('navigation.bizdesc'), root_path, class: 'navbar-brand'
+
+.menu-button
+  span.icon-bar
+  span.icon-bar
+  span.icon-bar
+
+.top-nav
+  ul.nav-left.list-unstyled
+    li
+      = link_to '', '#/', class: 'toggle-min'
+        = icon ('bars')
+    li.dropdown hidden-xs
+      a href="javascript:;" class="dropdown-toggle" id="step1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" 
+        = icon ('cogs')
+      .dropdown-menu.with-arrow.panel.panel-dark.admin-options  
+        .panel-heading
+          Admin Options
+        ul.list-group
+          li.list-group-item
+            p Layout style  
+          li.list-group-item
+            p Layout style    
+    li.search-box.visible-md.visible-lg      
+      .input-group
+        span.input-group-addon.text-muted
+          = icon('search')  
+        input type="text" class="form-control" placeholder="Search..."  
+    li.dropdown  
+      a href="javascript:;" class="dropdown-toggle" id="step1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" 
+        = icon ('envelope-o')
+        span.badge.badge-danger 3
+      .dropdown-menu.with-arrow.panel.panel-dark
+        .panel-heading
+          You have 3 mails.
+        ul.list-group
+          li.list-group-item
+            a href="javascript:;" class="media">
+              span.pull-left.media-icon
+                span.btn-icon-lined.btn-icon-round.btn-warning
+                  = icon('envelope-o')
+                .media-body
+                  span.block Lisa sent you a mail
+                  span.text-muted.block 2min ago
+        .panel-footer
+          a href="#/mail/inbox" Show all mails.  
+    li.dropdown  
+      a href="javascript:;" class="dropdown-toggle" id="step1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" 
+        = icon ('envelope-o')
+        span.badge.badge-danger 3
+      .dropdown-menu.with-arrow.panel.panel-dark
+        .panel-heading
+          You have 3 notifications.
+        ul.list-group
+          li.list-group-item
+            a href="javascript:;" class="media">
+              span.pull-left.media-icon
+                span.btn-icon-lined.btn-icon-round.btn-success
+                  = icon('bell-o')
+                .media-body
+                  span.block New task needs to be done
+                  span.text-muted.block 2min ago
+        .panel-footer
+          a href="#/mail/inbox" Show all mails.                             
+  
+  .nav-right.pull-right.list-unstyled
+    li.dropdown.text-normal.nav-profile  
+      a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        img src="images/g1.jpg" alt="" class="img-circle img30_30"
+        span.hidden-xs
+          span data-i18n="Lisa Doe" Lisa Doe
+      ul.dropdown-menu.with-arrow.pull-right
+        li
+          a href="#/pages/profile"
+            = icon(user)
+            span data-i18n="My Profile" My Profile
+        li
+          a href="#/pages/signin"
+            = icond(sign-out)
+              span data-i18n="Log Out" Log Out
+
+
+/nav.navbar.navbar-default.navbar-fixed-top
   .container
     .navbar-header
       = link_to I18n.t('navigation.bizdesc'), root_path, class: 'navbar-brand'

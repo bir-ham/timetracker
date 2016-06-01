@@ -13,13 +13,13 @@ html lang="en"
     = javascript_include_tag 'application', media: 'all', 'data-turbolinks-track' => true
     = csrf_meta_tags
   body
-    #wrapper class="#{controller.controller_name} #{controller.action_name}"
-      header
-        - if user_signed_in?
-          == render 'layouts/internal_page_navigation'
+    #app class="app #{controller.controller_name} #{controller.action_name}"
+      section.header-container.header-fixed
+        header.top-header.clearfix
+          - if user_signed_in?
+            == render 'layouts/internal_page_navigation'
 
-      section
-        .container
+      section.main-container
           = flash_messages if show_layout_flash?
         	/flash.each do |name, msg|
         		/= content_tag :div, msg, :id = "flash_#{name}"
