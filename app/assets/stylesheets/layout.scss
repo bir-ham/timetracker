@@ -1,13 +1,8 @@
-html, body {
-  height: 100%;
-}
-
 body {
   background-color: $body-background-color; 
   color: $body-font-color;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.42857143;
 }
 
-.app {
-  position: static;
-  min-height: 100%;
-}

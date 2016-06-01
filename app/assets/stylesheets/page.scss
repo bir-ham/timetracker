@@ -1,3 +1,13 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+.app {
+  position: static;
+  min-height: 100%;
+}
+
 // Header
 .app>.header-container.header-fixed {
   position: fixed;
