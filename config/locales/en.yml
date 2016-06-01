@@ -96,6 +96,7 @@ en:
       add_new_invoice_button: Add new invoice
     new:
       header: New Invoice
+      id: Id
       customer: Customer
       date_of_an_invoice: Date
       salesperson: Salesperosn
@@ -116,6 +117,13 @@ en:
       error_delete: "Invoice couldn't be deleted, try again after refreshing the page"
       confirmation_msg: Are you sure to delete this invoice?
       warning_msg: If you click delete, the invoice will be deleted.
+    import: 
+      notice_import: Invoices imported  
+  invoice_imports:
+    index:
+    create:
+      no_file_selected: No file selected    
+      success_import: Invoice imported
   settings:
     index:
       header: Settings

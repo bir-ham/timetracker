@@ -1,4 +1,5 @@
 class Invoice < ActiveRecord::Base
+
   validates :customer, presence: true
   validates :date_of_an_invoice, presence: true
   validates :deadline, presence: true, allow_nil: true
@@ -15,19 +16,29 @@ class Invoice < ActiveRecord::Base
   validate :date_of_an_invoice_or_deadline_cannot_be_in_the_past
 
   private
-  def choose_xor_deadline_payment_term
-    unless deadline.blank? ^ payment_term.blank?
-      errors.add(:base, 'specify a deadline or a payment term. Not both empty, nor both filled')        
-    end
-  end  
-
-  def date_of_an_invoice_or_deadline_cannot_be_in_the_past
-    if date_of_an_invoice.present? && date_of_an_invoice < Date.today
-      errors.add(:date_of_an_invoice, "can't be in the past")
+    def choose_xor_deadline_payment_term
+      unless deadline.blank? ^ payment_term.blank?
+        errors.add(:base, 'specify a deadline or a payment term. Not both empty, nor both filled')        
+      end
     end  
-    if deadline.present? && deadline < Date.today
-      errors.add(:deadline, "can't be in the past")  
-    end
-  end    
 
+  private
+    def date_of_an_invoice_or_deadline_cannot_be_in_the_past
+      if date_of_an_invoice.present? && date_of_an_invoice < Date.today
+        errors.add(:date_of_an_invoice, "can't be in the past")
+      end  
+      if deadline.present? && deadline < Date.today
+        errors.add(:deadline, "can't be in the past")  
+      end
+    end  
+
+      
+  def self.to_csv(options = {})
+    CSV.generate(options) do |csv|
+      csv << column_names
+      all.each do |invoice|
+        csv << invoice.attributes.values_at(*column_names)
+      end  
+    end
+  end
 end

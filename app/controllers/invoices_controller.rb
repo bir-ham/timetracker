@@ -3,11 +3,17 @@ class InvoicesController < ApplicationController
   
   def index
     @invoices = Invoice.all
-    search_params = params[:search]
 
-    unless search_params.nil?
+    search_params = params[:search]
+    unless search_params.blank?
       @search = InvoiceSearch.new(search_params)
       @invoices = @search.scope
+    end
+
+    respond_to do |format|
+      format.html
+      format.csv { render text: @invoices.to_csv }  
+      format.xls #{ render text: @invoices.to_csv(col_sep: "\t") }  
     end  
   end
 
@@ -54,10 +60,9 @@ class InvoicesController < ApplicationController
   end
 
   private
-
-  def invoice_params
-    params.require(:invoice).permit(:customer, :salesperson, :date_of_an_invoice, 
-      :deadline, :payment_term, :interest_on_arrears, :reference_number, :description)
-  end  
+    def invoice_params
+      params.require(:invoice).permit(:customer, :salesperson, :date_of_an_invoice, 
+        :deadline, :payment_term, :interest_in_arrears, :reference_number, :description)
+    end  
 
 end

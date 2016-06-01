@@ -26,6 +26,8 @@ gem 'simple_form'
 
 gem 'font-awesome-sass'
 
+gem 'roo'
+ 
 group :development, :test do
   gem 'pry-remote'
   gem 'guard'
