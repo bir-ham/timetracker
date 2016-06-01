@@ -1,7 +1,7 @@
 .logo
   = link_to I18n.t('navigation.toolsio'), root_path, class: ''
 
-.menu-button
+.menu-button data-toggle="toggle-off-canvas"
   span.icon-bar
   span.icon-bar
   span.icon-bar
@@ -82,11 +82,13 @@
         li
           a href="#/pages/profile"
             = icon('user')
+            |&nbsp;
             span data-i18n="My Profile" My Profile
         li
           a href="#/pages/signin"
             = icon('sign-out')
-              span data-i18n="Log Out" Log Out
+            |&nbsp;
+            span data-i18n="Log Out" Log Out
 
 
 /nav.navbar.navbar-default.navbar-fixed-top

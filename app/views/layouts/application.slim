@@ -12,7 +12,7 @@ html lang="en"
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', media: 'all', 'data-turbolinks-track' => true
     = csrf_meta_tags
-  body#app class="app #{controller.controller_name} #{controller.action_name}"
+  body#app class="app on-canvas #{controller.controller_name} #{controller.action_name}"
     section.header-container.header-fixed
       header.top-header.clearfix
         - if user_signed_in?
