@@ -12,21 +12,49 @@ html lang="en"
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', media: 'all', 'data-turbolinks-track' => true
     = csrf_meta_tags
-  body
-    #app class="app #{controller.controller_name} #{controller.action_name}"
-      section.header-container.header-fixed
-        header.top-header.clearfix
-          - if user_signed_in?
-            == render 'layouts/internal_page_navigation'
+  body#app class="app #{controller.controller_name} #{controller.action_name}"
+    section.header-container.header-fixed
+      header.top-header.clearfix
+        - if user_signed_in?
+          == render 'layouts/internal_page_navigation'
 
-      section.main-container
+    .main-container
+      aside data-ng-include=" 'views/nav.html' " id="nav-container" class="nav-container ng-scope nav-vertical" data-ng-class=" {'nav-fixed': admin.fixedSidebar, 'nav-horizontal': admin.menu === 'horizontal', 'nav-vertical': admin.menu === 'vertical'}"        
+        .nav-wrapper.ng-scope
+          .slimScrollDiv style="position: relative; overflow: hidden; width: auto; height: 100%;"
+            ul id="nav" class="nav ng-scope" data-ng-controller="NavCtrl" data-slim-scroll="" data-collapse-nav="" data-highlight-active="" style="overflow: hidden; width: auto; height: 100%;"
+              li.active
+                a href="#/dashboard"
+                  = icon('dashboard')
+                  span data-i18n="Dashboard" Dashboard
+              li class=""
+                a href="#/ui"
+                  = icon('magic')
+                  span data-i18n="UI Kit" UI Kit
+                ul style="display: none;"
+                  li class=""
+                    a href="#/ui/buttons"
+                      = icon('angle-right')
+                      span data-i18n="Buttons" Buttons
+                  li
+                    a href="#/ui/icons"
+                      =icon('angle-right')
+                      span data-i18n="Icons" Icons
+                  li 
+                    a href="#/ui/components"
+                      =icon('angle-right') 
+                      span data-i18n="Components" Components 
+
+      section.content-container.ainmate-scale-up data-ng-view="" id="content" 
+        .page.page-dashboard.ng-scope data-ng-controller="DashboardCtrl"            
+          
           = flash_messages if show_layout_flash?
-        	/flash.each do |name, msg|
-        		/= content_tag :div, msg, :id = "flash_#{name}"
+          /flash.each do |name, msg|
+            /= content_tag :div, msg, :id = "flash_#{name}"
 
           = yield
-    
-    - unless is_footer_hidden?
-      footer
-        .container
-          == render 'layouts/footer'
+  
+  /- unless is_footer_hidden?
+    footer
+      .container
+        == render 'layouts/footer'
