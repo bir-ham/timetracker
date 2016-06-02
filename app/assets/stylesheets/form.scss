@@ -1,3 +1,25 @@
+abbr, accronym {
+  border-bottom: 0px !important;
+}
+
+// Input fields
+.form-control {
+  border: 1px solid $body-font-color;
+  border-radius: 0;
+  box-shadow: none;
+  font-size: 14px;
+  height: 34px;
+  &:focus {
+    border-color: $turquoise;
+    box-shadow: none;
+  }
+}
+
+.form-horizontal .form-group {
+  margin-left: 0;
+  margin-right: 0;
+}
+
 .input-icon {
   position: relative;
 }
@@ -38,38 +60,109 @@
   background-position: 0 0;
 }
 
-//----
-
-
-.btn-icon-lined.btn-warning {
-  color: #fac552;
-  border: 2px solid #fac552;
-}
-.btn-icon-lined.btn-icon-lined {
-  line-height: 31px;
-}
-
-.btn-icon-lined {
+// Customize date dropdowns take auto width 
+.date > .col-sm-9 .form-control {
   display: inline-block;
-  text-align: center;
-  border-radius: 4px;
-  background-color: #fff;
-  border: 2px solid #767676;
-  color: #767676;
-  height: 35px;
-  width: 35px;
-  line-height: 35px;
-}
-.btn-icon-round {
-  border-radius: 50%;
+  width: auto;
 }
 
-.input-group-addon:first-child {
-  border-right: 0;
+// Buttons
+.btn {
+  border-radius: 0;
 }
 
-.input-group {
-  position: relative;
-  display: table;
-  border-collapse: separate;
+.btn-primary {
+  background-color: $turquoise !important;
+  border-color: $turquoise !important;
+  -webkit-transition: background-color 300ms ease-out;
+  -moz-transition: background-color 300ms ease-out;
+  transition: background-color 300ms ease-out;
+  &:hover, &:focus {
+    background-color: $dark-turquoise !important;
+    border-color: $dark-turquoise !important;
+  }
+}
+
+.btn-bordered {
+  color: $turquoise;
+  background-color: $white;
+  border-color: $turquoise;
+  &:hover, &.focus {
+    color: $white;
+    background-color: $light-turquoise;
+    border-color: $turquoise;
+  }
+}
+
+.btn-danger {
+  background-color: $red;
+  border-color: $red;
+  &:hover, &.focus {
+    background-color: $dark-red;
+    border-color: $dark-red;
+  }
+}
+
+.btn-success {
+  background: $grass;
+  border-color: $grass;
+  &:hover, &.focus {
+    background-color: $dark-grass;
+    border-color: $dark-grass;
+  }
+}
+
+.btn-info {
+  background: $light-blue;
+  border-color: $light-blue;
+  &:hover, &.focus {
+    background-color: $blue;
+    border-color: $blue;
+  }
+}
+
+.btn-white {
+  @extend .btn-default;
+  background: $white;
+  border-color: $white;
+  &:hover, &.focus {
+    background-color: $xx-light-grey;
+    border-color: $xx-light-grey;
+  }
+}
+
+.btn-black {
+  @extend .btn-default;
+  color: $white;
+  background: $mid-night-blue;
+  border-color: $mid-night-blue;
+  &:hover, &.focus {
+    color: $white;
+    background-color: $dark-mid-night-blue;
+    border-color: $dark-mid-night-blue;
+  }
+}
+
+.btn-toolbar {
+  margin-top: 10px;
+  margin-bottom: 5px;
+  padding-top: 10px;
+  padding-bottom: 5px;
+}
+
+/* Extra small devices (phones, less than 768px) */
+@media (max-width: $screen-xs-max) {
+  .btn {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
+
+/* Small devices (tablets, 768px and upto large desktops, 1200px and up) */
+@media (min-width: $screen-sm-min) {
+  .form-inline label.datetime {
+    display: block;
+    margin-bottom: 0;
+  }
 }

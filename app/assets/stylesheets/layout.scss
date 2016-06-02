@@ -26,6 +26,10 @@ a {
 }
 
 // Flash
+.alert {
+  border-radius: 0;  
+}
+
 .alert-success {
   color: $dark-grass;
   background: $white-grass;
@@ -77,6 +81,9 @@ a {
 }
 
 // Color
+.turquoise {
+  color: $turquoise !important;
+}
 
 // Display
 .visible-all-inline-block {

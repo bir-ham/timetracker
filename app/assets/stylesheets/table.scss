@@ -1,36 +1,14 @@
-
 // Table
-table {
-  border-collapse: separate;
-  border-spacing: 2px;  
-}
-
-.table {
-  > thead {
-    background-color: $x-light-black;
-    color: $x-light-grey;
-    border: 1px solid $x-light-black;
-  }
-  > tbody {
-    background-color: $white;
-  }
-}
-
-.table > thead > tr > th, .table > thead > tr > td, .table > tbody > tr > th, .table > tbody > tr > td, .table > tfoot > tr > th, .table > tfoot > tr > td {
-  border: none;
-}
-
 .table > thead > tr > th {
-  border-bottom: 2px solid $light-turquoise;
+  border-bottom: 1px solid $light-turquoise;
 }
 
 .table-striped > tbody > tr:nth-of-type(odd) {
-  background-color: $light-grey;
+  background-color: $x-light-grey;
 }
 
-th, td {
-  text-align: center;
-  vertical-align: middle !important;
+.table-striped > tbody > tr:nth-of-type(even) {
+  background-color: $white;
 }
 
 // Custom table for list

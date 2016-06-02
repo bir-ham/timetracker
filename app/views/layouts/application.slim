@@ -66,27 +66,8 @@ html lang="en"
                     span.menu-title = I18n.t('customers.index.header')
                            
 
-      #page-wrapper            
-        #title-breadcrumb-option-demo.page-title-breadcrumb
-          .page-header.pull-left
-            .page-title Dashboard
-          ol.breadcrumb.page-breadcrumb.pull-right
-            li
-              = icon('home')
-              |&nbsp;
-              = link_to "Dashboard", subdomain_root_path 
-              |&nbsp;&nbsp;
-              = icon('angle-right')
-                |&nbsp;&nbsp;
-            li.hidden
-              = link_to "Dashboard", subdomain_root_path
-              |&nbsp;&nbsp;
-              = icon('angle-right')
-              |&nbsp;&nbsp;
-            li class = ('active' if (is_controller_name? 'homepages') && (is_action_name? 'dashboard')) 
-              Dashboard
-          .clearfix
-
+      #page-wrapper           
+        == render 'layouts/page_title_breadcrumb'
         .page-content  
           = flash_messages if show_layout_flash?
           /flash.each do |name, msg|

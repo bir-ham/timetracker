@@ -1,6 +1,5 @@
 .row
   .col-sm-12
-    h1 = I18n.t('invoices.index.header')
     .clearfix
       .pull-right.range-query
         = simple_form_for(:search, url: invoices_path, method: :get, html: { class: 'form-inline' }) do |f|
