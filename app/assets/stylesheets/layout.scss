@@ -6,7 +6,195 @@ body {
   line-height: 1.42857143;
 }
 
+p {
+  font-family: "Open Sans","HelveticaNeue","Helvetica","Arial",sans-serif;
+  padding-bottom: 8px;
+}
+
+a {
+  color: $turquoise;
+  &:hover, &:focus {
+    color: $dark-turquoise;
+  }
+}
+
+#wrapper {
+  width: 100%;
+  min-height: 100%;
+  background-color: #3C3C3C;
+}
+
+// Flash
+.alert-success {
+  color: $dark-grass;
+  background: $white-grass;
+  border-color: $x-light-grass;
+}
+
+.alert-danger {
+  color: $dark-red;
+  background: $white-red;
+  border-color: $x-light-red;
+}
+
+.alert-notice {
+  @extend .alert-success;
+}
+
+.alert-alert {
+  @extend .alert-danger;
+}
+
+.flash_warning {
+  @extend .alert-warning;
+}
+
+.has-error .help-block, .has-error .control-label, .has-error .radio, .has-error .checkbox, .has-error .radio-inline, .has-error .checkbox-inline, .has-error.radio label, .has-error.checkbox label, .has-error.radio-inline label, .has-error.checkbox-inline label {
+  color: $red;
+}
+
+.has-error .form-control {
+  border-color: $red;
+  box-shadow: none;
+}
+
+// Font awesome
+
+// Color
+
+// Display
+.visible-all-inline-block {
+  display: inline-block;
+}
+
+.visible-all-inline {
+  display: inline;
+}
+
+// Panel
+.panel {
+  @include border-radius(0);  
+  box-shadow: 0 1px 2px rgba(0,0,0,.1);
+}
+
+.panel-default {
+  border: 1px solid $light-grey;
+}
+
+.panel-default.light-grey {
+  background-color: $light-grey;
+  border-color: $light-grey;
+}
+
+.panel-title {
+  padding-bottom: 0;
+}
+
+.panel-body {
+  padding: 20px;  
+}
+
+.panel-footer {
+  background: $light-grey;  
+}
+
+// Well
+.well {
+  background-color: $white; 
+  border: 1px solid $light-grey;
+  @include border-radius(0);
+  box-shadow: 0 1px 2px rgba(0,0,0,.1);
+}
+
 //Image
 .img-circle {
   border-radius: 50% !important;
+}
+
+
+// Custom fieldset and legend
+.custom-fieldset {
+  border: 1px solid $light-grey !important;
+  margin: 15px 2px !important;
+  padding: 0.35em 0.625em 0.75em !important;
+  .custom-legend {
+    width: auto;
+    margin-bottom: 15px;
+    font-size: 13px;
+    color: $x-dark-medium-grey;
+    border-bottom: none;
+  }
+}
+
+// Padding
+.no-gutter > [class*='col-'] {
+  padding-right:0;
+  padding-left:0;
+}
+
+/* Extremely very extra small devices (phones, less than 480px) */
+@media (max-width: $screen-xxxs-max) {
+  .visible-xxxs {
+    display: inline-block !important;
+  }
+  .hidden-xxxs {
+    display: none;
+  }
+}
+
+/* Very extra small devices (phones, 320px, and upto small phones, 480px) */
+@media (min-width: $screen-xxs-min) and (max-width: $screen-xxs-max) {
+  .visible-xxxs {
+    display: none;
+  }
+}
+
+/* Very extra small devices (phones, less than 480px) */
+@media (max-width: $screen-xxs-max) {
+  .visible-xxs {
+    display: inline-block !important;
+  }
+  .hidden-xxs {
+    display: none;
+  }
+}
+
+/* Extra small devices (phones, 480px, and upto large phones, 768px) */
+@media (min-width: $screen-xs-min) and (max-width: $screen-xs-max) {
+  .visible-xxxs {
+    display: none;
+  }
+  .visible-xxxs {
+    display: none;
+  }
+  .visible-xxs {
+    display: none;
+  }
+}
+
+/* Extra small devices (phones, less than 768px) */
+@media (max-width: $screen-xs-max) {
+  .visible-xxs {
+    display: none;
+  }
+}
+
+/* Small devices (tablets, 768px and upto large desktops, 1200px and up) */
+@media (min-width: $screen-sm-min) {
+
+}
+
+/* Small devices (tablets, 768px and upto desktops, 992px) */
+@media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+
+}
+
+/* Medium devices (desktops, 992px and upto large desktops, 1200px) */
+@media (min-width: $screen-md-min) and (max-width: $screen-md-max) {
+
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: $screen-lg-min) {
+
 }
