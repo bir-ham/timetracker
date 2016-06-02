@@ -121,6 +121,7 @@ en:
       notice_import: Invoices imported  
   invoice_imports:
     index:
+      header: Invoice import
     create:
       no_file_selected: No file selected    
       success_import: Invoice imported

@@ -10,8 +10,10 @@
         = I18n.t('users.index.header')
       - when 'customers' 
         = I18n.t('customers.index.header')
+      - when 'invoice_imports' 
+        = I18n.t('invoice_imports.index.header')  
       - else 
-        'No page title'
+        No page title
        
   ol.breadcrumb.page-breadcrumb.pull-right
     li 
@@ -20,12 +22,12 @@
           = icon('home')
           |&nbsp;
         = link_to I18n.t('homepages.dashboard.header'), subdomain_root_path 
-        |&nbsp;&nbsp;
+        |&nbsp;
       - else  
         = icon('home')
           |&nbsp;
-          = I18n.t('homepages.dashboard.header') 
-          |&nbsp;&nbsp;  
+        |&nbsp;   
+        = I18n.t('homepages.dashboard.header') 
     li.hidden
       = link_to "Dashboard", subdomain_root_path
       |&nbsp;&nbsp;
@@ -39,5 +41,7 @@
       - elsif current_page?(controller: 'users') 
         = I18n.t('users.index.header')
       - elsif current_page?(controller: 'customers') 
-        = I18n.t('customers.index.header')    
+        = I18n.t('customers.index.header')   
+      - elsif current_page?(controller: 'invoice_imports') 
+        = I18n.t('invoice_imports.index.header')  
   .clearfix
