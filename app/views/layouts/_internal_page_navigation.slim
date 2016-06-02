@@ -1,3 +1,143 @@
+nav#topbar.navbar.navbar-default.navbar-static-top role="navigation" style="margin-bottom: 0;" data-step="3" 
+  .navbar-header    
+    button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse"
+      span.sr-only Toggle navigation
+      span.icon-bar
+      span.icon-bar
+      span.icon-bar
+    = link_to I18n.t('navigation.toolsio'), root_path, class: 'navbar-brand'
+    
+  .topbar-main  
+    = link_to '#/', id: 'menu-toggle', class: 'hidden-xs'
+      = icon ('bars')
+    form id="topbar-search" action="" method="" class="hidden-sm hidden-xs"
+      .input-icon.right.text-white
+        = link_to '#/'
+          = icon('search')
+        input type="text" placeholder="Search here..." class="form-control text-white"
+    ul.nav.navbar.navbar-top-links.navbar-right.mbn
+      li.dropdown
+        a.dropdown-toggle data-hover="dropdown" href="#" 
+          = icon('bell fa-fw')
+          span.badge.badge-green 3
+      .dropdown-menu.with-arrow.panel.panel-dark
+        .panel-heading
+          You have 3 notifications.
+        ul.list-group
+          li.list-group-item
+            a href="javascript:;" class="media"
+              span.pull-left.media-icon
+                span.btn-icon-lined.btn-icon-round.btn-success
+                  = icon('bell-o')
+              .media-body
+                span.block New task needs to be done
+                span.text-muted.block 2min ago
+        .panel-footer
+          a href="#/mail/inbox" Show all notifications.                 
+          
+      li.dropdown
+        a.dropdown-toggle data-hover="dropdown" href="#" 
+          = icon('envelope fa-fw')
+          span.badge.badge-orange 7
+        .dropdown-menu.with-arrow.panel.panel-dark
+          .panel-heading
+            You have 3 mails.
+          ul.list-group
+            li.list-group-item
+              a href="javascript:;" class="media"
+                span.pull-left.media-icon
+                  span.btn-icon-lined.btn-icon-round.btn-warning
+                    = icon('envelope-o')
+                .media-body
+                  span.block Lisa sent you a mail
+                  span.text-muted.block 2min ago
+            li.list-group-item 
+              a href="javascript:;" class="media"
+                span.pull-left.media-icon
+                  span.btn-icon-lined.btn-icon-round.btn-info
+                    = icon('envelope-o')
+                .media-body
+                  span.block Lisa sent you a mail
+                  span.text-muted.block 2min ago      
+          .panel-footer
+            a href="#/mail/inbox" Show all mails.    
+          
+      li.dropdown
+        a.dropdown-toggle data-hover="dropdown" href="#"
+          = icon('cogs fa-fw')
+        .dropdown-menu.with-arrow.panel.panel-dark.admin-options  
+          .panel-heading
+            Admin Options
+          ul.list-group
+            li.list-group-item
+              p Layout style  
+            li.list-group-item
+              p Layout style    
+          
+      li.dropdown.topbar-user
+        a.dropdown-toggle" data-hover="dropdown" href="#" 
+          img src="avatar-48.jpg" alt="" class="img-responsive img-circle"
+          |&nbsp;
+          span.hidden-xs = current_user.first_name
+          |&nbsp;
+          span.caret
+          ul.dropdown-menu.dropdown-user.pull-right
+            li
+              a href="#"
+                = icon('user')
+                |My Profile
+            li
+              a href="#"
+                = icon('calendar')
+                |My Calendar
+            li
+              a href="#"
+                = icon('envelope')
+                |My Inbox
+                span.badge.badge-danger 3
+            li
+              a href="#"
+                = icon('tasks')
+                |My Tasks
+                span.badge.badge-success 7
+            li.divider role="separator"  
+            li
+              = link_to destroy_user_session_path, method: 'delete' do
+                = icon ('sign-out')
+                |&nbsp;
+                = I18n.t('button.sign_out') 
+              
+                  
+
+ 
+    /ul.nav.navbar-nav
+      li class = ('active' if (is_controller_name? 'homepages') && (is_action_name? 'dashboard')) 
+        = link_to I18n.t('homepages.dashboard.header'), subdomain_root_path
+      li class = ('active' if is_controller_name? 'invoices') 
+        = link_to I18n.t('invoices.index.header'), invoices_path
+      li class = ('active' if is_controller_name? 'projects')
+        = link_to I18n.t('projects.index.header'), projects_path
+      
+      li.dropdown class = ('active' if (is_controller_name? 'users') || (is_controller_name? 'customers')) 
+        a href="#" class="dropdown-toggle" id="users-dropdown-menu" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"  
+          |Users
+          span.caret
+        ul.dropdown-menu aria-labelledby="users-dropdown-menu"
+          li 
+            = link_to I18n.t('users.index.header'), users_path
+          li 
+            = link_to I18n.t('customers.index.header'), customers_path  
+
+
+
+
+
+
+
+
+
+
+
 .logo
   = link_to I18n.t('navigation.toolsio'), root_path, class: ''
 
@@ -91,51 +231,3 @@
             span data-i18n="Log Out" Log Out
 
 
-/nav.navbar.navbar-default.navbar-fixed-top
-  .container
-    .navbar-header
-      = link_to I18n.t('navigation.bizdesc'), root_path, class: 'navbar-brand'
-      button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse"
-        span.sr-only Toggle navigation
-        span.icon-bar
-        span.icon-bar
-        span.icon-bar
-    
-    #navbar.navbar-collapse.collapse  
-      ul.nav.navbar-nav.navbar-right
-        li.dropdown
-          a href="#" class="dropdown-toggle" id="top-right-corner-dropdown-menu" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"
-            = icon ('user')
-            |&nbsp;
-            = current_user.first_name
-            span.caret
-          ul.dropdown-menu aria-labelledby="top-right-corner-dropdown-menu"
-            li 
-              = link_to '#'
-                = icon ('gear')
-                |&nbsp
-                = I18n.t('settings.index.header')
-
-            li.divider role="separator"  
-            li  
-              = link_to destroy_user_session_path, method: 'delete' do
-                = icon ('sign-out')
-                |&nbsp;
-                = I18n.t('button.sign_out')  
-      ul.nav.navbar-nav
-        li class = ('active' if (is_controller_name? 'homepages') && (is_action_name? 'dashboard')) 
-          = link_to I18n.t('homepages.dashboard.header'), subdomain_root_path
-        li class = ('active' if is_controller_name? 'invoices') 
-          = link_to I18n.t('invoices.index.header'), invoices_path
-        li class = ('active' if is_controller_name? 'projects')
-          = link_to I18n.t('projects.index.header'), projects_path
-        
-        li.dropdown class = ('active' if (is_controller_name? 'users') || (is_controller_name? 'customers')) 
-          a href="#" class="dropdown-toggle" id="users-dropdown-menu" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"  
-            |Users
-            span.caret
-          ul.dropdown-menu aria-labelledby="users-dropdown-menu"
-            li 
-              = link_to I18n.t('users.index.header'), users_path
-            li 
-              = link_to I18n.t('customers.index.header'), customers_path  
