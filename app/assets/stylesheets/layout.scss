@@ -68,9 +68,13 @@ a {
   background-color: #e9662c !important;
 }
 
-
-
 // Font awesome
+[class^="fa-"], [class^="glyphicon-"], [class^="icon-"], [class*=" fa-"], [class*=" glyphicon-"], [class*=" icon-"] {
+  display: inline-block;
+  margin-top: 1px;
+  line-height: 14px; 
+  -webkit-font-smoothing: antialiased;
+}
 
 // Color
 

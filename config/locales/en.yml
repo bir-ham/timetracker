@@ -41,7 +41,7 @@ en:
       time_tracker: Time Tracker
       slogan: Track your time with the most awesome time tracking app ever
     dashboard:
-      header: Home
+      header: Dashboard
       description: Welcome this is your dashboard
   accounts:
     new:

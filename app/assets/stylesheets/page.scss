@@ -49,6 +49,7 @@
   #topbar-search {
     width: 250px;
     float: left;
+    margin-top: 2px;
   }
   #topbar-search input {
     padding: 15px 30px !important;
@@ -467,19 +468,19 @@ span.block {
 }
 
 .progress .progress-bar.progress-bar-success {
-  background-color: #5cb85c !important;
+  background-color: $grass !important;
 }
 
 .progress .progress-bar.progress-bar-info {
-  background-color: #5bc0de !important;
+  background-color: $light-blue !important;
 }
 
 .progress .progress-bar.progress-bar-danger {
-    background-color: #d9534f !important;
+    background-color: $red !important;
 }
 
 .progress .progress-bar.progress-bar-warning {
-    background-color: #f0ad4e !important;
+    background-color: $orange !important;
 }
 
 .portlet .portlet-body {
@@ -493,7 +494,6 @@ span.block {
 .slimScrollDiv {
   float: left;
 }
-
 
 /* Extra small devices (phones, less than 768px) */
 @media (max-width: $screen-xs-max) {

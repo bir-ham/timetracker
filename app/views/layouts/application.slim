@@ -29,12 +29,12 @@ html lang="en"
                 span.menu-title = I18n.t('homepages.dashboard.header')
             li class = ('active' if is_controller_name? 'invoices') 
               = link_to invoices_path do
-                = icon('th-list fa-fw')
+                = icon('file fa-fw')
                   .icon-bg.bg-orange
                 span.menu-title = I18n.t('invoices.index.header')
             li class = ('active' if is_controller_name? 'projects')
               = link_to projects_path do
-                = icon('tachometer fa-fw')
+                = icon('suitcase fa-fw')
                   .icon-bg.bg-orange
                 span.menu-title = I18n.t('projects.index.header')
             li.dropdown class = ('active' if (is_controller_name? 'users') || (is_controller_name? 'customers')) 
@@ -45,12 +45,12 @@ html lang="en"
               ul.dropdown-menu aria-labelledby="users-dropdown-menu"
                 li 
                   = link_to users_path do
-                    = icon('tachometer fa-fw')
+                    = icon('user fa-fw')
                       .icon-bg.bg-orange
                     span.menu-title = I18n.t('users.index.header')
                 li 
                   = link_to customers_path do  
-                    = icon('tachometer fa-fw')
+                    = icon('group fa-fw')
                       .icon-bg.bg-orange
                     span.menu-title = I18n.t('customers.index.header')
                            
