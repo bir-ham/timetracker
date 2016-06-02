@@ -13,10 +13,26 @@
     background: $turquoise;
     text-align: center;
   }
+  .navbar-header #logo {
+    font-size: 20px;
+    line-height: 20px;
+    color: #ffffff;
+    height: 100%;
+    width: 100%;
+  }
+  .navbar-header #logo span.logo-text {
+    display: block;
+    font-weight: lighter;
+    font-family: 'Lato', sans-serif;
+    font-size: 30px;
+  }
+  .navbar-header #logo span.fa {
+    display: none;
+  }
   .topbar-main {
-      display: block;
-      height: 100%;
-      background: $turquoise;
+    display: block;
+    height: 100%;
+    background: $turquoise;
   }
   .topbar-main #menu-toggle {
     float: left;
@@ -26,6 +42,9 @@
     transition: all 0.3s ease-in-out;
     border-radius: 0;
     color: #ffffff;
+  }
+  .topbar-main #menu-toggle i {
+    font-size: 25px;
   }
   #topbar-search {
     width: 250px;

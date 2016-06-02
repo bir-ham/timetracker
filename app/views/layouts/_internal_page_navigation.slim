@@ -5,7 +5,10 @@ nav#topbar.navbar.navbar-default.navbar-static-top role="navigation" style="marg
       span.icon-bar
       span.icon-bar
       span.icon-bar
-    = link_to I18n.t('navigation.toolsio'), root_path, class: 'navbar-brand'
+    = link_to root_path, id: 'logo', class: 'navbar-brand'
+      span.fa.fa-rocket
+      span.logo-text = I18n.t('navigation.toolsio')
+      span.logo-text-icon style="display: none" µ
     
   .topbar-main  
     = link_to '#/', id: 'menu-toggle', class: 'hidden-xs'
