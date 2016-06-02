@@ -37,7 +37,18 @@ html lang="en"
                 = icon('suitcase fa-fw')
                   .icon-bg.bg-orange
                 span.menu-title = I18n.t('projects.index.header')
-            li.dropdown class = ('active' if (is_controller_name? 'users') || (is_controller_name? 'customers')) 
+            li class = ('active' if is_controller_name? 'users') 
+              = link_to users_path do
+                = icon('user fa-fw')
+                  .icon-bg.bg-orange
+                span.menu-title Colleagues
+            li class = ('active' if is_controller_name? 'customers') 
+              = link_to customers_path do  
+                = icon('group fa-fw')
+                  .icon-bg.bg-orange
+                span.menu-title = I18n.t('customers.index.header')
+                        
+            /li.dropdown class = ('active' if (is_controller_name? 'users') || (is_controller_name? 'customers')) 
               a href="#" class="dropdown-toggle" id="users-dropdown-menu" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"  
                 = icon('tachometer fa-fw')
                   .icon-bg.bg-orange
