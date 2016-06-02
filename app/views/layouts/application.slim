@@ -77,13 +77,14 @@ html lang="en"
               li class = ('active' if (is_controller_name? 'homepages') && (is_action_name? 'dashboard')) 
           .clearfix
 
+        .page-content  
           = flash_messages if show_layout_flash?
           /flash.each do |name, msg|
             /= content_tag :div, msg, :id = "flash_#{name}"
 
-        = yield
+          = yield
   
-  /- unless is_footer_hidden?
-    footer
-      .container
-        == render 'layouts/footer'
+      /- unless is_footer_hidden?
+        #footer
+          .container
+            == render 'layouts/footer'

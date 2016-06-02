@@ -92,10 +92,6 @@
   }
 }
 
-.mbn, .mvn, .man {
-  margin-bottom: 0px !important;
-}
-
 .navbar {
   -webkit-border-radius: 0 !important;
   -moz-border-radius: 0 !important;
@@ -326,6 +322,62 @@ span.block {
   padding-right: 0;
   border-radius: 0;
   background: transparent;
+}
+
+.page-content {
+  padding: 20px 20px 50px 20px;
+  min-height: 700px;
+}
+
+#sum_box .icon {
+  color: #999999;
+  font-size: 55px;
+  margin-top: 7px;
+  margin-bottom: 0px;
+  float: right;
+}
+
+#sum_box h4 {
+  text-align: left;
+  margin-top: 0px;
+  font-size: 30px;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+  span:last-child {
+    font-size: 25px;
+  }
+  p.description {
+    margin-top: 0px;
+    opacity: .6;
+  }
+}
+
+.progress.progress-sm {
+  height: 11px;
+  margin-top: 5px;
+}
+
+.progress {
+  position: relative;
+  -webkit-border-radius: 0 !important;
+  -moz-border-radius: 0 !important;
+  border-radius: 0 !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+}
+
+.progress .progress-bar {
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  background-color: #dc6767;
+}
+
+.progress .progress-bar.progress-bar-success {
+  background-color: #5cb85c !important;
+}
+
+.progress .progress-bar.progress-bar-info {
+  background-color: #5bc0de !important;
 }
 
 

@@ -132,6 +132,15 @@ a {
   padding-left:0;
 }
 
+// Margins
+.mbn, .mvn, .man {
+  margin-bottom: 0px !important;
+}
+
+.mbs, .mvs, .mas {
+    margin-bottom: 5px !important;
+}
+
 /* Extremely very extra small devices (phones, less than 480px) */
 @media (max-width: $screen-xxxs-max) {
   .visible-xxxs {
