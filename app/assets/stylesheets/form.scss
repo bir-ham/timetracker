@@ -5,6 +5,22 @@
   color: #ffffff !important;
 }
 
+.input-icon.right i {
+  right: 8px;
+  float: right;
+}
+
+.input-icon i {
+  color: #999999;
+  display: block;
+  position: absolute;
+  margin: 10px 2px 4px 10px;
+  width: 16px;
+  height: 16px;
+  font-size: 16px;
+  text-align: center;
+}
+
 //Checkbox
 .icheckbox_minimal-grey, .iradio_minimal-grey {
   display: inline-block;

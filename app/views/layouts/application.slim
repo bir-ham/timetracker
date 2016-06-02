@@ -23,17 +23,17 @@ html lang="en"
           ul#side-menu.nav
             .clearfix
             li class = ('active' if (is_controller_name? 'homepages') && (is_action_name? 'dashboard')) 
-              = link_to subdomain_root_path
-                = icon(tachometer fa-fw')
+              = link_to subdomain_root_path do
+                = icon('tachometer fa-fw')
                   .icon-bg.bg-orange
                 span.menu-title = I18n.t('homepages.dashboard.header')
             li class = ('active' if is_controller_name? 'invoices') 
-              = link_to I18n.t('invoices.index.header'), invoices_path
+              = link_to invoices_path do
                 = icon('th-list fa-fw')
                   .icon-bg.bg-orange
-                span.menu-title = I18n.t('projects.index.header')
+                span.menu-title = I18n.t('invoices.index.header')
             li class = ('active' if is_controller_name? 'projects')
-              = link_to projects_path
+              = link_to projects_path do
                 = icon('tachometer fa-fw')
                   .icon-bg.bg-orange
                 span.menu-title = I18n.t('projects.index.header')
@@ -44,12 +44,12 @@ html lang="en"
                 span.menu-title = I18n.t('users.index.header')
               ul.dropdown-menu aria-labelledby="users-dropdown-menu"
                 li 
-                  = link_to users_path
+                  = link_to users_path do
                     = icon('tachometer fa-fw')
                       .icon-bg.bg-orange
                     span.menu-title = I18n.t('users.index.header')
                 li 
-                  = link_to customers_path  
+                  = link_to customers_path do  
                     = icon('tachometer fa-fw')
                       .icon-bg.bg-orange
                     span.menu-title = I18n.t('customers.index.header')
@@ -62,19 +62,19 @@ html lang="en"
               Dashboard
           ol.breadcrumb.page-breadcrumb.pull-right
             li
-              = icon('home)
+              = icon('home')
               |&nbsp;
-              = link_to subdomain_root_path
-                Home
+              = link_to "Dashboard", subdomain_root_path 
+              |&nbsp;&nbsp;
+              = icon('angle-right')
                 |&nbsp;&nbsp;
-                = icon('angle-right')
-                |&nbsp;&nbsp;
-              li.hidden
-                = link_to subdomain_root_path
-                  |&nbsp;&nbsp;
-                  = icon('angle-right')
-                  |&nbsp;&nbsp;
-              li class = ('active' if (is_controller_name? 'homepages') && (is_action_name? 'dashboard')) 
+            li.hidden
+              = link_to "Dashboard", subdomain_root_path
+              |&nbsp;&nbsp;
+              = icon('angle-right')
+              |&nbsp;&nbsp;
+            li class = ('active' if (is_controller_name? 'homepages') && (is_action_name? 'dashboard')) 
+              Dashboard
           .clearfix
 
         .page-content  
