@@ -235,6 +235,44 @@ ol ol, ol ul, ul ol, ul ul {
   border: 1px solid #eff2f7;
 }
 
+ul.todo-list li {
+  background: #f3f3f3;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  position: relative;
+  padding: 13px;
+  margin-bottom: 5px;
+  cursor: move;
+  list-style: none;
+  span.drag-drop {
+    height: 17px;
+    display: block;
+    float: left;
+    width: 7px;
+    position: relative;
+    top: 2px;
+  }
+  .todo-check {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  .todo-title {
+    margin-right: 70px;
+  }
+  .todo-actions {
+    position: absolute;
+    right: 15px;
+    top: 13px;
+  }
+}
+
+ul.todo-list li {
+  -webkit-border-radius: 0 !important;
+  -moz-border-radius: 0 !important;
+  border-radius: 0 !important;
+}
+
 // Media
 .media>.pull-left {
   margin-right: 10px;
@@ -378,6 +416,18 @@ span.block {
 
 .progress .progress-bar.progress-bar-info {
   background-color: #5bc0de !important;
+}
+
+.portlet .portlet-body {
+  background: #FFFFFF;
+  padding: 15px;
+  clear: both;
+  border-bottom-right-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+}
+
+.slimScrollDiv {
+  float: left;
 }
 
 

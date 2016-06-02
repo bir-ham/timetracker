@@ -1,8 +1,25 @@
 .input-icon {
-    position: relative;
+  position: relative;
 }
 .text-white {
-    color: #ffffff !important;
+  color: #ffffff !important;
+}
+
+//Checkbox
+.icheckbox_minimal-grey, .iradio_minimal-grey {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0;
+  padding: 0;
+  width: 18px;
+  height: 18px;
+  background: url(checkbox-radio-grey.png) no-repeat;
+  border: none;
+  cursor: pointer;
+}
+
+.icheckbox_minimal-grey {
+  background-position: 0 0;
 }
 
 //----
