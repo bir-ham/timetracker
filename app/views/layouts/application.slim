@@ -18,35 +18,65 @@ html lang="en"
         == render 'layouts/internal_page_navigation'
 
     #wrapper
-      aside data-ng-include=" 'views/nav.html' " id="nav-container" class="nav-container ng-scope nav-vertical" data-ng-class=" {'nav-fixed': admin.fixedSidebar, 'nav-horizontal': admin.menu === 'horizontal', 'nav-vertical': admin.menu === 'vertical'}"        
-        .nav-wrapper.ng-scope
-          .slimScrollDiv style="position: relative; overflow: hidden; width: auto; height: 100%;"
-            ul id="nav" class="nav ng-scope" data-ng-controller="NavCtrl" data-slim-scroll="" data-collapse-nav="" data-highlight-active="" style="overflow: hidden; width: auto; height: 100%;"
-              li.active
-                a href="#/dashboard"
-                  = icon('dashboard')
-                  span data-i18n="Dashboard" Dashboard
-              li class=""
-                a href="#/ui"
-                  = icon('magic')
-                  span data-i18n="UI Kit" UI Kit
-                ul style="display: none;"
-                  li class=""
-                    a href="#/ui/buttons"
-                      = icon('angle-right')
-                      span data-i18n="Buttons" Buttons
-                  li
-                    a href="#/ui/icons"
-                      =icon('angle-right')
-                      span data-i18n="Icons" Icons
-                  li 
-                    a href="#/ui/components"
-                      =icon('angle-right') 
-                      span data-i18n="Components" Components 
+      nav#sidebar.navbar-default.navbar-static-side role="navigation" data-step="2" data-intro="Template has <b>many navigation styles</b>" data-position="right" style="min-height: 100%;"
+        .sidebar-collapse.menu-scroll
+          ul#side-menu.nav
+            .clearfix
+            li class = ('active' if (is_controller_name? 'homepages') && (is_action_name? 'dashboard')) 
+              = link_to subdomain_root_path
+                = icon(tachometer fa-fw')
+                  .icon-bg.bg-orange
+                span.menu-title = I18n.t('homepages.dashboard.header')
+            li class = ('active' if is_controller_name? 'invoices') 
+              = link_to I18n.t('invoices.index.header'), invoices_path
+                = icon('th-list fa-fw')
+                  .icon-bg.bg-orange
+                span.menu-title = I18n.t('projects.index.header')
+            li class = ('active' if is_controller_name? 'projects')
+              = link_to projects_path
+                = icon('tachometer fa-fw')
+                  .icon-bg.bg-orange
+                span.menu-title = I18n.t('projects.index.header')
+            li.dropdown class = ('active' if (is_controller_name? 'users') || (is_controller_name? 'customers')) 
+              a href="#" class="dropdown-toggle" id="users-dropdown-menu" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"  
+                = icon('tachometer fa-fw')
+                  .icon-bg.bg-orange
+                span.menu-title = I18n.t('users.index.header')
+              ul.dropdown-menu aria-labelledby="users-dropdown-menu"
+                li 
+                  = link_to users_path
+                    = icon('tachometer fa-fw')
+                      .icon-bg.bg-orange
+                    span.menu-title = I18n.t('users.index.header')
+                li 
+                  = link_to customers_path  
+                    = icon('tachometer fa-fw')
+                      .icon-bg.bg-orange
+                    span.menu-title = I18n.t('customers.index.header')
+                           
 
-      section.content-container.ainmate-scale-up data-ng-view="" id="content" 
-        .page.page-dashboard.ng-scope data-ng-controller="DashboardCtrl"            
-          
+      #page-wrapper            
+        #title-breadcrumb-option-demo.page-title-breadcrumb
+          .page-header.pull-left
+            .page-title
+              Dashboard
+          ol.breadcrumb.page-breadcrumb.pull-right
+            li
+              = icon('home)
+              |&nbsp;
+              = link_to subdomain_root_path
+                Home
+                |&nbsp;&nbsp;
+                = icon('angle-right')
+                |&nbsp;&nbsp;
+              li.hidden
+                = link_to subdomain_root_path
+                  |&nbsp;&nbsp;
+                  = icon('angle-right')
+                  |&nbsp;&nbsp;
+              li class = ('active' if (is_controller_name? 'homepages') && (is_action_name? 'dashboard')) 
+          .clearfix
+
           = flash_messages if show_layout_flash?
           /flash.each do |name, msg|
             /= content_tag :div, msg, :id = "flash_#{name}"
