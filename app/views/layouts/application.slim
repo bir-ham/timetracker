@@ -22,11 +22,11 @@ html lang="en"
         .sidebar-collapse.menu-scroll
           ul#side-menu.nav
             .clearfix
-            li class = ('active' if (is_controller_name? 'homepages') && (is_action_name? 'dashboard')) 
+            li class = ('active' if (is_controller_name? 'dashboards') && (is_action_name? 'index')) 
               = link_to subdomain_root_path do
                 = icon('tachometer fa-fw')
                   .icon-bg.bg-orange
-                span.menu-title = I18n.t('homepages.dashboard.header')
+                span.menu-title = I18n.t('dashboards.index.header')
             li class = ('active' if is_controller_name? 'invoices') 
               = link_to invoices_path do
                 = icon('file fa-fw')

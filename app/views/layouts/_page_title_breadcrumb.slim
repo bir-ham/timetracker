@@ -2,6 +2,8 @@
   .page-header.pull-left
     .page-title 
       - case controller.controller_name
+      - when 'dashboards' 
+        = I18n.t('dashboards.index.header')
       - when 'invoices' 
         = I18n.t('invoices.index.header')
       - when 'projects' 
@@ -21,13 +23,13 @@
         span.turquoise
           = icon('home')
           |&nbsp;
-        = link_to I18n.t('homepages.dashboard.header'), subdomain_root_path 
+        = link_to I18n.t('dashboards.index.header'), subdomain_root_path 
         |&nbsp;
       - else  
         = icon('home')
           |&nbsp;
         |&nbsp;   
-        = I18n.t('homepages.dashboard.header') 
+        = I18n.t('dashboards.index.header') 
     li.hidden
       = link_to "Dashboard", subdomain_root_path
       |&nbsp;&nbsp;
