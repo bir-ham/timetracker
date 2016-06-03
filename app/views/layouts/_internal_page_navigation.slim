@@ -20,44 +20,42 @@ nav#topbar.navbar.navbar-default.navbar-static-top role="navigation" style="marg
         input type="text" placeholder="Search here..." class="form-control text-white"
     ul.nav.navbar.navbar-top-links.navbar-right.mbn
       li.dropdown
-        a.dropdown-toggle data-hover="dropdown" href="#" 
+        a.dropdown-toggle data-toggle="dropdown" href="#" 
           = icon('bell fa-fw')
-          span.badge.badge-green 3
-      .dropdown-menu.with-arrow.panel.panel-dark
-        .panel-heading
-          You have 3 notifications.
-        ul.list-group
-          li.list-group-item
-            a href="javascript:;" class="media"
-              span.pull-left.media-icon
-                span.btn-icon-lined.btn-icon-round.btn-success
-                  = icon('bell-o')
-              .media-body
-                span.block New task needs to be done
-                span.text-muted.block 2min ago
-        .panel-footer
-          a href="#/mail/inbox" Show all notifications.                 
-          
-      li.dropdown
-        a.dropdown-toggle data-hover="dropdown" href="#" 
-          = icon('envelope fa-fw')
-          span.badge.badge-orange 7
-        .dropdown-menu.with-arrow.panel.panel-dark
-          .panel-heading
-            You have 3 mails.
+          span.badge.badge-light-blue 3
+        .dropdown-menu.with-arrow.panel.panel-dark-background
+          .panel-heading You have 3 notifications.
           ul.list-group
             li.list-group-item
               a href="javascript:;" class="media"
-                span.pull-left.media-icon
-                  span.btn-icon-lined.btn-icon-round.btn-warning
+                .media-left
+                  span.btn-icon-lined.light-blue
+                    = icon('bell-o')
+                .media-body
+                  span.block New task needs to be done
+                  span.text-muted.block 2min ago
+          .panel-footer
+            a href="#/mail/inbox" Show all notifications.                 
+          
+      li.dropdown
+        a.dropdown-toggle data-toggle="dropdown" href="#" 
+          = icon('envelope fa-fw')
+          span.badge.badge-orange 7
+        .dropdown-menu.with-arrow.panel.panel-dark-background
+          .panel-heading You have 3 mails.
+          ul.list-group
+            li.list-group-item
+              a href="javascript:;" class="media"
+                .media-left
+                  span.btn-icon-lined.orange
                     = icon('envelope-o')
                 .media-body
                   span.block Lisa sent you a mail
                   span.text-muted.block 2min ago
             li.list-group-item 
               a href="javascript:;" class="media"
-                span.pull-left.media-icon
-                  span.btn-icon-lined.btn-icon-round.btn-info
+                .media-left
+                  span.btn-icon-lined.orange
                     = icon('envelope-o')
                 .media-body
                   span.block Lisa sent you a mail
@@ -66,9 +64,9 @@ nav#topbar.navbar.navbar-default.navbar-static-top role="navigation" style="marg
             a href="#/mail/inbox" Show all mails.    
           
       li.dropdown
-        a.dropdown-toggle data-hover="dropdown" href="#"
+        a.dropdown-toggle data-toggle="dropdown" href="#"
           = icon('cogs fa-fw')
-        .dropdown-menu.with-arrow.panel.panel-dark.admin-options  
+        .dropdown-menu.with-arrow.panel.panel-dark-background.admin-options  
           .panel-heading
             Admin Options
           ul.list-group
@@ -76,37 +74,37 @@ nav#topbar.navbar.navbar-default.navbar-static-top role="navigation" style="marg
               p Layout style  
             li.list-group-item
               p Layout style    
-          
+   
       li.dropdown.topbar-user
-        a.dropdown-toggle data-hover="dropdown" href="#" 
+        a#user-dropdown-menu.dropdown-toggle data-toggle="dropdown" href="#" aria-haspopup="true" aria-expanded="false"
           img src="assets/avatar.png" alt="" class="img-responsive img-circle"
           |&nbsp;
           span.hidden-xs = current_user.first_name
           |&nbsp;
           span.caret
-          ul.dropdown-menu.dropdown-user.pull-right
-            li
-              a href="#"
-                = icon('user')
-                |My Profile
-            li
-              a href="#"
-                = icon('calendar')
-                |My Calendar
-            li
-              a href="#"
-                = icon('envelope')
-                |My Inbox
-                span.badge.badge-danger 3
-            li
-              a href="#"
-                = icon('tasks')
-                |My Tasks
-                span.badge.badge-success 7
-            li.divider role="separator"  
-            li
-              = link_to destroy_user_session_path, method: 'delete' do
-                = icon ('sign-out')
-                |&nbsp;
-                = I18n.t('button.sign_out') 
+        ul.dropdown-menu.dropdown-user.pull-right aria-labelledby="user-dropdown-menu"
+          li
+            a href="#"
+              = icon('user')
+              |My Profile
+          li
+            a href="#"
+              = icon('calendar')
+              |My Calendar
+          li
+            a href="#"
+              = icon('envelope')
+              |My Inbox
+              span.badge.badge-danger 3
+          li
+            a href="#"
+              = icon('tasks')
+              |My Tasks
+              span.badge.badge-success 7
+          li.divider role="separator"  
+          li
+            = link_to destroy_user_session_path, method: 'delete' do
+              = icon ('sign-out')
+              |&nbsp;
+              = I18n.t('button.sign_out') 
               

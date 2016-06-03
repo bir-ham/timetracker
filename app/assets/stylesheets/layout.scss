@@ -64,8 +64,8 @@ a {
 }
 
 // Badge
-.badge-green, .label-green {
-  background-color: $grass !important;
+.badge-light-blue, .label-light-blue {
+  background-color: $light-blue !important;
 }
 
 .badge-orange, .label-orange {
@@ -78,6 +78,19 @@ a {
   margin-top: 1px;
   line-height: 14px; 
   -webkit-font-smoothing: antialiased;
+}
+
+// Background
+.yellow-background {
+  background: $yellow !important;
+}
+
+.grass-background {
+  background: $grass;
+}
+
+.blue-background {
+  background: $blue;
 }
 
 // Color
@@ -99,6 +112,11 @@ a {
   @include border-radius(0);  
   box-shadow: none;
   //box-shadow: 0 1px 2px rgba(0,0,0,.1);
+}
+
+.panel-heading, .panel-footer {
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
 }
 
 .panel-default {  
@@ -123,6 +141,13 @@ a {
 
 .panel-footer {
   background: $xxx-light-grey; 
+}
+
+.panel.panel-dark-background {
+  .panel-heading {
+    background: $light-black;
+    color: $white;
+  }  
 }
 
 // Progress bar
@@ -163,7 +188,8 @@ a {
   background-color: $white; 
   border: 1px solid $light-grey;
   @include border-radius(0);
-  box-shadow: 0 1px 2px rgba(0,0,0,.1);
+  box-shdow: none;
+  //box-shadow: 0 1px 2px rgba(0,0,0,.1);
 }
 
 //Image
@@ -198,7 +224,15 @@ a {
 }
 
 .mbs, .mvs, .mas {
-    margin-bottom: 5px !important;
+  margin-bottom: 5px !important;
+}
+
+.mbs, .mvs, .mas {
+  margin-bottom: 5px !important;
+}
+
+.mbs, .mvs, .mas {
+  margin-bottom: 5px !important;
 }
 
 /* Extremely very extra small devices (phones, less than 480px) */
