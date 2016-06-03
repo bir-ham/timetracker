@@ -8,6 +8,15 @@ body {
   color: $body-font-color;
 }
 
+// Typography
+p {
+  font-size: 15px;
+  color: inherit;
+  margin: 0 auto;
+  line-height: 24px;
+  margin-bottom: 12px; 
+}
+
 /**
 #wrapper {
   min-height: 100%;

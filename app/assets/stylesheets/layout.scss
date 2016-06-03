@@ -114,7 +114,7 @@ a {
 .panel-title {
   padding-bottom: 0;
   font-weight: 700;
-  font-size: 14px;
+  font-size: 13px;
 }
 
 .panel-body {
@@ -123,6 +123,39 @@ a {
 
 .panel-footer {
   background: $xxx-light-grey; 
+}
+
+// Progress bar
+.progress {
+  height: 6px;
+  position: relative;
+  -webkit-border-radius: 0 !important;
+  -moz-border-radius: 0 !important;
+  border-radius: 0 !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+}
+
+.progress .progress-bar {
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  background-color: #dc6767;
+}
+
+.progress .progress-bar.progress-bar-success {
+  background-color: $grass !important;
+}
+
+.progress .progress-bar.progress-bar-info {
+  background-color: $light-blue !important;
+}
+
+.progress .progress-bar.progress-bar-danger {
+    background-color: $red !important;
+}
+
+.progress .progress-bar.progress-bar-warning {
+    background-color: $orange !important;
 }
 
 // Well

@@ -386,9 +386,8 @@ span.block {
 }
 
 #sum_box .icon {
-  color: #999999;
-  font-size: 35px;
-  margin-top: 7px;
+  font-size: 30px;
+  margin-top: 0;
   margin-bottom: 0px;
   float: right;
 }
@@ -401,52 +400,15 @@ span.block {
 #sum_box h4 {
   text-align: left;
   margin-top: 0px;
-  font-size: 30px;
   margin-bottom: 0px;
   padding-bottom: 0px;
-  span:last-child {
-    font-size: 25px;
+  span {
+    font-size: 16px;
   }
   p.description {
     margin-top: 0px;
     opacity: .6;
   }
-}
-
-.progress.progress-sm {
-  height: 11px;
-  margin-top: 5px;
-}
-
-.progress {
-  position: relative;
-  -webkit-border-radius: 0 !important;
-  -moz-border-radius: 0 !important;
-  border-radius: 0 !important;
-  -webkit-box-shadow: none !important;
-  box-shadow: none !important;
-}
-
-.progress .progress-bar {
-  -webkit-box-shadow: none !important;
-  box-shadow: none !important;
-  background-color: #dc6767;
-}
-
-.progress .progress-bar.progress-bar-success {
-  background-color: $grass !important;
-}
-
-.progress .progress-bar.progress-bar-info {
-  background-color: $light-blue !important;
-}
-
-.progress .progress-bar.progress-bar-danger {
-    background-color: $red !important;
-}
-
-.progress .progress-bar.progress-bar-warning {
-    background-color: $orange !important;
 }
 
 .portlet .portlet-body {
