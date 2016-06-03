@@ -192,11 +192,19 @@ a {
   //box-shadow: 0 1px 2px rgba(0,0,0,.1);
 }
 
+// Dropdown 
+.dropdown-menu {
+  min-width: 180px;
+}
+
+.dropdown-menu .divider {
+  margin: 5px 0;
+}
+
 //Image
 .img-circle {
   border-radius: 50% !important;
 }
-
 
 // Custom fieldset and legend
 .custom-fieldset {
@@ -282,9 +290,11 @@ a {
   }
 }
 
-/* Small devices (tablets, 768px and upto large desktops, 1200px and up) */
+/* Small devices (tablets, 768px and up) */
 @media (min-width: $screen-sm-min) {
-
+  .navbar-right {
+    margin-right: 0; 
+  }
 }
 
 /* Small devices (tablets, 768px and upto desktops, 992px) */
