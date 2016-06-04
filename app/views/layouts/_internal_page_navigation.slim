@@ -1,6 +1,6 @@
 nav#topbar.navbar.navbar-default.navbar-static-top role="navigation" style="margin-bottom: 0;" data-step="3" 
   .navbar-header    
-    button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse"
+    button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse"
       span.sr-only Toggle navigation
       span.icon-bar
       span.icon-bar
@@ -18,11 +18,11 @@ nav#topbar.navbar.navbar-default.navbar-static-top role="navigation" style="marg
         = link_to '#/'
           = icon('search')
         input type="text" placeholder="Search here..." class="form-control text-white"
-    ul.nav.navbar.navbar-top-links.navbar-right.mbn
+    ul.nav.navbar.navbar-top-links.navbar-right style="margin-bottom: 0"
       li.dropdown
         a.dropdown-toggle data-toggle="dropdown" href="#" 
           = icon('bell fa-fw')
-          span.badge.badge-light-blue 3
+          span.badge.header-nav-icons.badge-light-blue 3
         ul.dropdown-menu.hdropdown.notification.animated.flipInX
           li
             a href="#"
@@ -42,7 +42,7 @@ nav#topbar.navbar.navbar-default.navbar-static-top role="navigation" style="marg
       li.dropdown
         a.dropdown-toggle data-toggle="dropdown" href="#" 
           = icon('envelope fa-fw')
-          span.badge.badge-orange 7
+          span.badge.header-nav-icons.badge-orange 7
         ul.dropdown-menu.hdropdown.animated.flipInX
           .title You have 4 new messages
           li

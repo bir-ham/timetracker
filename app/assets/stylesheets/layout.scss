@@ -93,13 +93,17 @@ a {
   background: $red;
 }
 
-// Font awesome
-[class^="fa-"], [class^="glyphicon-"], [class^="icon-"], [class*=" fa-"], [class*=" glyphicon-"], [class*=" icon-"] {
-  display: inline-block;
-  margin-top: 1px;
-  line-height: 14px; 
-  -webkit-font-smoothing: antialiased;
+// Navbar 
+.navbar-nav {
+  margin: 0 auto;
 }
+
+.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+  background-color: transparent;
+}
+
+
+// Font awesome
 
 // Background
 .yellow-background {
@@ -159,7 +163,7 @@ a {
 }
 
 .panel-footer {
-  background: $xxx-light-grey; 
+  background: $xx-light-grey; 
 }
 
 .panel.panel-dark-background {
@@ -171,15 +175,14 @@ a {
 
 // Progress bar
 .progress {
-  height: 6px;
-  position: relative;
-  -webkit-border-radius: 0 !important;
-  -moz-border-radius: 0 !important;
-  border-radius: 0 !important;
+  background-color: $xx-light-grey;
+  @include border-radius(2px);
   -webkit-box-shadow: none !important;
   box-shadow: none !important;
 }
-
+.progress-small { 
+  height: 10px;
+}
 .progress .progress-bar {
   -webkit-box-shadow: none !important;
   box-shadow: none !important;
@@ -195,11 +198,11 @@ a {
 }
 
 .progress .progress-bar.progress-bar-danger {
-    background-color: $red !important;
+  background-color: $red !important;
 }
 
 .progress .progress-bar.progress-bar-warning {
-    background-color: $orange !important;
+  background-color: $orange !important;
 }
 
 // Well
@@ -310,6 +313,12 @@ a {
 @media (max-width: $screen-xs-max) {
   .visible-xxs {
     display: none;
+  }
+  .navbar-default .navbar-toggle {
+    border-color: $white;
+    .icon-bar {
+      background-color: $white;
+    }
   }
 }
 
