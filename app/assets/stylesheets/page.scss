@@ -22,9 +22,8 @@
   }
   .navbar-header #logo span.logo-text {
     display: block;
-    font-weight: lighter;
-    font-family: 'Lato', sans-serif;
-    font-size: 30px;
+    font-weight: 600;
+    font-size: 14px;
   }
   .navbar-header #logo span.fa {
     display: none;
@@ -44,7 +43,7 @@
     color: #ffffff;
   }
   .topbar-main #menu-toggle i {
-    font-size: 25px;
+    font-size: 15px;
   }
   #topbar-search {
     width: 250px;
@@ -79,9 +78,9 @@
   }
   .navbar-top-links li > a span.badge {
     position: absolute;
-    top: 5px;
-    right: 30px;
-    padding: 3px 6px;
+    top: 7px;
+    right: 12px;
+    padding: 2px 5px;
     color: #ffffff;
   }
   .navbar-top-links li.topbar-user a {
@@ -112,7 +111,7 @@
     color: #999999;
   }
   .navbar-top-links li > a i {
-    font-size: 16px;
+    font-size: 20px;
     color: #ffffff;
   }
   .admin-options {
@@ -144,43 +143,43 @@
   margin: 0;
   padding: 0;
   border: 0;
+  font-size: 13px;
   border-radius: 0;
   -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15) !important;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15) !important;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
 }
 
 .dropdown-menu li a {
-  color: #999999;
-  padding: 9px 10px;
-  font-size: 13px;
+  display: block;
+  padding: 3px 20px !important;
+  clear: both;
+  font-weight: normal;
+  line-height: 1.42857143;
+  white-space: nowrap;
 }
 
-.dropdown-menu.with-arrow.panel.panel-dark-background {
-  .panel-heading {
-    font-size: 13px;
+.dropdown-menu.hdropdown { 
+  .title {
+  padding: 12px 12px;
+  text-align: center;
+  border-bottom: 1px solid light-grey;
   }
-  .list-group-item {
-    padding: 0 !important;
+  li {
+    padding: 6px 12px;
+    text-align: left;
+    background: $xxx-light-grey;
+    border-bottom: 1px solid light-grey;
   }
-  .list-group-item a {
-    padding: 10px !important;
-  }
-  .panel-footer {
-    font-size: 13px;
+   li:hover, .dropdown-menu.filedropdown li:hover {
+    background: $body-background-color;
   }
 }
 
-.dropdown-menu.with-arrow.panel-dark:after {
-  border-bottom: 7px solid #3a3630;
-}
-
-.dropdown-menu.with-arrow:after {
-  content: " ";
-  position: absolute;
-  right: 13px;
-  top: -14px;
-  border: 7px solid transparent;
-  border-bottom: 7px solid #fff;
+.dropdown-menu.hdropdown.notification li {
+  padding: 12px 12px;
+  .label {
+    margin-right: 10px;
+  }
 }
 
 // List
@@ -304,16 +303,10 @@ span.block {
   border-bottom: 1px solid #484848;
 }
 
-.navbar-static-side ul li.active a {
-  background: #303030;
-  transition: 0.2s all ease-in-out;
-  outline: none;
-  color: #FFF;
-}
-
 .navbar-static-side ul li a {
   color: #d9d9d9;
   padding: 15px;
+  font-weight: 600;
   &:hover, &:focus {
     background: #303030;
     transition: 0.2s all ease-in-out;
@@ -322,8 +315,16 @@ span.block {
   }
 }
 
+.navbar-static-side ul li.active a {
+  background: #303030;
+  transition: 0.2s all ease-in-out;
+  outline: none;
+  color: #FFF;
+}
+
+
 .navbar-static-side ul li a span.menu-title {
-    margin-left: 10px;
+  margin-left: 10px;
 }
 
 // Container
@@ -350,10 +351,13 @@ span.block {
   border-bottom: 0;
 }
 
-.page-title-breadcrumb .page-header .page-title {
-  font-size: 25px;
-  font-weight: 300;
-  display: inline-block;
+.page-title-breadcrumb .page-header {
+  h2.page-title {
+    font-size: 14px;
+    font-weight: 600;
+    padding-bottom: 0;
+    text-transform: uppercase;
+  }  
 }
 
 .page-title-breadcrumb .breadcrumb {

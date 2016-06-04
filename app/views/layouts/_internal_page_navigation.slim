@@ -23,63 +23,61 @@ nav#topbar.navbar.navbar-default.navbar-static-top role="navigation" style="marg
         a.dropdown-toggle data-toggle="dropdown" href="#" 
           = icon('bell fa-fw')
           span.badge.badge-light-blue 3
-        .dropdown-menu.with-arrow.panel.panel-dark-background
-          .panel-heading You have 3 notifications.
-          ul.list-group
-            li.list-group-item
-              a href="javascript:;" class="media"
-                .media-left
-                  span.btn-icon-lined.light-blue
-                    = icon('bell-o')
-                .media-body
-                  span.block New task needs to be done
-                  span.text-muted.block 2min ago
-          .panel-footer
-            a href="#/mail/inbox" Show all notifications.                 
+        ul.dropdown-menu.hdropdown.notification.animated.flipInX
+          li
+            a href="#"
+              span.label.label-success NEW
+              |It is a long established.
+          li
+            a href="#"
+              span.label.label-warning WAR
+              |There are many variations.
+          li
+            a href="#"
+              span.label.label-danger ERR
+              |Contrary to popular belief.
+          li.summary
+            a href="#" See all notifications
           
       li.dropdown
         a.dropdown-toggle data-toggle="dropdown" href="#" 
           = icon('envelope fa-fw')
           span.badge.badge-orange 7
-        .dropdown-menu.with-arrow.panel.panel-dark-background
-          .panel-heading You have 3 mails.
-          ul.list-group
-            li.list-group-item
-              a href="javascript:;" class="media"
-                .media-left
-                  span.btn-icon-lined.orange
-                    = icon('envelope-o')
-                .media-body
-                  span.block Lisa sent you a mail
-                  span.text-muted.block 2min ago
-            li.list-group-item 
-              a href="javascript:;" class="media"
-                .media-left
-                  span.btn-icon-lined.orange
-                    = icon('envelope-o')
-                .media-body
-                  span.block Lisa sent you a mail
-                  span.text-muted.block 2min ago      
-          .panel-footer
-            a href="#/mail/inbox" Show all mails.    
+        ul.dropdown-menu.hdropdown.animated.flipInX
+          .title You have 4 new messages
+          li
+            a href="#"
+              It is a long established.
+          li
+            a href="#"
+              There are many variations.
+          li
+            a href="#"
+              Lorem Ipsum is simply dummy.
+          li
+            a href="#"
+              Contrary to popular belief.
+          li.summary
+            a href="#" See All Messages
           
       li.dropdown
         a.dropdown-toggle data-toggle="dropdown" href="#"
           = icon('cogs fa-fw')
-        .dropdown-menu.with-arrow.panel.panel-dark-background.admin-options  
-          .panel-heading
-            Admin Options
-          ul.list-group
-            li.list-group-item
-              a href="#"
-                Layout style  
-            li.list-group-item
-              a href="#"
-                Layout style   
+        ul.dropdown-menu.hdropdown.animated.flipInX
+          .title Admin options
+          li
+            a href="#"
+              It is a long established.
+          li
+            a href="#"
+              There are many variations.
+          li
+            a href="#"
+              Lorem Ipsum is simply dummy.
    
       li.dropdown.topbar-user
         a#user-dropdown-menu.dropdown-toggle data-toggle="dropdown" href="#" aria-haspopup="true" aria-expanded="false"
-          img src="assets/avatar.png" alt="" class="img-responsive img-circle"
+          img src="/assets/avatar.png" alt="" class="img-responsive img-bordered-xxs"
           |&nbsp;
           span.hidden-xs = current_user.first_name
           |&nbsp;

@@ -4,7 +4,7 @@ abbr, accronym {
 
 // Input fields
 .form-control {
-  border: 1px solid $body-font-color;
+  border: 1px solid $light-grey;
   border-radius: 0;
   box-shadow: none;
   font-size: 14px;
@@ -157,25 +157,6 @@ abbr, accronym {
   .fa {
     color: $orange !important;
   }
-}
-
-.btn-icon-lined.light-blue {
-  color: $light-blue;
-  border: 2px solid $light-blue;
-  .fa {
-    color: $light-blue !important;
-  }
-}
-
-.btn-icon-lined {
-  display: inline-block;
-  text-align: center;
-  background-color: #fff;
-  border: 2px solid #767676;
-  color: #767676;
-  height: 30px;
-  width: 30px;
-  line-height: 30px;
 }
 
 /* Extra small devices (phones, less than 768px) */

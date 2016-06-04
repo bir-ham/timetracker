@@ -64,12 +64,33 @@ a {
 }
 
 // Badge
+.badge {
+  border-radius: 2px;
+}
+
 .badge-light-blue, .label-light-blue {
   background-color: $light-blue !important;
 }
 
 .badge-orange, .label-orange {
   background-color: $orange !important;
+}
+
+// Labels
+.label-success {
+  background: $grass;
+}
+
+.label-info {
+  background: $blue;
+}
+
+.label-warning {
+  background: $orange
+}
+
+.label-danger {
+  background: $red;
 }
 
 // Font awesome
@@ -120,7 +141,6 @@ a {
 }
 
 .panel-default {  
-  //border: 1px solid #e4e5e7;
   border: 1px solid $light-grey;
 }
 
@@ -130,9 +150,8 @@ a {
 }
 
 .panel-title {
-  padding-bottom: 0;
-  font-weight: 700;
-  font-size: 13px;
+  font-size: 18px;
+  line-height: 18px;
 }
 
 .panel-body {
@@ -204,6 +223,10 @@ a {
 //Image
 .img-circle {
   border-radius: 50% !important;
+}
+
+.img-bordered-xxs {
+  border-radius: 2px !important;
 }
 
 // Custom fieldset and legend
