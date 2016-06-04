@@ -134,7 +134,7 @@ a {
 
 // Panel
 .panel {
-  @include border-radius(0);  
+  @include border-radius(3px);  
   box-shadow: none;
   //box-shadow: 0 1px 2px rgba(0,0,0,.1);
 }
@@ -154,7 +154,8 @@ a {
 }
 
 .panel-title {
-  font-size: 18px;
+  font-size: 13px;
+  font-weight: bold;
   line-height: 18px;
 }
 
@@ -209,7 +210,7 @@ a {
 .well {
   background-color: $white; 
   border: 1px solid $light-grey;
-  @include border-radius(0);
+  @include border-radius(3px);
   box-shdow: none;
   //box-shadow: 0 1px 2px rgba(0,0,0,.1);
 }

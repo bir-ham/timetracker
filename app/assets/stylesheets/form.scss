@@ -5,7 +5,7 @@ abbr, accronym {
 // Input fields
 .form-control {
   border: 1px solid $light-grey;
-  border-radius: 0;
+  @include border-radius(3px);  
   box-shadow: none;
   font-size: 14px;
   height: 34px;
@@ -68,7 +68,7 @@ abbr, accronym {
 
 // Buttons
 .btn {
-  border-radius: 0;
+  @include border-radius(3px);  
 }
 
 .btn-primary {
