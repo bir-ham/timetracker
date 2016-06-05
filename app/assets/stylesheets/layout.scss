@@ -12,6 +12,10 @@ body {
   line-height: 1.42857143;
 }
 
+p {
+  font-size: 13px;
+}
+
 a {
   color: $turquoise;
   &:hover, &:focus {
@@ -102,6 +106,9 @@ a {
   background-color: transparent;
 }
 
+.nav > li > a {
+  padding: 15px 20px;
+}
 
 // Font awesome
 
@@ -224,6 +231,11 @@ a {
   margin: 5px 0;
 }
 
+// Breadcrumb
+.breadcrumb > li {
+  font-size: 11px;
+}
+
 //Image
 .img-circle {
   border-radius: 50% !important;
@@ -254,20 +266,56 @@ a {
 }
 
 // Margins
-.mbn, .mvn, .man {
-  margin-bottom: 0px !important;
+.m-t-n {
+  margin-top: 0 !important;
 }
 
-.mbs, .mvs, .mas {
+.m-b-n {
+  margin-bottom: 0 !important;
+}
+
+.m-t-xs {
+  margin-top: 5px !important;
+}
+
+.m-b-xs {
   margin-bottom: 5px !important;
 }
 
-.mbs, .mvs, .mas {
-  margin-bottom: 5px !important;
+.m-t-s {
+  margin-top: 10px !important;
 }
 
-.mbs, .mvs, .mas {
-  margin-bottom: 5px !important;
+.m-b-s {
+  margin-bottom: 10px !important;
+}
+
+.m-t-m {
+  margin-top: 15px !important;
+}
+
+.m-b-m {
+  margin-bottom: 15px !important;
+}
+
+.m-t-l {
+  margin-top: 20px !important;
+}
+
+.m-b-l {
+  margin-bottom: 20px !important;
+}
+
+.m-t-xl {
+  margin-top: 30px !important;
+}
+
+.m-t-xl {
+  margin-top: 30px !important;
+}
+
+.no-margins {
+  margin: 0 !important;
 }
 
 /* Extremely very extra small devices (phones, less than 480px) */
