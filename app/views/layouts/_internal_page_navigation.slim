@@ -11,14 +11,14 @@ nav#topbar.navbar.navbar-default.navbar-static-top role="navigation" style="marg
       span.logo-text-icon style="display: none" µ
     
   .topbar-main  
-    = link_to '#/', id: 'menu-toggle', class: 'hidden-xs'
+    = link_to '#', id: 'menu-toggle', class: 'hidden-xs'
       = icon ('bars')
     form id="topbar-search" action="" method="" class="hidden-sm hidden-xs"
       .input-icon.right.text-white
         = link_to '#/'
           = icon('search')
         input type="text" placeholder="Search here..." class="form-control text-white"
-    ul.nav.navbar-nav.navbar-right.navbar-top-links
+    ul.nav.navbar-right.navbar-top-links 
       li.dropdown
         a.dropdown-toggle data-toggle="dropdown" href="#" 
           = icon('bell fa-fw')
