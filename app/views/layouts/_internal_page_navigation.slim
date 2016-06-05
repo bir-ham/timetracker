@@ -18,7 +18,7 @@ nav#topbar.navbar.navbar-default.navbar-static-top role="navigation" style="marg
         = link_to '#/'
           = icon('search')
         input type="text" placeholder="Search here..." class="form-control text-white"
-    ul.nav.navbar.navbar-top-links.navbar-right style="margin-bottom: 0"
+    ul.nav.navbar-nav.navbar-right.navbar-top-links
       li.dropdown
         a.dropdown-toggle data-toggle="dropdown" href="#" 
           = icon('bell fa-fw')
@@ -38,7 +38,6 @@ nav#topbar.navbar.navbar-default.navbar-static-top role="navigation" style="marg
               |Contrary to popular belief.
           li.summary
             a href="#" See all notifications
-          
       li.dropdown
         a.dropdown-toggle data-toggle="dropdown" href="#" 
           = icon('envelope fa-fw')
@@ -59,7 +58,6 @@ nav#topbar.navbar.navbar-default.navbar-static-top role="navigation" style="marg
               Contrary to popular belief.
           li.summary
             a href="#" See All Messages
-          
       li.dropdown
         a.dropdown-toggle data-toggle="dropdown" href="#"
           = icon('cogs fa-fw')
@@ -74,9 +72,8 @@ nav#topbar.navbar.navbar-default.navbar-static-top role="navigation" style="marg
           li
             a href="#"
               Lorem Ipsum is simply dummy.
-   
       li.dropdown.topbar-user
-        a#user-dropdown-menu.dropdown-toggle data-toggle="dropdown" href="#" aria-haspopup="true" aria-expanded="false"
+        a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" 
           img src="/assets/avatar.png" alt="" class="img-responsive img-bordered-xxs"
           |&nbsp;
           span.hidden-xs = current_user.first_name
@@ -107,4 +104,6 @@ nav#topbar.navbar.navbar-default.navbar-static-top role="navigation" style="marg
               = icon ('sign-out')
               |&nbsp;
               = I18n.t('button.sign_out') 
-              
+         
+        
+

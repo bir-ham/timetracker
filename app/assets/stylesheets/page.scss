@@ -69,7 +69,6 @@
     display: inline-block;
   }
   .navbar-top-links li > a {
-    padding: 15px 20px;
     height: 100%;
     color: #ffffff;
     -webkit-transition: all 0.2s ease-in-out;
@@ -89,8 +88,8 @@
   }
   .navbar-top-links li > a img {
     position: relative;
-    width: 25px;
-    height: 25px;
+    width: 19px;
+    height: 19px;
     display: inline-block;
   }
   .navbar-top-links li .dropdown-menu li {
@@ -111,6 +110,7 @@
   .navbar-top-links li > a i {
     font-size: 20px;
     color: #ffffff;
+    line-height: 15px;
   }
   .admin-options {
     z-index: 20;
@@ -131,9 +131,9 @@
   border-radius: 0 !important;
 }
 
-.nav > li > a:hover, .nav > li > a:focus {
+.navbar-nav > li > a:hover, .nav > li > a:focus {
   text-decoration: none;
-  background-color: $light-turquoise !important;
+  background-color: $dark-turquoise !important;
 }
 
 // Dropdown
@@ -178,6 +178,11 @@
   .label {
     margin-right: 10px;
   }
+}
+
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+  text-decoration: none;
+  background-color: $body-background-color;
 }
 
 // List

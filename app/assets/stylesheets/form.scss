@@ -83,17 +83,6 @@ abbr, accronym {
   }
 }
 
-.btn-outline {
-  color: $turquoise;
-  background-color: $white;
-  border-color: $turquoise;
-  &:hover, &.focus {
-    color: $white;
-    background-color: $light-turquoise;
-    border-color: $turquoise;
-  }
-}
-
 .btn-danger {
   background-color: $red;
   border-color: $red;
@@ -140,6 +129,19 @@ abbr, accronym {
     color: $white;
     background-color: $dark-mid-night-blue;
     border-color: $dark-mid-night-blue;
+  }
+}
+
+.btn-outline {
+  color: inherit;
+  background-color: transparent !important;
+  transition: all .5s;
+}
+
+.btn-primary.btn-outline {
+  color: $turquoise;
+  &:hover {
+    color: $white;
   }
 }
 

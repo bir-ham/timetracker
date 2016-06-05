@@ -51,8 +51,8 @@
 
       h4 Export Invoices:
       .btn-toolbar
-        = link_to "Download CSV", invoices_path(format: "csv"), class: 'btn btn-outline btn-sm' 
-        = link_to "Download Excel", invoices_path(format: "xls"), class: 'btn btn-outline btn-sm'               
+        = link_to "Download CSV", invoices_path(format: "csv"), class: 'btn btn-outline btn-primary btn-sm' 
+        = link_to "Download Excel", invoices_path(format: "xls"), class: 'btn btn-outline btn-primary btn-sm'               
      
     - else
       p.text-danger = I18n.t('invoices.index.empty_invoices')
