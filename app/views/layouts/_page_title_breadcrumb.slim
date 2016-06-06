@@ -40,15 +40,19 @@
       |&nbsp;&nbsp;
       = icon('angle-right')
       |&nbsp;&nbsp;
-    li 
-      - if current_page?(controller: 'invoices')
+    - if current_page?(controller: 'invoices')
+      li
         = I18n.t('invoices.index.header')
-      - elsif current_page?(controller: 'projects') 
+    - elsif current_page?(controller: 'projects') 
+      li
         = I18n.t('projects.index.header')
-      - elsif current_page?(controller: 'users') 
+    - elsif current_page?(controller: 'users') 
+      li
         = I18n.t('users.index.header')
-      - elsif current_page?(controller: 'customers') 
+    - elsif current_page?(controller: 'customers')
+      li 
         = I18n.t('customers.index.header')   
-      - elsif current_page?(controller: 'invoice_imports') 
+    - elsif current_page?(controller: 'invoice_imports')
+      li 
         = I18n.t('invoice_imports.index.header')  
   .clearfix

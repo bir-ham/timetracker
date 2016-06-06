@@ -22,6 +22,14 @@ html lang="en"
         .sidebar-collapse 
           ul#side-menu.nav
             .clearfix
+            .company-profile
+              = image_tag 'logo-placeholder', class: ''
+              strong = current_account.subdomain
+              .m-t-m
+              = link_to 'Settings', '#'
+              |&nbsp;|&nbsp;
+              = link_to 'Account', '#'
+              .m-b-m
             li class = ('active' if (is_controller_name? 'dashboards') && (is_action_name? 'index')) 
               = link_to subdomain_root_path do
                 = icon('tachometer fa-fw')

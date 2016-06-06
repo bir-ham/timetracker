@@ -312,6 +312,7 @@ span.block {
   color: #d9d9d9;
   padding: 15px;
   font-weight: 600;
+  text-transform: uppercase;
   &:hover, &:focus {
     background: #303030;
     transition: 0.2s all ease-in-out;
@@ -369,10 +370,6 @@ span.block {
 
 .page-title-breadcrumb .page-header {
   h2.page-title {
-    font-size: 14px;
-    font-weight: 600;
-    padding-bottom: 0;
-    text-transform: uppercase;
   }  
 }
 
@@ -417,6 +414,24 @@ span.block {
 
 .slimScrollDiv {
   float: left;
+}
+
+.company-profile {
+  padding: 20px 20px;
+  text-align: center;
+  img {
+    width: 100px;
+    height: 70px;
+  }
+  a, {
+    color: #d9d9d9;
+  }
+  strong {
+    margin-top: 10px;
+    display: block;
+    color: #d9d9d9;
+    text-transform: uppercase;
+  }
 }
 
 /* Extra small devices (phones, less than 768px) */
