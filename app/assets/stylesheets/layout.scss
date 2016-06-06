@@ -174,10 +174,15 @@ a {
   background: $xx-light-grey; 
 }
 
-.panel.panel-dark-background {
+.panel-dark-outline {
   .panel-heading {
-    background: $light-black;
-    color: $white;
+    border-bottom: 1px solid $black;
+  }  
+}
+
+.panel-turqouise-outline {
+  .panel-heading {
+    border-bottom: 1px solid $turquoise;
   }  
 }
 
