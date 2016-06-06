@@ -1,26 +1,26 @@
 // Mixin functions
 @mixin border-radius($radius) {
-  -webkit-border-radius: $radius !important;
-     -moz-border-radius: $radius !important;
-      -ms-border-radius: $radius !important;
-       -o-border-radius: $radius !important;
-          border-radius: $radius !important;
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+       -o-border-radius: $radius;
+          border-radius: $radius;
 }
 
 @mixin transform-translate($percent) {
-  -webkit-transform: translateY($percent) !important;
-     -moz-transform: translateY($percent) !important;
-      -ms-transform: translateY($percent) !important;
-       -o-transform: translateY($percent) !important;
-          transform: translateY($percent) !important;
+  -webkit-transform: translateY($percent);
+     -moz-transform: translateY($percent);
+      -ms-transform: translateY($percent);
+       -o-transform: translateY($percent);
+          transform: translateY($percent);
 }
 
 @mixin web-appearance($display) {
-  -webkit-appearance: ($display) !important;
-     -moz-appearance: ($display) !important;
-      -ms-appearance: ($display) !important;
-       -o-appearance: ($display) !important;
-          appearance: ($display) !important;
+  -webkit-appearance: ($display);
+     -moz-appearance: ($display);
+      -ms-appearance: ($display);
+       -o-appearance: ($display);
+          appearance: ($display);
 }
 
 @mixin scrollbar {

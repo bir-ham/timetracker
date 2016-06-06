@@ -18,8 +18,8 @@ html lang="en"
         == render 'layouts/internal_page_navigation'
 
     #wrapper
-      nav#sidebar.navbar-default.navbar-static-side role="navigation" data-step="2" data-intro="Template has <b>many navigation styles</b>" data-position="right" style="min-height: 100%;"
-        .sidebar-collapse style="overflow: hidden"
+      aside#sidebar.navbar-default.navbar-static-side role="navigation" data-step="2" data-intro="Template has <b>many navigation styles</b>" data-position="right" style="min-height: 100%;"
+        .sidebar-collapse 
           ul#side-menu.nav
             .clearfix
             li class = ('active' if (is_controller_name? 'dashboards') && (is_action_name? 'index')) 
