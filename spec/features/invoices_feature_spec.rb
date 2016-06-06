@@ -38,6 +38,10 @@ describe 'invoices' do
     fill_in 'Customer', with: 'ABB'
     fill_in 'Reference number', with: 'abcd'
     fill_in 'Description', with: 'Lorem lipsum'
+    
+    within('.invoice_status_type') do 
+      select_generic(PAID, from: 'invoice_status_type')
+    end 
 
     within('.invoice_payment_term') do 
       select_generic(13, from: 'invoice_payment_term')

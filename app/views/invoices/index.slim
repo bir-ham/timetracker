@@ -43,6 +43,11 @@
                 td = invoice.deadline ? invoice.deadline.strftime("%d/%m/%Y") : ''
                 td 
                 td 
+                  - if invoice.status_type.eql?('PAID')
+                    span.label.label-success = invoice.status_type
+                  - elsif invoice.status_type.eql?('PENDING')  
+                    span.label.label-success = invoice.status_type  
+                  - elsif invoice.status_type.eql?('OVERDUE')    
                 td
                   = link_to invoice, class: 'btn btn-info btn-xs' do
                     = icon('eye')

@@ -31,7 +31,7 @@ a {
 
 // Flash
 .alert {
-  border-radius: 0;  
+  border-radius: (3px);  
 }
 
 .alert-success {
@@ -241,6 +241,11 @@ a {
   font-size: 11px;
 }
 
+// Description list
+dt {
+  font-weight: bold;
+}
+
 //Image
 .img-circle {
   border-radius: 50% !important;
@@ -413,6 +418,16 @@ a {
   .navbar-right {
     margin-right: 0; 
   }
+  .dl-horizontal dt {
+    float: left;
+    width: 160px;
+    overflow: hidden;
+    clear: left;
+    text-align: right;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
 }
 
 /* Small devices (tablets, 768px and upto desktops, 992px) */
