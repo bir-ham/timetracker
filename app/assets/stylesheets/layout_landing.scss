@@ -1,0 +1,95 @@
+html, body {
+  height: 100%;
+}
+
+body {
+  background-color: $body-background-color; 
+  padding-top: 70px;
+  color: $body-font-color;
+}
+
+// Typography
+p {
+  font-size: 15px;
+  color: inherit;
+  margin: 0 auto;
+  line-height: 24px;
+  margin-bottom: 12px; 
+}
+
+/**
+#wrapper {
+  min-height: 100%;
+}
+
+#wrapper > section {
+  overflow: auto;
+  padding-bottom: 100px; /* this needs to be bigger than footer height*/
+}
+
+p {
+  font-family: "Open Sans","HelveticaNeue","Helvetica","Arial",sans-serif;
+  padding-bottom: 8px;
+}
+
+a {
+  color: $turquoise;
+  &:hover, &:focus {
+    color: $dark-turquoise;
+  }
+}
+
+// Footer
+footer {
+  position: relative;
+  margin-top: -100px;
+  height: 100px;
+  clear: both;
+  padding: 20px;
+  background-color: $dark-mid-night-blue;
+  color: $medium-grey;
+}
+
+// Navabars
+.navbar .navbar-nav {
+  display: inline-block;
+  float: none;
+  vertical-align: top;
+}
+
+navbar-fixed-top {
+  top: 0;
+  border-width: 0;
+}
+
+.navbar-default .navbar-brand {
+  color: $white-turquoise;
+  &:hover, &:focus {
+    color: $white-turquoise;
+  }
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: $white;
+  text-transform: uppercase;
+}
+
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+  color: $white;
+  background: $dark-turquoise;
+}
+
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+  color: $white;
+  background: $dark-turquoise;
+}
+
+nav .container {
+  width: 100%;
+}
+
+.navbar-default {
+  background-color: $turquoise;
+  border-color: transparent;
+}
+

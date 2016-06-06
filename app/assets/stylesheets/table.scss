@@ -1,0 +1,22 @@
+// Table
+.table > thead > tr > th {
+  border-bottom: 1px solid $light-turquoise;
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) {
+  background-color: $xxx-light-grey;
+}
+
+.table-striped > tbody > tr:nth-of-type(even) {
+  background-color: $white;
+}
+
+// Custom table for list
+.table-list-view {
+  thead > tr > th:first-child, tbody > tr td:first-child {
+    text-align: right;
+  }
+  thead > tr > th:first-child + th, tbody > tr td:first-child + td {
+    text-align: left;
+  }
+}

@@ -1,0 +1,58 @@
+#title-breadcrumb-option-demo.page-title-breadcrumb
+  .page-header.pull-left
+    - case controller.controller_name
+    - when 'dashboards' 
+      h2.page-title = I18n.t('dashboards.index.header')
+      small Descripiton text goes
+    - when 'invoices' 
+      h2.page-title = I18n.t('invoices.index.header')
+      small Descripiton text goes
+    - when 'projects' 
+      h2.page-title = I18n.t('projects.index.header')
+      small Descripiton text goes
+    - when 'users' 
+      h2.page-title = I18n.t('users.index.header')
+      small Descripiton text goes
+    - when 'customers' 
+      h2.page-title = I18n.t('customers.index.header')
+      small Descripiton text goes
+    - when 'invoice_imports' 
+      h2.page-title = I18n.t('invoice_imports.index.header')  
+      small Descripiton text goes
+    - else 
+      h2 No page title
+       
+  ol.breadcrumb.page-breadcrumb.pull-right
+    li 
+      - unless current_page? subdomain_root_path 
+        span.turquoise
+          = icon('home')
+          |&nbsp;
+        = link_to I18n.t('dashboards.index.header'), subdomain_root_path 
+        |&nbsp;
+      - else  
+        = icon('home')
+          |&nbsp;
+        |&nbsp;   
+        = I18n.t('dashboards.index.header') 
+    li.hidden
+      = link_to "Dashboard", subdomain_root_path
+      |&nbsp;&nbsp;
+      = icon('angle-right')
+      |&nbsp;&nbsp;
+    - if current_page?(controller: 'invoices')
+      li
+        = I18n.t('invoices.index.header')
+    - elsif current_page?(controller: 'projects') 
+      li
+        = I18n.t('projects.index.header')
+    - elsif current_page?(controller: 'users') 
+      li
+        = I18n.t('users.index.header')
+    - elsif current_page?(controller: 'customers')
+      li 
+        = I18n.t('customers.index.header')   
+    - elsif current_page?(controller: 'invoice_imports')
+      li 
+        = I18n.t('invoice_imports.index.header')  
+  .clearfix

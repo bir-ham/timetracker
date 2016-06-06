@@ -1,24 +1,26 @@
-h1 Invoice Import
+.row
+  .col-sm-12
+    .note.note-info
+      h4.heading Quick information
+      p A CSV or Excel file can be used to import records. The first row should be the column name. The following columns are allowed.
 
-p A CSV or Excel file can be used to import records. The first row should be the column name. The following columns are allowed.
+      ul
+        - Invoice.columns.each do |column| 
+          - if column.name.in? ["id", *Invoice.attribute_names]
+            li
+              strong = column.name 
+              |&nbsp;-&nbsp;
+              = column.type.to_s.titleize
+              |&nbsp;type
 
-ul
-  - Invoice.columns.each do |column| 
-    - if column.name.in? ["id", *Invoice.attribute_names]
-      li
-        strong = column.name 
-        |&nbsp;-&nbsp;
-        = column.type.to_s.titleize
-        |&nbsp;type
+    p 
+      |If an 
+      strong id
+      |is supplied it will update the matching record instead of creating a new one.
 
-p 
-  |If an 
-  strong id
-  |is supplied it will update the matching record instead of creating a new one.
+    = simple_form_for(@invoice_import, html: { class: '' }) do |f| 
 
-= simple_form_for(@invoice_import, html: { class: '' }) do |f| 
-
-  .form-group
-    = f.input :file, as: :file, label: false
-  .form-group  
-    = f.button :submit, 'Import' 
+      .form-group
+        = f.input :file, as: :file, label: false
+      .form-group  
+        = f.button :submit, 'Import' 

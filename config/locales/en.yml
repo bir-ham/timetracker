@@ -35,13 +35,14 @@ en:
     sign_out: Sign out
     sign_in: Sign in
   navigation:
-    bizdesc: Bizdesc
-  homepages:
-    landing:
+    toolsio: Toolsio
+  landing_pages:
+    index:
       time_tracker: Time Tracker
       slogan: Track your time with the most awesome time tracking app ever
-    dashboard:
-      header: Home
+  dashboards:
+    index:
+      header: Dashboard
       description: Welcome this is your dashboard
   accounts:
     new:
@@ -121,6 +122,7 @@ en:
       notice_import: Invoices imported  
   invoice_imports:
     index:
+      header: Invoice import
     create:
       no_file_selected: No file selected    
       success_import: Invoice imported

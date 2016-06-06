@@ -1,6 +1,17 @@
 .row
-  .col-md-8
-    h1  = I18n.t('users.index.authorized_user')
+  .col-sm-8.col-sm-offset-2    
+    .well          
+      h3 Invite User
+
+      = simple_form_for(User.new, url: user_invitation_path,
+              html: { class: 'form-inline'}) do |f|
+        .form-group      
+          label = I18n.t('users.index.email')
+        = f.input :email, placeholder: I18n.t('users.index.email'), label: false
+        .form-group  
+          = f.button :submit, I18n.t('users.index.invite_user'), class: 'btn-primary'
+
+    h3 Invited User      
     table.table.table-striped.table-condensed
       thead
         tr
@@ -16,13 +27,3 @@
             td = user.email
             td = user_status(user)
     
-    .well          
-      h3 Invite User
-
-      = simple_form_for(User.new, url: user_invitation_path,
-              html: { class: 'form-inline'}) do |f|
-        .form-group      
-          label = I18n.t('users.index.email')
-        = f.input :email, placeholder: I18n.t('users.index.email'), label: false
-        .form-group  
-          = f.button :submit, I18n.t('users.index.invite_user'), class: 'btn-primary'

@@ -1,4 +1,11 @@
 .row
+  .col-md-12
+    .jumbotron
+      h1 = I18n.t('landing_pages.index.time_tracker')
+      p = I18n.t('landing_pages.index.slogan')
+
+      = link_to I18n.t('button.create_account'), new_account_path, class: 'btn btn-primary btn-lg'
+.row
   .col-sm-12
     h1.headline.headline-paragraph How it works
     .body-text

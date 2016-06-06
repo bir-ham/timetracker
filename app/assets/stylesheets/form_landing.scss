@@ -5,10 +5,10 @@ abbr, accronym {
 // Input fields
 .form-control {
   border: 1px solid $light-grey;
-  @include border-radius(3px);  
+  background-color: $xx-light-grey;
   box-shadow: none;
-  font-size: 14px;
-  height: 34px;
+  font-size: 15px;
+  height: 40px;
   &:focus {
     border-color: $turquoise;
     box-shadow: none;
@@ -20,46 +20,6 @@ abbr, accronym {
   margin-right: 0;
 }
 
-.input-icon {
-  position: relative;
-}
-.text-white {
-  color: #ffffff !important;
-}
-
-.input-icon.right i {
-  right: 8px;
-  float: right;
-}
-
-.input-icon i {
-  color: #999999;
-  display: block;
-  position: absolute;
-  margin: 10px 2px 4px 10px;
-  width: 16px;
-  height: 16px;
-  font-size: 16px;
-  text-align: center;
-}
-
-//Checkbox
-.icheckbox_minimal-grey, .iradio_minimal-grey {
-  display: inline-block;
-  vertical-align: middle;
-  margin: 0;
-  padding: 0;
-  width: 18px;
-  height: 18px;
-  background: url(checkbox-radio-grey.png) no-repeat;
-  border: none;
-  cursor: pointer;
-}
-
-.icheckbox_minimal-grey {
-  background-position: 0 0;
-}
-
 // Customize date dropdowns take auto width 
 .date > .col-sm-9 .form-control {
   display: inline-block;
@@ -68,7 +28,23 @@ abbr, accronym {
 
 // Buttons
 .btn {
-  @include border-radius(3px);  
+  font-size: 15px;
+  padding-top: 8px;
+  padding-bottom: 9px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.btn-lg, .btn-group-lg > .btn {
+  padding: 10px 16px !important;
+  font-size: 18px !important;
+}
+
+.btn-sm, .btn-group-sm > .btn {
+  padding: 5px 10px !important;
+  font-size: 12px !important;
+  line-height: 1.5 !important;
+  @include border-radius(3px);
 }
 
 .btn-primary {
@@ -80,6 +56,17 @@ abbr, accronym {
   &:hover, &:focus {
     background-color: $dark-turquoise !important;
     border-color: $dark-turquoise !important;
+  }
+}
+
+.btn-outline {
+  color: $turquoise;
+  background-color: $white;
+  border-color: $turquoise;
+  &:hover, &.focus {
+    color: $white;
+    background-color: $light-turquoise;
+    border-color: $turquoise;
   }
 }
 
@@ -132,33 +119,11 @@ abbr, accronym {
   }
 }
 
-.btn-outline {
-  color: inherit;
-  background-color: transparent !important;
-  transition: all .5s;
-}
-
-.btn-primary.btn-outline {
-  color: $turquoise;
-  &:hover {
-    color: $white;
-  }
-}
-
 .btn-toolbar {
   margin-top: 10px;
   margin-bottom: 5px;
   padding-top: 10px;
   padding-bottom: 5px;
-}
-
-// Button icons
-.btn-icon-lined.orange {
-  color: $orange;
-  border: 2px solid $orange;
-  .fa {
-    color: $orange !important;
-  }
 }
 
 /* Extra small devices (phones, less than 768px) */

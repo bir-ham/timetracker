@@ -1,48 +1,109 @@
-nav.navbar.navbar-default.navbar-fixed-top
-  .container
-    .navbar-header
-      = link_to I18n.t('navigation.bizdesc'), root_path, class: 'navbar-brand'
-      button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse"
-        span.sr-only Toggle navigation
-        span.icon-bar
-        span.icon-bar
-        span.icon-bar
+nav#topbar.navbar.navbar-default.navbar-static-top role="navigation" style="margin-bottom: 0;" data-step="3" 
+  .navbar-header    
+    button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse"
+      span.sr-only Toggle navigation
+      span.icon-bar
+      span.icon-bar
+      span.icon-bar
+    = link_to root_path, id: 'logo', class: 'navbar-brand'
+      span.fa.fa-rocket
+      span.logo-text = I18n.t('navigation.toolsio')
+      span.logo-text-icon style="display: none" µ
     
-    #navbar.navbar-collapse.collapse  
-      ul.nav.navbar-nav.navbar-right
-        li.dropdown
-          a href="#" class="dropdown-toggle" id="top-right-corner-dropdown-menu" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"
-            = icon ('user')
-            |&nbsp;
-            = current_user.first_name
-            span.caret
-          ul.dropdown-menu aria-labelledby="top-right-corner-dropdown-menu"
-            li 
-              = link_to '#'
-                = icon ('gear')
-                |&nbsp
-                = I18n.t('settings.index.header')
-
-            li.divider role="separator"  
-            li  
-              = link_to destroy_user_session_path, method: 'delete' do
-                = icon ('sign-out')
-                |&nbsp;
-                = I18n.t('button.sign_out')  
-      ul.nav.navbar-nav
-        li class = ('active' if (is_controller_name? 'homepages') && (is_action_name? 'dashboard')) 
-          = link_to I18n.t('homepages.dashboard.header'), subdomain_root_path
-        li class = ('active' if is_controller_name? 'invoices') 
-          = link_to I18n.t('invoices.index.header'), invoices_path
-        li class = ('active' if is_controller_name? 'projects')
-          = link_to I18n.t('projects.index.header'), projects_path
+  .topbar-main  
+    = link_to '#', id: 'menu-toggle', class: 'hidden-xs'
+      = icon ('bars')
+    form id="topbar-search" action="" method="" class="hidden-sm hidden-xs"
+      .input-icon.right.text-white
+        = link_to '#/'
+          = icon('search')
+        input type="text" placeholder="Search here..." class="form-control text-white"
+    ul.nav.navbar-right.navbar-top-links 
+      li.dropdown
+        a.dropdown-toggle data-toggle="dropdown" href="#" 
+          = icon('bell fa-fw')
+          span.badge.header-nav-icons.badge-light-blue 3
+        ul.dropdown-menu.hdropdown.notification.animated.flipInX
+          li
+            a href="#"
+              span.label.label-success NEW
+              |It is a long established.
+          li
+            a href="#"
+              span.label.label-warning WAR
+              |There are many variations.
+          li
+            a href="#"
+              span.label.label-danger ERR
+              |Contrary to popular belief.
+          li.summary
+            a href="#" See all notifications
+      li.dropdown
+        a.dropdown-toggle data-toggle="dropdown" href="#" 
+          = icon('envelope fa-fw')
+          span.badge.header-nav-icons.badge-orange 7
+        ul.dropdown-menu.hdropdown.animated.flipInX
+          .title You have 4 new messages
+          li
+            a href="#"
+              It is a long established.
+          li
+            a href="#"
+              There are many variations.
+          li
+            a href="#"
+              Lorem Ipsum is simply dummy.
+          li
+            a href="#"
+              Contrary to popular belief.
+          li.summary
+            a href="#" See All Messages
+      li.dropdown
+        a.dropdown-toggle data-toggle="dropdown" href="#"
+          = icon('cogs fa-fw')
+        ul.dropdown-menu.hdropdown.animated.flipInX
+          .title Admin options
+          li
+            a href="#"
+              It is a long established.
+          li
+            a href="#"
+              There are many variations.
+          li
+            a href="#"
+              Lorem Ipsum is simply dummy.
+      li.dropdown.topbar-user
+        a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" 
+          img src="/assets/avatar.png" alt="" class="img-responsive img-bordered-xxs"
+          |&nbsp;
+          span.hidden-xs = current_user.first_name
+          |&nbsp;
+          span.caret
+        ul.dropdown-menu.dropdown-user.pull-right aria-labelledby="user-dropdown-menu"
+          li
+            a href="#"
+              = icon('user')
+              |My Profile
+          li
+            a href="#"
+              = icon('calendar')
+              |My Calendar
+          li
+            a href="#"
+              = icon('envelope')
+              |My Inbox
+              span.badge.badge-danger 3
+          li
+            a href="#"
+              = icon('tasks')
+              |My Tasks
+              span.badge.badge-success 7
+          li.divider role="separator"  
+          li
+            = link_to destroy_user_session_path, method: 'delete' do
+              = icon ('sign-out')
+              |&nbsp;
+              = I18n.t('button.sign_out') 
+         
         
-        li.dropdown class = ('active' if (is_controller_name? 'users') || (is_controller_name? 'customers')) 
-          a href="#" class="dropdown-toggle" id="users-dropdown-menu" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"  
-            |Users
-            span.caret
-          ul.dropdown-menu aria-labelledby="users-dropdown-menu"
-            li 
-              = link_to I18n.t('users.index.header'), users_path
-            li 
-              = link_to I18n.t('customers.index.header'), customers_path  
+
