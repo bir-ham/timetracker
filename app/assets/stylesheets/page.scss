@@ -253,6 +253,15 @@ ul.todo-list li {
     position: relative;
     top: 2px;
   }
+  span.drag-drop i {
+    height: 2px;
+    width: 2px;
+    display: block;
+    background: #ccc;
+    box-shadow: 5px 0 0 0px #ccc,0px 5px 0 0px #ccc,5px 5px 0 0px #ccc,0px 10px 0 0px #ccc,5px 10px 0 0px #ccc,0px 15px 0 0px #ccc,5px 15px 0 0px #ccc;
+    -webkit-box-shadow: 5px 0 0 0px #ccc,0px 5px 0 0px #ccc,5px 5px 0 0px #ccc,0px 10px 0 0px #ccc,5px 10px 0 0px #ccc,0px 15px 0 0px #ccc,5px 15px 0 0px #ccc;
+    -moz-box-shadow: 5px 0 0 0px #ccc,0px 5px 0 0px #ccc,5px 5px 0 0px #ccc,0px 10px 0 0px #ccc,5px 10px 0 0px #ccc,0px 15px 0 0px #ccc,5px 15px 0 0px #ccc;
+  }
   .todo-check {
     margin-left: 10px;
     margin-right: 10px;
