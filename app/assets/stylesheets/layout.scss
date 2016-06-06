@@ -250,7 +250,39 @@ a {
   border-radius: 2px !important;
 }
 
-// Custom fieldset and legend
+// Custome note box
+.note {
+  margin: 0 0 20px 0;
+  padding: 15px 30px 15px 15px;
+  border-left: 3px solid #e5e5e5;
+  @include border-radius(3px);
+}
+
+.note-success {
+  border-color: $grass;
+  background: $white-grass;
+  .heading {
+    color: $grass;
+  }
+}
+
+.note-info {
+  border-color: $blue;
+  background: $white-blue;
+  .heading {
+    color: $blue;
+  }
+}
+
+.note-alert {
+  border-color: $red;
+  background: $white-red;
+  .heading {
+    color: $red;
+  }
+}
+
+// Custome fieldset and legend
 .custom-fieldset {
   border: 1px solid $light-grey !important;
   margin: 15px 2px !important;
