@@ -104,6 +104,9 @@ en:
       deadline: Deadline
       total: Total
       status: Status 
+      payment_term: Payment term 
+      interest_in_arrears: Interest in arrears
+      reference_number: Reference number 
       create_invoice_button: Create Invoice
     edit:
       header: Edit Invoice

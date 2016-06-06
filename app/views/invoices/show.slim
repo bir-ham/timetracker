@@ -2,51 +2,49 @@
   .col-md-6
     h1 = I18n.t('invoices.show.header')
     .well.well-sm
-      table.table-condensed.table-list-view
-        tbody
-          tr
-            td 
-              Strong Date:
-            td = @invoice.date_of_an_invoice
-          tr
-            td 
-              Strong Customer:
-            td = @invoice.customer
-          tr
-            td 
-              Strong Salesperson:
-            td 
-              /= @invoice.salesperson  
-          tr
-            td 
-              Strong Date of an invoice:
-            td = @invoice.date_of_an_invoice
-          tr
-            td 
-              Strong Deadline:
-            td = @invoice.deadline
-          tr
-            td 
-              Strong Payment term:
-            td = @invoice.payment_term
-          tr
-            td 
-              Strong Interest on arreas:
-            td = @invoice.interest_in_arrears
-          tr
-            td 
-              Strong Reference number:
-            td = @invoice.reference_number
-          tr
-            td 
-              Strong Description:
-            td = @invoice.description      
-          tr
-            td 
-              Strong Salesperson:
-            td 
-              /= @invoice.employee.name 
-    
+      dl.dl-horizontal   
+        dt
+          = I18n.t('invoices.new.customer')
+          |:
+        dd = @invoice.customer
+        dt 
+          = I18n.t('invoices.new.salesperson')
+          |:
+        dd 
+          /= @invoice.salesperson  
+        dt 
+          = I18n.t('invoices.new.date_of_an_invoice')
+          |:
+        dd = @invoice.date_of_an_invoice
+        dt 
+          = I18n.t('invoices.new.deadline')
+          |:
+        dd = @invoice.deadline
+        dt
+          = I18n.t('invoices.new.payment_term') 
+          |:
+        dd = @invoice.payment_term
+        dt 
+          = I18n.t('invoices.new.interest_in_arrears')
+          |:
+        dd = @invoice.interest_in_arrears
+        dt 
+          = I18n.t('invoices.new.reference_number')
+          |:
+        dd = @invoice.reference_number 
+        dt
+          = I18n.t('invoices.new.status')
+          |:
+        dd
+          - if @invoice.status_type.eql?('PAID')
+            span.label.label-success = @invoice.status_type
+          - elsif @invoice.status_type.eql?('PENDING')  
+            span.label.label-success = @invoice.status_type  
+          - elsif @invoice.status_type.eql?('OVERDUE')      
+        dt 
+          |Description:
+        dd = @invoice.description      
+           
     .btn-toolbar      
       = link_to :back, class: 'btn btn-black' do
         = icon ('angle-left')

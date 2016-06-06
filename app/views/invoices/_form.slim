@@ -24,6 +24,7 @@
           
   = f.input :interest_in_arrears, wrapper: :horizontal_form, label: 'Interest in arrears (in %)', input_html: { min: 0, max: 100 }
   = f.input :reference_number, wrapper: :horizontal_form
+  = f.input :status_type, wrapper: :horizontal_form, collection: [['PAID', 'PAID'], ['PENDING', 'PENDING']], prompt: 'Set status'
   = f.input :description, wrapper: :horizontal_form
 
   .btn-toolbar

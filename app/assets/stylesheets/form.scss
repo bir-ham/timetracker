@@ -110,16 +110,6 @@ abbr, accronym {
   }
 }
 
-.btn-white {
-  @extend .btn-default;
-  background: $white;
-  border-color: $white;
-  &:hover, &.focus {
-    background-color: $xx-light-grey;
-    border-color: $xx-light-grey;
-  }
-}
-
 .btn-black {
   @extend .btn-default;
   color: $white;
