@@ -4,36 +4,36 @@
     .well.well-sm
       dl.dl-horizontal   
         dt
-          = I18n.t('invoices.new.customer')
+          = I18n.t('invoices.show.customer')
           |:
         dd = @invoice.customer
         dt 
-          = I18n.t('invoices.new.salesperson')
+          = I18n.t('invoices.show.salesperson')
           |:
         dd 
           /= @invoice.salesperson  
         dt 
-          = I18n.t('invoices.new.date_of_an_invoice')
+          = I18n.t('invoices.show.date_of_an_invoice')
           |:
         dd = @invoice.date_of_an_invoice
         dt 
-          = I18n.t('invoices.new.deadline')
+          = I18n.t('invoices.show.deadline')
           |:
         dd = @invoice.deadline
         dt
-          = I18n.t('invoices.new.payment_term') 
+          = I18n.t('invoices.show.payment_term') 
           |:
         dd = @invoice.payment_term
         dt 
-          = I18n.t('invoices.new.interest_in_arrears')
+          = I18n.t('invoices.show.interest_in_arrears')
           |:
         dd = @invoice.interest_in_arrears
         dt 
-          = I18n.t('invoices.new.reference_number')
+          = I18n.t('invoices.show.reference_number')
           |:
         dd = @invoice.reference_number 
         dt
-          = I18n.t('invoices.new.status')
+          = I18n.t('invoices.show.status')
           |:
         dd
           - if @invoice.status_type.eql?('PAID')
@@ -45,15 +45,7 @@
           |Description:
         dd = @invoice.description      
            
-    .btn-toolbar      
-      = link_to :back, class: 'btn btn-black' do
-        = icon ('angle-left')
-        |&nbsp; 
-        = I18n.t('button.back') 
-      /= link_to invoices_path, class: 'btn btn-black' do   
-        = icon ('angle-left')
-        |&nbsp; 
-        = I18n.t('button.exit')         
+    .btn-toolbar            
       /= link_to @invoice, method: :delete, class: 'btn btn-danger btn-sm', data: { confirm: I18n.t('invoices.index.are_you_sure') } do
         = icon('trash')
         |&nbsp;
