@@ -83,9 +83,6 @@
   .navbar-top-links li > a span.badge.header-nav-icons {
     top: 7px;
   }
-  .navbar-top-links li.topbar-user a img {
-    margin-right: 5px;
-  }
   .navbar-top-links li > a img {
     position: relative;
     width: 19px;
@@ -99,18 +96,10 @@
     min-height: 0;
     color: #999999;
   }
-  .navbar-top-links .dropdown-user li a {
-    padding: 10px !important;
-    height: auto;
-  }
-  .navbar-top-links .dropdown-user li a i {
-    margin-right: 5px;
-    color: #999999;
-  }
   .navbar-top-links li > a i {
     font-size: 20px;
     color: #ffffff;
-    line-height: 15px;
+    line-height: 17px;
   }
   .admin-options {
     z-index: 20;
@@ -156,7 +145,7 @@
   white-space: nowrap;
 }
 
-.dropdown-menu.hdropdown { 
+.dropdown-menu { 
   .title {
   padding: 12px 12px;
   text-align: center;
@@ -171,13 +160,23 @@
    li:hover, .dropdown-menu.filedropdown li:hover {
     background: $body-background-color;
   }
+  li.divider {
+    padding: 0;
+    margin: 0;
+    background: $light-medium-grey;
+  }
 }
 
-.dropdown-menu.hdropdown.notification li {
+.dropdown-menu.notification li {
   padding: 12px 12px;
   .label {
     margin-right: 10px;
   }
+}
+
+.dropdown-menu.settings li > a i {
+  color: $body-font-color !important;
+  font-size: 14px !important;
 }
 
 .dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
@@ -442,10 +441,7 @@ span.block {
     font-size: 11px;
   }
   strong {
-    margin-top: 10px;
-    display: block;
     color: #d9d9d9;
-    text-transform: uppercase;
   }
 }
 

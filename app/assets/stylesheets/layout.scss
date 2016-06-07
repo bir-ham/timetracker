@@ -132,11 +132,15 @@ a {
 
 // Display
 .visible-all-inline-block {
-  display: inline-block;
+  display: inline-block !important;
 }
 
 .visible-all-inline {
-  display: inline;
+  display: inline !important;
+}
+
+.visible-all-block {
+  display: block !important;
 }
 
 // Panel
@@ -230,10 +234,6 @@ a {
 // Dropdown 
 .dropdown-menu {
   min-width: 180px;
-}
-
-.dropdown-menu .divider {
-  margin: 5px 0;
 }
 
 // Breadcrumb

@@ -4,17 +4,13 @@ aside#sidebar.navbar-default.navbar-static-side role="navigation" data-step="2" 
             .clearfix
             .company-profile.hidden-xs
               = image_tag 'logo-placeholder', class: ''
-              strong = current_account.subdomain
+              strong.visible-all-block.text-uppercase.m-t-xs = current_account.subdomain
               .m-t-xs
               = link_to '#' do
-                = icon('cog')
+                = icon('user')
                 |&nbsp;
-                |Settings 
-              |&nbsp;|&nbsp;&nbsp;
-              = link_to '#' do
-                = icon ('file-text-o')
-                |&nbsp; 
-                |Summary
+                strong = current_user.first_name
+                |&nbsp;(Admin)
               .m-b-m
             li class = ('active' if (is_controller_name? 'dashboards') && (is_action_name? 'index')) 
               = link_to subdomain_root_path do

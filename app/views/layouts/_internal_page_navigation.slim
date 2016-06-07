@@ -23,7 +23,7 @@ nav#topbar.navbar.navbar-default.navbar-static-top role="navigation" style="marg
         a.dropdown-toggle data-toggle="dropdown" href="#" 
           = icon('bell fa-fw')
           span.badge.header-nav-icons.badge-light-blue 3
-        ul.dropdown-menu.hdropdown.notification.animated.flipInX
+        ul.dropdown-menu.notification.animated.flipInX
           li
             a href="#"
               span.label.label-success NEW
@@ -42,7 +42,7 @@ nav#topbar.navbar.navbar-default.navbar-static-top role="navigation" style="marg
         a.dropdown-toggle data-toggle="dropdown" href="#" 
           = icon('envelope fa-fw')
           span.badge.header-nav-icons.badge-orange 7
-        ul.dropdown-menu.hdropdown.animated.flipInX
+        ul.dropdown-menu.animated.flipInX
           .title You have 4 new messages
           li
             a href="#"
@@ -58,44 +58,33 @@ nav#topbar.navbar.navbar-default.navbar-static-top role="navigation" style="marg
               Contrary to popular belief.
           li.summary
             a href="#" See All Messages
-      li.dropdown
+      li.dropdown.settings
         a.dropdown-toggle data-toggle="dropdown" href="#"
           = icon('cogs fa-fw')
-        ul.dropdown-menu.hdropdown.animated.flipInX
+          |&nbsp;
+          span.caret
+        ul.dropdown-menu.settings.animated.flipInX
           .title Admin options
           li
             a href="#"
-              It is a long established.
-          li
-            a href="#"
-              There are many variations.
-          li
-            a href="#"
-              Lorem Ipsum is simply dummy.
-      li.dropdown.topbar-user
-        a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" 
-          img src="/assets/avatar.png" alt="" class="img-responsive img-bordered-xxs"
-          |&nbsp;
-          span.hidden-xs = current_user.first_name
-          |&nbsp;
-          span.caret
-        ul.dropdown-menu.dropdown-user.pull-right aria-labelledby="user-dropdown-menu"
-          li
-            a href="#"
               = icon('user')
+              |&nbsp;
               |My Profile
           li
             a href="#"
               = icon('calendar')
+              |&nbsp;
               |My Calendar
           li
             a href="#"
               = icon('envelope')
+              |&nbsp;
               |My Inbox
               span.badge.badge-danger 3
           li
             a href="#"
               = icon('tasks')
+              |&nbsp;
               |My Tasks
               span.badge.badge-success 7
           li.divider role="separator"  
@@ -104,6 +93,4 @@ nav#topbar.navbar.navbar-default.navbar-static-top role="navigation" style="marg
               = icon ('sign-out')
               |&nbsp;
               = I18n.t('button.sign_out') 
-         
-        
-
+     

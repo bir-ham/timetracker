@@ -26,8 +26,8 @@
             tr
               th = I18n.t('invoices.show.id')
               th = I18n.t('invoices.show.customer')
+              th = I18n.t('invoices.show.employee')
               th = I18n.t('invoices.show.date_of_an_invoice')
-              th = I18n.t('invoices.show.salesperson')
               th = I18n.t('invoices.show.deadline')
               th = I18n.t('invoices.show.total')
               th = I18n.t('invoices.show.status')
@@ -37,9 +37,9 @@
               tr
                 td = invoice.id
                 td = invoice.customer 
-                td = invoice.date_of_an_invoice.strftime("%d/%m/%Y")
                 td 
                   /= invoice.salesperson
+                td = invoice.date_of_an_invoice.strftime("%d/%m/%Y")
                 td = invoice.deadline ? invoice.deadline.strftime("%d/%m/%Y") : ''
                 td 
                 td 
