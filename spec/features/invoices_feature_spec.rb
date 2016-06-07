@@ -13,7 +13,12 @@ describe 'invoices' do
     visit invoices_path
     click_link I18n.t('invoices.index.add_new_invoice_button')
 
-    fill_in 'Customer', with: 'ABB'
+    within('.invoice_customer_id') do 
+      select_generic(1, from: 'invoice_customer_id')
+    end 
+    within('.invoice_user_id') do 
+      select_generic(1, from: 'invoice_user_id')
+    end 
     fill_in 'Reference number', with: '1234'
     fill_in 'Description', with: 'Lorem lipsum'
     
