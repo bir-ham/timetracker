@@ -36,7 +36,7 @@
             - @invoices.each do |invoice|
               tr
                 td = invoice.id
-                td = invoice.customer 
+                td = invoice.customer.name 
                 td 
                   /= invoice.salesperson
                 td = invoice.date_of_an_invoice.strftime("%d/%m/%Y")

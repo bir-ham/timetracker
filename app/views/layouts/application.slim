@@ -17,19 +17,21 @@ html lang="en"
       - if user_signed_in?
         == render 'layouts/internal_page_navigation'
 
-    #wrapper
-      == render 'layouts/side_nav'
+    section id = ( 'wrapper' if user_signed_in? )  
+      - if user_signed_in?    
+        == render 'layouts/side_nav'
 
-      #page-wrapper           
-        == render 'layouts/page_title_breadcrumb'
-        .page-content  
+      div id = ( 'page-wrapper' if user_signed_in? )  
+        - if user_signed_in?              
+          == render 'layouts/page_title_breadcrumb'
+        div class = ( 'page-content' if user_signed_in? )  
           = flash_messages if show_layout_flash?
           /flash.each do |name, msg|
             /= content_tag :div, msg, :id = "flash_#{name}"
 
           = yield
-  
-      /- unless is_footer_hidden?
-        #footer
-          .container
-            == render 'layouts/footer'
+    
+        /- unless is_footer_hidden?
+          #footer
+            .container
+              == render 'layouts/footer'
