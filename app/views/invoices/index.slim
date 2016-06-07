@@ -24,13 +24,13 @@
         table.table.table-striped
           thead
             tr
-              th = I18n.t('invoices.new.id')
-              th = I18n.t('invoices.new.customer')
-              th = I18n.t('invoices.new.date_of_an_invoice')
-              th = I18n.t('invoices.new.salesperson')
-              th = I18n.t('invoices.new.deadline')
-              th = I18n.t('invoices.new.total')
-              th = I18n.t('invoices.new.status')
+              th = I18n.t('invoices.show.id')
+              th = I18n.t('invoices.show.customer')
+              th = I18n.t('invoices.show.date_of_an_invoice')
+              th = I18n.t('invoices.show.salesperson')
+              th = I18n.t('invoices.show.deadline')
+              th = I18n.t('invoices.show.total')
+              th = I18n.t('invoices.show.status')
               th = I18n.t('button.show')
           tbody
             - @invoices.each do |invoice|
