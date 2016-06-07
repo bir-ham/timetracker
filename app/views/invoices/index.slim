@@ -37,8 +37,7 @@
               tr
                 td = invoice.id
                 td = invoice.customer.name 
-                td 
-                  /= invoice.salesperson
+                td = invoice.user.first_name
                 td = invoice.date_of_an_invoice.strftime("%d/%m/%Y")
                 td = invoice.deadline ? invoice.deadline.strftime("%d/%m/%Y") : ''
                 td 

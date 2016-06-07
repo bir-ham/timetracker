@@ -1,6 +1,8 @@
 class Invoice < ActiveRecord::Base
   belongs_to :customer
-  
+  belongs_to :user
+
+  validates :user_id, presence: true
   validates :customer_id, presence: true
   validates :date_of_an_invoice, presence: true
   validates :deadline, presence: true, allow_nil: true
