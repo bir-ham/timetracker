@@ -6,12 +6,12 @@
         dt
           = I18n.t('invoices.show.customer')
           |:
-        dd = @invoice.customer
+        dd = @invoice.customer.name
         dt 
-          = I18n.t('invoices.show.salesperson')
+          = I18n.t('invoices.show.employee')
           |:
         dd 
-          /= @invoice.salesperson  
+          = @invoice.user.first_name  
         dt 
           = I18n.t('invoices.show.date_of_an_invoice')
           |:

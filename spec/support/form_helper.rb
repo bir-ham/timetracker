@@ -30,7 +30,7 @@ module FormHelper
     field = options[:from]
     select date.strftime('%Y'), from: "#{field}_1i" #year
     select date.strftime('%B'), from: "#{field}_2i" #month
-    select sprintf '%1d', date.strftime('%d'), :from => "#{field}_3i" #day 
+    select date.strftime('%1d'), :from => "#{field}_3i" #day 
   end
 
   def select_generic(field_value, options = {})
