@@ -17,73 +17,21 @@ html lang="en"
       - if user_signed_in?
         == render 'layouts/internal_page_navigation'
 
-    #wrapper
-      aside#sidebar.navbar-default.navbar-static-side role="navigation" data-step="2" data-intro="Template has <b>many navigation styles</b>" data-position="right" 
-        .sidebar-collapse 
-          ul#side-menu.nav
-            .clearfix
-            .company-profile.hidden-xs
-              = image_tag 'logo-placeholder', class: ''
-              strong = current_account.subdomain
-              .m-t-m
-              = link_to 'Settings', '#'
-              |&nbsp;|&nbsp;
-              = link_to 'Account', '#'
-              .m-b-m
-            li class = ('active' if (is_controller_name? 'dashboards') && (is_action_name? 'index')) 
-              = link_to subdomain_root_path do
-                = icon('tachometer fa-fw')
-                  .icon-bg.bg-orange
-                span.menu-title = I18n.t('dashboards.index.header')
-            li class = ('active' if is_controller_name? 'invoices') 
-              = link_to invoices_path do
-                = icon('file fa-fw')
-                  .icon-bg.bg-orange
-                span.menu-title = I18n.t('invoices.index.header')
-            li class = ('active' if is_controller_name? 'projects')
-              = link_to projects_path do
-                = icon('suitcase fa-fw')
-                  .icon-bg.bg-orange
-                span.menu-title = I18n.t('projects.index.header')
-            li class = ('active' if is_controller_name? 'users') 
-              = link_to users_path do
-                = icon('user fa-fw')
-                  .icon-bg.bg-orange
-                span.menu-title Colleagues
-            li class = ('active' if is_controller_name? 'customers') 
-              = link_to customers_path do  
-                = icon('group fa-fw')
-                  .icon-bg.bg-orange
-                span.menu-title = I18n.t('customers.index.header')
-                        
-            /li.dropdown class = ('active' if (is_controller_name? 'users') || (is_controller_name? 'customers')) 
-              a href="#" class="dropdown-toggle" id="users-dropdown-menu" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"  
-                = icon('tachometer fa-fw')
-                  .icon-bg.bg-orange
-                span.menu-title = I18n.t('users.index.header')
-              ul.dropdown-menu aria-labelledby="users-dropdown-menu"
-                li 
-                  = link_to users_path do
-                    = icon('user fa-fw')
-                      .icon-bg.bg-orange
-                    span.menu-title = I18n.t('users.index.header')
-                li 
-                  = link_to customers_path do  
-                    = icon('group fa-fw')
-                      .icon-bg.bg-orange
-                    span.menu-title = I18n.t('customers.index.header')
-                           
+    section id = ( 'wrapper' if user_signed_in? )  
+      - if user_signed_in?    
+        == render 'layouts/side_nav'
 
-      #page-wrapper           
-        == render 'layouts/page_title_breadcrumb'
-        .page-content  
+      div id = ( 'page-wrapper' if user_signed_in? )  
+        - if user_signed_in?              
+          == render 'layouts/page_title_breadcrumb'
+        div class = ( 'page-content' if user_signed_in? )  
           = flash_messages if show_layout_flash?
           /flash.each do |name, msg|
             /= content_tag :div, msg, :id = "flash_#{name}"
 
           = yield
-  
-      /- unless is_footer_hidden?
-        #footer
-          .container
-            == render 'layouts/footer'
+    
+        /- unless is_footer_hidden?
+          #footer
+            .container
+              == render 'layouts/footer'

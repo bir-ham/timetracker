@@ -1,8 +1,8 @@
 FactoryGirl.define do
   factory :customer do
-    name "ABC"
-    phone_number "12345678910"
-    email "Alex@example.com"
+    sequence(:name) { |n| "name#{n}" }
+    sequence(:phone_number) { |n| "12345678910#{n}" }
+    sequence(:email) { |n| "test#{n}@example.com" }
     address "Kifle ketam: Bole, Kebele: 21, House number: 324"
   end
 end

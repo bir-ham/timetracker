@@ -72,16 +72,16 @@ en:
       add_new_customer_button: Add new customer  
       empty_customers: You have no customers yet  
     new:
-      header: New customer
-      name: Name
-      phone_number: Phone number 
-      email: Email
-      address: Address 
+      header: New customer    
       notice_add: Customer added   
     edit: 
       header: Edit customer  
     show: 
-      header: Edit customer    
+      header: Show customer
+      name: Name
+      phone_number: Phone number 
+      email: Email
+      address: Address     
     update: 
       success_update: Customer updated  
     destroy: 
@@ -96,22 +96,23 @@ en:
       empty_invoices: You have no invoices yet
       add_new_invoice_button: Add new invoice
     new:
-      header: New Invoice
+      header: New Invoice      
+      create_invoice_button: Create Invoice
+      employee: Employee
+    edit:
+      header: Edit Invoice
+    show:
+      header: Show Invoice
       id: Id
       customer: Customer
       date_of_an_invoice: Date
-      salesperson: Salesperosn
+      employee: Employee
       deadline: Deadline
       total: Total
       status: Status 
       payment_term: Payment term 
       interest_in_arrears: Interest in arrears
       reference_number: Reference number 
-      create_invoice_button: Create Invoice
-    edit:
-      header: Edit Invoice
-    show:
-      header: Show Invoice
     create:
       notice_create: "Invoice created!"
     update:

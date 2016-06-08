@@ -1,0 +1,57 @@
+aside#sidebar.navbar-default.navbar-static-side role="navigation" data-step="2" data-intro="Template has <b>many navigation styles</b>" data-position="right" 
+        .sidebar-collapse 
+          ul#side-menu.nav
+            .clearfix
+            .company-profile.hidden-xs
+              = link_to (image_tag 'logo-placeholder', class: ''), '#'
+              strong.visible-all-block.text-uppercase.m-t-xs = current_account.subdomain
+              .m-t-xs
+              = link_to '#' do
+                = icon('user')
+                |&nbsp;
+                strong = current_user.first_name
+                |&nbsp;(Admin)
+              .m-b-m
+            li class = ('active' if (is_controller_name? 'dashboards') && (is_action_name? 'index')) 
+              = link_to subdomain_root_path do
+                = icon('tachometer fa-fw')
+                  .icon-bg.bg-orange
+                span.menu-title = I18n.t('dashboards.index.header')
+            li class = ('active' if is_controller_name? 'invoices') 
+              = link_to invoices_path do
+                = icon('file fa-fw')
+                  .icon-bg.bg-orange
+                span.menu-title = I18n.t('invoices.index.header')
+            li class = ('active' if is_controller_name? 'projects')
+              = link_to projects_path do
+                = icon('suitcase fa-fw')
+                  .icon-bg.bg-orange
+                span.menu-title = I18n.t('projects.index.header')            
+            li class = ('active' if is_controller_name? 'customers') 
+              = link_to customers_path do  
+                = icon('money fa-fw')
+                  .icon-bg.bg-orange
+                span.menu-title = I18n.t('customers.index.header')    
+            li class = ('active' if is_controller_name? 'users') 
+              = link_to users_path do
+                = icon('group fa-fw')
+                  .icon-bg.bg-orange
+                span.menu-title Employees
+                        
+            /li.dropdown class = ('active' if (is_controller_name? 'users') || (is_controller_name? 'customers')) 
+              a href="#" class="dropdown-toggle" id="users-dropdown-menu" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"  
+                = icon('tachometer fa-fw')
+                  .icon-bg.bg-orange
+                span.menu-title = I18n.t('users.index.header')
+              ul.dropdown-menu aria-labelledby="users-dropdown-menu"
+                li 
+                  = link_to users_path do
+                    = icon('user fa-fw')
+                      .icon-bg.bg-orange
+                    span.menu-title = I18n.t('users.index.header')
+                li 
+                  = link_to customers_path do  
+                    = icon('group fa-fw')
+                      .icon-bg.bg-orange
+                    span.menu-title = I18n.t('customers.index.header')
+                           

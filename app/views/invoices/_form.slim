@@ -5,8 +5,8 @@
                 radio_buttons: :horizontal_radio_and_checkboxes,
                 file: :horizontal_file_input,
                 boolean: :horizontal_boolean} ) do |f|
-  = f.input :customer, wrapper: :horizontal_form
-  /= f.input :salesperson, wrapper: :horizontal_form
+  = f.input :customer_id, collection: Customer.all, label_method: :name, value_method: :id, prompt: 'Select existing customer', multiple: false, wrapper: :horizontal_form
+  = f.input :user_id, collection: User.all, label_method: :first_name, value_method: :id, label: I18n.t('invoices.new.employee'), prompt: 'Select employee', wrapper: :horizontal_form
   = f.input :date_of_an_invoice, as: :date, start_year: Date.today.year, order: [:day, :month, :year], wrapper: :horizontal_form
   
   fieldset.custom-fieldset 
@@ -22,9 +22,9 @@
       = f.input :payment_term, collection: 1..31, prompt: 'Select days',  include_blank: '-', label: 'Payment term (in days)', wrapper: :horizontal_form
       = f.input :deadline, as: :date, start_year: Date.today.year,  order: [:day, :month, :year], wrapper: :horizontal_form, prompt: '-'  
           
-  = f.input :interest_in_arrears, wrapper: :horizontal_form, label: 'Interest in arrears (in %)', input_html: { min: 0, max: 100 }
+  = f.input :interest_in_arrears, label: 'Interest in arrears (in %)', input_html: { min: 0, max: 100 }, wrapper: :horizontal_form
   = f.input :reference_number, wrapper: :horizontal_form
-  = f.input :status_type, wrapper: :horizontal_form, collection: [['PAID', 'PAID'], ['PENDING', 'PENDING']], include_blank: '-', prompt: 'Set status'
+  = f.input :status_type, collection: [['PAID', 'PAID'], ['PENDING', 'PENDING']], include_blank: '-', prompt: 'Set status', wrapper: :horizontal_form
   = f.input :description, wrapper: :horizontal_form
 
   .btn-toolbar
