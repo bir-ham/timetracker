@@ -1,4 +1,6 @@
 class Customer < ActiveRecord::Base
+  has_many :invoices
+
   validates :name, presence: true, uniqueness: { case_sensitive: false }
   validates :phone_number, presence: true, uniqueness: true, allow_blank: true,
     format: { with: /\A[0-9]+$\z/, on: :create, message: 'wrong phone number format' },
