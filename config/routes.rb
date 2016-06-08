@@ -12,7 +12,7 @@ end
 
 Rails.application.routes.draw do
   constraints(SubdomainPresent) do
-    root 'dashboards#index', as: :subdomain_root
+    root 'homepages#dashboard', as: :subdomain_root
     devise_for :users
     resources :users, only: :index
     resources :projects, except: [:show, :destroy]
@@ -27,10 +27,10 @@ Rails.application.routes.draw do
   # root 'welcome#index'
 
   constraints(SubdomainBlank) do
-    root 'landing_pages#index'
-    get 'landing_pages/about'
-    get 'landing_pages/contact'
-    get 'landing_pages/faq'
+    root 'homepages#landing_page'
+    #get 'homepages#about'
+    #get 'homepages#contact'
+    #get 'homepages#faq'
     resources :accounts, only: [:new, :create]
   end
   

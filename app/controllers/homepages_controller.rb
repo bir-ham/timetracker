@@ -1,8 +1,15 @@
-class DashboardsController < ApplicationController
+class HomepagesController < ApplicationController
+  
   #skip_before_filter :authenticate_user!, only: :index
   before_filter :authenticate_user!, only: :dashboard
 
-  def index
+  def dashboard
   
   end
-end  
+
+  def landing_page
+        
+  end
+  
+      
+end
