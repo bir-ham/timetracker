@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'invoices' do
+describe 'items' do
   let!(:account) { create(:account_with_schema) }
   let(:user) { account.owner }
 
@@ -22,7 +22,7 @@ describe 'invoices' do
       select_generic('kg', from: 'item_unit')
     end
     fill_in 'Unit price', with: '24.40'
-    fill_in 'Vat (in%)', with: '10'
+    fill_in 'Vat (in %)', with: '10'
 
     submit_form
 
@@ -46,7 +46,7 @@ describe 'invoices' do
   describe 'when item exists' do
     before(:each) do
       @item = create(:item)
-      visit invoices_path
+      visit items_path
 
       click_link I18n.t('button.show')
       expect(page).to have_text @item.description

@@ -17,20 +17,20 @@
             - @items.each do |item|
               tr
                 td = item.description
-                td = item.date 
+                td = item.date
                 td = item.quantity
                 td = item.unit
                 td = item.unit_price
-                td = item.unit_vat
-                td 
+                td = item.vat
+                td
                   /= item.total
                 td
                   = link_to item, class: 'btn btn-info btn-xs' do
                     = icon('eye')
-                    |&nbsp; 
+                    |&nbsp;
                     = I18n.t('button.show')
-                
-    .btn-toolbar  
+
+    .btn-toolbar
       = link_to new_item_path, class: 'btn btn-primary'
         = icon('plus')
         |&nbsp;

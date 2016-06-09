@@ -67,28 +67,28 @@ en:
       invite_user: Invite User
       email: Email
   customers:
-    index: 
+    index:
       header: Customers
-      add_new_customer_button: Add new customer  
-      empty_customers: You have no customers yet  
+      add_new_customer_button: Add new customer
+      empty_customers: You have no customers yet
     new:
-      header: New customer    
-      notice_add: Customer added   
-    edit: 
-      header: Edit customer  
-    show: 
+      header: New customer
+      notice_add: Customer added
+    edit:
+      header: Edit customer
+    show:
       header: Show customer
       name: Name
-      phone_number: Phone number 
+      phone_number: Phone number
       email: Email
-      address: Address     
-    update: 
-      success_update: Customer updated  
-    destroy: 
-      success_delete: Customer deleted  
+      address: Address
+    update:
+      success_update: Customer updated
+    destroy:
+      success_delete: Customer deleted
       confirmation_msg: Are you sure to delete this customer?
-    create: 
-      notice_create: Customer created  
+    create:
+      notice_create: Customer created
   invoices:
     index:
       header: Invoices
@@ -96,7 +96,7 @@ en:
       empty_invoices: You have no invoices yet
       add_new_invoice_button: Add new invoice
     new:
-      header: New Invoice      
+      header: New Invoice
       create_invoice_button: Create Invoice
       employee: Employee
     edit:
@@ -109,10 +109,10 @@ en:
       employee: Employee
       deadline: Deadline
       total: Total
-      status: Status 
-      payment_term: Payment term 
+      status: Status
+      payment_term: Payment term
       interest_in_arrears: Interest in arrears
-      reference_number: Reference number 
+      reference_number: Reference number
     create:
       notice_create: "Invoice created!"
     update:
@@ -122,33 +122,33 @@ en:
       error_delete: "Invoice couldn't be deleted, try again after refreshing the page"
       confirmation_msg: Are you sure to delete this invoice?
       warning_msg: If you click delete, the invoice will be deleted.
-    import: 
-      notice_import: Invoices imported  
+    import:
+      notice_import: Invoices imported
   invoice_imports:
     index:
       header: Invoice import
     create:
-      no_file_selected: No file selected    
+      no_file_selected: No file selected
       success_import: Invoice imported
   items:
     index:
       header: Items
       are_you_sure: Are you sure?
-      empty_invoices: You have no items yet
-      add_new_invoice_button: Add new item
+      empty_items: You have no items yet
+      add_new_item_button: Add new item
     new:
-      header: New Item      
+      header: New Item
       create_invoice_button: Create Item
     edit:
       header: Edit Item
     show:
-      header: Show Item 
-      customer: Decription 
+      header: Show Item
+      customer: Decription
       quantity: Quantity
       date: Date
       unit: Unit
       unit_price: Unit price
-      vat: Vat 
+      vat: Vat
       total: Total
     create:
       notice_create: "Item created!"
@@ -159,8 +159,8 @@ en:
       error_delete: "Item couldn't be deleted, try again after refreshing the page"
       confirmation_msg: Are you sure to delete this item?
       warning_msg: If you click delete, the item will be deleted.
-    import: 
-      notice_import: Item imported      
+    import:
+      notice_import: Item imported
   settings:
     index:
       header: Settings
