@@ -130,6 +130,37 @@ en:
     create:
       no_file_selected: No file selected    
       success_import: Invoice imported
+  items:
+    index:
+      header: Items
+      are_you_sure: Are you sure?
+      empty_invoices: You have no items yet
+      add_new_invoice_button: Add new item
+    new:
+      header: New Item      
+      create_invoice_button: Create Item
+    edit:
+      header: Edit Item
+    show:
+      header: Show Item 
+      customer: Decription 
+      quantity: Quantity
+      date: Date
+      unit: Unit
+      unit_price: Unit price
+      vat: Vat 
+      total: Total
+    create:
+      notice_create: "Item created!"
+    update:
+      success_update: "Item updated!"
+    destroy:
+      success_delete: "Item deleted"
+      error_delete: "Item couldn't be deleted, try again after refreshing the page"
+      confirmation_msg: Are you sure to delete this item?
+      warning_msg: If you click delete, the item will be deleted.
+    import: 
+      notice_import: Item imported      
   settings:
     index:
       header: Settings
