@@ -1,51 +1,76 @@
 .row
-  .col-md-6
+  .col-md-8
     h1 = I18n.t('invoices.show.header')
     .well.well-sm
-      dl.dl-horizontal   
+      dl.dl-horizontal
         dt
           = I18n.t('invoices.show.customer')
           |:
         dd = @invoice.customer.name
-        dt 
+        dt
           = I18n.t('invoices.show.employee')
           |:
-        dd 
-          = @invoice.user.first_name  
-        dt 
+        dd
+          = @invoice.user.first_name
+        dt
           = I18n.t('invoices.show.date_of_an_invoice')
           |:
         dd = @invoice.date_of_an_invoice
-        dt 
+        dt
           = I18n.t('invoices.show.deadline')
           |:
         dd = @invoice.deadline
         dt
-          = I18n.t('invoices.show.payment_term') 
+          = I18n.t('invoices.show.payment_term')
           |:
         dd = @invoice.payment_term
-        dt 
+        dt
           = I18n.t('invoices.show.interest_in_arrears')
           |:
         dd = @invoice.interest_in_arrears
-        dt 
+        dt
           = I18n.t('invoices.show.reference_number')
           |:
-        dd = @invoice.reference_number 
+        dd = @invoice.reference_number
         dt
           = I18n.t('invoices.show.status')
           |:
         dd
           - if @invoice.status_type.eql?('PAID')
             span.label.label-success = @invoice.status_type
-          - elsif @invoice.status_type.eql?('PENDING')  
-            span.label.label-success = @invoice.status_type  
-          - elsif @invoice.status_type.eql?('OVERDUE')      
-        dt 
+          - elsif @invoice.status_type.eql?('PENDING')
+            span.label.label-success = @invoice.status_type
+          - elsif @invoice.status_type.eql?('OVERDUE')
+        dt
           |Description:
-        dd = @invoice.description      
-           
-    .btn-toolbar            
+        dd = @invoice.description
+
+      - unless @items.empty?
+        h3.m-b-xs = I18n.t('invoices.items.show.header')
+        .table-responsive
+          table.table.table-striped
+            thead
+              tr
+                th = I18n.t('invoices.items.show.description')
+                th = I18n.t('invoices.items.show.date')
+                th = I18n.t('invoices.items.show.quantity')
+                th = I18n.t('invoices.items.show.unit')
+                th = I18n.t('invoices.items.show.unit_price')
+                th = I18n.t('invoices.items.show.vat')
+                th = I18n.t('invoices.items.show.total')
+            tbody
+              - @items.each do |item|
+                tr
+                  td = item.description
+                  td = item.date
+                  td = item.quantity
+                  td = item.unit
+                  td = item.unit_price
+                  td = item.vat
+                  td
+                    /= item.total
+
+    .btn-toolbar
       /= link_to @invoice, method: :delete, class: 'btn btn-danger btn-sm', data: { confirm: I18n.t('invoices.index.are_you_sure') } do
         = icon('trash')
         |&nbsp;
@@ -58,6 +83,6 @@
       = link_to edit_invoice_path(@invoice), class: 'btn btn-primary' do
         = icon('pencil-square-o white')
         |&nbsp;
-        = I18n.t('button.edit')       
+        = I18n.t('button.edit')
 
-== render 'layouts/confirmation_modal'        
+== render 'layouts/confirmation_modal'
