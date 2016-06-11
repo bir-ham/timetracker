@@ -69,6 +69,7 @@
                   td = item.vat
                   td
                     /= item.total
+      = link_to I18n.t('invoices.items.new.add_item_button'), new_invoice_item_path(@invoice), class: 'btn btn-primary'
 
     .btn-toolbar
       /= link_to @invoice, method: :delete, class: 'btn btn-danger btn-sm', data: { confirm: I18n.t('invoices.index.are_you_sure') } do

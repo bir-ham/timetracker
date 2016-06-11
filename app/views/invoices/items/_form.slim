@@ -1,4 +1,4 @@
-= simple_form_for(@item,
+= simple_form_for([@invoice, @item],
               html: { class: 'form-horizontal' },
               warpper: :horizontal_form,
               warpper_mappings: {  check_boxes: :horizontal_radio_and_checkboxes,
@@ -13,5 +13,5 @@
   = f.input :vat, label: 'Vat (in %)', input_html: { min: 0, max: 100 }, wrapper: :horizontal_form
 
   .btn-toolbar
-    = link_to I18n.t('button.cancel'), invoices_path, class: 'btn btn-default'  
+    = link_to I18n.t('button.cancel'), invoices_path, class: 'btn btn-default'
     = f.button :submit, class: 'btn-primary'

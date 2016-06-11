@@ -127,7 +127,7 @@ en:
     items:
       new:
         header: New Item
-        create_invoice_button: Create Item
+        add_item_button: Add Item
       edit:
         header: Edit Item
       show:
