@@ -1,7 +1,7 @@
 class Item < ActiveRecord::Base
   belongs_to :invoice
 
-  validates :description, presence: true
+  validates :name, presence: true
   validates :date, presence: true
   validates :quantity, presence: true, numericality: true
   validates :unit, presence: true

@@ -43,9 +43,11 @@ class Invoices::ItemsController < ApplicationController
   end
 
   def destroy
+    @invoice = Invoice.find(params[:invoice_id])
     @item = Item.find(params[:id])
+    name = @item.name
     if @item.destroy
-      redirect_to invoices_url, notice: I18n.t('invoices.items.destroy.success_delete')
+      redirect_to @invoice, notice: I18n.t('invoices.items.destroy.success_delete', name: name)
     else
       flash.now[:error] = I18n.t('invoices.items.distroy.error_delete')
     end
@@ -53,7 +55,7 @@ class Invoices::ItemsController < ApplicationController
 
   private
     def item_params
-      params.require(:item).permit(:description, :date, :quantity, :unit, :unit_price, :vat)
+      params.require(:item).permit(:name, :date, :quantity, :unit, :unit_price, :vat)
     end
 
 end

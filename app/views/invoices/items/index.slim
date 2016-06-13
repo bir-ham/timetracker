@@ -5,7 +5,7 @@
         table.table.table-striped
           thead
             tr
-              th = I18n.t('items.show.description')
+              th = I18n.t('items.show.name')
               th = I18n.t('items.show.date')
               th = I18n.t('items.show.quantity')
               th = I18n.t('items.show.unit')
@@ -16,7 +16,7 @@
           tbody
             - @items.each do |item|
               tr
-                td = item.description
+                td = item.name
                 td = item.date
                 td = item.quantity
                 td = item.unit

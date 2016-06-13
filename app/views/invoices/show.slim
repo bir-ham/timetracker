@@ -51,24 +51,31 @@
           table.table.table-striped
             thead
               tr
-                th = I18n.t('invoices.items.show.description')
+                th = I18n.t('invoices.items.show.name')
                 th = I18n.t('invoices.items.show.date')
                 th = I18n.t('invoices.items.show.quantity')
                 th = I18n.t('invoices.items.show.unit')
                 th = I18n.t('invoices.items.show.unit_price')
                 th = I18n.t('invoices.items.show.vat')
                 th = I18n.t('invoices.items.show.total')
+                th = I18n.t('button.delete')
             tbody
               - @items.each do |item|
                 tr
-                  td = item.description
+                  td = item.name
                   td = item.date
                   td = item.quantity
                   td = item.unit
                   td = item.unit_price
                   td = item.vat
-                  td
+                  td 
                     /= item.total
+                  td
+                    = link_to '#confirmation-modal-container', class: 'btn btn-danger btn-xs confirmation-button', data: { id: item.id } do
+                      = icon('trash')
+                      |&nbsp;
+                      = I18n.t('button.delete')
+                    
       = link_to I18n.t('invoices.items.new.add_item_button'), new_invoice_item_path(@invoice), class: 'btn btn-primary'
 
     .btn-toolbar

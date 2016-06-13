@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :item do
-    description "MyString"
+    name "MyString"
     date "2016-06-08"
     quantity 1
     unit "MyString"
