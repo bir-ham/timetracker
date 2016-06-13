@@ -27,6 +27,7 @@ gem 'simple_form'
 gem 'font-awesome-sass'
 
 gem 'roo'
+gem 'carrierwave'
  
 group :development, :test do
   gem 'pry-remote'

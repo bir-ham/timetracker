@@ -1,0 +1,44 @@
+.row
+  .col-md-6
+    h1 = @account.subdomain
+    .well.well-sm
+      = image_tag @account.logo ? @account.logo : 'logo-placeholder'
+      .m-b-l
+      dl.dl-horizontal        
+        dt 
+          = I18n.t('accounts.show.subdomain')
+          |:
+        dd.text-capitalize = @account.subdomain
+        dt 
+          = I18n.t('accounts.show.industry')
+          |:
+        dd = @account.industry
+        dt 
+          = I18n.t('accounts.show.phone_number')
+          |:
+        dd = @account.phone_number
+        dt 
+          = I18n.t('accounts.show.email')
+          |:
+        dd 
+          = @account.email  
+        dt 
+          = I18n.t('accounts.show.address1')
+          |:
+        dd = @account.address1
+        dt 
+          = I18n.t('accounts.show.address2')
+          |:
+        dd = @account.address2
+        dt 
+          = I18n.t('accounts.show.zip')
+          |:
+        dd = @account.zip
+        dt 
+          = I18n.t('accounts.show.town')
+          |:
+        dd = @account.town
+        dt 
+          = I18n.t('accounts.show.country')
+          |:
+        dd = @account.country

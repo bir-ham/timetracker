@@ -6,6 +6,10 @@ class AccountsController < ApplicationController
     @account.build_owner
   end
 
+  def show
+    @account = current_account 
+  end
+  
   def create
     @account = Account.new(account_params)
       if @account.valid?
