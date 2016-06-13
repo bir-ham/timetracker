@@ -16,10 +16,11 @@ Rails.application.routes.draw do
     devise_for :users
     resources :users, only: :index
     resources :projects, except: [:show, :destroy]
-    resources :invoices 
-    resources :invoice_imports 
+    resources :invoices do
+      resources :items, except: [:index], controller: 'invoices/items'
+    end
+    resources :invoice_imports
     resources :customers
-    resources :items
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -34,7 +35,7 @@ Rails.application.routes.draw do
     #get 'homepages#faq'
     resources :accounts, only: [:new, :create]
   end
-  
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

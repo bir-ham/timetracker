@@ -1,58 +1,58 @@
 #title-breadcrumb-option-demo.page-title-breadcrumb
   .page-header.pull-left
     - case controller.controller_name
-    - when 'dashboards' 
+    - when 'dashboards'
       h2.page-title = I18n.t('dashboards.index.header')
       small Descripiton text goes
-    - when 'invoices' 
+    - when 'invoices'
       h2.page-title = I18n.t('invoices.index.header')
       small Descripiton text goes
-    - when 'projects' 
+    - when 'projects'
       h2.page-title = I18n.t('projects.index.header')
       small Descripiton text goes
-    - when 'users' 
+    - when 'users'
       h2.page-title = I18n.t('users.index.header')
       small Descripiton text goes
-    - when 'customers' 
+    - when 'customers'
       h2.page-title = I18n.t('customers.index.header')
       small Descripiton text goes
-    - when 'invoice_imports' 
-      h2.page-title = I18n.t('invoice_imports.index.header')  
+    - when 'invoice_imports'
+      h2.page-title = I18n.t('invoice_imports.index.header')
       small Descripiton text goes
-    - else 
+    - else
       h2 No page title
-       
+
   ol.breadcrumb.page-breadcrumb.pull-right
-    li 
-      - unless current_page? subdomain_root_path 
+    li
+      - unless current_page? subdomain_root_path
         span.turquoise
           = icon('home')
           |&nbsp;
-        = link_to I18n.t('dashboards.index.header'), subdomain_root_path 
+        = link_to I18n.t('dashboards.index.header'), subdomain_root_path
         |&nbsp;
-      - else  
+      - else
         = icon('home')
           |&nbsp;
-        |&nbsp;   
-        = I18n.t('dashboards.index.header') 
+        |&nbsp;
+        = I18n.t('dashboards.index.header')
     li.hidden
       = link_to "Dashboard", subdomain_root_path
       |&nbsp;&nbsp;
       = icon('angle-right')
       |&nbsp;&nbsp;
-    - if current_page?(controller: 'invoices')
+    - if is_controller_name?('invoices')
       li
         = I18n.t('invoices.index.header')
-    - elsif current_page?(controller: 'projects') 
+    - elsif is_controller_name?('projects')
       li
         = I18n.t('projects.index.header')
-    - elsif current_page?(controller: 'users') 
+    - elsif is_controller_name?('users')
       li
         = I18n.t('users.index.header')
-    - elsif current_page?(controller: 'customers')
-      li 
-        = I18n.t('customers.index.header')   
-    - elsif current_page?(controller: 'invoice_imports')
-      li 
-        = I18n.t('invoice_imports.index.header')  
+    - elsif is_controller_name?('customers')
+      li
+        = I18n.t('customers.index.header')
+    - elsif is_controller_name?('invoice_imports')
+      li
+        = I18n.t('invoice_imports.index.header')
   .clearfix

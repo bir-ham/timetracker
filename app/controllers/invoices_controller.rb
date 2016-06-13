@@ -1,6 +1,6 @@
-class InvoicesController < ApplicationController 
+class InvoicesController < ApplicationController
   #before_action :set_invoice, only: [:show, :edit, :upate, :destroy]
-  
+
   def index
     @invoices = Invoice.all
 
@@ -12,9 +12,9 @@ class InvoicesController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.csv { render text: @invoices.to_csv }  
-      format.xls #{ render text: @invoices.to_csv(col_sep: "\t") }  
-    end  
+      format.csv { render text: @invoices.to_csv }
+      format.xls #{ render text: @invoices.to_csv(col_sep: "\t") }
+    end
   end
 
   def new
@@ -27,42 +27,43 @@ class InvoicesController < ApplicationController
       redirect_to invoices_path, notice: I18n.t('invoices.create.notice_create')
     else
       render :new
-    end  
+    end
   end
 
   # GET /invoices/1
-  def show 
-    @invoice = Invoice.find(params[:id]) 
+  def show
+    @invoice = Invoice.find(params[:id])
+    @items = @invoice.items
   end
 
   # GET /invoices/1/edit
   def edit
-    @invoice = Invoice.find(params[:id]) 
+    @invoice = Invoice.find(params[:id])
   end
 
   def update
-    @invoice = Invoice.find(params[:id]) 
+    @invoice = Invoice.find(params[:id])
     if @invoice.update_attributes(invoice_params)
       flash.now[:success] = I18n.t('invoices.update.success_update')
       render :show
     else
       render :edit
-    end 
+    end
   end
 
   def destroy
-    @invoice = Invoice.find(params[:id]) 
+    @invoice = Invoice.find(params[:id])
     if @invoice.destroy
       redirect_to invoices_url, notice: I18n.t('invoices.destroy.success_delete')
     else
       flash.now[:error] = I18n.t('invoices.distroy.error_delete')
-    end  
+    end
   end
 
   private
     def invoice_params
-      params.require(:invoice).permit(:customer_id, :user_id, :date_of_an_invoice, 
+      params.require(:invoice).permit(:customer_id, :user_id, :date_of_an_invoice,
         :deadline, :payment_term, :interest_in_arrears, :reference_number, :status_type, :description)
-    end  
+    end
 
 end
