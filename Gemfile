@@ -42,6 +42,7 @@ group :development, :test do
   gem 'email_spec'
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'quiet_assets'
 end
 
 group :production do

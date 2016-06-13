@@ -13,7 +13,7 @@ describe 'items' do
     visit items_path
     click_link I18n.t('items.index.add_new_item_button')
 
-    fill_in 'Description', with: 'Lorem lipsum'
+    fill_in 'Name', with: 'Lorem lipsum'
     within('.item_date') do
       select_date(Date.tomorrow, from: 'item_date')
     end
@@ -49,7 +49,7 @@ describe 'items' do
       visit items_path
 
       click_link I18n.t('button.show')
-      expect(page).to have_text @item.description
+      expect(page).to have_text @item.name
       expect(page).to have_text @item.date
       expect(page).to have_text @item.quantity
 
@@ -67,7 +67,7 @@ describe 'items' do
 
       submit_form
       expect(page).to have_text I18n.t('items.update.success_update')
-      expect(page).to have_text @item.description
+      expect(page).to have_text @item.name
       expect(page).to have_text '4'
     end
 
@@ -83,7 +83,7 @@ describe 'items' do
       end
 
       expect(page).to have_text I18n.t('items.destroy.success_delete')
-      expect(page).to_not have_text @item.description
+      expect(page).to_not have_text @item.name
       expect(page).to_not have_text @item.quantity
     end
   end

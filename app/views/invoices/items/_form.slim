@@ -5,10 +5,10 @@
                 radio_buttons: :horizontal_radio_and_checkboxes,
                 file: :horizontal_file_input,
                 boolean: :horizontal_boolean} ) do |f|
-  = f.input :description, wrapper: :horizontal_form
-  = f.input :date, as: :date, start_year: Date.today.year,  order: [:day, :month, :year], prompt: '-', wrapper: :horizontal_form
+  = f.input :name, wrapper: :horizontal_form
+  = f.input :date, as: :date, start_year: Date.today.year,  order: [:day, :month, :year], wrapper: :horizontal_form
   = f.input :quantity, wrapper: :horizontal_form
-  = f.input :unit, collection: [['piece', 'piece'], ['m', 'm'], ['h', 'h'], ['km', 'km'], ['kg', 'kg']], include_blank: '-', prompt: 'Set status', wrapper: :horizontal_form
+  = f.input :unit, collection: [['piece', 'piece'], ['m', 'm'], ['h', 'h'], ['km', 'km'], ['kg', 'kg']], include_blank: '-', prompt: 'Select unit', wrapper: :horizontal_form
   = f.input :unit_price, wrapper: :horizontal_form
   = f.input :vat, label: 'Vat (in %)', input_html: { min: 0, max: 100 }, wrapper: :horizontal_form
 
