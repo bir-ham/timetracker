@@ -13,6 +13,8 @@ class Invoices::ItemsController < ApplicationController
   def create
     @invoice = Invoice.find(params[:invoice_id])
     @item = Item.new(item_params)
+    total_price = params[:item][:quantity].to_i * params[:item][:unit_price].to_d
+    @item.total = total_price
     @item.invoice = @invoice
 
     if @item.save

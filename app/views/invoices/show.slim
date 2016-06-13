@@ -60,6 +60,7 @@
                 th = I18n.t('invoices.items.show.total')
                 th = I18n.t('button.delete')
             tbody
+              - running_total = 0
               - @items.each do |item|
                 tr
                   td = item.name
@@ -68,13 +69,17 @@
                   td = item.unit
                   td = number_to_currency(item.unit_price)
                   td = item.vat
-                  td 
-                    /= number_to_currency(item.total)
+                  td = number_to_currency(item.total)
                   td
                     = link_to '#confirmation-modal-container', class: 'btn btn-danger btn-xs confirmation-button', data: { id: item.id } do
                       = icon('trash')
                       |&nbsp;
                       = I18n.t('button.delete')
+                - running_total += item.total    
+              tr
+                td colspan="6"
+                td = number_to_currency(running_total)
+                td      
                     
       = link_to I18n.t('invoices.items.new.add_item_button'), new_invoice_item_path(@invoice), class: 'btn btn-primary'
 
