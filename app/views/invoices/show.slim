@@ -66,10 +66,10 @@
                   td = item.date
                   td = item.quantity
                   td = item.unit
-                  td = item.unit_price
+                  td = number_to_currency(item.unit_price)
                   td = item.vat
                   td 
-                    /= item.total
+                    /= number_to_currency(item.total)
                   td
                     = link_to '#confirmation-modal-container', class: 'btn btn-danger btn-xs confirmation-button', data: { id: item.id } do
                       = icon('trash')
