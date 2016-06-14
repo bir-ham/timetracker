@@ -48,6 +48,8 @@ en:
     new:
       header: Create an Account
       prompt: All fields are mandatory. Enter correct information.    
+    edit:
+      header: Edit accout information
     show:
       subdomain: Subdomain
       industry: Industry 
@@ -58,6 +60,9 @@ en:
       zip: Zip
       town: Town
       country: Country   
+      delete_account: Delete this accout
+    update:   
+      notice_update: "Account information updated!"
   projects:
     index:
       header: Projects

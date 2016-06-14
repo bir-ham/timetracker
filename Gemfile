@@ -28,6 +28,7 @@ gem 'font-awesome-sass'
 
 gem 'roo'
 gem 'carrierwave'
+gem 'country_select'
  
 group :development, :test do
   gem 'pry-remote'

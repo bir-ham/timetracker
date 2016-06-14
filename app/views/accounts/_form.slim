@@ -1,0 +1,19 @@
+= simple_form_for(@account,
+              html: { class: 'form-horizontal' },
+              warpper: :horizontal_form,
+              warpper_mappings: {  check_boxes: :horizontal_radio_and_checkboxes,
+                radio_buttons: :horizontal_radio_and_checkboxes,
+                file: :horizontal_file_input,
+                boolean: :horizontal_boolean} ) do |f|
+  = f.input :industry, wrapper: :horizontal_form
+  = f.input :phone_number, wrapper: :horizontal_form
+  = f.input :email, wrapper: :horizontal_form
+  = f.input :address1, wrapper: :horizontal_form
+  = f.input :address2, wrapper: :horizontal_form
+  = f.input :zip, wrapper: :horizontal_form
+  = f.input :town, wrapper: :horizontal_form
+  = f.input :country, prompt: 'Select country', wrapper: :horizontal_form
+
+  .btn-toolbar
+    = link_to I18n.t('button.cancel'), current_account, class: 'btn btn-default'
+    = f.button :submit, class: 'btn-primary'
