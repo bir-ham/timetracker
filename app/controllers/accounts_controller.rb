@@ -29,7 +29,7 @@ class AccountsController < ApplicationController
 
   def update
     @account = current_account 
-    if @invoice.update_attributes(account_params)
+    if @account.update_attributes(account_params)
       flash.now[:success] = I18n.t('accounts.update.success_update')
       render :show
     else

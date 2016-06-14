@@ -62,7 +62,7 @@ en:
       country: Country   
       delete_account: Delete this accout
     update:   
-      notice_update: "Account information updated!"
+      success_update: "Account information updated!"
   projects:
     index:
       header: Projects

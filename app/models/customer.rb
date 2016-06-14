@@ -7,8 +7,8 @@ class Customer < ActiveRecord::Base
     length: { minimum: 10, maximum: 15, message: 'phone number must be b/n 10 to 15 characters' }
   validates :email, presence: true, uniqueness: true, allow_blank: true,
     format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create ,message: 'wrong email format' }
-  validates :address, length: { maximum: 100,
-      too_long: "%{count} characters is the maximum allowed" }
+  validates :address, allow_blank: true,
+    length: { maximum: 100, too_long: "%{count} characters is the maximum allowed" }
 
   validate :any_or_both_phone_email
 

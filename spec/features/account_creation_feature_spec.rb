@@ -20,6 +20,7 @@ describe 'account creation' do
 
     expect(page).to have_text I18n.t('devise.confirmations.confirmed')
   end  
+  
   it 'allows account followup creation' do
     subdomain2 = "#{subdomain}2"
     sign_up(subdomain2)

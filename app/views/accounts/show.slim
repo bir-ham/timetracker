@@ -7,40 +7,40 @@
       dl.dl-horizontal        
         dt 
           = I18n.t('accounts.show.subdomain')
-          |:
+          |&nbsp;:
         dd.text-capitalize = @account.subdomain
         dt 
           = I18n.t('accounts.show.industry')
-          |:
+          |&nbsp;:
         dd = @account.industry
         dt 
           = I18n.t('accounts.show.phone_number')
-          |:
+          |&nbsp;:
         dd = @account.phone_number
         dt 
           = I18n.t('accounts.show.email')
-          |:
+          |&nbsp;:
         dd 
           = @account.email  
         dt 
           = I18n.t('accounts.show.address1')
-          |:
+          |&nbsp;:
         dd = @account.address1
         dt 
           = I18n.t('accounts.show.address2')
-          |:
+          |&nbsp;:
         dd = @account.address2
         dt 
           = I18n.t('accounts.show.zip')
-          |:
+          |&nbsp;:
         dd = @account.zip
         dt 
           = I18n.t('accounts.show.town')
-          |:
+          |&nbsp;:
         dd = @account.town
         dt 
           = I18n.t('accounts.show.country')
-          |:
+          |&nbsp;:
         dd = @account.country
 
       = link_to edit_account_path(@account), class: 'btn btn-primary' do

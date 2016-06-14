@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :invoice do
-    association :customer 
-    association :user 
+    association :customer, strategy: :build 
+    association :user, strategy: :build 
 
     customer_id 1
     user_id 1
