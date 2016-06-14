@@ -27,6 +27,7 @@ gem 'simple_form'
 gem 'font-awesome-sass'
 
 gem 'roo'
+gem "rmagick"
 gem 'carrierwave'
 gem 'country_select'
 gem 'simple_form_fancy_uploads'

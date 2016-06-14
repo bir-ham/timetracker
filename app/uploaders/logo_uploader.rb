@@ -3,7 +3,7 @@
 class LogoUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
-  # include CarrierWave::RMagick
+  include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
@@ -37,7 +37,7 @@ class LogoUploader < CarrierWave::Uploader::Base
   end
 
   version :normal do
-    process :resize_to_fit => [105, 105]
+    process :resize_to_fit => [150, 105]
   end
   
   # Add a white list of extensions which are allowed to be uploaded.

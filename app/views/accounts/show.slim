@@ -4,7 +4,7 @@
     .well.well-sm
       .media
         .media-left
-          = image_tag @account.logo ? @account.logo : 'logo-placeholder', class: 'compnay-logo thumbnail'
+          = image_tag !@account.logo.nil? ? @account.logo.normal : 'logo-placeholder', class: 'thumbnail'
         .media-body
           dl.dl-horizontal        
             dt 

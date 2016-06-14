@@ -13,7 +13,7 @@
   = f.input :zip, wrapper: :horizontal_form
   = f.input :town, wrapper: :horizontal_form
   = f.input :country, prompt: 'Select country', wrapper: :horizontal_form
-  = f.input :logo, as: :image_preview, input_html: { preview_version: :thumb }, wrapper: :horizontal_form
+  = f.input :logo, as: :image_preview, input_html: { preview_version: :thumb }, multiple: true, wrapper: :horizontal_form
 
   .btn-toolbar
     = link_to I18n.t('button.cancel'), current_account, class: 'btn btn-default'
