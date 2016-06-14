@@ -1,7 +1,7 @@
-Bizdesk
+Toolsio
 =======
 
-Buzness software
+Business automation software
 ----------------
 
 
