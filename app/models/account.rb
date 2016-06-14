@@ -22,6 +22,8 @@ class Account < ActiveRecord::Base
   validates :town, presence: false, allow_blank: true  
   validates :country, presence: false, allow_blank: true  
 
+  mount_uploader :logo, LogoUploader 
+
   #Temporary solution to resolve capybara's ElementNotFound error
   accepts_nested_attributes_for :owner
 
