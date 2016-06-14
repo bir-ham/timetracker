@@ -11,7 +11,7 @@ describe 'accounts' do
  
   describe 'when account exists' do
     before(:each) do
-      click_link('company-logo')     
+      click_link('company-logo-link')     
     end
     it 'allows account to be edited' do
       click_link I18n.t('button.edit')       

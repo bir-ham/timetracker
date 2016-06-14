@@ -5,36 +5,28 @@
       dl.dl-horizontal
         dt
           = I18n.t('invoices.show.customer')
-          |:
         dd = @invoice.customer.name
         dt
           = I18n.t('invoices.show.employee')
-          |:
         dd
           = @invoice.user.first_name
         dt
           = I18n.t('invoices.show.date_of_an_invoice')
-          |:
         dd = @invoice.date_of_an_invoice
         dt
           = I18n.t('invoices.show.deadline')
-          |:
         dd = @invoice.deadline
         dt
           = I18n.t('invoices.show.payment_term')
-          |:
         dd = @invoice.payment_term
         dt
           = I18n.t('invoices.show.interest_in_arrears')
-          |:
         dd = @invoice.interest_in_arrears
         dt
           = I18n.t('invoices.show.reference_number')
-          |:
         dd = @invoice.reference_number
         dt
           = I18n.t('invoices.show.status')
-          |:
         dd
           - if @invoice.status_type.eql?('PAID')
             span.label.label-success = @invoice.status_type
