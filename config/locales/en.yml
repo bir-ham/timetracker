@@ -47,7 +47,22 @@ en:
   accounts:
     new:
       header: Create an Account
-      prompt: All fields are mandatory. Enter correct information.
+      prompt: All fields are mandatory. Enter correct information.    
+    edit:
+      header: Edit accout information
+    show:
+      subdomain: Subdomain
+      industry: Industry 
+      phone_number: Phone number
+      email: Email  
+      address1: Address 1
+      address2: Address 2
+      zip: Zip
+      town: Town
+      country: Country   
+      delete_account: Delete this accout
+    update:   
+      success_update: "Account information updated!"
   projects:
     index:
       header: Projects

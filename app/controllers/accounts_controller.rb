@@ -19,10 +19,28 @@ class AccountsController < ApplicationController
       end
   end
 
-  private
-  def account_params
-    params.require(:account).permit(:subdomain, owner_attributes: [:first_name, :second_name,
-      :email, :password, :password_confirmation])
+  def show
+    @account = current_account 
   end
+
+   def edit
+    @account = current_account 
+  end
+
+  def update
+    @account = current_account 
+    if @account.update_attributes(account_params)
+      flash.now[:success] = I18n.t('accounts.update.success_update')
+      render :show
+    else
+      render :edit
+    end
+  end
+
+  private
+    def account_params
+      params.require(:account).permit(:subdomain, :industry, :phone_number, :email, :address1, :address2, :zip, :town, :country, :logo,
+        owner_attributes: [:first_name, :second_name, :email, :password, :password_confirmation])
+    end
 
 end

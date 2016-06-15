@@ -80,6 +80,11 @@ a {
   background-color: $orange !important;
 }
 
+// Thumbnail
+.thumbnail {
+  @include border-radius(0); 
+}
+
 // Labels
 .label-success {
   background: $grass;

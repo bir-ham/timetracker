@@ -1,24 +1,20 @@
 .row
-  .col-md-6
+  .col-sm-6
     h1 = I18n.t('customers.show.header')
     .well.well-sm
       dl.dl-horizontal        
         dt 
           = I18n.t('customers.show.name')
-          |:
         dd = @customer.name
         dt 
           = I18n.t('customers.show.phone_number')
-          |:
         dd = @customer.phone_number
         dt 
           = I18n.t('customers.show.email')
-          |:
         dd 
           = @customer.email  
         dt 
           = I18n.t('customers.show.address')
-          |:
         dd = @customer.address
               
     .btn-toolbar              

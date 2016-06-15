@@ -61,6 +61,12 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    carrierwave (0.11.2)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
+      json (>= 1.7)
+      mime-types (>= 1.16)
+      mimemagic (>= 0.3.0)
     coderay (1.1.1)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
@@ -70,6 +76,13 @@ GEM
       execjs
     coffee-script-source (1.10.0)
     concurrent-ruby (1.0.2)
+    countries (1.2.5)
+      currencies (~> 0.4.2)
+      i18n_data (~> 0.7.0)
+    country_select (2.5.2)
+      countries (~> 1.2.0)
+      sort_alphabetical (~> 1.0)
+    currencies (0.4.2)
     daemons (1.2.3)
     database_cleaner (1.5.3)
     debug_inspector (0.0.2)
@@ -126,6 +139,7 @@ GEM
     htmlentities (4.3.4)
     http_parser.rb (0.6.0)
     i18n (0.7.0)
+    i18n_data (0.7.0)
     jquery-rails (4.1.1)
       rails-dom-testing (>= 1, < 3)
       railties (>= 4.2.0)
@@ -158,6 +172,7 @@ GEM
     mime-types (3.0)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0221)
+    mimemagic (0.3.1)
     mini_portile2 (2.0.0)
     minitest (5.9.0)
     multi_json (1.12.1)
@@ -218,6 +233,7 @@ GEM
       ffi (>= 0.5.0)
     responders (2.2.0)
       railties (>= 4.2.0, < 5.1)
+    rmagick (2.15.4)
     roo (2.4.0)
       nokogiri (~> 1)
       rubyzip (~> 1.1, < 2.0.0)
@@ -257,6 +273,10 @@ GEM
     simple_form (3.2.1)
       actionpack (> 4, < 5.1)
       activemodel (> 4, < 5.1)
+    simple_form_fancy_uploads (0.2.0)
+      carrierwave
+      rails (>= 4.0.0)
+      simple_form (~> 3.1)
     sinatra (1.4.7)
       rack (~> 1.5)
       rack-protection (~> 1.4)
@@ -274,6 +294,8 @@ GEM
       railties (>= 3.1, < 5.0)
       slim (~> 3.0)
     slop (3.6.0)
+    sort_alphabetical (1.0.2)
+      unicode_utils (>= 1.2.2)
     sprockets (3.6.0)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
@@ -296,6 +318,7 @@ GEM
       thread_safe (~> 0.1)
     uglifier (3.0.0)
       execjs (>= 0.3.0, < 3)
+    unicode_utils (1.4.0)
     warden (1.2.6)
       rack (>= 1.0)
     xpath (2.0.0)
@@ -311,7 +334,9 @@ DEPENDENCIES
   binding_of_caller
   bootstrap-sass (~> 3.3.3)
   capybara
+  carrierwave
   coffee-rails (~> 4.0.0)
+  country_select
   database_cleaner
   devise
   devise_invitable
@@ -329,11 +354,13 @@ DEPENDENCIES
   quiet_assets
   rails (= 4.2.2)
   rails_12factor
+  rmagick
   roo
   rspec-rails
   sass-rails (~> 5.0)
   shoulda-matchers
   simple_form
+  simple_form_fancy_uploads
   slim-rails
   turbolinks
   uglifier (>= 1.3.0)
