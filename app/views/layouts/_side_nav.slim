@@ -3,7 +3,7 @@ aside#sidebar.navbar-default.navbar-static-side role="navigation" data-step="2" 
           ul#side-menu.nav
             .clearfix
             .company-profile.hidden-xs
-              = link_to (image_tag !@account.logo.nil? ? @account.logo.thumb : 'logo-placeholder'), current_account, id: 'company-logo-link'
+              = link_to (image_tag !current_account.logo.nil? ? current_account.logo.thumb : 'logo-placeholder'), current_account, id: 'company-logo-link'
               strong.visible-all-block.text-uppercase.m-t-xs = current_account.subdomain
               .m-t-xs
               = link_to '#' do
