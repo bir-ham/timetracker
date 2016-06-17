@@ -5,7 +5,7 @@ class Account < ActiveRecord::Base
 
   validates :owner, presence: true
   validates :subdomain, presence: true,
-    uniqueness: { case_sensitive: false },
+    uniqueness: true,
     format: { with: /\A[\w\-]+\Z/i, message: 'contains invalid characters' },
     exclusion: { in: RESTRICTED_SUBDOMAINS, message: 'restricted' }
   validates :industry, presence: false, allow_blank: true  
