@@ -1,11 +1,8 @@
 FactoryGirl.define do
   factory :invoice do
-    association :customer, strategy: :build 
-    association :user, strategy: :build 
+    association :customer, strategy: :build
+    association :user, strategy: :build
 
-    customer_id 1
-    user_id 1
-    #date "2016-02-20 18:53:05"
     date_of_an_invoice Date.tomorrow
     deadline Date.tomorrow
     payment_term "2"

@@ -72,7 +72,7 @@ describe 'invoices' do
 
   describe 'when invoice exists' do
     before(:each) do
-      @invoice = create(:invoice, deadline: Date.tomorrow, payment_term: '')
+      @invoice = create(:invoice, user: user, customer: @customer, deadline: Date.tomorrow, payment_term: '')
       visit invoices_path
 
       click_link I18n.t('button.show')
