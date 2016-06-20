@@ -67,12 +67,12 @@
                       = icon('trash')
                       |&nbsp;
                       = I18n.t('button.delete')
-                - running_total += item.total    
+                - running_total += item.total
               tr
                 td colspan="6"
                 td = number_to_currency(running_total)
-                td      
-                    
+                td
+
       = link_to I18n.t('invoices.items.new.add_item_button'), new_invoice_item_path(@invoice), class: 'btn btn-primary'
 
     .btn-toolbar

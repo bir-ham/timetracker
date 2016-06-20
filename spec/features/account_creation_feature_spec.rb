@@ -29,16 +29,15 @@ describe 'account creation' do
   end
 
   describe 'confirmation email' do
-    before do  
-      open_email 'birhanu@example.com' 
+    before do
+      open_email 'birhanu@example.com'
       expect(current_email).to have_body_text("You can confirm your account email through the link below:")
     end
-    
-    context 'when clicking confirmation link in email' do 
-      before :each do 
-        binding.pry
+
+    context 'when clicking confirmation link in email' do
+      before :each do
         visit_in_email 'Confirm my account'
-      end 
+      end
 
       it "shows confirmation message" do
         expect(page).to have_content('Your account was successfully confirmed')
@@ -47,7 +46,7 @@ describe 'account creation' do
       it "confirms user" do
         user = User.find_for_authentication(email: 'birhanu@example.com')
         expect(user).to be_confirmed
-      end      
+      end
     end
   end
 
@@ -67,7 +66,7 @@ describe 'account creation' do
     fill_in 'Password confirmation', with: 'pw'
     fill_in 'Subdomain', with: subdomain
     click_button 'Create Account'
-    
+
     expect(page).to have_text I18n.t('devise.registrations.signed_up_but_unconfirmed')
   end
 end
