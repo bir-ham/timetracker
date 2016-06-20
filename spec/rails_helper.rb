@@ -9,8 +9,6 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
 ActiveRecord::Migration.maintain_test_schema!
 
-Capybara.app_host = 'http://example.com'
-
 RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
   config.include EmailSpec::Helpers
@@ -47,3 +45,13 @@ Shoulda::Matchers.configure do |config|
     with.library :rails
   end
 end
+
+Capybara.configure do |config|
+  config.javascript_driver = :webkit
+  config.app_host = 'http://example.com'
+end
+
+Capybara::Webkit.configure do |config|
+  config.allow_url("*.example.com")
+end
+

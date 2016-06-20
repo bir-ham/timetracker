@@ -108,15 +108,13 @@ describe 'invoices' do
       expect(page).to have_text 'Lorem lipsum edited'
     end
 
-    it 'allows invoice to be deleted' do
+    it 'allows invoice to be deleted', js: true do
       click_link I18n.t('button.delete')
 
       expect(page).to have_text I18n.t('invoices.destroy.confirmation_msg')
 
-      wait_until_modal_dialog_javascript_loads do
-        within('.modal-footer') do
-          click_link I18n.t('button.delete')
-        end
+      within('.modal-footer') do
+        click_link I18n.t('button.delete')
       end
 
       expect(page).to have_text I18n.t('invoices.destroy.success_delete')
