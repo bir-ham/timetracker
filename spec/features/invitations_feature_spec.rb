@@ -27,21 +27,20 @@ describe 'invitations' do
 
   describe 'when user is invited' do
     before do
-      fill_in 'Email', with: 'birhanu@bizdesc.com'
+      fill_in 'Email', with: 'birhanu@example.com'
       click_button I18n.t('users.index.invite_user')
     end
 
     it 'shows invitation when user is invited' do
     	expect(page).to have_content 'invitation email has been sent'
-    	expect(page).to have_content 'birhanu@bizdesc.com'
+    	expect(page).to have_content 'birhanu@example.com'
     	expect(page).to have_content 'Invitation Pending'
     end
 
     context 'user accepts invitation' do
       before do
         click_link 'Sign out'
-
-        open_email 'birhanu@bizdesc.com'
+        open_email 'birhanu@example.com'
         visit_in_email 'Accept invitation'
 
         fill_in 'First name', with: 'Birhanu test'

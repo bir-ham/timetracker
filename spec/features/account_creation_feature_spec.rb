@@ -22,31 +22,53 @@ describe 'account creation' do
   end
 
   it 'does not allow account creation on subdomain' do
-    user = User.first
+    user = create(:user)
     subdomain = Account.first.subdomain
     sign_user_in(user, subdomain: subdomain)
     expect { visit new_account_url(subdomain: subdomain) }.to raise_error ActionController::RoutingError
+  end
+
+  describe 'confirmation email' do
+    before do  
+      open_email 'birhanu@example.com' 
+      expect(current_email).to have_body_text("You can confirm your account email through the link below:")
+    end
+    
+    context 'when clicking confirmation link in email' do 
+      before :each do 
+        binding.pry
+        visit_in_email 'Confirm my account'
+      end 
+
+      it "shows confirmation message" do
+        expect(page).to have_content('Your account was successfully confirmed')
+      end
+
+      it "confirms user" do
+        user = User.find_for_authentication(email: 'birhanu@example.com')
+        expect(user).to be_confirmed
+      end      
+    end
   end
 
   def sign_up(subdomain)
     visit root_url(subdomain: false)
     click_link 'Create Account'
 
+    reset_mailer
+
     #binding.pry #inserts a breakpoint here
     fill_in 'First name', with: 'Birhanu'
     fill_in 'Second name', with: 'Hailemariam'
-    fill_in 'Email', with: 'birhanu@gmail.com'
+    fill_in 'Email', with: 'birhanu@example.com'
     within('.account_owner_password') do
       fill_in 'Password', with: 'pw'
     end
     fill_in 'Password confirmation', with: 'pw'
     fill_in 'Subdomain', with: subdomain
     click_button 'Create Account'
-
-    open_email 'birhanu@gmail.com'
-    visit_in_email 'Confirm my account'
-
-    expect(page).to have_text I18n.t('devise.confirmations.confirmed')
+    
+    expect(page).to have_text I18n.t('devise.registrations.signed_up_but_unconfirmed')
   end
 end
 

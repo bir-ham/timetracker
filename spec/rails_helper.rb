@@ -27,7 +27,7 @@ RSpec.configure do |config|
   end
 
   # Before each spec run, just to insure consistency between specs
-  config.before(:each) do
+  config.before(:each, truncation: true) do
     DatabaseCleaner.start
   end
 
