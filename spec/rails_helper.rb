@@ -18,14 +18,30 @@ RSpec.configure do |config|
   config.include WaitForAjax, type: :feature
   config.order = "random"
   config.infer_spec_type_from_file_location!
+  config.use_transactional_fixtures = false
 
   config.before(:suite) do
-    DatabaseCleaner.strategy = :transaction
-    DatabaseCleaner.clean_with(:truncation)
+    DatabaseCleaner.clean_with :truncation
+    #DatabaseCleaner.strategy = :transaction
+    #DatabaseCleaner.clean_with(:truncation)
   end
 
   # Before each spec run, just to insure consistency between specs
-  config.before(:each, truncation: true) do
+  #config.before(:each, :js => true) do
+  #  DatabaseCleaner.strategy = :truncation
+  #end
+  #if Capybara.current_driver == :rack_test
+  #  DatabaseCleaner.strategy = :transaction
+  #else
+  #  DatabaseCleaner.strategy = :truncation
+  #end
+  config.before(:each) do
+    if Capybara.current_driver == :rack_test
+      DatabaseCleaner.strategy = :transaction
+    else
+      DatabaseCleaner.strategy = :truncation
+    end
+    binding.pry
     DatabaseCleaner.start
   end
 
@@ -48,10 +64,11 @@ end
 
 Capybara.configure do |config|
   config.javascript_driver = :webkit
-  config.app_host = 'http://example.com'
+  config.app_host = 'http://lvh.me:3000'
 end
 
 Capybara::Webkit.configure do |config|
-  config.allow_url("*.example.com")
+  config.allow_url("http://lvh.me:3000")
+  config.allow_url("http://*.lvh.me:3000")
 end
 

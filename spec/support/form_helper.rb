@@ -1,20 +1,25 @@
 module FormHelper
   # added here cos we'r using this macro in multiple spec files,
   # eventhough it isn't related with the above macro we can still keep it here
+  
+  def set_subdomain(subdomain)
+    if Capybara.current_driver == :rack_test
+      Capybara.app_host = "http://#{subdomain}.example.com"
+    elsif Capybara.current_driver == :webkit
+      Capybara.app_host = "http://#{subdomain}.lvh.me:3000"
+    end      
+  end
+
   def sign_user_in(user, opts={})
     if opts[:subdomain]
       visit new_user_session_url(subdomain: opts[:subdomain])
     else
       visit new_user_session_path
     end
-
+    
     fill_in 'Email', with: user.email
     fill_in 'Password', with: (opts[:password] || user.password)
     click_button I18n.t('button.sign_in')
-  end
-
-  def set_subdomain(subdomain)
-    Capybara.app_host = "http://#{subdomain}.example.com"
   end
 
   def select_date_and_time(datetime, options = {})
