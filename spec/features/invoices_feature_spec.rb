@@ -6,8 +6,8 @@ describe 'invoices' do
 
   before(:all) do
     Capybara.current_driver = :webkit
-  end 
-    
+  end
+
   before do
     set_subdomain(account.subdomain)
     sign_user_in(user)
@@ -116,7 +116,7 @@ describe 'invoices' do
       click_link I18n.t('button.delete')
 
       wait_for_ajax
-      
+
       expect(page).to have_text I18n.t('invoices.destroy.confirmation_msg')
 
       within('.modal-footer') do

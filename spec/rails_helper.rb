@@ -41,7 +41,6 @@ RSpec.configure do |config|
     else
       DatabaseCleaner.strategy = :truncation
     end
-    binding.pry
     DatabaseCleaner.start
   end
 
@@ -64,7 +63,11 @@ end
 
 Capybara.configure do |config|
   config.javascript_driver = :webkit
-  config.app_host = 'http://lvh.me:3000'
+  if Capybara.current_driver == :rack_test
+    config.app_host = 'http://example.com'
+  elsif
+    config.app_host = 'http://lvh.me:3000'
+  end
 end
 
 Capybara::Webkit.configure do |config|
