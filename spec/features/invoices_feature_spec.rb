@@ -3,11 +3,7 @@ require 'rails_helper'
 describe 'invoices' do
   let!(:account) { create(:account_with_schema) }
   let(:user) { account.owner }
-
-  before(:all) do
-    Capybara.current_driver = :webkit
-  end
-
+    
   before do
     set_subdomain(account.subdomain)
     sign_user_in(user)
@@ -116,7 +112,7 @@ describe 'invoices' do
       click_link I18n.t('button.delete')
 
       wait_for_ajax
-
+      
       expect(page).to have_text I18n.t('invoices.destroy.confirmation_msg')
 
       within('.modal-footer') do
@@ -127,10 +123,6 @@ describe 'invoices' do
       expect(page).to_not have_text @invoice.date_of_an_invoice
       expect(page).to_not have_text @invoice.customer
     end
-  end
-
-  after(:all) do
-    Capybara.use_default_driver
   end
 
 end

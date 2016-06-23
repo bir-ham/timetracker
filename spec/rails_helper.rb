@@ -5,9 +5,17 @@ require 'rspec/rails'
 require 'database_cleaner'
 require 'capybara/rspec'
 require 'email_spec'
+require 'selenium-webdriver'
+
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
 ActiveRecord::Migration.maintain_test_schema!
+
+Capybara.app_host = 'http://example.com'
+Capybara.javascript_driver = :selenium
+Capybara.register_driver :selenium_chrome do |app|   
+  Capybara::Selenium::Driver.new(app, :browser => :firefox)
+end
 
 RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
@@ -21,26 +29,16 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = false
 
   config.before(:suite) do
-    DatabaseCleaner.clean_with :truncation
-    #DatabaseCleaner.strategy = :transaction
-    #DatabaseCleaner.clean_with(:truncation)
+    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.clean_with(:truncation)
   end
 
   # Before each spec run, just to insure consistency between specs
-  #config.before(:each, :js => true) do
-  #  DatabaseCleaner.strategy = :truncation
-  #end
-  #if Capybara.current_driver == :rack_test
-  #  DatabaseCleaner.strategy = :transaction
-  #else
-  #  DatabaseCleaner.strategy = :truncation
-  #end
+  config.before(:each, :js => true) do
+    DatabaseCleaner.strategy = :truncation
+  end
+
   config.before(:each) do
-    if Capybara.current_driver == :rack_test
-      DatabaseCleaner.strategy = :transaction
-    else
-      DatabaseCleaner.strategy = :truncation
-    end
     DatabaseCleaner.start
   end
 
@@ -61,17 +59,5 @@ Shoulda::Matchers.configure do |config|
   end
 end
 
-Capybara.configure do |config|
-  config.javascript_driver = :webkit
-  if Capybara.current_driver == :rack_test
-    config.app_host = 'http://example.com'
-  elsif
-    config.app_host = 'http://lvh.me:3000'
-  end
-end
 
-Capybara::Webkit.configure do |config|
-  config.allow_url("http://lvh.me:3000")
-  config.allow_url("http://*.lvh.me:3000")
-end
 

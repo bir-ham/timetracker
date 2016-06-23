@@ -31,7 +31,7 @@ gem 'rmagick'
 gem 'carrierwave'
 gem 'country_select'
 gem 'simple_form_fancy_uploads'
-gem 'capybara-webkit'
+gem 'selenium-webdriver'
 
 group :development, :test do
   gem 'pry-remote'
