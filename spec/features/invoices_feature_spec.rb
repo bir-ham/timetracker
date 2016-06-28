@@ -3,8 +3,8 @@ require 'rails_helper'
 describe 'invoices' do
   let!(:account) { create(:account_with_schema) }
   let(:user) { account.owner }
-    
-  before do
+
+  before do  
     set_subdomain(account.subdomain)
     sign_user_in(user)
     @customer = create(:customer)
@@ -13,12 +13,12 @@ describe 'invoices' do
   it 'allows user to create invoices' do
     visit invoices_path
     click_link I18n.t('invoices.index.add_new_invoice_button')
-
-    within('.invoice_customer_id') do
-      select_generic(@customer.name, from: 'invoice_customer_id')
+    
+    within('.invoice_customer') do
+      select_generic(@customer.name, from: 'invoice_customer')
     end
-    within('.invoice_user_id') do
-      select_generic(user.first_name, from: 'invoice_user_id')
+    within('.invoice_user') do
+      select_generic(user.first_name, from: 'invoice_user')
     end
     fill_in 'Reference number', with: '1234'
     fill_in 'Description', with: 'Lorem lipsum'
@@ -35,15 +35,13 @@ describe 'invoices' do
 
     expect(page).to have_text I18n.t('invoices.create.notice_create')
     expect(page).to have_text @customer.name
+    
   end
 
   it 'display invoice validations' do
     visit invoices_path
     click_link I18n.t('invoices.index.add_new_invoice_button')
 
-    within('.invoice_customer_id') do
-      select_generic(@customer.name, from: 'invoice_customer_id')
-    end
     fill_in 'Reference number', with: 'abcd'
     fill_in 'Description', with: 'Lorem lipsum'
 
@@ -66,6 +64,7 @@ describe 'invoices' do
     submit_form
 
     expect(page).to have_text 'is not a number'
+    expect(page).to have_text "can't be blank"
     expect(page).to have_text "can't be in the past"
     expect(page).to have_text 'specify a deadline or a payment term. Not both empty, nor both filled'
   end
@@ -74,7 +73,7 @@ describe 'invoices' do
     before(:each) do
       @invoice = create(:invoice, user: user, customer: @customer, deadline: Date.tomorrow, payment_term: '')
       visit invoices_path
-
+      
       click_link I18n.t('button.show')
       expect(page).to have_text @invoice.date_of_an_invoice
       expect(page).to have_text @invoice.customer.name
@@ -87,8 +86,8 @@ describe 'invoices' do
     it 'allows invoice to be edited' do
       click_link I18n.t('button.edit')
 
-      within('.invoice_customer_id') do
-        select_generic(@customer.name, from: 'invoice_customer_id')
+      within('.invoice_customer') do
+        select_generic(@customer.name, from: 'invoice_customer')
       end
 
       within('.invoice_date_of_an_invoice') do

@@ -1,13 +1,13 @@
 FactoryGirl.define do
   factory :invoice do
-    association :customer, strategy: :build
-    association :user, strategy: :build
+    association :customer
+    association :user
 
     date_of_an_invoice Date.tomorrow
     deadline Date.tomorrow
     payment_term "2"
     interest_in_arrears "9"
-    reference_number "1234"
+    sequence(:reference_number) { |n| "1234#{n}" }
   end
 
 end

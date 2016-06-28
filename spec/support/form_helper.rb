@@ -4,10 +4,10 @@ module FormHelper
   
   def set_subdomain(subdomain)
     if Capybara.current_driver == :rack_test
-      Capybara.app_host = "http://#{subdomain}.example.com"
-    elsif Capybara.current_driver == :selenium
-      Capybara.app_host = "http://#{subdomain}.lvh.3000/"
-    end        
+      Capybara.app_host = "http://#{subdomain}.example.com" 
+    else
+      Capybara.app_host = "http://#{subdomain}.lvh.me"
+    end  
   end
 
   def sign_user_in(user, opts={})

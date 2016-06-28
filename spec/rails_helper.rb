@@ -5,17 +5,11 @@ require 'rspec/rails'
 require 'database_cleaner'
 require 'capybara/rspec'
 require 'email_spec'
-require 'selenium-webdriver'
+require 'capybara/webkit'
 
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
 ActiveRecord::Migration.maintain_test_schema!
-
-Capybara.app_host = 'http://example.com'
-Capybara.javascript_driver = :selenium
-Capybara.register_driver :selenium_chrome do |app|   
-  Capybara::Selenium::Driver.new(app, :browser => :firefox)
-end
 
 RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
@@ -27,15 +21,20 @@ RSpec.configure do |config|
   config.order = "random"
   config.infer_spec_type_from_file_location!
   config.use_transactional_fixtures = false
+  config.add_setting(:seed_tables)
 
   config.before(:suite) do
-    DatabaseCleaner.strategy = :transaction
-    DatabaseCleaner.clean_with(:truncation)
+    #DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.clean_with(:truncation, {except: config.seed_tables})
   end
 
   # Before each spec run, just to insure consistency between specs
+  config.before(:each) do
+    DatabaseCleaner.strategy = :transaction
+  end
+
   config.before(:each, :js => true) do
-    DatabaseCleaner.strategy = :truncation
+    DatabaseCleaner.strategy = :truncation, {except: config.seed_tables}
   end
 
   config.before(:each) do
@@ -59,5 +58,18 @@ Shoulda::Matchers.configure do |config|
   end
 end
 
+Capybara.configure do |config|
+  config.app_host = 'http://example.com'
+  config.javascript_driver = :webkit
+  config.always_include_port = true
+end
+
+Capybara::Webkit.configure do |config|
+  # Allow a specific domain without issuing a warning.
+  config.allow_url("lvh.me")
+
+  # Wildcards are allowed in URL expressions.
+  config.allow_url("*.lvh.me")
+end
 
 
