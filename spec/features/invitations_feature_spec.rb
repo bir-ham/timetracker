@@ -20,7 +20,7 @@ describe 'invitations' do
 
   it 'shows the owner in the authorized users list' do
    	expect(page).to have_content user.first_name
-    expect(page).to have_content user.second_name
+    expect(page).to have_content user.last_name
   	expect(page).to have_content user.email
   	expect(page).to have_selector '.glyphicon-ok'
   end
@@ -44,7 +44,7 @@ describe 'invitations' do
         visit_in_email 'Accept invitation'
 
         fill_in 'First name', with: 'Birhanu test'
-        fill_in 'Second name', with: 'Hailemariam'
+        fill_in 'Last name', with: 'Hailemariam'
         fill_in 'Password', with: 'pw'
         fill_in 'Password confirmation', with: 'pw'
         click_button I18n.t('devise.invitations.edit.create_account_button')

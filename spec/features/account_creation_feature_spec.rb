@@ -1,32 +1,8 @@
 require 'rails_helper'
 
 describe 'account creation' do
-  let(:subdomain) { FactoryGirl.generate(:subdomain) }
+  let(:subdomain) { generate(:subdomain) }
   before(:each) { sign_up(subdomain) }
-
-  it 'allows user to create account' do
-    expect(page.current_url).to include(subdomain)
-    expect(Account.all.count).to eq(1)
-  end
-
-  it 'allows access of subdomain' do
-    visit root_url(subdomain: subdomain)
-    expect(page.current_url).to include(subdomain)
-  end
-
-  it 'allows account followup creation' do
-    subdomain2 = "#{subdomain}2"
-    sign_up(subdomain2)
-    expect(page.current_url).to include(subdomain2)
-    expect(Account.all.count).to eq(2)
-  end
-
-  it 'does not allow account creation on subdomain' do
-    user = create(:user)
-    subdomain = Account.first.subdomain
-    sign_user_in(user, subdomain: subdomain)
-    expect { visit new_account_url(subdomain: subdomain) }.to raise_error ActionController::RoutingError
-  end
 
   describe 'confirmation email' do
     before do
@@ -50,6 +26,32 @@ describe 'account creation' do
     end
   end
 
+  describe 'validation' do
+    it 'allows user to create account' do
+      expect(page.current_url).to include(subdomain)
+      expect(Account.all.count).to eq(1)
+    end
+
+    it 'allows access of subdomain' do
+      visit root_url(subdomain: subdomain)
+      expect(page.current_url).to include(subdomain)
+    end
+
+    it 'allows account followup creation' do
+      subdomain2 = "#{subdomain}2"
+      sign_up(subdomain2)
+      expect(page.current_url).to include(subdomain2)
+      expect(Account.all.count).to eq(2)
+    end
+
+    it 'does not allow account creation on subdomain' do
+      user = create(:user)
+      subdomain = Account.first.subdomain
+      sign_user_in(user, subdomain: subdomain)
+      expect { visit new_account_url(subdomain: subdomain) }.to raise_error ActionController::RoutingError
+    end
+  end
+    
   def sign_up(subdomain)
     visit root_url(subdomain: false)
     click_link 'Create Account'
@@ -58,7 +60,7 @@ describe 'account creation' do
 
     #binding.pry #inserts a breakpoint here
     fill_in 'First name', with: 'Birhanu'
-    fill_in 'Second name', with: 'Hailemariam'
+    fill_in 'Last name', with: 'Hailemariam'
     fill_in 'Email', with: 'birhanu@example.com'
     within('.account_owner_password') do
       fill_in 'Password', with: 'pw'

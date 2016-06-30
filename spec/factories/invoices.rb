@@ -4,6 +4,7 @@ FactoryGirl.define do
     association :user
 
     factory :invoice_with_item do
+      payment_term ""
       after(:create) do |invoice|
         create(:item, invoice: invoice)
       end  
@@ -11,7 +12,7 @@ FactoryGirl.define do
 
     date_of_an_invoice Date.tomorrow
     deadline Date.tomorrow
-    payment_term ""
+    payment_term "2"
     interest_in_arrears "9"
     sequence(:reference_number) { |n| "1234#{n}" }
   end
