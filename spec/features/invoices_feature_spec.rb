@@ -4,7 +4,7 @@ describe 'invoices' do
   let!(:account) { create(:account_with_schema) }
   let(:user) { account.owner }
 
-  before do  
+  before do
     set_subdomain(account.subdomain)
     sign_user_in(user)
     @customer = create(:customer)
@@ -13,7 +13,7 @@ describe 'invoices' do
   it 'allows user to create invoices' do
     visit invoices_path
     click_link I18n.t('invoices.index.add_new_invoice_button')
-    
+
     within('.invoice_customer') do
       select_generic(@customer.name, from: 'invoice_customer')
     end
@@ -35,7 +35,7 @@ describe 'invoices' do
 
     expect(page).to have_text I18n.t('invoices.create.notice_create')
     expect(page).to have_text @customer.name
-    
+
   end
 
   it 'display invoice validations' do
@@ -72,8 +72,9 @@ describe 'invoices' do
   describe 'when invoice exists' do
     before(:each) do
       @invoice = create(:invoice, user: user, customer: @customer, deadline: Date.tomorrow, payment_term: '')
+      sleep 5
       visit invoices_path
-      
+
       click_link I18n.t('button.show')
       expect(page).to have_text @invoice.date_of_an_invoice
       expect(page).to have_text @invoice.customer.name
@@ -111,7 +112,7 @@ describe 'invoices' do
       click_link I18n.t('button.delete')
 
       wait_for_ajax
-      
+
       expect(page).to have_text I18n.t('invoices.destroy.confirmation_msg')
 
       within('.modal-footer') do

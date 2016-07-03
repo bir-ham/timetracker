@@ -4,29 +4,26 @@ describe 'account creation' do
   let(:subdomain) { generate(:subdomain) }
   before(:each) { sign_up(subdomain) }
 
-  describe 'confirmation email' do
-    before do
-      open_email 'birhanu@example.com'
-      expect(current_email).to have_body_text("You can confirm your account email through the link below:")
-    end
-
-    context 'when clicking confirmation link in email' do
-      before :each do
-        visit_in_email 'Confirm my account'
-      end
-
-      it "shows confirmation message" do
-        expect(page).to have_content('Your account was successfully confirmed')
-      end
-
-      it "confirms user" do
-        user = User.find_for_authentication(email: 'birhanu@example.com')
-        expect(user).to be_confirmed
-      end
-    end
+  it 'confirmation message' do
+    expect(page).to have_text I18n.t('devise.registrations.signed_up_but_unconfirmed')
   end
 
-  describe 'validation' do
+  describe 'confirmation email' do
+    before :each do
+      open_email 'birhanu@example.com'
+      expect(current_email).to have_body_text("You can confirm your account email through the link below:")
+      visit_in_email 'Confirm my account'
+    end
+
+    it "shows confirmation message" do
+      expect(page).to have_content('Your account was successfully confirmed')
+    end
+
+    it "confirms user" do
+      user = User.find_for_authentication(email: 'birhanu@example.com')
+      expect(user).to be_confirmed
+    end
+
     it 'allows user to create account' do
       expect(page.current_url).to include(subdomain)
       expect(Account.all.count).to eq(1)
@@ -51,7 +48,7 @@ describe 'account creation' do
       expect { visit new_account_url(subdomain: subdomain) }.to raise_error ActionController::RoutingError
     end
   end
-    
+
   def sign_up(subdomain)
     visit root_url(subdomain: false)
     click_link 'Create Account'
@@ -68,8 +65,6 @@ describe 'account creation' do
     fill_in 'Password confirmation', with: 'pw'
     fill_in 'Subdomain', with: subdomain
     click_button 'Create Account'
-
-    expect(page).to have_text I18n.t('devise.registrations.signed_up_but_unconfirmed')
   end
 end
 
