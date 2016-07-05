@@ -2,8 +2,6 @@
   .col-sm-8.col-sm-offset-2
     .panel.panel-default
       .panel-body
-        h2 = I18n.t('invoices.new.header')
-
         = simple_form_for(@invoice,
               html: { class: 'form-horizontal' },
               warpper: :horizontal_form,
@@ -15,7 +13,7 @@
           = render "#{@invoice.current_step}_step", f: f
 
           .btn-toolbar
-            = f.button :submit, 'Back', class: 'btn btn-default' unless @invoice.first_step?
+            = f.button :submit, 'Back', name: 'back_button', class: 'btn btn-primary btn-outline' unless @invoice.first_step?
             = f.button :submit, ('Continue' unless @invoice.last_step?), class: 'btn-primary'
-          .l-b-l
-          = link_to I18n.t('button.cancel'), invoices_path, class: 'btn btn-default'
+          .m-b-l
+          = link_to I18n.t('button.cancel'), invoices_path

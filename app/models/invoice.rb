@@ -1,15 +1,16 @@
 class Invoice < ActiveRecord::Base
+  include ActiveModel::Validations
   attr_writer :current_step
 
   belongs_to :customer
   belongs_to :user
   has_many :items, dependent: :destroy
 
-  validates :customer, presence: true, if: lambda { |o| o.current_step == 'customer' }
+  validates :customer, presence: true, :if => lambda { |o| o.current_step == 'customer' }
   validates :user, presence: true, if: lambda { |o| o.current_step == 'invoice' }
   validates :date_of_an_invoice, presence: true, if: lambda { |o| o.current_step == 'invoice' }
-  validates :deadline, presence: true, allow_nil: true, if: lambda { |o| o.current_step == 'invoice' }
-  validates :payment_term, presence: true, allow_nil: true, if: lambda { |o| o.current_step == 'invoice' }
+  validates :deadline, presence: true, allow_nil: true
+  validates :payment_term, presence: true, allow_nil: true
   validates :interest_in_arrears, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 100, message: 'Interest on arrears
     percentage should be between 0 and 100' }, allow_nil: true, if: lambda { |o| o.current_step == 'invoice' }
   validates :reference_number, presence: true,
@@ -18,8 +19,8 @@ class Invoice < ActiveRecord::Base
   validates :description, length: { maximum: 300,
     too_long: "%{count} characters is the maximum allowed" }, if: lambda { |o| o.current_step == 'invoice' }
 
-  validate :choose_xor_deadline_payment_term
-  validate :date_of_an_invoice_or_deadline_cannot_be_in_the_past
+  validate :choose_xor_deadline_payment_term, if: lambda { |o| o.current_step == 'invoice' }
+  validate :date_of_an_invoice_or_deadline_cannot_be_in_the_past, if: lambda { |o| o.current_step == 'invoice' }
 
   def self.to_csv(options = {})
     CSV.generate(options) do |csv|

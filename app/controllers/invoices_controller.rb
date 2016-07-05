@@ -27,6 +27,7 @@ class InvoicesController < ApplicationController
     session[:invoice_params].deep_merge!(params[:invoice]) if params[:invoice]
     @invoice = Invoice.new(session[:invoice_params])
     @invoice.current_step = session[:invoice_step]
+    
     if @invoice.valid?
       if params[:back_button]
         @invoice.previous_step
@@ -35,7 +36,7 @@ class InvoicesController < ApplicationController
       else
         @invoice.next_step
       end
-      session[:invoice_step] = @order.current_step
+      session[:invoice_step] = @invoice.current_step
     end
     if @invoice.new_record?
       render 'new'

@@ -37,7 +37,7 @@
           |Description:
         dd = @invoice.description
 
-      - unless @items.empty?
+      - unless @invoice.items.empty?
         h3.m-b-xs = I18n.t('invoices.items.show.header')
         .table-responsive
           table.table.table-striped
