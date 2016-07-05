@@ -11,9 +11,9 @@
                 boolean: :horizontal_boolean} ) do |f|
 
           = render "#{@invoice.current_step}_step", f: f
-
-          .btn-toolbar
+          .
+          .btn-toolbar.text-center
             = f.button :submit, 'Back', name: 'back_button', class: 'btn btn-primary btn-outline' unless @invoice.first_step?
             = f.button :submit, ('Continue' unless @invoice.last_step?), class: 'btn-primary'
-          .m-b-l
-          = link_to I18n.t('button.cancel'), clear_invoice_params_url
+          .text-center.m-t-m
+            = link_to I18n.t('button.cancel'), clear_invoice_params_url

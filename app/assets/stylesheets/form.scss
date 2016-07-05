@@ -151,6 +151,11 @@ abbr, accronym {
   }
 }
 
+// Button toolbar
+.btn-toolbar.text-center .btn {
+  float: none;
+}
+
 /* Extra small devices (phones, less than 768px) */
 @media (max-width: $screen-xs-max) {
   .btn {

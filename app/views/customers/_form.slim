@@ -22,6 +22,6 @@
 
   = f.input :address, wrapper: :horizontal_form
 
-  .btn-toolbar
-    = link_to I18n.t('button.cancel'), customers_path, class: 'btn btn-default'  
+  .btn-toolbar.text-center
+    = link_to I18n.t('button.cancel'), customers_path, class: 'btn btn-primary btn-outline'  
     = f.button :submit, class: 'btn-primary'

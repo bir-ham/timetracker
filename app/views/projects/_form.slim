@@ -7,5 +7,6 @@
   - if @project.persisted? 
     = f.input :archived, as: :boolean 
   
-  .btn-toolbar
+  .btn-toolbar.text-center
+    = link_to I18n.t('button.cancel'), projects_path, class: 'btn btn-primary btn-outline'  
     = f.button :submit, class: 'btn-primary'        
