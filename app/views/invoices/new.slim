@@ -4,4 +4,18 @@
       .panel-body
         h2 = I18n.t('invoices.new.header')
 
-        = render 'form' 
+        = simple_form_for(@invoice,
+              html: { class: 'form-horizontal' },
+              warpper: :horizontal_form,
+              warpper_mappings: {  check_boxes: :horizontal_radio_and_checkboxes,
+                radio_buttons: :horizontal_radio_and_checkboxes,
+                file: :horizontal_file_input,
+                boolean: :horizontal_boolean} ) do |f|
+
+          = render "#{@invoice.current_step}_step", f: f
+
+          .btn-toolbar
+            = f.button :submit, 'Back', class: 'btn btn-default' unless @invoice.first_step?
+            = f.button :submit, ('Continue' unless @invoice.last_step?), class: 'btn-primary'
+          .l-b-l
+          = link_to I18n.t('button.cancel'), invoices_path, class: 'btn btn-default'

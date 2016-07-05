@@ -1,0 +1,20 @@
+= f.association :user, collection: User.all, label_method: :first_name, value_method: :id, label: I18n.t('invoices.new.employee'), multiple: false, prompt: 'Select employee', wrapper: :horizontal_form
+= f.input :date_of_an_invoice, as: :date, start_year: Date.today.year, order: [:day, :month, :year], wrapper: :horizontal_form
+
+fieldset.custom-fieldset
+  legend.custom-legend Choose either a Payment term or Deadline
+  - unless @invoice.errors[:base].empty?
+    .has-error
+      = f.input :payment_term, collection: 1..31, prompt: 'Select days', include_blank: '-', label: 'Payment term \n (in days)', wrapper: :horizontal_form
+      = f.input :deadline, as: :date, start_year: Date.today.year,  order: [:day, :month, :year], wrapper: :horizontal_form, prompt: '-'
+      .col-sm-3
+      .col-sm-9
+        span.help-block = @invoice.errors[:base][0]
+  - else
+    = f.input :payment_term, collection: 1..31, prompt: 'Select days',  include_blank: '-', label: 'Payment term (in days)', wrapper: :horizontal_form
+    = f.input :deadline, as: :date, start_year: Date.today.year,  order: [:day, :month, :year], wrapper: :horizontal_form, prompt: '-'
+
+= f.input :interest_in_arrears, label: 'Interest in arrears (in %)', input_html: { min: 0, max: 100 }, wrapper: :horizontal_form
+= f.input :reference_number, wrapper: :horizontal_form
+= f.input :status_type, collection: [['PAID', 'PAID'], ['PENDING', 'PENDING']], include_blank: '-', prompt: 'Set status', wrapper: :horizontal_form
+= f.input :description, wrapper: :horizontal_form

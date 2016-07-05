@@ -1,0 +1,72 @@
+h1 = I18n.t('invoices.show.header')
+  .well.well-sm
+    dl.dl-horizontal
+      dt
+        = I18n.t('invoices.show.customer')
+      dd = @invoice.customer.name
+      dt
+        = I18n.t('invoices.show.employee')
+      dd
+        = @invoice.user.first_name
+      dt
+        = I18n.t('invoices.show.date_of_an_invoice')
+      dd = @invoice.date_of_an_invoice
+      dt
+        = I18n.t('invoices.show.deadline')
+      dd = @invoice.deadline
+      dt
+        = I18n.t('invoices.show.payment_term')
+      dd = @invoice.payment_term
+      dt
+        = I18n.t('invoices.show.interest_in_arrears')
+      dd = @invoice.interest_in_arrears
+      dt
+        = I18n.t('invoices.show.reference_number')
+      dd = @invoice.reference_number
+      dt
+        = I18n.t('invoices.show.status')
+      dd
+        - if @invoice.status_type.eql?('PAID')
+          span.label.label-success = @invoice.status_type
+        - elsif @invoice.status_type.eql?('PENDING')
+          span.label.label-success = @invoice.status_type
+        - elsif @invoice.status_type.eql?('OVERDUE')
+      dt
+        |Description:
+      dd = @invoice.description
+
+    - unless @items.empty?
+      h3.m-b-xs = I18n.t('invoices.items.show.header')
+      .table-responsive
+        table.table.table-striped
+          thead
+            tr
+              th = I18n.t('invoices.items.show.name')
+              th = I18n.t('invoices.items.show.date')
+              th = I18n.t('invoices.items.show.quantity')
+              th = I18n.t('invoices.items.show.unit')
+              th = I18n.t('invoices.items.show.unit_price')
+              th = I18n.t('invoices.items.show.vat')
+              th = I18n.t('invoices.items.show.total')
+              th = I18n.t('button.delete')
+          tbody
+            - running_total = 0
+            - @items.each do |item|
+              tr
+                td = item.name
+                td = item.date
+                td = item.quantity
+                td = item.unit
+                td = number_to_currency(item.unit_price)
+                td = item.vat
+                td = number_to_currency(item.total)
+                td
+                  = link_to '#confirmation-modal-container', class: 'btn btn-danger btn-xs confirmation-button', data: { id: item.id } do
+                    = icon('trash')
+                    |&nbsp;
+                    = I18n.t('button.delete')
+              - running_total += item.total
+            tr
+              td colspan="6"
+              td = number_to_currency(running_total)
+              td
