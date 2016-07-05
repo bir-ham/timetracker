@@ -27,7 +27,7 @@ class InvoicesController < ApplicationController
     session[:invoice_params].deep_merge!(params[:invoice]) if params[:invoice]
     @invoice = Invoice.new(session[:invoice_params])
     @invoice.current_step = session[:invoice_step]
-    
+
     if @invoice.valid?
       if params[:back_button]
         @invoice.previous_step
@@ -75,6 +75,11 @@ class InvoicesController < ApplicationController
     else
       flash.now[:error] = I18n.t('invoices.distroy.error_delete')
     end
+  end
+
+  def clear_invoice_params
+    session[:invoice_step] = session[:invoice_params] = nil
+    redirect_to invoices_url
   end
 
   private

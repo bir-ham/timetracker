@@ -16,4 +16,4 @@
             = f.button :submit, 'Back', name: 'back_button', class: 'btn btn-primary btn-outline' unless @invoice.first_step?
             = f.button :submit, ('Continue' unless @invoice.last_step?), class: 'btn-primary'
           .m-b-l
-          = link_to I18n.t('button.cancel'), invoices_path
+          = link_to I18n.t('button.cancel'), clear_invoice_params_url

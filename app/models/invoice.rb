@@ -8,7 +8,7 @@ class Invoice < ActiveRecord::Base
 
   validates :customer, presence: true, :if => lambda { |o| o.current_step == 'customer' }
   validates :user, presence: true, if: lambda { |o| o.current_step == 'invoice' }
-  validates :date_of_an_invoice, presence: true, if: lambda { |o| o.current_step == 'invoice' }
+  validates :date_of_an_invoice, presence: true
   validates :deadline, presence: true, allow_nil: true
   validates :payment_term, presence: true, allow_nil: true
   validates :interest_in_arrears, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 100, message: 'Interest on arrears
