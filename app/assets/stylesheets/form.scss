@@ -5,7 +5,7 @@ abbr, accronym {
 // Input fields
 .form-control {
   border: 1px solid $light-grey;
-  @include border-radius(3px);  
+  @include border-radius(3px);
   box-shadow: none;
   font-size: 14px;
   height: 34px;
@@ -60,7 +60,7 @@ abbr, accronym {
   background-position: 0 0;
 }
 
-// Customize date dropdowns take auto width 
+// Customize date dropdowns take auto width
 .date > .col-sm-9 .form-control {
   display: inline-block;
   width: auto;
@@ -68,7 +68,7 @@ abbr, accronym {
 
 // Buttons
 .btn {
-  @include border-radius(3px);  
+  @include border-radius(3px);
 }
 
 .btn-primary {
@@ -154,6 +154,16 @@ abbr, accronym {
 // Button toolbar
 .btn-toolbar.text-center .btn {
   float: none;
+}
+
+// dropdown-select
+select {
+  @include web-appearance(none);
+  text-indent: 0.01px;
+  text-overflow: '';
+  background-image: asset-url('angle-down-16.png') !important;
+  background-position: 98% 50%;
+  background-repeat: no-repeat;
 }
 
 /* Extra small devices (phones, less than 768px) */
