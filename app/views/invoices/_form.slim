@@ -27,6 +27,6 @@
   = f.input :status_type, collection: [['PAID', 'PAID'], ['PENDING', 'PENDING']], include_blank: '-', prompt: 'Set status', wrapper: :horizontal_form
   = f.input :description, wrapper: :horizontal_form
 
-  .btn-toolbar
-    = link_to I18n.t('button.cancel'), invoices_path, class: 'btn btn-default'  
+  .btn-toolbar.text-center
+    = link_to I18n.t('button.cancel'), invoices_path, class: 'btn btn-primary btn-outline'  
     = f.button :submit, class: 'btn-primary'
