@@ -17,6 +17,9 @@ describe 'invoices' do
     within('.invoice_customer') do
       select_generic(@customer.name, from: 'invoice_customer')
     end
+
+    submit_form
+
     within('.invoice_user') do
       select_generic(user.first_name, from: 'invoice_user')
     end
@@ -33,15 +36,25 @@ describe 'invoices' do
 
     submit_form
 
+    expect(page).to have_text @customer.name
+    expect(page).to have_text '1234'
+
+    submit_form
+
     expect(page).to have_text I18n.t('invoices.create.notice_create')
     expect(page).to have_text @customer.name
-
   end
 
   it 'display invoice validations' do
     visit invoices_path
     click_link I18n.t('invoices.index.add_new_invoice_button')
 
+    within('.invoice_customer') do
+      select_generic(@customer.name, from: 'invoice_customer')
+    end
+
+    submit_form
+    
     fill_in 'Reference number', with: 'abcd'
     fill_in 'Description', with: 'Lorem lipsum'
 
