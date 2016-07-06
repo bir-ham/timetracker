@@ -1,26 +1,25 @@
 class Invoice < ActiveRecord::Base
-  include ActiveModel::Validations
   attr_accessor :current_step
 
   belongs_to :customer
   belongs_to :user
   has_many :items, dependent: :destroy
 
-  validates :customer, presence: true, if: :customer? 
-  validates :user, presence: true, if: :invoice?
-  validates :date_of_an_invoice, presence: true, if: :invoice?
+  validates :customer, presence: true, if: lambda { |o| o.current_step == 'customer' }
+  validates :user, presence: true, if: lambda { |o| o.current_step == 'invoice' }
+  validates :date_of_an_invoice, presence: true, if: lambda { |o| o.current_step == 'invoice' }
   validates :deadline, presence: true, allow_nil: true
   validates :payment_term, presence: true, allow_nil: true
   validates :interest_in_arrears, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 100, message: 'Interest on arrears
-    percentage should be between 0 and 100' }, allow_nil: true, if: :invoice?
+    percentage should be between 0 and 100' }, allow_nil: true, if: lambda { |o| o.current_step == 'invoice' }
   validates :reference_number, presence: true,
     uniqueness: true,
-    numericality: { greater_than_or_equal_to: 0 }, if: :invoice?
+    numericality: { greater_than_or_equal_to: 0 }, if: lambda { |o| o.current_step == 'invoice' }
   validates :description, length: { maximum: 300,
-    too_long: "%{count} characters is the maximum allowed" }, if: :invoice?
+    too_long: "%{count} characters is the maximum allowed" }, if: lambda { |o| o.current_step == 'invoice' }
 
-  validate :choose_xor_deadline_payment_term, if: :invoice?
-  validate :date_of_an_invoice_or_deadline_cannot_be_in_the_past, if: :invoice?
+  validate :choose_xor_deadline_payment_term, if: lambda { |o| o.current_step == 'invoice' }
+  validate :date_of_an_invoice_or_deadline_cannot_be_in_the_past, if: lambda { |o| o.current_step == 'invoice' }
 
   def self.to_csv(options = {})
     CSV.generate(options) do |csv|
@@ -29,14 +28,6 @@ class Invoice < ActiveRecord::Base
         csv << invoice.attributes.values_at(*column_names)
       end
     end
-  end
-
-  def customer?
-    lambda { |o| o.current_step == 'customer' }  
-  end
-
-  def invoice?
-    lambda { |o| o.current_step == 'invoice' }  
   end
 
   # setter
