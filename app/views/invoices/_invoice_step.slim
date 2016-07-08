@@ -1,6 +1,6 @@
 h2.text-center
   = I18n.t('invoices.new.header')
-  small = I18n.t('invoices.index.header')
+  small = I18n.t('invoices.new.invoice_details')
 
 = f.association :user, collection: User.all, label_method: :first_name, value_method: :id, label: I18n.t('invoices.new.employee'), multiple: false, prompt: 'Select employee', wrapper: :horizontal_form
 = f.input :date_of_an_invoice, as: :date, start_year: Date.today.year, order: [:day, :month, :year], wrapper: :horizontal_form

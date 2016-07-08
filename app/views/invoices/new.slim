@@ -1,3 +1,4 @@
+- breadcrumb :new_invoice, @invoice
 .row
   .col-sm-8.col-sm-offset-2
     .panel.panel-default
@@ -11,7 +12,7 @@
                 boolean: :horizontal_boolean} ) do |f|
 
           = render "#{@invoice.current_step}_step", f: f
-          .
+        
           .btn-toolbar.text-center
             = f.button :submit, 'Back', name: 'back_button', class: 'btn btn-primary btn-outline' unless @invoice.first_step?
             = f.button :submit, ('Continue' unless @invoice.last_step?), class: 'btn-primary'

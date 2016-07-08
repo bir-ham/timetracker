@@ -115,6 +115,8 @@ en:
       create_invoice_button: Create Invoice
       employee: Employee
       confirmation: Confirmation
+      invoice_details: Invoice details 
+      customer_details: Customer details
     edit:
       header: Edit Invoice
     show:

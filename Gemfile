@@ -32,6 +32,7 @@ gem 'carrierwave'
 gem 'country_select'
 gem 'simple_form_fancy_uploads'
 gem 'capybara-webkit'
+gem 'gretel'
 
 group :development, :test do
   gem 'pry-remote'
