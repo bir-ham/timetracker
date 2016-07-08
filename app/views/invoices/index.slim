@@ -1,4 +1,4 @@
-- breadcrumb :invoices, @invoice
+- breadcrumb :invoices
 .row
   .col-sm-12
     .clearfix
@@ -32,7 +32,7 @@
               th = I18n.t('invoices.show.deadline')
               th = I18n.t('invoices.show.total')
               th = I18n.t('invoices.show.status')
-              th = I18n.t('button.show')
+              th = I18n.t('button.view')
           tbody
             - @invoices.each do |invoice|
               tr
@@ -52,7 +52,7 @@
                   = link_to invoice, class: 'btn btn-info btn-xs' do
                     = icon('eye')
                     |&nbsp; 
-                    = I18n.t('button.show')
+                    = I18n.t('button.view')
 
       h4 Export Invoices:
       .btn-toolbar

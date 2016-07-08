@@ -25,7 +25,7 @@ en:
     cancel: Cancel
     next: Next
     delete: Delete
-    show: Show
+    view: View
     edit: Edit
     back: Back
     exit: Exit
@@ -51,6 +51,7 @@ en:
     edit:
       header: Edit accout information
     show:
+      header: Account
       subdomain: Subdomain
       industry: Industry 
       phone_number: Phone number
@@ -72,6 +73,9 @@ en:
     new:
       header: New Project
       notice_create: "Project created!"
+    edit:
+      new:
+      header: Edit Project  
     update:
       header: Update Project
       notice_update: "Project updated!"

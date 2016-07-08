@@ -6,7 +6,7 @@ aside#sidebar.navbar-default.navbar-static-side role="navigation" data-step="2" 
               = link_to (image_tag !current_account.logo.nil? ? current_account.logo.thumb : 'logo-placeholder'), current_account, id: 'company-logo-link'
               strong.visible-all-block.text-uppercase.m-t-xs = current_account.subdomain
               .m-t-xs
-              = link_to '#', class: 'name' do
+              = link_to current_account, class: 'name' do
                 = icon('user')
                 |&nbsp;
                 strong = current_user.first_name

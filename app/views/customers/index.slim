@@ -1,3 +1,4 @@
+- breadcrumb :customers
 .row
   .col-sm-12
     - unless @customers.empty?
@@ -9,7 +10,7 @@
               th = I18n.t('customers.show.phone_number')
               th = I18n.t('customers.show.email')
               th = I18n.t('customers.show.address')
-              th = I18n.t('button.show')
+              th = I18n.t('button.view')
           tbody
             - @customers.each do |customer|
               tr
@@ -21,7 +22,7 @@
                   = link_to customer, class: 'btn btn-info btn-xs' do
                     = icon('eye')
                     |&nbsp; 
-                    = I18n.t('button.show')
+                    = I18n.t('button.view')
      
     - else
       p.text-danger = I18n.t('customers.index.empty_customers')

@@ -88,7 +88,7 @@ describe 'invoices' do
       sleep 5
       visit invoices_path
 
-      click_link I18n.t('button.show')
+      click_link I18n.t('button.view')
       expect(page).to have_text @invoice.date_of_an_invoice
       expect(page).to have_text @invoice.customer.name
       expect(page).to have_text @invoice.reference_number
