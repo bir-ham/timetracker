@@ -2,10 +2,17 @@ require 'rails_helper'
 
 RSpec.describe Invoice, type: :model do
   describe 'validations' do
-    it { should validate_presence_of :customer }
+    
+    subject { (described_class.new) }
 
     context 'if invoice step' do 
-      before { subject { lambda { |i| i.current_step == 'invoice' } } }
+      before { subject.current_step = 'customer' }
+      
+      it { should validate_presence_of :customer }
+    end  
+
+    context 'if invoice step' do 
+      before { subject.current_step = 'invoice' }
 
       it { should validate_presence_of :user }
       it { should validate_presence_of :date_of_an_invoice }
@@ -19,9 +26,9 @@ RSpec.describe Invoice, type: :model do
       it { should allow_value('lorem').for(:description) }
 
       it 'should validate deadline or payment term' do 
-        expect(build(:invoice, deadline: Date.current.tomorrow, payment_term: '')).to be_valid
-        expect(build(:invoice, deadline: '', payment_term: '2')).to be_valid
-        expect(build(:invoice, deadline: Date.current.tomorrow, payment_term: '2')).to be_invalid
+        expect(build(:invoice, deadline: Date.current.tomorrow, payment_term: nil)).to be_valid
+        expect(build(:invoice, deadline: '', payment_term: 2)).to be_valid
+        expect(build(:invoice, deadline: Date.current.tomorrow, payment_term: 2)).to be_invalid
       end
     end  
   end
