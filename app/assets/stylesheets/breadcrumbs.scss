@@ -1,0 +1,119 @@
+#breadcrumb-wrapper {
+  width: 423px;
+  margin: auto;
+  margin-left: 0;
+}
+.authen-wrapper {
+  #breadcrumb-wrapper {
+    width: auto;
+  }
+}
+
+.breadcrumb-custom {
+  list-style: none;
+  overflow: hidden;
+  font: 1em  Helvetica, Arial, Sans-Serif;
+  background: #fff;
+  padding: 0 0;
+  border-radius: 0;
+}
+
+.breadcrumb-custom li {
+  float: left;
+}
+
+.breadcrumb-custom li a {
+  color: white;
+  text-decoration: none;
+  padding: 10px 0 10px 55px;
+  background: brown;                   /* fallback color */
+  background: hsla(34,85%,35%,1);
+  position: relative;
+  display: block;
+  float: left;
+  cursor: cursor;
+}
+
+.breadcrumb-custom li a:after {
+  content: " ";
+  display: block;
+  width: 0;
+  height: 0;
+  border-top: 50px solid transparent;           /* Go big on the size, and let overflow hide */
+  border-bottom: 50px solid transparent;
+  border-left: 30px solid hsla(34,85%,35%,1);
+  position: absolute;
+  top: 50%;
+  margin-top: -50px;
+  left: 100%;
+  z-index: 2;
+}
+
+.breadcrumb-custom li a:before {
+  content: " ";
+  display: block;
+  width: 0;
+  height: 0;
+  border-top: 50px solid transparent;           /* Go big on the size, and let overflow hide */
+  border-bottom: 50px solid transparent;
+  border-left: 30px solid white;
+  position: absolute;
+  top: 50%;
+  margin-top: -50px;
+  margin-left: 1px;
+  left: 100%;
+  z-index: 1;
+}
+
+.breadcrumb-custom li:first-child a {
+  padding-left: 10px;
+}
+
+.breadcrumb-custom li a       { background:        hsla(0, 0%, 77%, 1); }
+.breadcrumb-custom li a:after { border-left-color: hsla(0, 0%, 77%, 1); }
+
+.breadcrumb-custom-visited {
+  background: hsla(42.4,100%,50%,1)!important;
+  &:after { border-left-color: hsla(42.4,100%,50%,1) !important; }
+  color: #333 !important;
+}
+
+.breadcrumb-step {
+  font-size: 16px;
+  padding-top: 5px;
+  font-weight: bold;
+  color: $black;
+
+  &.breadcrumb-step-big {
+    font-size: 24px;
+  }
+}
+
+
+ul.breadcrumb-slim {
+  padding: 0;
+  margin: 0;
+
+  li {
+    list-style: none;
+    display: inline-block;
+    border-bottom: 4px solid #aaa;
+    color: #aaa;
+    font-size: 32px;
+    margin-right: 5px;
+    line-height: 1.1;
+    padding: 0px 5px;
+  }
+
+  li.breadcrumb-active {
+    color: $black;
+    border-color: $black;
+  }
+}
+
+ul.breadcrumb-slim.breadcrumb-slim-small {
+
+  li {
+    font-size: 24px;
+  }
+}
