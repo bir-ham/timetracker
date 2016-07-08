@@ -1,8 +1,8 @@
 - breadcrumb :show_invoice, @invoice
 .row
-  .col-md-8
-    h1 = I18n.t('invoices.show.header')
-    .well.well-sm
+  .col-sm-8
+    .well
+      h1 = I18n.t('invoices.show.header')
       dl.dl-horizontal
         dt
           = I18n.t('invoices.show.customer')
@@ -76,19 +76,20 @@
 
       = link_to I18n.t('invoices.items.new.add_item_button'), new_invoice_item_path(@invoice), class: 'btn btn-primary'
 
-    .btn-toolbar
-      /= link_to @invoice, method: :delete, class: 'btn btn-danger btn-sm', data: { confirm: I18n.t('invoices.index.are_you_sure') } do
-        = icon('trash')
-        |&nbsp;
-        = I18n.t('button.delete')
-      = link_to '#confirmation-modal-container', class: 'btn btn-danger confirmation-button', data: { id: @invoice.id } do
-        = icon('trash')
-        |&nbsp;
-        = I18n.t('button.delete')
+      .page-header
+      .btn-toolbar
+        /= link_to @invoice, method: :delete, class: 'btn btn-danger btn-sm', data: { confirm: I18n.t('invoices.index.are_you_sure') } do
+          = icon('trash')
+          |&nbsp;
+          = I18n.t('button.delete')
+        = link_to '#confirmation-modal-container', class: 'btn btn-danger confirmation-button', data: { id: @invoice.id } do
+          = icon('trash')
+          |&nbsp;
+          = I18n.t('button.delete')
 
-      = link_to edit_invoice_path(@invoice), class: 'btn btn-primary' do
-        = icon('pencil-square-o white')
-        |&nbsp;
-        = I18n.t('button.edit')
+        = link_to edit_invoice_path(@invoice), class: 'btn btn-primary' do
+          = icon('pencil-square-o white')
+          |&nbsp;
+          = I18n.t('button.edit')
 
 == render 'layouts/confirmation_modal'

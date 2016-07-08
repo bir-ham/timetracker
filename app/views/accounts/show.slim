@@ -1,16 +1,16 @@
 - breadcrumb :show_account, @account
 .row
   .col-sm-6
-    h1 = @account.subdomain
-    .well.well-sm
+    .well
       .media
         .media-left
+          h1.text-capitalize = @account.subdomain
           = image_tag !@account.logo.nil? ? @account.logo.normal : 'logo-placeholder', class: 'thumbnail'
         .media-body
           dl.dl-horizontal        
             dt 
-              = I18n.t('accounts.show.subdomain')
-            dd.text-capitalize = @account.subdomain
+              = I18n.t('accounts.show.url')
+            dd www.#{@account.subdomain}.toolsio.com
             dt 
               = I18n.t('accounts.show.industry')
             dd = @account.industry
@@ -36,12 +36,12 @@
             dt 
               = I18n.t('accounts.show.country')
             dd = @account.country
-
+      .m-t-m      
       = link_to edit_account_path(@account), class: 'btn btn-primary' do
         = icon('pencil-square-o white')
         |&nbsp;
         = I18n.t('button.edit')
-
+      .m-b-s  
     .m-b-xl    
     = link_to '#confirmation-modal-container', class: 'btn btn-danger confirmation-button', data: { id: @account.id } do
       = icon('trash')

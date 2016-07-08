@@ -7,9 +7,14 @@ crumb :show_account do |account|
   link account.subdomain, account_path(account)
 end
 
+# user
+crumb :users do
+  link I18n.t('users.index.header'), users_path
+end
+
 # project
 crumb :projects do
-  link "Projects", projects_path
+  link I18n.t('projects.index.header'), projects_path
 end
 
 crumb :show_project do |project|
