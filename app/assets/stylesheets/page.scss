@@ -51,7 +51,7 @@
     float: left;
   }
   #topbar-search input {
-    padding: 17px 30px !important;
+    padding: 15px 30px !important;
     height: 100%;
     border: 0 !important;
     @include border-radius(0);
@@ -349,8 +349,19 @@ span.block {
   }    
 }
 
-.left-side-collapsed .navbar-static-side ul#side-menu li a span {
-  display: none;
+.left-side-collapsed .navbar-static-side {
+  ul#side-menu li a span { 
+    display: none;
+  }    
+  .company-profile {
+    padding: 20px 5px; 
+    a.name, strong {
+      display: none !important;
+    }
+  }    
+  .company-profile img {
+    @extend .img-responsive;
+  }    
 }
 
 // Container

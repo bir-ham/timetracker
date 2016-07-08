@@ -5,7 +5,7 @@ class Account < ActiveRecord::Base
 
   validates :owner, presence: true
   validates :subdomain, presence: true,
-    uniqueness: { case_sensitive: false },
+    uniqueness: true,
     format: { with: /\A[\w\-]+\Z/i, message: 'contains invalid characters' },
     exclusion: { in: RESTRICTED_SUBDOMAINS, message: 'restricted' }
   validates :industry, presence: false, allow_blank: true  
@@ -20,7 +20,7 @@ class Account < ActiveRecord::Base
     length: { maximum: 100, too_long: "%{count} characters is the maximum allowed" }  
   validates :zip, presence: false, allow_blank: true, numericality: true
   validates :town, presence: false, allow_blank: true  
-  validates :country, presence: false, allow_blank: true  
+  validates :country, presence: false, allow_nil: true  
 
   mount_uploader :logo, LogoUploader 
 
@@ -30,7 +30,7 @@ class Account < ActiveRecord::Base
   before_validation :downcase_subdomain
 
   private
-  def downcase_subdomain
-    self.subdomain = subdomain.try(:downcase)
-  end
+    def downcase_subdomain
+      self.subdomain = subdomain.try(:downcase)
+    end
 end

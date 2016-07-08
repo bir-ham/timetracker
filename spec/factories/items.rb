@@ -1,11 +1,13 @@
 FactoryGirl.define do
   factory :item do
+    association :invoice 
+
     name "MyString"
-    date "2016-06-08"
+    date Date.tomorrow
     quantity 1
     unit "MyString"
-    unit_price "9.99"
+    unit_price 9.99
     vat 1
-    invoice nil
+    total 0
   end
 end

@@ -365,6 +365,13 @@ dt {
   margin: 0 !important;
 }
 
+// alignment
+.vertical-text {
+  transform: rotate(-90deg);
+  transform-origin: left top 0;
+  @include transition(2s);
+}
+
 /* Extremely very extra small devices (phones, less than 480px) */
 @media (max-width: $screen-xxxs-max) {
   .visible-xxxs {

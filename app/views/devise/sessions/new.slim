@@ -9,11 +9,11 @@
               :url => session_path(resource_name),
               wrapper_mappings: { boolean: :vertical_boolean }) do |f|
           .input-group
-            = f.input_field :email, label: false, class: 'form-control input-lg', placeholder: 'Email'
+            = f.input_field :email, label: false, class: 'form-control', placeholder: 'Email'
             span.input-group-addon.glyphicon.glyphicon-user
           br
           .input-group
-            = f.input_field :password, label: false, class: 'form-control input-lg', placeholder: 'Password'
+            = f.input_field :password, label: false, class: 'form-control', placeholder: 'Password'
             span.input-group-addon.glyphicon.glyphicon-lock
 
           - if devise_mapping.rememberable?

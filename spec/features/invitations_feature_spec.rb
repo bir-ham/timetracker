@@ -20,32 +20,31 @@ describe 'invitations' do
 
   it 'shows the owner in the authorized users list' do
    	expect(page).to have_content user.first_name
-    expect(page).to have_content user.second_name
+    expect(page).to have_content user.last_name
   	expect(page).to have_content user.email
   	expect(page).to have_selector '.glyphicon-ok'
   end
 
   describe 'when user is invited' do
     before do
-      fill_in 'Email', with: 'birhanu@bizdesc.com'
+      fill_in 'Email', with: 'birhanu@example.com'
       click_button I18n.t('users.index.invite_user')
     end
 
     it 'shows invitation when user is invited' do
     	expect(page).to have_content 'invitation email has been sent'
-    	expect(page).to have_content 'birhanu@bizdesc.com'
+    	expect(page).to have_content 'birhanu@example.com'
     	expect(page).to have_content 'Invitation Pending'
     end
 
     context 'user accepts invitation' do
       before do
         click_link 'Sign out'
-
-        open_email 'birhanu@bizdesc.com'
+        open_email 'birhanu@example.com'
         visit_in_email 'Accept invitation'
 
         fill_in 'First name', with: 'Birhanu test'
-        fill_in 'Second name', with: 'Hailemariam'
+        fill_in 'Last name', with: 'Hailemariam'
         fill_in 'Password', with: 'pw'
         fill_in 'Password confirmation', with: 'pw'
         click_button I18n.t('devise.invitations.edit.create_account_button')

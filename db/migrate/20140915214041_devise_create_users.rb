@@ -2,7 +2,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
   def change
     create_table(:users) do |t|
       t.string :first_name
-      t.string :second_name
+      t.string :last_name
 
       ## Database authenticatable
       t.string :email,              :null => false, :default => ""

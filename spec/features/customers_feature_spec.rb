@@ -53,11 +53,11 @@ describe 'customers' do
       expect(page).to have_text "Alex edited"
     end
 
-    it 'allows customer to be deleted' do
+    it 'allows customer to be deleted', js: true do
       click_link I18n.t('button.delete')
       
-      expect(page).to have_css('.modal-dialog', count: 30)     
-      sleep(5)
+      wait_for_ajax
+
       expect(page).to have_text I18n.t('customers.destroy.confirmation_msg') 
 
       within('.modal-footer') do 

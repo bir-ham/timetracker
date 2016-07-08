@@ -10,7 +10,7 @@
                   warpper: :vertical_form) do |f|
           = f.fields_for :owner do |o|
             = o.input :first_name
-            = o.input :second_name
+            = o.input :last_name
             = o.input :email, :required => true
             = o.input :password, :required => true
             = o.input :password_confirmation, :required => true

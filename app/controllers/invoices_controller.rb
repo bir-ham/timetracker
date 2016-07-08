@@ -18,15 +18,31 @@ class InvoicesController < ApplicationController
   end
 
   def new
-    @invoice = Invoice.new
+    session[:invoice_params] ||= {}
+    @invoice = Invoice.new(session[:invoice_params])
+    @invoice.current_step = session[:invoice_step]
   end
 
   def create
-    @invoice = Invoice.new(invoice_params)
-    if @invoice.save
-      redirect_to invoices_path, notice: I18n.t('invoices.create.notice_create')
+    session[:invoice_params].deep_merge!(params[:invoice]) if params[:invoice]
+    @invoice = Invoice.new(session[:invoice_params])
+    @invoice.current_step = session[:invoice_step]
+
+    if @invoice.valid?
+      if params[:back_button]
+        @invoice.previous_step
+      elsif @invoice.last_step?
+        @invoice.save if @invoice.all_valid?
+      else
+        @invoice.next_step
+      end
+      session[:invoice_step] = @invoice.current_step
+    end
+    if @invoice.new_record?
+      render 'new'
     else
-      render :new
+      session[:invoice_step] = session[:invoice_params] = nil
+      redirect_to invoices_path, notice: I18n.t('invoices.create.notice_create')
     end
   end
 
@@ -43,6 +59,7 @@ class InvoicesController < ApplicationController
 
   def update
     @invoice = Invoice.find(params[:id])
+    @items = @invoice.items
     if @invoice.update_attributes(invoice_params)
       flash.now[:success] = I18n.t('invoices.update.success_update')
       render :show
@@ -60,10 +77,15 @@ class InvoicesController < ApplicationController
     end
   end
 
+  def clear_invoice_params
+    session[:invoice_step] = session[:invoice_params] = nil
+    redirect_to invoices_url
+  end
+
   private
     def invoice_params
-      params.require(:invoice).permit(:customer_id, :user_id, :date_of_an_invoice,
-        :deadline, :payment_term, :interest_in_arrears, :reference_number, :status_type, :description)
+      params.require(:invoice).permit(:date_of_an_invoice, :deadline, :payment_term, :interest_in_arrears,
+        :reference_number, :status_type, :description, :customer_id, :user_id)
     end
 
 end

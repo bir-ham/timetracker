@@ -5,8 +5,8 @@
                 radio_buttons: :horizontal_radio_and_checkboxes,
                 file: :horizontal_file_input,
                 boolean: :horizontal_boolean} ) do |f|
-  = f.input :customer_id, collection: Customer.all, label_method: :name, value_method: :id, prompt: 'Select existing customer', multiple: false, wrapper: :horizontal_form
-  = f.input :user_id, collection: User.all, label_method: :first_name, value_method: :id, label: I18n.t('invoices.new.employee'), prompt: 'Select employee', wrapper: :horizontal_form
+  = f.association :customer, collection: Customer.all, label_method: :name, value_method: :id, prompt: 'Select existing customer', multiple: false, wrapper: :horizontal_form
+  = f.association :user, collection: User.all, label_method: :first_name, value_method: :id, label: I18n.t('invoices.new.employee'), multiple: false, prompt: 'Select employee', wrapper: :horizontal_form
   = f.input :date_of_an_invoice, as: :date, start_year: Date.today.year, order: [:day, :month, :year], wrapper: :horizontal_form
   
   fieldset.custom-fieldset 
@@ -27,6 +27,6 @@
   = f.input :status_type, collection: [['PAID', 'PAID'], ['PENDING', 'PENDING']], include_blank: '-', prompt: 'Set status', wrapper: :horizontal_form
   = f.input :description, wrapper: :horizontal_form
 
-  .btn-toolbar
-    = link_to I18n.t('button.cancel'), invoices_path, class: 'btn btn-default'  
+  .btn-toolbar.text-center
+    = link_to I18n.t('button.cancel'), invoices_path, class: 'btn btn-primary btn-outline'  
     = f.button :submit, class: 'btn-primary'

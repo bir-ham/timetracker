@@ -1,16 +1,21 @@
 FactoryGirl.define do
   factory :invoice do
-    association :customer, strategy: :build 
-    association :user, strategy: :build 
+    association :customer
+    association :user
 
-    customer_id 1
-    user_id 1
-    #date "2016-02-20 18:53:05"
+    factory :invoice_with_item do
+      payment_term ""
+      after(:create) do |invoice|
+        create(:item, invoice: invoice)
+      end  
+    end
+
     date_of_an_invoice Date.tomorrow
     deadline Date.tomorrow
-    payment_term "2"
-    interest_in_arrears "9"
-    reference_number "1234"
+    payment_term 2
+    interest_in_arrears 9
+    sequence(:reference_number) { |n| "1234#{n}" }
+    description 'Lorem lipsum'
   end
 
 end
