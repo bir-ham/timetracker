@@ -18,11 +18,12 @@ describe 'invoices' do
       select_generic(@customer.name, from: 'invoice_customer')
     end
 
-    submit_form
-
     within('.invoice_user') do
       select_generic(user.first_name, from: 'invoice_user')
     end
+
+    submit_form
+
     fill_in 'Reference number', with: '1234'
     fill_in 'Description', with: 'Lorem lipsum'
 
@@ -53,6 +54,10 @@ describe 'invoices' do
       select_generic(@customer.name, from: 'invoice_customer')
     end
 
+    within('.invoice_user') do
+      select_generic(user.first_name, from: 'invoice_user')
+    end
+    
     submit_form
     
     fill_in 'Reference number', with: 'abcd'
@@ -88,7 +93,7 @@ describe 'invoices' do
       sleep 5
       visit invoices_path
 
-      click_link I18n.t('button.show')
+      click_link I18n.t('button.view')
       expect(page).to have_text @invoice.date_of_an_invoice
       expect(page).to have_text @invoice.customer.name
       expect(page).to have_text @invoice.reference_number

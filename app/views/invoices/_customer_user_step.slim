@@ -1,0 +1,6 @@
+h2.text-center
+  = I18n.t('invoices.new.header')
+  small = I18n.t('invoices.new.customer_and_user_details')
+
+= f.association :customer, collection: Customer.all, label_method: :name, value_method: :id, prompt: 'Select existing customer', multiple: false, wrapper: :horizontal_form
+= f.association :user, collection: User.all, label_method: :first_name, value_method: :id, label: I18n.t('invoices.new.employee'), multiple: false, prompt: 'Select employee', wrapper: :horizontal_form

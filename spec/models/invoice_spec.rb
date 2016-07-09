@@ -6,15 +6,15 @@ RSpec.describe Invoice, type: :model do
     subject { (described_class.new) }
 
     context 'if invoice step' do 
-      before { subject.current_step = 'customer' }
+      before { subject.current_step = 'customer_user' }
       
       it { should validate_presence_of :customer }
+      it { should validate_presence_of :user }
     end  
 
     context 'if invoice step' do 
       before { subject.current_step = 'invoice' }
 
-      it { should validate_presence_of :user }
       it { should validate_presence_of :date_of_an_invoice }
       it { should validate_presence_of :reference_number }
       it { should validate_uniqueness_of :reference_number }

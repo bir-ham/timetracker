@@ -12,7 +12,7 @@
               th = I18n.t('items.show.unit_price')
               th = I18n.t('items.show.vat')
               th = I18n.t('items.show.total')
-              th = I18n.t('button.show')
+              th = I18n.t('button.view')
           tbody
             - @items.each do |item|
               tr
@@ -28,7 +28,7 @@
                   = link_to item, class: 'btn btn-info btn-xs' do
                     = icon('eye')
                     |&nbsp;
-                    = I18n.t('button.show')
+                    = I18n.t('button.view')
 
     .btn-toolbar
       = link_to new_item_path, class: 'btn btn-primary'

@@ -1,17 +1,37 @@
+- breadcrumb :new_invoice, @invoice
 .row
   .col-sm-8.col-sm-offset-2
-    .panel.panel-default
-      .panel-body
-        = simple_form_for(@invoice,
-              html: { class: 'form-horizontal' },
-              warpper: :horizontal_form,
-              warpper_mappings: {  check_boxes: :horizontal_radio_and_checkboxes,
-                radio_buttons: :horizontal_radio_and_checkboxes,
-                file: :horizontal_file_input,
-                boolean: :horizontal_boolean} ) do |f|
-
+    = simple_form_for(@invoice,
+          html: { class: 'form-horizontal' },
+          warpper: :horizontal_form,
+          warpper_mappings: {  check_boxes: :horizontal_radio_and_checkboxes,
+            radio_buttons: :horizontal_radio_and_checkboxes,
+            file: :horizontal_file_input,
+            boolean: :horizontal_boolean} ) do |f|
+      ul.breadcrumb-multi-step-form     
+        - if @invoice.first_step?
+          li = link_to I18n.t('invoices.new.customer_and_user_details'), new_invoice_path, class: 'breadcrumb-multi-step-form-visited'
+          li = link_to I18n.t('invoices.new.invoice_details'), '#'
+          li = link_to I18n.t('invoices.new.confirmation'), '#'
+        - elsif @invoice.second_step?
+          li 
+            = link_to '#', class: 'breadcrumb-multi-step-form-visited' do
+              = button_tag I18n.t('invoices.new.customer_and_user_details'), type: 'link', name: 'back_button', class: 'button-to-link'
+            end  
+          li = link_to I18n.t('invoices.new.invoice_details'), '#', class: 'breadcrumb-multi-step-form-visited'  
+          li = link_to I18n.t('invoices.new.confirmation'), '#'
+        - elsif @invoice.last_step?
+          li = link_to I18n.t('invoices.new.customer_and_user_details'), new_invoice_path, class: 'breadcrumb-multi-step-form-visited'    
+          li 
+            = link_to '#', class: 'breadcrumb-multi-step-form-visited' do
+              = button_tag I18n.t('invoices.new.invoice_details'), name: 'back_button', class: 'button-to-link'    
+            end  
+          li = link_to I18n.t('invoices.new.confirmation'), '#', class: 'breadcrumb-multi-step-form-visited'    
+      .panel.panel-default
+        .panel-body
+        
           = render "#{@invoice.current_step}_step", f: f
-          .
+        
           .btn-toolbar.text-center
             = f.button :submit, 'Back', name: 'back_button', class: 'btn btn-primary btn-outline' unless @invoice.first_step?
             = f.button :submit, ('Continue' unless @invoice.last_step?), class: 'btn-primary'

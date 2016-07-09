@@ -36,7 +36,7 @@ describe 'customers' do
       @customer = create(:customer) 
       visit customers_path
    
-      click_link I18n.t('button.show')
+      click_link I18n.t('button.view')
       expect(page).to have_text @customer.name 
     
       expect(page).to have_link I18n.t('button.delete')

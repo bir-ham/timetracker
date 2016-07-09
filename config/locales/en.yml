@@ -25,7 +25,7 @@ en:
     cancel: Cancel
     next: Next
     delete: Delete
-    show: Show
+    view: View
     edit: Edit
     back: Back
     exit: Exit
@@ -51,6 +51,8 @@ en:
     edit:
       header: Edit accout information
     show:
+      header: View Account
+      url: URL
       subdomain: Subdomain
       industry: Industry 
       phone_number: Phone number
@@ -72,6 +74,9 @@ en:
     new:
       header: New Project
       notice_create: "Project created!"
+    edit:
+      new:
+      header: Edit Project  
     update:
       header: Update Project
       notice_update: "Project updated!"
@@ -92,7 +97,7 @@ en:
     edit:
       header: Edit customer
     show:
-      header: Show customer
+      header: View Customer
       name: Name
       phone_number: Phone number
       email: Email
@@ -115,10 +120,12 @@ en:
       create_invoice_button: Create Invoice
       employee: Employee
       confirmation: Confirmation
+      invoice_details: Invoice details 
+      customer_and_user_details: Customer and user details
     edit:
       header: Edit Invoice
     show:
-      header: Show Invoice
+      header: View Invoice
       id: Id
       customer: Customer
       date_of_an_invoice: Date
@@ -147,7 +154,7 @@ en:
       edit:
         header: Edit Item
       show:
-        header: Items
+        header: View Item
         name: Name
         quantity: Quantity
         date: Date
