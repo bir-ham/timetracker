@@ -170,6 +170,16 @@ select.date {
   background-position: 93% 50%;
 }
 
+// input to link
+.button-to-link {
+  background:none!important;
+  border:none; 
+  padding:0!important;
+  font: inherit;
+  /*border is optional*/
+  cursor: pointer;
+}
+
 /* Extra small devices (phones, less than 768px) */
 @media (max-width: $screen-xs-max) {
   .btn {

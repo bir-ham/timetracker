@@ -1,6 +1,9 @@
 #title-breadcrumb-option-demo.page-title-breadcrumb
   .page-header.pull-left
-    h2.page-title = controller.controller_name
+    - unless is_controller_name? 'homepages'
+      h2.page-title = controller.controller_name
+    - else
+      h2.page-title = I18n.t('dashboards.index.header')  
     small Descripiton text goes
     
   == breadcrumbs display_single_fragment: true, class: 'breadcrumb page-breadcrumb pull-right', style: :bootstrap

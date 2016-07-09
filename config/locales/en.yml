@@ -121,7 +121,7 @@ en:
       employee: Employee
       confirmation: Confirmation
       invoice_details: Invoice details 
-      customer_details: Customer details
+      customer_and_user_details: Customer and user details
     edit:
       header: Edit Invoice
     show:
