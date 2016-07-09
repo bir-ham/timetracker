@@ -36,10 +36,21 @@ en:
     sign_in: Sign in
   navigation:
     toolsio: Toolsio
-  landing_pages:
-    index:
+  landing_page:
+    home:
+      header: Home
       time_tracker: Time Tracker
       slogan: Track your time with the most awesome time tracking app ever
+    features:
+      header: Features
+    pricing:
+      header: Pricing
+    clients:
+      header: Clients
+    about:
+      header: About
+    contacts:  
+      header: Contacts
   dashboards:
     index:
       header: Dashboard

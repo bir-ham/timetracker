@@ -10,12 +10,16 @@ html lang="en"
     title Toolsio
 
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    - unless user_signed_in?
+      = stylesheet_link_tag    'landing_page', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', media: 'all', 'data-turbolinks-track' => true
     = csrf_meta_tags
   body class="#{controller.controller_name} #{controller.action_name}"
     .page-header-topbar
       - if user_signed_in?
         == render 'layouts/internal_page_navigation'
+      - else
+        == render 'layouts/landing_page_navigation'  
 
     section id = ( 'wrapper' if user_signed_in? )  
       - if user_signed_in?    

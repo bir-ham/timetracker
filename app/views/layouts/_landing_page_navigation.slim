@@ -1,0 +1,21 @@
+nav.navbar.navbar-fixed-top
+  .container 
+    .navbar-header    
+      button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse"
+        span.sr-only Toggle navigation
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      
+    .collapse.navbar-collapse
+      ul.nav.navbar-nav.navbar-right
+        li.active
+          = link_to I18n.t('landing_page.home.header'), '#home'
+        li
+          = link_to I18n.t('landing_page.features.header'), '#features'
+        li
+          = link_to I18n.t('landing_page.clients.header'), '#pricing'
+        li
+          = link_to I18n.t('landing_page.pricing.header'), '#clients'
+        li
+          = link_to I18n.t('landing_page.contacts.header'), '#contacts'  
