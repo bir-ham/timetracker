@@ -21,7 +21,7 @@ html lang="en"
       - if user_signed_in?    
         == render 'layouts/side_nav'
 
-      div id = ( 'page-wrapper' if user_signed_in? )  
+      div id = ( 'page-wrapper' if user_signed_in? ) class = ( 'container' unless user_signed_in? )  
         - if user_signed_in?              
           == render 'layouts/page_title_breadcrumb'
         div class = ( 'page-content' if user_signed_in? )  
