@@ -31,7 +31,11 @@ module LayoutHelper
     return true if controller.action_name == action_name
   end
 
-  def is_footer_hidden?
+  def is_landing_header_nav_visible?
+    return true if controller.controller_name == 'homepages' && controller.action_name == 'landing_page'  
+  end
+
+  def is_footer_visible?
     sessions = controller_name == "sessions" 
     accounts_create = controller_name == "accounts" && action_name == "create"
     invitations_edit = controller_name == "invitaions" && action_name == "edit"

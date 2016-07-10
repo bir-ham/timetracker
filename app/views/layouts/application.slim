@@ -15,17 +15,17 @@ html lang="en"
     = javascript_include_tag 'application', media: 'all', 'data-turbolinks-track' => true
     = csrf_meta_tags
   body class="#{controller.controller_name} #{controller.action_name}"
-    .page-header-topbar
-      - if user_signed_in?
-        == render 'layouts/internal_page_navigation'
-      - else
-        == render 'layouts/landing_page_navigation'  
+    
+    - if user_signed_in?
+      == render 'layouts/internal_page_navigation'
+    - if !user_signed_in? && is_landing_header_nav_visible?
+      == render 'layouts/landing_page_navigation'  
 
     section id = ( 'wrapper' if user_signed_in? )  
       - if user_signed_in?    
         == render 'layouts/side_nav'
 
-      div id = ( 'page-wrapper' if user_signed_in? ) class = ( 'container' unless user_signed_in? )  
+      div id = ( 'page-wrapper' if user_signed_in? ) 
         - if user_signed_in?              
           == render 'layouts/page_title_breadcrumb'
         div class = ( 'page-content' if user_signed_in? )  
@@ -35,7 +35,7 @@ html lang="en"
 
           = yield
     
-        /- unless is_footer_hidden?
-          #footer
-            .container
-              == render 'layouts/footer'
+    - if is_footer_visible?
+      #footer
+        .container
+          == render 'layouts/footer'

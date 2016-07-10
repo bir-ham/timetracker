@@ -1,24 +1,25 @@
-.row.authentication-panel
-  .col-md-6.col-md-offset-3
-    .panel.panel-default
-      .panel-heading
-        h2.panel-title = I18n.t('accounts.new.header')
-      .panel-body
-        h4 = I18n.t('accounts.new.prompt')
-        = simple_form_for(@account, :url => {:action => 'create'},
-                  html: { class: 'form-vertical' },
-                  warpper: :vertical_form) do |f|
-          = f.fields_for :owner do |o|
-            = o.input :first_name
-            = o.input :last_name
-            = o.input :email, :required => true
-            = o.input :password, :required => true
-            = o.input :password_confirmation, :required => true
+.container
+  .row.authentication-panel
+    .col-md-6.col-md-offset-3
+      .panel.panel-default
+        .panel-heading
+          h2.panel-title = I18n.t('accounts.new.header')
+        .panel-body
+          h4 = I18n.t('accounts.new.prompt')
+          = simple_form_for(@account, :url => {:action => 'create'},
+                    html: { class: 'form-vertical' },
+                    warpper: :vertical_form) do |f|
+            = f.fields_for :owner do |o|
+              = o.input :first_name
+              = o.input :last_name
+              = o.input :email, :required => true
+              = o.input :password, :required => true
+              = o.input :password_confirmation, :required => true
 
-          = f.input :subdomain do
-            .input-group
-              = f.input_field :subdomain, class: 'form-control'
-              span.input-group-addon .toolsio.com
+            = f.input :subdomain do
+              .input-group
+                = f.input_field :subdomain, class: 'form-control'
+                span.input-group-addon .toolsio.com
 
-          .btn-toolbar    
-            = f.button :submit, class: 'btn-primary'
+            .btn-toolbar    
+              = f.button :submit, class: 'btn-primary'
