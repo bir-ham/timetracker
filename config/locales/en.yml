@@ -39,8 +39,8 @@ en:
   landing_page:
     home:
       header: Home
-      time_tracker: Time Tracker
-      slogan: Track your time with the most awesome time tracking app ever
+      welcome: Welcome to Toolsio
+      slogan: Automate and Track your business acitvitaies with the most effective business tool ever
     features:
       header: Features
     pricing:
