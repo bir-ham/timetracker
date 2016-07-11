@@ -6,27 +6,126 @@
           h4 = I18n.t('landing_page.home.slogan')
 
           = link_to I18n.t('button.create_account'), new_account_path, class: 'btn btn-primary btn-lg'
-
-.container
-  .row
-    .col-sm-4
-      h3.headline.headline-paragraph = I18n.t('landing_page.features.invoice.header')
-      .body-text
-        p = I18n.t('landing_page.features.invoice.text')
-        = link_to I18n.t('button.learn_more'), '#', class: 'btn btn-primary btn-outline'
-    .col-sm-4
-      h3.headline.headline-paragraph = I18n.t('landing_page.features.project.header')
-      .body-text
-        p = I18n.t('landing_page.features.project.text')
-        = link_to I18n.t('button.learn_more'), '#', class: 'btn btn-primary btn-outline'
-    .col-sm-4
-      h3.headline.headline-paragraph = I18n.t('landing_page.features.analysis.header')
-      .body-text
-        p = I18n.t('landing_page.features.analysis.text') 
-        = link_to I18n.t('button.learn_more'), '#', class: 'btn btn-primary btn-outline'       
-
-.white-background
+.features
   .container
     .row
       .col-sm-12
-        h3.text-center.headline.headline-paragraph = I18n.t('landing_page.clients.header')        
+        h3.m-t-n.text-center.headline.headline-paragraph = I18n.t('landing_page.features.header')    
+    .row
+      .col-sm-4
+        h3.headline.headline-paragraph = I18n.t('landing_page.features.invoice.header')
+        .body-text
+          p = I18n.t('landing_page.features.invoice.text')
+          = link_to I18n.t('button.learn_more'), '#', class: 'btn btn-primary btn-outline'
+      .col-sm-4
+        h3.headline.headline-paragraph = I18n.t('landing_page.features.project.header')
+        .body-text
+          p = I18n.t('landing_page.features.project.text')
+          = link_to I18n.t('button.learn_more'), '#', class: 'btn btn-primary btn-outline'
+      .col-sm-4
+        h3.headline.headline-paragraph = I18n.t('landing_page.features.analysis.header')
+        .body-text
+          p = I18n.t('landing_page.features.analysis.text') 
+          = link_to I18n.t('button.learn_more'), '#', class: 'btn btn-primary btn-outline'       
+
+.clients.white-background
+  .container
+    .row
+      .col-sm-12
+        h3.m-t-n.text-center.headline.headline-paragraph = I18n.t('landing_page.clients.header')      
+    .row.text-center.m-t-l
+      .col-sm-6.col-sm-offset-3
+        .row
+          .col-md-6
+              .logo logo
+          
+          .col-md-6
+              .logo logo
+          
+          .col-md-6
+              .logo logo
+          
+          .col-md-6
+              .logo logo
+          
+          .col-md-6
+              .logo logo
+          
+          .col-md-6
+              .logo logo
+
+.pricing.
+  .container
+    .row
+      .col-sm-12
+        h3.m-t-n.text-center.headline.headline-paragraph = I18n.t('landing_page.pricing.header')                          
+    .row.m-t-l 
+      .col-sm-10.col-sm-offset-1
+        .row
+          .col-sm-4
+            ul.pricing-plan
+              li.pricing-title 
+                |Basic
+              li.pricing-desc 
+                |Lorem ipsum dolor sit amet, illum fastidii dissentias quo ne. Sea ne sint animal iisque, nam an soluta sensibus.
+              li.pricing-price 
+                span $16
+              li
+                |Dashboards
+              li
+                |Projects view
+              li
+                |Contacts
+              li
+                |Calendar
+              li
+                |AngularJs
+              li
+                = link_to I18n.t('button.learn_more'), '#', class: 'btn btn-primary btn-sm'
+          .col-sm-4 
+            ul.pricing-plan 
+              li.pricing-title 
+                |Standard
+              li.pricing-desc 
+                |Lorem ipsum dolor sit amet, illum fastidii dissentias quo ne. Sea ne sint animal iisque, nam an soluta sensibus.
+              li.pricing-price 
+                span $22
+              li
+                |Dashboards
+              li
+                |Projects view
+              li
+                |Contacts
+              li
+                |Calendar
+              li
+                AngularJs
+              li.plan-action 
+                = link_to I18n.t('button.learn_more'), '#', class: 'btn btn-primary btn-sm'
+          .col-sm-4 
+            ul.pricing-plan 
+              li.pricing-title 
+                |Premium
+              li.pricing-desc 
+                |Lorem ipsum dolor sit amet, illum fastidii dissentias quo ne. Sea ne sint animal iisque, nam an soluta sensibus.
+              li.pricing-price 
+                span $160
+              li
+                |Dashboards
+              li
+                |Projects view
+              li
+                |Contacts
+              li
+                |Calendar
+              li
+                |AngularJs
+              li
+                = link_to I18n.t('button.learn_more'), '#', class: 'btn btn-primary btn-sm'
+
+          
+
+
+            
+
+              

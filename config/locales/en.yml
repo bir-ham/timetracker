@@ -58,6 +58,7 @@ en:
     pricing:
       header: Pricing
     clients:
+      nav_header: Clients
       header: Our best clients
     about:
       header: About
