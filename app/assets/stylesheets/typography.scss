@@ -11,22 +11,16 @@
 }
 
 h1 {
-  margin-top: 6px;
-  margin-bottom: 22px;
   line-height: 125%;
   letter-spacing: -0.2px;
 }
 
 h2 {
-  margin-top: 4px;
-  margin-bottom: 18px;
   line-height: 115%;
   letter-spacing: -0.2px;
 }
 
 h3 {
-  margin-top: 2px;
-  margin-bottom: 14px;
   line-height: 105%;
   letter-spacing: -0.2px;
 }
@@ -34,3 +28,18 @@ h3 {
 .text-danger {
   color: $red;
 }
+
+.panel {
+  h1 {
+    margin-top: 6px;
+    margin-bottom: 22px;
+  }  
+  h2 {
+    margin-top: 4px;
+    margin-bottom: 18px;
+  }
+  h3 {    
+    margin-top: 2px;
+    margin-bottom: 14px;
+  }
+} 

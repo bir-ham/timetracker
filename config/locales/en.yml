@@ -34,6 +34,7 @@ en:
     invite_user: Invite user
     sign_out: Sign out
     sign_in: Sign in
+    learn_more: Learn more 
   navigation:
     toolsio: Toolsio
   landing_page:
@@ -43,10 +44,21 @@ en:
       slogan: Automate and Track your business acitvitaies with the most effective business tool ever
     features:
       header: Features
+      invoice: 
+        header: Invoicing
+        text: Create Invoces for the sold items or delivered projects. Optionally, import/export Invoices 
+          to/from exernal excel or CSV files. View and print Invoices in PDF format. 
+      project: 
+        header: Project managment 
+        text: Track and record hours of projects you have been working on. Generate Invocie for the delivered projects. 
+          Invite participant or colleauges collaborate on a project.      
+      analysis: 
+        header: Business analysis  
+        text: Report business activies on daily and weekly basis. Forcast milestone using exsiting activity records.             
     pricing:
       header: Pricing
     clients:
-      header: Clients
+      header: Our best clients
     about:
       header: About
     contacts:  
