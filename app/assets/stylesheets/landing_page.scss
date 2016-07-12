@@ -7,7 +7,7 @@
 }
 
 .navbar-brand {
-  margin-top: -6px;  
+  margin-top: -6px;
 }
 
 .navbar-inverse .navbar-nav > li > a {
@@ -25,10 +25,11 @@
   margin-bottom: 0;
   padding-top: 48px;
   padding-bottom: 48px;
-}  
+}
 
 .jumbotron {
-  background: #222 url('jumbotron.jpg') no-repeat 50% top;
+  background: url("pattern.png"), url("jumbotron.jpg");
+  overflow: hidden;
   background-size: cover;
   h1 {
     font-size: 34px;
@@ -73,7 +74,7 @@
   }
   .carousel-indicators li {
     border: 1px solid $turquoise;
-  }  
+  }
   .carousel-indicators .active {
     background-color: $turquoise;
   }
@@ -83,7 +84,7 @@
   .fa {
     color: $turquoise;
     font-size: 30px;
-  }    
+  }
 }
 
 // pricing
