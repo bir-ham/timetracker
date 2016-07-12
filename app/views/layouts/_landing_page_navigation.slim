@@ -1,4 +1,4 @@
-nav.navbar.navbar-fixed-top
+nav.navbar-inverse.navbar-fixed-top
   .container 
     .navbar-header    
       button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse"
@@ -6,9 +6,10 @@ nav.navbar.navbar-fixed-top
         span.icon-bar
         span.icon-bar
         span.icon-bar
+      = link_to (image_tag ('logo-small')), root_url, class: 'navbar-brand'  
       
     .collapse.navbar-collapse
-      ul.nav.navbar-nav.navbar-right
+      ul.nav.navbar-nav
         li.active
           = link_to I18n.t('landing_page.home.header'), '#home'
         li
@@ -19,3 +20,9 @@ nav.navbar.navbar-fixed-top
           = link_to I18n.t('landing_page.pricing.header'), '#clients'
         li
           = link_to I18n.t('landing_page.contacts.header'), '#contacts'  
+
+      .navbar-form.navbar-right
+        .form-group
+          = link_to I18n.t('button.create_account'), new_account_path, class: 'btn btn-primary btn-outline'
+        .form-group
+          = link_to I18n.t('button.sign_in'), '#', class: 'btn btn-primary'  

@@ -10,20 +10,20 @@
   .container
     .row
       .col-sm-12
-        h3.m-t-n.text-center.headline.headline-paragraph = I18n.t('landing_page.features.header')    
+        h3.m-t-n.text-center.text-uppercase = I18n.t('landing_page.features.header')    
     .row
       .col-sm-4
-        h3.headline.headline-paragraph = I18n.t('landing_page.features.invoice.header')
+        h4.text-uppercase = I18n.t('landing_page.features.invoice.header')
         .body-text
           p = I18n.t('landing_page.features.invoice.text')
           = link_to I18n.t('button.learn_more'), '#', class: 'btn btn-primary btn-outline'
       .col-sm-4
-        h3.headline.headline-paragraph = I18n.t('landing_page.features.project.header')
+        h4.text-uppercase = I18n.t('landing_page.features.project.header')
         .body-text
           p = I18n.t('landing_page.features.project.text')
           = link_to I18n.t('button.learn_more'), '#', class: 'btn btn-primary btn-outline'
       .col-sm-4
-        h3.headline.headline-paragraph = I18n.t('landing_page.features.analysis.header')
+        h4.text-uppercase = I18n.t('landing_page.features.analysis.header')
         .body-text
           p = I18n.t('landing_page.features.analysis.text') 
           = link_to I18n.t('button.learn_more'), '#', class: 'btn btn-primary btn-outline'       
@@ -32,7 +32,7 @@
   .container
     .row
       .col-sm-12
-        h3.m-t-n.text-center.headline.headline-paragraph = I18n.t('landing_page.clients.header')      
+        h3.text-uppercase.m-t-n.text-center = I18n.t('landing_page.clients.header')      
     .row.text-center.m-t-l
       .col-sm-6.col-sm-offset-3
         .row
@@ -58,7 +58,7 @@
   .container
     .row
       .col-sm-12
-        h3.m-t-n.text-center.headline.headline-paragraph = I18n.t('landing_page.pricing.header')                          
+        h3.text-uppercase.m-t-n.text-center = I18n.t('landing_page.pricing.header')                          
     .row.m-t-l 
       .col-sm-10.col-sm-offset-1
         .row
