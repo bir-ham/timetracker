@@ -64,6 +64,9 @@ en:
       header: About
     contacts:  
       header: Contacts
+    footer:
+      copy_right: Copyright &copy; Toolsio, Ltd. 2016  
+      address: Pyyntitie 2 C 50, 02230, Espoo, Finland
   dashboards:
     index:
       header: Dashboard
@@ -71,7 +74,7 @@ en:
   accounts:
     new:
       header: Create an Account
-      prompt: All fields are mandatory. Enter correct information.    
+      notice: All (*) fields are mandatory. Enter correct information.    
     edit:
       header: Edit accout information
     show:

@@ -1,10 +1,13 @@
 .container
   .row.authentication-panel
     .col-md-6.col-md-offset-3
+      .center-block.m-b-l
+        = link_to (image_tag ('logo-big')), root_url(subdomain: nil)
       .panel.panel-default
-        .panel-heading
-          h2.panel-title = I18n.t('button.sign_in')
-        .panel-body  
+        .panel-body 
+          h2 = I18n.t('button.sign_in') 
+          p.text-muted = I18n.t('devise.sessions.login_notice')
+          .m-b-m
           = flash_messages layout_flash: false
           = simple_form_for(resource, :as => resource_name,
                 :url => session_path(resource_name),
@@ -20,6 +23,11 @@
             - if devise_mapping.rememberable?
               = f.input :remember_me, as: :boolean
             .btn-toolbar  
-              = f.button :submit, I18n.t('button.sign_in'), class: 'btn-primary btn-block btn-lg'
+              = f.button :submit, I18n.t('button.sign_in'), class: 'btn-primary'
         .panel-footer
           = render "devise/shared/links"
+
+      .center-block.m-b-l
+        .text-center
+          p.m-b-n = raw I18n.t('landing_page.footer.copy_right')    
+          p = I18n.t('landing_page.footer.address')      

@@ -376,6 +376,10 @@ dt {
   @include transition(2s);
 }
 
+.center-block {
+  display: table;
+}
+
 /* Extremely very extra small devices (phones, less than 480px) */
 @media (max-width: $screen-xxxs-max) {
   .visible-xxxs {
