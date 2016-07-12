@@ -1,16 +1,17 @@
 .jumbotron
   .container
-    .row
+    .row.text-center
       .col-ms-8
           h1 = I18n.t('landing_page.home.welcome')
           h4 = I18n.t('landing_page.home.slogan')
 
           = link_to I18n.t('button.create_account'), new_account_path, class: 'btn btn-primary btn-lg'
-.features
+
+.features.xx-light-grey-background
   .container
     .row
       .col-sm-12
-        h3.m-t-n.text-center.text-uppercase = I18n.t('landing_page.features.header')    
+        h3.m-t-n.text-center.text-uppercase = I18n.t('landing_page.features.header')
     .row
       .col-sm-4
         h4.text-uppercase = I18n.t('landing_page.features.invoice.header')
@@ -25,34 +26,29 @@
       .col-sm-4
         h4.text-uppercase = I18n.t('landing_page.features.analysis.header')
         .body-text
-          p = I18n.t('landing_page.features.analysis.text') 
-          = link_to I18n.t('button.learn_more'), '#', class: 'btn btn-primary btn-outline'       
+          p = I18n.t('landing_page.features.analysis.text')
+          = link_to I18n.t('button.learn_more'), '#', class: 'btn btn-primary btn-outline'
 
 .clients.white-background
   .container
     .row
       .col-sm-12
-        h3.text-uppercase.m-t-n.text-center = I18n.t('landing_page.clients.header')      
+        h3.text-uppercase.m-t-n.text-center = I18n.t('landing_page.clients.header')
     .row.text-center.m-t-l
       .col-sm-6.col-sm-offset-3
         .row
-          .col-md-6
-              .logo logo
-          
-          .col-md-6
-              .logo logo
-          
-          .col-md-6
-              .logo logo
-          
-          .col-md-6
-              .logo logo
-          
-          .col-md-6
-              .logo logo
-          
-          .col-md-6
-              .logo logo
+          .col-sm-6
+              .company-logo logo
+          .col-sm-6
+              .company-logo logo
+          .col-sm-6
+              .company-logo logo
+          .col-sm-6
+              .company-logo logo
+          .col-sm-6
+              .company-logo logo
+          .col-sm-6
+              .company-logo logo
 
 .testimonials
   .container
@@ -75,23 +71,23 @@
             .item
               = icon ('quote-left')
               h5 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, dolorum, fugiat, eligendi magni quibusdam iure cupiditate ex voluptas unde Lorem ipsum dolor sit amet..
-              p- Jonathan Deo    
+              p- Jonathan Deo
 
 .pricing.white-background
   .container
     .row
       .col-sm-12
-        h3.text-uppercase.m-t-n.text-center = I18n.t('landing_page.pricing.header')                          
-    .row.m-t-l 
+        h3.text-uppercase.m-t-n.text-center = I18n.t('landing_page.pricing.header')
+    .row.m-t-l
       .col-sm-10.col-sm-offset-1
         .row
           .col-sm-4
             ul.pricing-plan
-              li.pricing-title 
+              li.pricing-title
                 |Basic
-              li.pricing-desc 
+              li.pricing-desc
                 |Lorem ipsum dolor sit amet, illum fastidii dissentias quo ne. Sea ne sint animal iisque, nam an soluta sensibus.
-              li.pricing-price 
+              li.pricing-price
                 span $16
               li
                 |Dashboards
@@ -102,16 +98,14 @@
               li
                 |Calendar
               li
-                |AngularJs
-              li
                 = link_to I18n.t('button.learn_more'), '#', class: 'btn btn-primary btn-sm'
-          .col-sm-4 
-            ul.pricing-plan 
-              li.pricing-title 
+          .col-sm-4
+            ul.pricing-plan
+              li.pricing-title
                 |Standard
-              li.pricing-desc 
+              li.pricing-desc
                 |Lorem ipsum dolor sit amet, illum fastidii dissentias quo ne. Sea ne sint animal iisque, nam an soluta sensibus.
-              li.pricing-price 
+              li.pricing-price
                 span $22
               li
                 |Dashboards
@@ -121,17 +115,15 @@
                 |Contacts
               li
                 |Calendar
-              li
-                AngularJs
-              li.plan-action 
+              li.plan-action
                 = link_to I18n.t('button.learn_more'), '#', class: 'btn btn-primary btn-sm'
-          .col-sm-4 
-            ul.pricing-plan 
-              li.pricing-title 
+          .col-sm-4
+            ul.pricing-plan
+              li.pricing-title
                 |Premium
-              li.pricing-desc 
+              li.pricing-desc
                 |Lorem ipsum dolor sit amet, illum fastidii dissentias quo ne. Sea ne sint animal iisque, nam an soluta sensibus.
-              li.pricing-price 
+              li.pricing-price
                 span $160
               li
                 |Dashboards
@@ -142,13 +134,10 @@
               li
                 |Calendar
               li
-                |AngularJs
-              li
                 = link_to I18n.t('button.learn_more'), '#', class: 'btn btn-primary btn-sm'
 
-          
 
 
-            
 
-              
+
+

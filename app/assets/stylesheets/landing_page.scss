@@ -48,7 +48,8 @@
   }
 }
 
-.logo {
+// company logo
+.company-logo {
   color: #a7afb8;
   background: #f7f9fa;
   padding: 30px 10px;
@@ -63,12 +64,13 @@
   border-top: 2px solid $turquoise;
 }
 
-.features, .testimonials, .quotes, .contacts, .pricing {
+.features, .clients, .testimonials, .contacts, .pricing {
   padding: 50px 0 50px 0;
   border-bottom: 1px solid #e4e5e7;
 }
 
 .testimonials {
+  background: url("pattern.png"),url("testimonials.jpg");
   .carousel-indicators {
     margin-bottom: -40px;
   }
@@ -97,8 +99,9 @@
   padding-left: 0;
   list-style: none;
   li.pricing-title {
-    color: $dark-mid-night-blue;
-    padding: 25px 10px 0px 10px;
+    background: $mid-night-blue;
+    color: $white;
+    padding: 25px 10px 25px 10px;
     border-radius: 4px 4px 0 0;
     font-size: 22px;
     font-weight: 600;
@@ -106,7 +109,7 @@
   li.pricing-desc {
     font-size: 13px;
     border-top: none;
-    padding: 20px 16px 0px 16px;
+    padding: 15px 16px 0px 16px;
   }
   .pricing-price span {
     font-weight: 700;
@@ -118,6 +121,26 @@
     text-align: center;
     color: $xx-light-black;
   }
+}
+
+#wrapper {
+  min-height: 100%;
+}
+
+#wrapper > section {
+  overflow: auto;
+  padding-bottom: 100px; /* this needs to be bigger than footer height*/
+}
+
+// footer
+footer {
+  position: relative;
+  margin-top: -100px;
+  height: 100px;
+  clear: both;
+  padding: 20px;
+  background-color: $dark-mid-night-blue;
+  color: $medium-grey;
 }
 
 /* Small devices (tablets, 768px and up) */
