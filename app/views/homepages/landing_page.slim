@@ -1,11 +1,11 @@
 .jumbotron
   .container
     .row.text-center
-      .col-ms-8
-          h1 = I18n.t('landing_page.home.welcome')
-          h4 = I18n.t('landing_page.home.slogan')
+      .col-sm-8.col-sm-offset-2
+        h1 = I18n.t('landing_page.home.welcome')
+        h4 = I18n.t('landing_page.home.slogan')
 
-          = link_to I18n.t('button.create_account'), new_account_path, class: 'btn btn-primary btn-lg'
+        = link_to I18n.t('button.create_account'), new_account_path, class: 'btn btn-primary btn-lg'
 
 .features.xx-light-grey-background
   .container
@@ -136,7 +136,13 @@
               li
                 = link_to I18n.t('button.learn_more'), '#', class: 'btn btn-primary btn-sm'
 
-
+.contacts
+  .container
+    .row
+      .col-sm-12
+        h3.text-uppercase.m-t-n.text-center = I18n.t('landing_page.contacts.header')
+    .row.m-t-l
+      .col-sm-10.col-sm-offset-1
 
 
 
