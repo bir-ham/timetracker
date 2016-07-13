@@ -35,3 +35,18 @@
   -webkit-transition: ($options); /* Safari */
   transition: ($options);
 }
+
+@mixin animation-delay($second) {
+  -webkit-animation-delay: ($second) !important;
+     -moz-animation-delay: ($second) !important;
+      -ms-animation-delay: ($second) !important;
+       -o-animation-delay: ($second) !important;
+          animation-delay: ($second) !important;
+}
+
+@mixin animation-duration($second) {  
+  -webkit-animation-duration: ($second);
+          animation-duration: ($second);
+      -webkit-animation-fill-mode: both;
+              animation-fill-mode: both;
+}
