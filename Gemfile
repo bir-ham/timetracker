@@ -31,8 +31,8 @@ gem 'rmagick'
 gem 'carrierwave'
 gem 'country_select'
 gem 'simple_form_fancy_uploads'
-gem 'capybara-webkit'
 gem 'gretel'
+gem 'jquery-easing-rails'
 
 group :development, :test do
   gem 'pry-remote'
@@ -49,6 +49,7 @@ group :development, :test do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'quiet_assets'
+  gem 'capybara-webkit'
 end
 
 group :production do

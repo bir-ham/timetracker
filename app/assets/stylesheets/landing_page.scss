@@ -22,6 +22,15 @@
   color: $turquoise;
 }
 
+.navbar-bg {
+  background-color: rgba(34,34,34,0.95);
+  padding: 8px 0;
+  -webkit-transition: all .5s ease-in-out;
+  -moz-transition: all .5s ease-in-out;
+  transition: all .5s ease-in-out;
+}
+
+// jumbotron
 .jumbotron {
   margin-bottom: 0;
   padding-top: 48px;
@@ -131,11 +140,13 @@
   bottom: 0px;
   right: 20px;
   display: none;
-  background: rgba(13,172,158,0.7);
+  background: $turquoise;
+  opacity: 0.7;
   text-align: center;
   z-index: 10000;
   &:hover {
-    background: $turquoise;
+    background: $light-turquoise;
+    text-decoration: none;
   }
   i {
     color: #fff;
@@ -156,6 +167,30 @@
 
 .animated {
   @include animation-duration(1s);
+}
+
+// animation
+.animationload {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #fff;
+  z-index: 999999;
+}
+
+.loader {
+  width: 200px;
+  height: 200px;
+  font-size: 0;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  background-image: url('ajax-loader.gif');
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: -100px 0 0 -100px;
 }
 
 /* Small devices (tablets, 768px and up) */

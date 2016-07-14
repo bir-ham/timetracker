@@ -1,6 +1,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.turbolinks
+//= require jquery.easing
 //= require bootstrap/dropdown
 //= require bootstrap/collapse
 //= require bootstrap/transition
@@ -14,3 +15,4 @@
 // Local files
 //= require confirmation_modal
 //= require custome_collapse
+//= require scroll
