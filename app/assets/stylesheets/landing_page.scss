@@ -51,7 +51,7 @@
     color: #ffffff;
     text-shadow: 0 1px 0 rgba(0,0,0,0.3);
   }
-  h4 {
+  h5 {
     color: #cccccc;
     text-shadow: 0 1px 0 rgba(0,0,0,0.3);
     margin-bottom: 30px;
@@ -69,14 +69,25 @@
 }
 
 // sections
-#features {
+#features, #pricing {
   margin-top: 1px;
   border-top: 2px solid $turquoise;
+}
+
+#clients {
+  margin-bottom: 1px;
+  border-bottom: 2px solid $turquoise !important;
 }
 
 #features, #clients, #testimonials, #contacts, #pricing {
   padding: 50px 0 50px 0;
   border-bottom: 1px solid #e4e5e7;
+  h3 {
+    color: $mid-night-blue;
+    margin-top: 0;
+    text-align: center;
+    text-transform: uppercase;
+  }
 }
 
 #testimonials {
@@ -86,6 +97,7 @@
   }
   .carousel-indicators li {
     border: 1px solid $turquoise;
+    margin-left: 5px;
   }
   .carousel-indicators .active {
     background-color: $turquoise;

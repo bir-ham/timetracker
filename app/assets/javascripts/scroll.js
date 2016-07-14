@@ -37,14 +37,30 @@ $(window).scroll(function(){
     $('.back-to-top').fadeIn();
   } else {
     $('.back-to-top').fadeOut();
-    // onclick 
-    $('.back-to-top').click(function(){
-      $("html, body").animate({ scrollTop: 0 }, 1000);
-      return false;
-    });
   }
 }); 
 
+$(document).ready(function() { 
+  /* ==============================================
+  5.NiceScroll
+  =============================================== */
+  jQuery("html").niceScroll({
+    scrollspeed: 50,
+    mousescrollstep: 38,
+    cursorwidth: 7,
+    cursorborder: 0,
+    cursorcolor: '#038b98',
+    autohidemode: false,
+    zindex: 9999999,
+    horizrailenabled: false,
+    cursorborderradius: 0
+  });
 
+  $('.back-to-top').click(function(){
+    $("html, body").animate({ scrollTop: 0 }, 1000);
+    return false;
+  });
+
+});
 
 

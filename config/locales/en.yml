@@ -30,7 +30,7 @@ en:
     back: Back
     exit: Exit
     ok: OK
-    create_account: Create Account
+    create_account: Create account
     invite_user: Invite user
     sign_out: Sign out
     sign_in: Sign in
@@ -40,7 +40,7 @@ en:
   landing_page:
     home:
       header: Home
-      welcome: Welcome to Toolsio
+      welcome: Welcome to
       slogan: Automate and Track your day-to-day business acitvitaies with the most effective business tool ever
     features:
       header: Features

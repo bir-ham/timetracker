@@ -184,6 +184,8 @@ GEM
     minitest (5.9.0)
     multi_json (1.12.1)
     nenv (0.3.0)
+    nicescroll-rails (3.5.4.1)
+      railties (>= 3.1)
     nokogiri (1.6.8)
       mini_portile2 (~> 2.1.0)
       pkg-config (~> 1.1.7)
@@ -359,6 +361,7 @@ DEPENDENCIES
   jquery-rails
   jquery-turbolinks
   mailcatcher
+  nicescroll-rails
   pg
   pry-remote
   quiet_assets
