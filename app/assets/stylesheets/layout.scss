@@ -5,7 +5,7 @@ html {
 }
 
 body {
-  background-color: $body-background-color; 
+  background-color: $body-background-color;
   color: $body-font-color;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 13px;
@@ -23,15 +23,9 @@ a {
   }
 }
 
-#wrapper {
-  width: 100%;
-  min-height: 100%;
-  background-color: #3C3C3C;
-}
-
 // Flash
 .alert {
-  border-radius: (3px);  
+  border-radius: (3px);
 }
 
 .alert-success {
@@ -82,7 +76,7 @@ a {
 
 // Thumbnail
 .thumbnail {
-  @include border-radius(0); 
+  @include border-radius(0);
 }
 
 // Labels
@@ -102,7 +96,7 @@ a {
   background: $red;
 }
 
-// Navbar 
+// Navbar
 .navbar-nav {
   margin: 0 auto;
 }
@@ -130,6 +124,18 @@ a {
   background: $blue;
 }
 
+.white-background {
+  background: $white;
+}
+
+.light-grey-background {
+  background: $light-grey;
+}
+
+.xx-light-grey-background {
+  background: $xx-light-grey;
+}
+
 // Color
 .turquoise {
   color: $turquoise !important;
@@ -150,7 +156,7 @@ a {
 
 // Panel
 .panel {
-  @include border-radius(3px);  
+  @include border-radius(3px);
   box-shadow: none;
   //box-shadow: 0 1px 2px rgba(0,0,0,.1);
 }
@@ -160,7 +166,7 @@ a {
   border-top-left-radius: 0;
 }
 
-.panel-default {  
+.panel-default {
   border: 1px solid $light-grey;
 }
 
@@ -176,23 +182,23 @@ a {
 }
 
 .panel-body {
-  padding: 20px;  
+  padding: 20px;
 }
 
 .panel-footer {
-  background: $xx-light-grey; 
+  background: $xx-light-grey;
 }
 
 .panel-dark-outline {
   .panel-heading {
     border-bottom: 1px solid $black;
-  }  
+  }
 }
 
 .panel-turqouise-outline {
   .panel-heading {
     border-bottom: 1px solid $turquoise;
-  }  
+  }
 }
 
 // Progress bar
@@ -202,7 +208,7 @@ a {
   -webkit-box-shadow: none !important;
   box-shadow: none !important;
 }
-.progress-small { 
+.progress-small {
   height: 10px;
 }
 .progress .progress-bar {
@@ -229,14 +235,14 @@ a {
 
 // Well
 .well {
-  background-color: $white; 
+  background-color: $white;
   border: 1px solid $light-grey;
   @include border-radius(3px);
   box-shdow: none;
   //box-shadow: 0 1px 2px rgba(0,0,0,.1);
 }
 
-// Dropdown 
+// Dropdown
 .dropdown-menu {
   min-width: 180px;
 }
@@ -372,6 +378,10 @@ dt {
   @include transition(2s);
 }
 
+.center-block {
+  display: table;
+}
+
 /* Extremely very extra small devices (phones, less than 480px) */
 @media (max-width: $screen-xxxs-max) {
   .visible-xxxs {
@@ -428,7 +438,7 @@ dt {
 /* Small devices (tablets, 768px and up) */
 @media (min-width: $screen-sm-min) {
   .navbar-right {
-    margin-right: 0; 
+    margin-right: 0;
   }
   .dl-horizontal dt {
     float: left;

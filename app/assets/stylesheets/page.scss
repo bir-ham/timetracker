@@ -1,4 +1,28 @@
-// Navbar
+html, body {
+  height: 100%;  
+}
+
+#wrapper {
+  min-height: 100%;
+}
+
+#wrapper > section {
+  overflow:auto;
+  padding-bottom: 100px; /* this needs to be bigger than footer height*/
+}
+
+// footer
+.footer {
+  position: relative;
+  margin-top: -100px;
+  clear:both;
+  height: 100px;
+  padding: 20px;
+  background-color: $dark-mid-night-blue;
+  color: $medium-grey;
+}
+
+// navbar
 #topbar.navbar-default {
   border: 0;
 }
@@ -406,7 +430,6 @@ span.block {
 
 .page-content {
   padding: 20px 20px 50px 20px;
-  min-height: 700px;
 }
 
 #sum_box .db {

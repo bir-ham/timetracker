@@ -1,0 +1,215 @@
+@import "variables";
+@import "mixins";
+
+// navbar
+.navbar-inverse {
+  background-color: rgba(0,0,0,0.4);
+  padding: 6px 0;
+}
+
+.navbar-brand {
+  margin-top: -6px;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+  text-transform: uppercase;
+  color: $white;
+}
+
+.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
+  text-decoration: none;
+  background: none;
+  color: $turquoise;
+}
+
+.navbar-bg {
+  background-color: rgba(34,34,34,0.95);
+  padding: 8px 0;
+  -webkit-transition: all .5s ease-in-out;
+  -moz-transition: all .5s ease-in-out;
+  transition: all .5s ease-in-out;
+}
+
+// jumbotron
+.jumbotron {
+  margin-bottom: 0;
+  padding-top: 48px;
+  padding-bottom: 48px;
+}
+
+.jumbotron {
+  background: url("pattern.png"), url("jumbotron.jpg");
+  overflow: hidden;
+  background-size: cover;
+  h1 {
+    font-size: 34px;
+    margin-bottom: 5px;
+    letter-spacing: -0.5px;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    font-size: 48px;
+    color: #ffffff;
+    text-shadow: 0 1px 0 rgba(0,0,0,0.3);
+  }
+  h5 {
+    color: #cccccc;
+    text-shadow: 0 1px 0 rgba(0,0,0,0.3);
+    margin-bottom: 30px;
+  }
+}
+
+// company logo
+.company-logo {
+  color: #a7afb8;
+  background: #f7f9fa;
+  padding: 30px 10px;
+  margin: 0px 0 20px 0;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+// sections
+#features, #pricing {
+  margin-top: 1px;
+  border-top: 2px solid $turquoise;
+}
+
+#clients {
+  margin-bottom: 1px;
+  border-bottom: 2px solid $turquoise !important;
+}
+
+#features, #clients, #testimonials, #contacts, #pricing {
+  padding: 50px 0 50px 0;
+  border-bottom: 1px solid #e4e5e7;
+  h3 {
+    color: $mid-night-blue;
+    margin-top: 0;
+    text-align: center;
+    text-transform: uppercase;
+  }
+}
+
+#testimonials {
+  background: url("pattern.png"),url("testimonials.jpg");
+  .carousel-indicators {
+    margin-bottom: -40px;
+  }
+  .carousel-indicators li {
+    border: 1px solid $turquoise;
+    margin-left: 5px;
+  }
+  .carousel-indicators .active {
+    background-color: $turquoise;
+  }
+  .item p {
+    color: $turquoise;
+  }
+  .fa {
+    color: $turquoise;
+    font-size: 30px;
+  }
+}
+
+// pricing
+.pricing-plan {
+  margin: 20px 10px 0 10px;
+  border-radius: 4px;
+  padding-bottom: 20px;
+  background: #fff;
+  border: 1px solid #e4e5e7;
+  padding-left: 0;
+  list-style: none;
+  li.pricing-title {
+    background: $mid-night-blue;
+    color: $white;
+    padding: 25px 10px 25px 10px;
+    border-radius: 4px 4px 0 0;
+    font-size: 22px;
+    font-weight: 600;
+  }
+  li.pricing-desc {
+    font-size: 13px;
+    border-top: none;
+    padding: 15px 16px 0px 16px;
+  }
+  .pricing-price span {
+    font-weight: 700;
+    font-size: 30px;
+    color: $turquoise;
+  }
+  li {
+    padding: 10px 16px;
+    text-align: center;
+    color: $xx-light-black;
+  }
+}
+
+.back-to-top {
+  width: 40px;
+  height: 50px;
+  position: fixed;
+  bottom: 0px;
+  right: 20px;
+  display: none;
+  background: $turquoise;
+  opacity: 0.7;
+  text-align: center;
+  z-index: 10000;
+  &:hover {
+    background: $light-turquoise;
+    text-decoration: none;
+  }
+  i {
+    color: #fff;
+    font-size: 15px;
+    display: block;
+    line-height: 33px;
+  }
+}
+
+.animation-delay-1 {
+  @include animation-delay(.1s); 
+}
+
+.fadeInRightBig {
+  -webkit-animation-name: fadeInRightBig;
+          animation-name: fadeInRightBig;
+}
+
+.animated {
+  @include animation-duration(1s);
+}
+
+// animation
+.animationload {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #fff;
+  z-index: 999999;
+}
+
+.loader {
+  width: 200px;
+  height: 200px;
+  font-size: 0;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  background-image: url('ajax-loader.gif');
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: -100px 0 0 -100px;
+}
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: $screen-sm-min) {
+  .jumbotron .container {
+    max-width: 100%;
+    padding: 60px 0 40px;
+  }
+
+}

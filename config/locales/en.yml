@@ -30,16 +30,43 @@ en:
     back: Back
     exit: Exit
     ok: OK
-    create_account: Create Account
+    create_account: Create account
     invite_user: Invite user
     sign_out: Sign out
     sign_in: Sign in
+    learn_more: Learn more
   navigation:
     toolsio: Toolsio
-  landing_pages:
-    index:
-      time_tracker: Time Tracker
-      slogan: Track your time with the most awesome time tracking app ever
+  landing_page:
+    home:
+      header: Home
+      welcome: Welcome to
+      slogan: Automate and Track your day-to-day business acitvitaies with the most effective business tool ever
+    features:
+      header: Features
+      invoice:
+        header: Invoicing
+        text: Create Invoces for the sold items or delivered projects. Optionally, import/export Invoices
+          to/from exernal excel or CSV files. View and print Invoices in PDF format.
+      project:
+        header: Project managment
+        text: Track and record hours of projects you have been working on. Generate Invocie for the delivered projects.
+          Invite participant or colleauges collaborate on a project.
+      analysis:
+        header: Business analysis
+        text: Report business activies on daily and weekly basis. Forcast milestone using exsiting activity records.
+    pricing:
+      header: Pricing
+    clients:
+      nav_header: Clients
+      header: Our best clients
+    about:
+      header: About
+    contacts:
+      header: Contacts
+    footer:
+      copy_right: Copyright &copy; Toolsio, Ltd. 2016
+      address: Pyyntitie 2 C 50, 02230, Espoo, Finland
   dashboards:
     index:
       header: Dashboard
@@ -47,23 +74,23 @@ en:
   accounts:
     new:
       header: Create an Account
-      prompt: All fields are mandatory. Enter correct information.    
+      notice: All (*) fields are mandatory. Enter correct information.
     edit:
       header: Edit accout information
     show:
       header: View Account
       url: URL
       subdomain: Subdomain
-      industry: Industry 
+      industry: Industry
       phone_number: Phone number
-      email: Email  
+      email: Email
       address1: Address 1
       address2: Address 2
       zip: Zip
       town: Town
-      country: Country   
+      country: Country
       delete_account: Delete this accout
-    update:   
+    update:
       success_update: "Account information updated!"
   projects:
     index:
@@ -76,7 +103,7 @@ en:
       notice_create: "Project created!"
     edit:
       new:
-      header: Edit Project  
+      header: Edit Project
     update:
       header: Update Project
       notice_update: "Project updated!"
@@ -120,7 +147,7 @@ en:
       create_invoice_button: Create Invoice
       employee: Employee
       confirmation: Confirmation
-      invoice_details: Invoice details 
+      invoice_details: Invoice details
       customer_and_user_details: Customer and user details
     edit:
       header: Edit Invoice

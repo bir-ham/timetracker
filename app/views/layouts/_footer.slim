@@ -1,3 +1,6 @@
-.row
-  .col-md-12
-    p &copy; Bizdesc 2016
+footer.footer
+  .container
+    .row
+      .col-sm-12
+        p.m-b-n = raw I18n.t('landing_page.footer.copy_right')
+        p = I18n.t('landing_page.footer.address')

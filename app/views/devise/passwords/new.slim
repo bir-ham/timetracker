@@ -1,14 +1,22 @@
-h2 = I18n.t('devise.passwords.new.header')
+.container
+  .row.authentication-panel
+    .col-md-6.col-md-offset-3
+      .center-block.m-b-l
+        = link_to (image_tag ('logo-big')), root_path
+      .panel.panel-default
+        .panel-body  
+          h2 = I18n.t('devise.passwords.new.header')
+          = form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f|
+            = devise_error_messages!
 
-= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f|
-  = devise_error_messages!
-
-  div
-    = f.label :email
-    br
-    = f.email_field :email, :autofocus => true
-
-  div
-    = f.submit "Send me reset password instructions"
-
-= render "devise/shared/links"
+            = f.label :email
+            = f.email_field :email, :autofocus => true, class: 'form-control'
+            .m-b-m
+            = f.submit "Send me reset password instructions", class: 'btn btn-primary'
+        .panel-footer
+          = render "devise/shared/links"
+      
+      .center-block.m-b-l
+        .text-center
+          p.m-b-n = raw I18n.t('landing_page.footer.copy_right')    
+          p = I18n.t('landing_page.footer.address')       

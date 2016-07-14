@@ -1,14 +1,155 @@
-.row
-  .col-md-12
-    .jumbotron
-      h1 = I18n.t('landing_pages.index.time_tracker')
-      p = I18n.t('landing_pages.index.slogan')
+#home.jumbotron
+  .container
+    .row.text-center
+      .col-sm-8.col-sm-offset-2
+        h1 
+          = I18n.t('landing_page.home.welcome')
+          |&nbsp;
+          .turquoise.visible-all-inline = I18n.t('navigation.toolsio')
+        h5 = I18n.t('landing_page.home.slogan')
 
-      = link_to I18n.t('button.create_account'), new_account_path, class: 'btn btn-primary btn-lg'
-.row
-  .col-sm-12
-    h1.headline.headline-paragraph How it works
-    .body-text
-      p We've analyzed job text and outcomes data using listings from tens of thousands of companies. We look at which jobs fill the most quickly and generate the most applicant interest. Where companies choose to share additional data with us, we also consider candidate demographics and how many among a job's applicants are strong enough to get called back.
+        = link_to I18n.t('button.create_account'), new_account_path, class: 'btn btn-primary btn-lg'
 
-      p When a job listing fills quickly and generates real interest from qualified candidates, we call it a success. We use a proprietary combination of machine learning, natural language processing, and statistical techniques to find the patterns that show up in successful listings.
+#features.xx-light-grey-background
+  .container
+    .row
+      .col-sm-12
+        h3 = I18n.t('landing_page.features.header')
+    .row
+      .col-sm-4
+        h4.text-uppercase = I18n.t('landing_page.features.invoice.header')
+        .body-text
+          p = I18n.t('landing_page.features.invoice.text')
+          .m-t-m
+          = link_to I18n.t('button.learn_more'), '#', class: 'btn btn-primary btn-outline'
+      .col-sm-4
+        h4.text-uppercase = I18n.t('landing_page.features.project.header')
+        .body-text
+          p = I18n.t('landing_page.features.project.text')
+          .m-t-m
+          = link_to I18n.t('button.learn_more'), '#', class: 'btn btn-primary btn-outline'
+      .col-sm-4
+        h4.text-uppercase = I18n.t('landing_page.features.analysis.header')
+        .body-text
+          p = I18n.t('landing_page.features.analysis.text')
+          .m-t-m
+          = link_to I18n.t('button.learn_more'), '#', class: 'btn btn-primary btn-outline'
+
+#clients.white-background
+  .container
+    .row
+      .col-sm-12
+        h3 = I18n.t('landing_page.clients.header')
+    .row.text-center.m-t-l
+      .col-sm-6.col-sm-offset-3
+        .row
+          .col-sm-6
+              .company-logo logo
+          .col-sm-6
+              .company-logo logo
+          .col-sm-6
+              .company-logo logo
+          .col-sm-6
+              .company-logo logo
+          .col-sm-6
+              .company-logo logo
+          .col-sm-6
+              .company-logo logo
+
+#testimonials
+  .container
+    .row
+      .col-sm-8.col-sm-offset-2
+        .carousel.slide data-ride="carousel" id="carousel-example-generic"
+          ol.carousel-indicators
+            li.active data-slide-to="0" data-target="#carousel-example-generic"
+            li data-slide-to="1" data-target="#carousel-example-generic"
+            li data-slide-to="2" data-target="#carousel-example-generic"
+          .carousel-inner.text-center role="listbox"
+            .item.active
+              = icon ('quote-left')
+              h5 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, dolorum, fugiat, eligendi magni quibusdam iure cupiditate ex voluptas unde Lorem ipsum dolor sit amet..
+              p- Jonathan Deo
+            .item
+              = icon ('quote-left')
+              h5 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, dolorum, fugiat, eligendi magni quibusdam iure cupiditate ex voluptas unde Lorem ipsum dolor sit amet..
+              p- Jonathan Deo
+            .item
+              = icon ('quote-left')
+              h5 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, dolorum, fugiat, eligendi magni quibusdam iure cupiditate ex voluptas unde Lorem ipsum dolor sit amet..
+              p- Jonathan Deo
+
+#pricing.white-background
+  .container
+    .row
+      .col-sm-12
+        h3 = I18n.t('landing_page.pricing.header')
+    .row.m-t-l
+      .col-sm-10.col-sm-offset-1
+        .row
+          .col-sm-4
+            ul.pricing-plan
+              li.pricing-title
+                |Basic
+              li.pricing-desc
+                |Lorem ipsum dolor sit amet, illum fastidii dissentias quo ne. Sea ne sint animal iisque, nam an soluta sensibus.
+              li.pricing-price
+                span $16
+              li
+                |Dashboards
+              li
+                |Projects view
+              li
+                |Contacts
+              li
+                |Calendar
+              li
+                = link_to I18n.t('button.learn_more'), '#', class: 'btn btn-primary btn-sm'
+          .col-sm-4
+            ul.pricing-plan
+              li.pricing-title
+                |Standard
+              li.pricing-desc
+                |Lorem ipsum dolor sit amet, illum fastidii dissentias quo ne. Sea ne sint animal iisque, nam an soluta sensibus.
+              li.pricing-price
+                span $22
+              li
+                |Dashboards
+              li
+                |Projects view
+              li
+                |Contacts
+              li
+                |Calendar
+              li.plan-action
+                = link_to I18n.t('button.learn_more'), '#', class: 'btn btn-primary btn-sm'
+          .col-sm-4
+            ul.pricing-plan
+              li.pricing-title
+                |Premium
+              li.pricing-desc
+                |Lorem ipsum dolor sit amet, illum fastidii dissentias quo ne. Sea ne sint animal iisque, nam an soluta sensibus.
+              li.pricing-price
+                span $160
+              li
+                |Dashboards
+              li
+                |Projects view
+              li
+                |Contacts
+              li
+                |Calendar
+              li
+                = link_to I18n.t('button.learn_more'), '#', class: 'btn btn-primary btn-sm'
+
+#contacts
+  .container
+    .row
+      .col-sm-12
+        h3.text-uppercase.m-t-n.text-center = I18n.t('landing_page.contacts.header')
+    .row.m-t-l
+      .col-sm-10.col-sm-offset-1
+
+
+
+

@@ -10,28 +10,36 @@ html lang="en"
     title Toolsio
 
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    - unless user_signed_in?
+      = stylesheet_link_tag    'landing_page', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', media: 'all', 'data-turbolinks-track' => true
     = csrf_meta_tags
   body class="#{controller.controller_name} #{controller.action_name}"
-    .page-header-topbar
+    .animationload 
+      .loader Loading...
+
+    #wrapper
       - if user_signed_in?
         == render 'layouts/internal_page_navigation'
+      - if !user_signed_in? && is_landing_header_nav_visible?
+        == render 'layouts/landing_page_navigation'
 
-    section id = ( 'wrapper' if user_signed_in? )  
-      - if user_signed_in?    
-        == render 'layouts/side_nav'
+      section id = ( 'wrapper' if user_signed_in? )
+        - if user_signed_in?
+          == render 'layouts/side_nav'
 
-      div id = ( 'page-wrapper' if user_signed_in? )  
-        - if user_signed_in?              
-          == render 'layouts/page_title_breadcrumb'
-        div class = ( 'page-content' if user_signed_in? )  
-          = flash_messages if show_layout_flash?
-          /flash.each do |name, msg|
-            /= content_tag :div, msg, :id = "flash_#{name}"
+        div id = ( 'page-wrapper' if user_signed_in? )
+          - if user_signed_in?
+            == render 'layouts/page_title_breadcrumb'
+          div class = ( 'page-content' if user_signed_in? )
+            = flash_messages if show_layout_flash?
+            /flash.each do |name, msg|
+              /= content_tag :div, msg, :id = "flash_#{name}"
 
-          = yield
-    
-        /- unless is_footer_hidden?
-          #footer
-            .container
-              == render 'layouts/footer'
+            = yield
+
+    - if is_footer_visible?
+      == render 'layouts/footer'
+      a href="#" class="back-to-top animated fadeInRightBig animation-delay-1 wow animated" style="visibility: visible; animation-name: fadeInRightBig"
+        = icon ('chevron-up') 
+     
