@@ -1,11 +1,6 @@
-$(window).load(function() { 
+$(window).load(function() {
   /* ==============================================
-  1.Page Preloader
-  =============================================== */
-  $(".loader").delay(300).fadeOut();
-  $(".animationload").delay(600).fadeOut("slow");
-  /* ==============================================
-  2.NiceScroll
+  1.NiceScroll
   =============================================== */
   jQuery("html").niceScroll({
     scrollspeed: 50,
@@ -26,17 +21,17 @@ $(window).load(function() {
 
 });
 /* ==============================================
-3.Scroll to top
-=============================================== */ 
+2.Scroll to top
+=============================================== */
 $(window).scroll(function(){
   if ($(this).scrollTop() > 100) {
     $('.back-to-top').fadeIn();
   } else {
     $('.back-to-top').fadeOut();
   }
-}); 
+});
 /* ==============================================
-4.Navbar-Scroll
+3.Navbar-Scroll
 =============================================== */
 //transperent nav
 $(window).scroll(function() {
@@ -47,7 +42,7 @@ $(window).scroll(function() {
   }
 });
 /* ==============================================
-5.Smooth Scroll To Anchor
+4.Smooth Scroll To Anchor
 =============================================== */
 //jQuery for page scrolling feature - requires jQuery Easing plugin
 $(function() {

@@ -30,7 +30,7 @@ en:
     back: Back
     exit: Exit
     ok: OK
-    create_account: Create account
+    sign_up: Sign up free
     invite_user: Invite user
     sign_out: Sign out
     sign_in: Sign in
@@ -42,6 +42,7 @@ en:
       header: Home
       welcome: Welcome to
       slogan: Automate and Track your day-to-day business acitvitaies with the most effective business tool ever
+      get_started: Get started for free
     features:
       header: Features
       invoice:

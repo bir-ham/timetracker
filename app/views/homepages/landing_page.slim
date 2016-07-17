@@ -2,13 +2,13 @@
   .container
     .row.text-center
       .col-sm-8.col-sm-offset-2
-        h1 
+        h1
           = I18n.t('landing_page.home.welcome')
           |&nbsp;
           .turquoise.visible-all-inline = I18n.t('navigation.toolsio')
         h5 = I18n.t('landing_page.home.slogan')
 
-        = link_to I18n.t('button.create_account'), new_account_path, class: 'btn btn-primary btn-lg'
+        = link_to I18n.t('landing_page.home.get_started'), new_account_path, class: 'btn btn-primary btn-lg'
 
 #features.xx-light-grey-background
   .container

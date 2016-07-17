@@ -57,9 +57,9 @@ describe 'invoices' do
     within('.invoice_user') do
       select_generic(user.first_name, from: 'invoice_user')
     end
-    
+
     submit_form
-    
+
     fill_in 'Reference number', with: 'abcd'
     fill_in 'Description', with: 'Lorem lipsum'
 
@@ -82,7 +82,6 @@ describe 'invoices' do
     submit_form
 
     expect(page).to have_text 'is not a number'
-    expect(page).to have_text "can't be blank"
     expect(page).to have_text "can't be in the past"
     expect(page).to have_text 'specify a deadline or a payment term. Not both empty, nor both filled'
   end
