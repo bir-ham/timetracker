@@ -8,8 +8,8 @@ class HomepagesController < ApplicationController
   end
 
   def landing_page
-        
+    @contact = Contact.new
   end
   
-      
+  
 end

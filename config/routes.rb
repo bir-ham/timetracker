@@ -23,8 +23,7 @@ Rails.application.routes.draw do
     resources :customers
     resources :accounts, only: [:show, :edit, :update, :destroy]
     get '/clear-invoice-params', to: 'invoices#clear_invoice_params', via: [:destroy], as: :clear_invoice_params
-
-    resources :contacts, only: [:new, :create]
+ 
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -38,6 +37,7 @@ Rails.application.routes.draw do
     #get 'homepages#contact'
     #get 'homepages#faq'
     resources :accounts, only: [:new, :create]
+    resources :contacts, only: [:new, :create]
   end
 
   # Example of regular route:

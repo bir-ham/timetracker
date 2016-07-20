@@ -1,18 +1,22 @@
-class ContactsController < ApplicatoinController
-
+class ContactsController < ApplicationController
+  
   def new
     @contact = Contact.new
   end
 
   def create
-    @contact = Contact.new(params[:contact])
+    @contact = Contact.new(contact_params)
     @contact.request = request
     if @contact.deliver
-      flash.now[:notice] I18n.t('landing_page.contacts.create.notice')
+      flash.now[:notice] = 'Thank you for your message. We will contact you soon!'
     else
-      flash.now[:error] I18n.t('landing_page.contacts.create.error')
+      flash.now[:error] = 'Cannot send message.'
       render :new
     end
-  end
+  end  
 
+  private
+  def contact_params
+    params.require(:contact).permit(:name, :email, :message)
+  end
 end

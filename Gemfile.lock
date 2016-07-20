@@ -186,6 +186,9 @@ GEM
     mini_portile2 (2.1.0)
     minitest (5.9.0)
     multi_json (1.12.1)
+    negative_captcha (0.5)
+      actionpack
+      activesupport
     nenv (0.3.0)
     nicescroll-rails (3.5.4.1)
       railties (>= 3.1)
@@ -366,6 +369,7 @@ DEPENDENCIES
   jquery-turbolinks
   mail_form
   mailcatcher
+  negative_captcha
   nicescroll-rails
   pg
   pry-remote
