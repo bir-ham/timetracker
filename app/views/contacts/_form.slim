@@ -1,22 +1,23 @@
-= simple_form_for @contact, html: { class: 'form-horizontal' } do |f|
+= simple_form_for @contact, html: { class: 'form-horizontal' },
+              warpper: :horizontal_form do |f|
   //The `negative_captcha` call gives us the honeypots, spinners and whatnot
     = raw negative_captcha(@captcha)
-    
+
     = negative_label_tag(@captcha, :name, 'Name')
     = negative_text_field_tag(@captcha, :name)
 
     = negative_label_tag(@captcha, :email, 'Email')
     = negative_text_field_tag(@captcha, :email)
-    
+
     = negative_label_tag(@captcha, :message, 'Message') do
       span Accepts a block
     = negative_text_area_tag(@captcha, :message)
-    
-  = f.input :name
-  = f.input :email 
-  = f.input :message, :as => :text
-  //.hidden
-    = f.input :nickname, :hint => 'Leave this field blank!' 
 
-  .m-t-m
-  = f.button :submit, 'Send message', class: 'btn-primary'
+  = f.input :name, wrapper: :horizontal_form
+  = f.input :email, wrapper: :horizontal_form
+  = f.input :message, :as => :text, wrapper: :horizontal_form
+  //.hidden
+    = f.input :nickname, :hint => 'Leave this field blank!'
+
+  .btn-toolbar.text-center
+    = f.button :submit, 'Send message', class: 'btn-primary'
