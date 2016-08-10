@@ -104,7 +104,7 @@
               li
                 |Calendar
               li
-                = link_to I18n.t('button.learn_more'), '#', class: 'btn btn-primary btn-sm'
+                = link_to I18n.t('button.learn_more'), '#', class: 'btn btn-primary'
           .col-sm-4
             ul.pricing-plan
               li.pricing-title
@@ -122,7 +122,7 @@
               li
                 |Calendar
               li.plan-action
-                = link_to I18n.t('button.learn_more'), '#', class: 'btn btn-primary btn-sm'
+                = link_to I18n.t('button.learn_more'), '#', class: 'btn btn-primary'
           .col-sm-4
             ul.pricing-plan
               li.pricing-title
@@ -140,7 +140,7 @@
               li
                 |Calendar
               li
-                = link_to I18n.t('button.learn_more'), '#', class: 'btn btn-primary btn-sm'
+                = link_to I18n.t('button.learn_more'), '#', class: 'btn btn-primary'
 
 #contacts
   .container
@@ -151,7 +151,7 @@
       .col-sm-6.col-sm-offset-3
         p.text-center = I18n.t('landing_page.contacts.description')
         .m-t-l
-        == render 'contacts/form'
+        == render 'contacts/new'
 
 
 
