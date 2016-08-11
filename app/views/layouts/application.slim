@@ -29,9 +29,8 @@ html lang="en"
           - if user_signed_in?
             == render 'layouts/page_title_breadcrumb'
           div class = ( 'page-content' if user_signed_in? )
-            = flash_messages if show_layout_flash?
-            /flash.each do |name, msg|
-              /= content_tag :div, msg, :id = "flash_#{name}"
+            -if user_signed_in? 
+              = flash_messages if show_layout_flash?
 
             = yield
 
