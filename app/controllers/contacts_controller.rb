@@ -12,7 +12,8 @@ class ContactsController < ApplicationController
     if @contact.deliver
       redirect_to root_path, notice: 'Thank you for your message. We will contact you soon!'
     else
-      redirect_to root_path, alert: 'Cannot send message.'
+      flash[:alert] = 'Cannot send message.'
+      redirect_to root_path
     end
   end
 

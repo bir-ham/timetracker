@@ -37,10 +37,10 @@ module LayoutHelper
 
   def is_footer_visible?
     sessions = controller_name == "sessions"
-    accounts_create = controller_name == "accounts" && controller.action_name == "create"
+    accounts_new = controller_name == "accounts" && controller.action_name == "new"
     invitations_edit = controller_name == "invitaions" && controller.action_name == "edit"
 
-    return true unless sessions || accounts_create || invitations_edit
+    return true unless sessions || accounts_new || invitations_edit
   end
 
 end
