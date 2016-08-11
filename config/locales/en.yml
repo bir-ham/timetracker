@@ -30,7 +30,7 @@ en:
     back: Back
     exit: Exit
     ok: OK
-    create_account: Create account
+    sign_up: Sign up free
     invite_user: Invite user
     sign_out: Sign out
     sign_in: Sign in
@@ -42,6 +42,7 @@ en:
       header: Home
       welcome: Welcome to
       slogan: Automate and Track your day-to-day business acitvitaies with the most effective business tool ever
+      get_started: Get started for free
     features:
       header: Features
       invoice:
@@ -64,6 +65,12 @@ en:
       header: About
     contacts:
       header: Contacts
+      description: You can contact us freely by sending a message. For example, fo inquires related with how to upgrade
+        your free tier and have access to more feature. For reporting softwares bugs. Or generally, how to use
+        the serivces ans so on...
+      create:
+        notice: Thank you for your message. We will contact you soon!
+        error: Can not send message.
     footer:
       copy_right: Copyright &copy; Toolsio, Ltd. 2016
       address: Pyyntitie 2 C 50, 02230, Espoo, Finland

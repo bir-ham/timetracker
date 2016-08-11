@@ -34,6 +34,8 @@ gem 'simple_form_fancy_uploads'
 gem 'gretel'
 gem 'jquery-easing-rails'
 gem 'nicescroll-rails'
+gem 'mail_form'
+gem 'negative_captcha'
 
 group :development, :test do
   gem 'pry-remote'

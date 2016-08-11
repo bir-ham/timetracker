@@ -169,7 +169,7 @@
 }
 
 .animation-delay-1 {
-  @include animation-delay(.1s); 
+  @include animation-delay(.1s);
 }
 
 .fadeInRightBig {
@@ -179,30 +179,6 @@
 
 .animated {
   @include animation-duration(1s);
-}
-
-// animation
-.animationload {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #fff;
-  z-index: 999999;
-}
-
-.loader {
-  width: 200px;
-  height: 200px;
-  font-size: 0;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  background-image: url('ajax-loader.gif');
-  background-repeat: no-repeat;
-  background-position: center;
-  margin: -100px 0 0 -100px;
 }
 
 /* Small devices (tablets, 768px and up) */

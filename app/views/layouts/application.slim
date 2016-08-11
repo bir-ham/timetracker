@@ -15,9 +15,6 @@ html lang="en"
     = javascript_include_tag 'application', media: 'all', 'data-turbolinks-track' => true
     = csrf_meta_tags
   body class="#{controller.controller_name} #{controller.action_name}"
-    .animationload 
-      .loader Loading...
-
     #wrapper
       - if user_signed_in?
         == render 'layouts/internal_page_navigation'
@@ -32,14 +29,12 @@ html lang="en"
           - if user_signed_in?
             == render 'layouts/page_title_breadcrumb'
           div class = ( 'page-content' if user_signed_in? )
-            = flash_messages if show_layout_flash?
-            /flash.each do |name, msg|
-              /= content_tag :div, msg, :id = "flash_#{name}"
+            -if user_signed_in? 
+              = flash_messages if show_layout_flash?
 
             = yield
 
     - if is_footer_visible?
       == render 'layouts/footer'
       a href="#" class="back-to-top animated fadeInRightBig animation-delay-1 wow animated" style="visibility: visible; animation-name: fadeInRightBig"
-        = icon ('chevron-up') 
-     
+        = icon ('chevron-up')
