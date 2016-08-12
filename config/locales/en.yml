@@ -99,6 +99,11 @@ en:
       delete_account: Delete this accout
     update:
       success_update: "Account information updated!"
+    subdomain:
+      header: Enter your subdomain
+      company_name: Your subdomain is most likely your company name 
+      continue_button: Continue  
+      error: can't be blank
   projects:
     index:
       header: Projects

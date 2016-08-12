@@ -45,6 +45,7 @@ en:
       signed_in: "Signed in successfully."
       signed_out: "Signed out successfully."
       login_notice: Enter the email address and password you used when registring to the service.
+      subdomain_not_found: Subdomain not found, re-enter a correct subdomain
     unlocks:
       send_instructions: "You will receive an email with instructions about how to unlock your account in a few minutes."
       send_paranoid_instructions: "If your account exists, you will receive an email with instructions about how to unlock it in a few minutes."
