@@ -36,7 +36,13 @@ Rails.application.routes.draw do
     #get 'homepages#about'
     #get 'homepages#contact'
     #get 'homepages#faq'
-    resources :accounts, only: [:new, :create]
+    resources :accounts, only: [:new, :create, :subdomain, :subdomain_check] do 
+      collection do
+        get 'subdomain'
+        post 'subdomain_check'
+      end  
+    end
+
     resources :contacts, only: [:new, :create]
   end
 
