@@ -38,8 +38,8 @@ class AccountsController < ApplicationController
   end
 
   def subdomain_check
-    unless account_params.nil?
-      @account = Account.find_by(subdomain: account_params.values)
+    unless params[:subdomain].value?("")
+      @account = Account.find_by(subdomain: params[:subdomain].values)
       if @account
         Apartment::Tenant.switch!(@account.subdomain)
         
@@ -53,7 +53,7 @@ class AccountsController < ApplicationController
   end
   
   def subdomain
-    @account = Account.new
+    
   end
 
   private
