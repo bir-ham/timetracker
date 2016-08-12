@@ -33,6 +33,7 @@ gem 'country_select'
 gem 'simple_form_fancy_uploads'
 gem 'gretel'
 gem 'jquery-easing-rails'
+gem 'nicescroll-rails'
 gem 'mail_form'
 gem 'negative_captcha'
 

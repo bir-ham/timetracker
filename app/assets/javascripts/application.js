@@ -2,6 +2,7 @@
 //= require jquery_ujs
 //= require jquery.turbolinks
 //= require jquery.easing
+//= require jquery.nicescroll
 //= require bootstrap/dropdown
 //= require bootstrap/collapse
 //= require bootstrap/transition
