@@ -43,7 +43,7 @@ class AccountsController < ApplicationController
       if @account
         Apartment::Tenant.switch!(@account.subdomain)
         
-        redirect_to new_user_session_url(subdomain: @account.subdomain),  notice: I18n.t('devise.sessions.login_notice')
+        redirect_to new_user_session_url(subdomain: @account.subdomain)
       else 
         flash.now[:alert] = I18n.t('devise.sessions.subdomain_not_found') 
         render :subdomain
