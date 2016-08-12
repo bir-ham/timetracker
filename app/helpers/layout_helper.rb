@@ -40,8 +40,9 @@ module LayoutHelper
     accounts_new = controller_name == "accounts" && controller.action_name == "new"
     invitations_edit = controller_name == "invitaions" && controller.action_name == "edit"
     accounts_subdomain = controller_name == "accounts" && controller.action_name == "subdomain"
+    subdomain_check = controller_name == "accounts" && controller.action_name == "subdomain_check"
 
-    return true unless sessions || accounts_new || invitations_edit || accounts_subdomain
+    return true unless sessions || accounts_new || invitations_edit || accounts_subdomain || subdomain_check
   end
 
 end

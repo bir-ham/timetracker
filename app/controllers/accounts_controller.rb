@@ -39,15 +39,17 @@ class AccountsController < ApplicationController
 
   def subdomain_check
     unless params[:subdomain].value?("")
-      @account = Account.find_by(subdomain: params[:subdomain].values)
+      @account = Account.find_by(subdomain: params[:subdomain].values.first.downcase)
       if @account
         Apartment::Tenant.switch!(@account.subdomain)
         
         redirect_to new_user_session_url(subdomain: @account.subdomain),  notice: I18n.t('devise.sessions.login_notice')
       else 
-        redirect_to subdomain_accounts_path, alert: I18n.t('devise.sessions.subdomain_not_found')  
+        flash.now[:alert] = I18n.t('devise.sessions.subdomain_not_found') 
+        render :subdomain
       end  
     else
+      @error = I18n.t('accounts.subdomain.error')
       render action: 'subdomain'
     end  
   end
