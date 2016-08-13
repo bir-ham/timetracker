@@ -79,23 +79,6 @@ a {
   @include border-radius(0);
 }
 
-// Labels
-.label-success {
-  background: $grass;
-}
-
-.label-info {
-  background: $blue;
-}
-
-.label-warning {
-  background: $orange
-}
-
-.label-danger {
-  background: $red;
-}
-
 // Navbar
 .navbar-nav {
   margin: 0 auto;

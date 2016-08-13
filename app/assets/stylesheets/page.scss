@@ -432,22 +432,13 @@ span.block {
   padding: 20px 20px 50px 20px;
 }
 
-#sum_box .db {
+.dashboard-card {
   -webkit-transition: all 0.3s ease 0s;
   transition: all 0.3s ease 0s;
 }
 
-#sum_box .icon {
-  font-size: 30px;
-  margin-top: 0;
-  margin-bottom: 0px;
-  float: right;
-}
-
-#sum_box h3 {
-  span {
-    font-size: 16px;
-  }
+.dashboard-card .main-icon .fa {
+  font-size: 2.5em;
 }
 
 .portlet .portlet-body {
