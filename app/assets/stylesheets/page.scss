@@ -19,7 +19,7 @@ html, body {
   height: 50px;
   padding: 7px;
   background-color: $dark-mid-night-blue;
-  color: $$dark-medium-grey;
+  color: $dark-medium-grey;
 }
 
 // navbar
@@ -187,7 +187,7 @@ html, body {
   li.divider {
     padding: 0;
     margin: 0;
-    background: $light-$dark-medium-grey;
+    background: $medium-grey;
   }
 }
 

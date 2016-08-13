@@ -29,6 +29,7 @@
             .btn-toolbar
               = f.button :submit, I18n.t('accounts.subdomain.continue_button'), class: 'btn-primary btn-block'
         .panel-footer
+          = link_to I18n.t('accounts.subdomain.dont_have_an_account'), new_account_path
 
       .center-block.m-b-l
         .text-center
