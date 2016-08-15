@@ -13,6 +13,8 @@
 //= require bootstrap/carousel
 //= require bootstrap/modal
 
+//= reqiore dataTables/jquery.dataTables
+
 // Local files
 //= require confirmation_modal
 //= require custome_collapse
