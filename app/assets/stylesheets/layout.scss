@@ -79,23 +79,6 @@ a {
   @include border-radius(0);
 }
 
-// Labels
-.label-success {
-  background: $grass;
-}
-
-.label-info {
-  background: $blue;
-}
-
-.label-warning {
-  background: $orange
-}
-
-.label-danger {
-  background: $red;
-}
-
 // Navbar
 .navbar-nav {
   margin: 0 auto;
@@ -307,7 +290,7 @@ dt {
     width: auto;
     margin-bottom: 15px;
     font-size: 13px;
-    color: $x-dark-medium-grey;
+    color: $dark-grey;
     border-bottom: none;
   }
 }

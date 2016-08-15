@@ -82,6 +82,7 @@ en:
     new:
       header: Create an Account
       notice: All (*) fields are mandatory. Enter correct information.
+      have_an_account: Already a user? Log in here
     edit:
       header: Edit accout information
     show:
@@ -104,6 +105,7 @@ en:
       company_name: Your subdomain is most likely your company name 
       continue_button: Continue  
       error: can't be blank
+      dont_have_an_account: Don't have and account? Sign up now for free
   projects:
     index:
       header: Projects

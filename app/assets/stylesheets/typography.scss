@@ -45,5 +45,43 @@ h3 {
 } 
 
 .text-muted {
-  color: $x-dark-medium-grey;
+  color: $dark-grey;
+}
+
+.text-bold {
+  font-weight: bold;
+}
+
+// Labels
+.label-success {
+  background: $grass;
+}
+
+.label-info {
+  background: $blue;
+}
+
+.label-warning {
+  background: $orange
+}
+
+.label-danger {
+  background: $red;
+}
+
+// Text
+.text-success {
+  color: $grass;
+}
+
+.text-info {
+  color: $blue;
+}
+
+.text-warning {
+  color: $orange
+}
+
+.text-danger {
+  color: $red;
 }

@@ -26,7 +26,7 @@
             .btn-toolbar
               = f.button :submit, class: 'btn-primary btn-block'
         .panel-footer
-
+          = link_to I18n.t('accounts.new.have_an_account'), subdomain_accounts_path
       .center-block.m-b-l
         .text-center
           p.m-b-n = raw I18n.t('landing_page.footer.copy_right')

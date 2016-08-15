@@ -14,12 +14,12 @@ html, body {
 // footer
 .footer {
   position: relative;
-  margin-top: -100px;
+  margin-top: -50px;
   clear:both;
-  height: 100px;
-  padding: 20px;
+  height: 50px;
+  padding: 7px;
   background-color: $dark-mid-night-blue;
-  color: $medium-grey;
+  color: $dark-medium-grey;
 }
 
 // navbar
@@ -187,7 +187,7 @@ html, body {
   li.divider {
     padding: 0;
     margin: 0;
-    background: $light-medium-grey;
+    background: $medium-grey;
   }
 }
 
@@ -321,7 +321,7 @@ span.block {
 
 // Side nav
 #sidebar {
-  background: #3C3C3C;
+  background: $dark-grey;
   min-height: 100%;
   top: 50px;
 }
@@ -331,13 +331,13 @@ span.block {
 }
 
 .navbar-static-side ul li {
-  background: #3C3C3C;
+  background: $dark-grey;
   outline: none;
   color: #d9d9d9;
 }
 
 .navbar-static-side ul li {
-  border-bottom: 1px solid #484848;
+  border-bottom: 1px solid $light-dark-grey;
 }
 
 .navbar-static-side ul li a {
@@ -432,22 +432,13 @@ span.block {
   padding: 20px 20px 50px 20px;
 }
 
-#sum_box .db {
+.dashboard-card {
   -webkit-transition: all 0.3s ease 0s;
   transition: all 0.3s ease 0s;
 }
 
-#sum_box .icon {
-  font-size: 30px;
-  margin-top: 0;
-  margin-bottom: 0px;
-  float: right;
-}
-
-#sum_box h3 {
-  span {
-    font-size: 16px;
-  }
+.dashboard-card .main-icon .fa {
+  font-size: 2.5em;
 }
 
 .portlet .portlet-body {
@@ -465,7 +456,7 @@ span.block {
 .company-profile {
   padding: 30px 20px;
   text-align: center;
-  border-bottom: 1px solid #484848;
+  border-bottom: 1px solid $light-dark-grey;
   a, {
     color: #d9d9d9;
     font-size: 11px;
