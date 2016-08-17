@@ -1,5 +1,6 @@
 //= require jquery
 //= require jquery_ujs
+//= require dataTables/jquery.dataTables
 //= require jquery.turbolinks
 //= require jquery.easing
 //= require jquery.nicescroll
@@ -13,9 +14,8 @@
 //= require bootstrap/carousel
 //= require bootstrap/modal
 
-//= reqiore dataTables/jquery.dataTables
-
 // Local files
 //= require confirmation_modal
 //= require custome_collapse
 //= require scroll
+//= require invoices
