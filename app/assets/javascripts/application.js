@@ -1,9 +1,9 @@
 //= require jquery
 //= require jquery_ujs
-//= require dataTables/jquery.dataTables
 //= require jquery.turbolinks
 //= require jquery.easing
 //= require jquery.nicescroll
+//= require dataTables/jquery.dataTables
 //= require bootstrap/dropdown
 //= require bootstrap/collapse
 //= require bootstrap/transition

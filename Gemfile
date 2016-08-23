@@ -7,13 +7,9 @@ gem 'pg'
 
 gem 'jquery-rails'
 
-group :assets do 
-  gem 'sass-rails', '~> 5.0'
-  gem 'uglifier', '>= 1.3.0'
-  gem 'coffee-rails', '~> 4.0.0'
-
-  gem 'jquery-datatables-rails', '~> 3.3.0'
-end 
+gem 'sass-rails', '~> 5.0'
+gem 'uglifier', '>= 1.3.0'
+gem 'coffee-rails', '~> 4.0.0'
 
 gem 'turbolinks'
 gem 'jquery-turbolinks'
@@ -41,6 +37,8 @@ gem 'jquery-easing-rails'
 gem 'nicescroll-rails'
 gem 'mail_form'
 gem 'negative_captcha'
+
+gem 'jquery-datatables-rails', '~> 3.4'
 
 group :development, :test do
   gem 'pry-remote'
