@@ -1,9 +1,9 @@
-@import "bootstrap-sprockets";
-@import "bootstrap";
-
 /*
 *= require dataTables/jquery.dataTables
 */
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
 
 // Font awesome
 @import "font-awesome-sprockets";

@@ -22,7 +22,7 @@
 
     - unless @invoices.empty?
       .table-responsive
-        table#invoices.table.table-striped
+        table#invoices.table.table-striped data-source="= invoices_url(format: "json")"
           thead
             tr
               th = I18n.t('invoices.show.id')

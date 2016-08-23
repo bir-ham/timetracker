@@ -2,7 +2,10 @@ class InvoicesController < ApplicationController
   #before_action :set_invoice, only: [:show, :edit, :upate, :destroy]
 
   def index
-    @invoices = Invoice.all
+    respond_to do |format|
+      format.html
+      format.json { render json: InvoicesDatatable.new(view_context) }
+    end  
 
     search_params = params[:search]
     unless search_params.blank?
