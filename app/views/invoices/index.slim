@@ -22,7 +22,7 @@
 
     - unless @invoices.empty?
       .table-responsive
-        table#invoices.table.table-striped data-source="= invoices_url(format: "json")"
+        table#invoices.table.table-striped data-source="invoices_url(format: 'json')"
           thead
             tr
               th = I18n.t('invoices.show.id')
@@ -34,25 +34,7 @@
               th = I18n.t('invoices.show.status')
               th = I18n.t('button.view')
           tbody
-            - @invoices.each do |invoice|
-              tr
-                td = invoice.id
-                td = invoice.customer.name 
-                td = invoice.user.first_name
-                td = invoice.date_of_an_invoice.strftime("%d/%m/%Y")
-                td = invoice.deadline ? invoice.deadline.strftime("%d/%m/%Y") : ''
-                td 
-                td 
-                  - if invoice.status_type.eql?('PAID')
-                    span.label.label-success = invoice.status_type
-                  - elsif invoice.status_type.eql?('PENDING')  
-                    span.label.label-success = invoice.status_type  
-                  - elsif invoice.status_type.eql?('OVERDUE')    
-                td
-                  = link_to invoice, class: 'btn btn-info btn-xs' do
-                    = icon('eye')
-                    |&nbsp; 
-                    = I18n.t('button.view')
+            
 
       h4 Export Invoices:
       .btn-toolbar
