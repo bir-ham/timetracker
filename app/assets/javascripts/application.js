@@ -20,4 +20,4 @@
 //= require confirmation_modal
 //= require custome_collapse
 //= require scroll
-//= require invoices
+//= require datatable
