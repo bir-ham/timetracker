@@ -21,19 +21,18 @@
               = submit_tag 'Search', class: 'btn btn-primary'      
             
     - unless @invoices.empty?
-      .table-responsive
-        table#invoices.table.table-striped data-source="/invoices.json"
-          thead
-            tr
-              th = I18n.t('invoices.show.id')
-              th = I18n.t('invoices.show.customer')
-              th = I18n.t('invoices.show.employee')
-              th = I18n.t('invoices.show.date_of_an_invoice')
-              th = I18n.t('invoices.show.deadline')
-              th = I18n.t('invoices.show.total')
-              th = I18n.t('invoices.show.status')
-              th = I18n.t('button.view')
-          tbody            
+      table#invoices.table.table-striped.table-bordered cellspacing="0" width="100%" data-source="/invoices.json"
+        thead
+          tr
+            th = I18n.t('invoices.show.id')
+            th = I18n.t('invoices.show.customer')
+            th = I18n.t('invoices.show.employee')
+            th = I18n.t('invoices.show.date_of_an_invoice')
+            th = I18n.t('invoices.show.deadline')
+            th = I18n.t('invoices.show.total')
+            th = I18n.t('invoices.show.status')
+            th = I18n.t('button.view')
+        tbody            
 
       h4 Export Invoices:
       .btn-toolbar
