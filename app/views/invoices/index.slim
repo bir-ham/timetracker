@@ -19,10 +19,10 @@
               = text_field_tag 'search[date_to]', @search.date_to, class: 'form-control'
             .form-group
               = submit_tag 'Search', class: 'btn btn-primary'      
-
+            
     - unless @invoices.empty?
       .table-responsive
-        table#invoices.table.table-striped data-source="invoices_url(format: 'json')"
+        table#invoices.table.table-striped data-source="/invoices.json"
           thead
             tr
               th = I18n.t('invoices.show.id')
@@ -33,8 +33,7 @@
               th = I18n.t('invoices.show.total')
               th = I18n.t('invoices.show.status')
               th = I18n.t('button.view')
-          tbody
-            
+          tbody            
 
       h4 Export Invoices:
       .btn-toolbar

@@ -7,7 +7,7 @@ class InvoicesDatatable
   
   def as_json(options = {})
     {
-      SEcho: params[:sEcho].to_i,
+      sEcho: params[:sEcho].to_i,
       iTotalRecords: Invoice.count,
       iTotalDisplayRecords: invoices.total_entries,
       aaData: data
@@ -50,11 +50,6 @@ class InvoicesDatatable
           content_tag(:span, invoice.status_type, class: status_type_label_class),
           
           link_to(content_tag(:i, " View", class: 'fa fa-eye'), invoice, class: 'btn btn-info btn-xs')
-
-          #link_to invoice, class: 'btn btn-info btn-xs' do
-          #  content_tag(:i, class: 'fa fa-eye')
-          #  content_tag(:p, 'View', class: '')
-          #end  
         ]
       end  
     end
@@ -73,7 +68,7 @@ class InvoicesDatatable
     end
 
     def page
-      params[:iDisplayStart].to_i/per_page + 1  
+      params[:iDisplayStart].to_i/per_page + 1
     end
 
     def per_page
@@ -81,7 +76,7 @@ class InvoicesDatatable
     end
 
     def sort_column
-      columns = %w[id name first_name date_of_an_invoice deadline status_type]
+      columns = %w[id name first_name date_of_an_invoice deadline running_total status_type invoice]
       columns[params[:iSortCol_0].to_i]
     end
 
