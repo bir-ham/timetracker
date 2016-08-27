@@ -20,3 +20,12 @@
     text-align: left;
   }
 }
+
+.dataTables_length select.input-sm {
+  height: inherit;
+  line-height: inherit;
+}
+
+table.table-bordered.dataTable {
+  border-collapse: collapse !important;
+}

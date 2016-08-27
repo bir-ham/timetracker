@@ -1,5 +1,5 @@
 class InvoicesDatatable
-  delegate :params, :link_to, :content_tag, :number_to_currency, to: :@view
+  delegate :params, :link_to, :content_tag, :current_account, :number_to_currency, to: :@view
 
   def initialize(view)
     @view = view
@@ -62,7 +62,7 @@ class InvoicesDatatable
       invoices = Invoice.order("#{sort_column} #{sort_direction}")
       invoices = invoices.page(page).per_page(per_page)
       if params[:sSearch].present?
-        invoices = invoices.where("name like :search or category like :search", search: "%#{params[:sSearch]}")
+        invoices = Invoice.joins(:customer).where("name like :search or email like :search", search: "%#{params[:sSearch]}")
       end
       invoices
     end
@@ -76,7 +76,7 @@ class InvoicesDatatable
     end
 
     def sort_column
-      columns = %w[id name first_name date_of_an_invoice deadline running_total status_type invoice]
+      columns = %w[id first_name date_of_an_invoice deadline running_total status_type invoice]
       columns[params[:iSortCol_0].to_i]
     end
 
