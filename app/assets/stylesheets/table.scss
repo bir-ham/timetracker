@@ -29,3 +29,8 @@
 table.table-bordered.dataTable {
   border-collapse: collapse !important;
 }
+
+.dataTables_wrapper {
+  background: $white;
+  padding: 10px;
+}
