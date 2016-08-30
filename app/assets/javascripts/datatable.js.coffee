@@ -2,7 +2,11 @@ jQuery ->
   table = $("#invoices").dataTable
     dom: "<'row'<'col-sm-4'l><'col-sm-4 text-center'B><'col-sm-4'f>>tp",
 
+    oLanguage: {
+      sProcessing: "<img src='ajax-loader.gif'>"
+    },
     bProcessing: true
+    
     bServerSide: true
     sAjaxSource: $('#invoices').data('source')
 
