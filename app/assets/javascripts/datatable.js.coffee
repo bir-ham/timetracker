@@ -14,10 +14,14 @@ jQuery ->
         {extend: 'print', title: 'ExampleFile', className: 'btn-sm'}
     ]
 
-    "columnDefs": [ {
-      "targets": 'no-sort',
-      "orderable": false,
+    columnDefs: [ {
+      targets: 'no-sort',
+      orderable: false
+      }, {
+      targets: 'align-center',
+      className: 'text-center'
     } ]  
+
 
  
 
