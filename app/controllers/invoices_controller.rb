@@ -9,13 +9,6 @@ class InvoicesController < ApplicationController
       format.csv { render text: @invoices.to_csv }
       format.xls #{ render text: @invoices.to_csv(col_sep: "\t") }
     end  
-
-    search_params = params[:search]
-    unless search_params.blank?
-      @search = InvoiceSearch.new(search_params)
-      @invoices = @search.scope
-    end
-
   end
 
   def new

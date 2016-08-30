@@ -1,25 +1,6 @@
 - breadcrumb :invoices
 .row
-  .col-sm-12
-    .clearfix
-      .pull-right.range-query
-        = simple_form_for(:search, url: invoices_path, method: :get, html: { class: 'form-inline' }) do |f|
-          = f.input :date_from, as: :string
-          /input_html: { value: localize(f.object.date_from, format: "%d/%m/%Y") } 
-          = f.input :date_to, as: :string
-          = f.button :submit, 'Search', class: 'btn-primary'
-
-    /.clearfix    
-      .pull-right.range-query
-        .form-inline
-          = form_tag(invoices_path, method: :get) do
-            .form-group
-              = text_field_tag 'search[date_form]', @search.date_from, class: 'form-control'
-            .form-group
-              = text_field_tag 'search[date_to]', @search.date_to, class: 'form-control'
-            .form-group
-              = submit_tag 'Search', class: 'btn btn-primary'      
-            
+  .col-sm-12            
     - unless @invoices.empty?
       table#invoices.table.table-striped.table-bordered cellspacing="0" width="100%" data-source="/invoices.json"
         thead
