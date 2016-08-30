@@ -31,11 +31,11 @@ class InvoicesDatatable
 
         status_type_label_class = ''
         if invoice.status_type.eql?('PAID')
-          status_type_label_class = 'label-success'
+          status_type_label_class = 'label label-success'
         elsif invoice.status_type.eql?('PENDING')  
-          status_type_label_class = 'label-warning' 
+          status_type_label_class = 'label label-warning' 
         elsif invoice.status_type.eql?('OVERDUE')    
-          status_type_label_class = 'label-alert'
+          status_type_label_class = 'label label-danger'
         end
 
         [

@@ -6,6 +6,11 @@
 //= require dataTables/jquery.dataTables
 //= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
 //= require dataTables/extras/dataTables.responsive
+//= require dataTables/extras/dataTables.tableTools
+//= require dataTables/extras/dataTables.buttons
+//= require buttons.bootstrap
+//= require buttons.html5
+//= require buttons.print
 //= require bootstrap/dropdown
 //= require bootstrap/collapse
 //= require bootstrap/transition
