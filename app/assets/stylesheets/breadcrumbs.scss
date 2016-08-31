@@ -46,7 +46,7 @@
   height: 0;
   border-top: 50px solid transparent;           /* Go big on the size, and let overflow hide */
   border-bottom: 50px solid transparent;
-  border-left: 30px solid white;
+  border-left: 33px solid $body-background-color;
   position: absolute;
   top: 50%;
   margin-top: -50px;
