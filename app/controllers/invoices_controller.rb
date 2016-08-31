@@ -3,18 +3,12 @@ class InvoicesController < ApplicationController
 
   def index
     @invoices = Invoice.all
-
-    search_params = params[:search]
-    unless search_params.blank?
-      @search = InvoiceSearch.new(search_params)
-      @invoices = @search.scope
-    end
-
     respond_to do |format|
       format.html
+      format.json { render json: InvoicesDatatable.new(view_context) }
       format.csv { render text: @invoices.to_csv }
       format.xls #{ render text: @invoices.to_csv(col_sep: "\t") }
-    end
+    end  
   end
 
   def new

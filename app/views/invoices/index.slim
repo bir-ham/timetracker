@@ -1,78 +1,28 @@
 - breadcrumb :invoices
 .row
-  .col-sm-12
-    .clearfix
-      .pull-right.range-query
-        = simple_form_for(:search, url: invoices_path, method: :get, html: { class: 'form-inline' }) do |f|
-          = f.input :date_from, as: :string
-          /input_html: { value: localize(f.object.date_from, format: "%d/%m/%Y") } 
-          = f.input :date_to, as: :string
-          = f.button :submit, 'Search', class: 'btn-primary'
-
-    /.clearfix    
-      .pull-right.range-query
-        .form-inline
-          = form_tag(invoices_path, method: :get) do
-            .form-group
-              = text_field_tag 'search[date_form]', @search.date_from, class: 'form-control'
-            .form-group
-              = text_field_tag 'search[date_to]', @search.date_to, class: 'form-control'
-            .form-group
-              = submit_tag 'Search', class: 'btn btn-primary'      
-
+  .col-sm-12            
     - unless @invoices.empty?
-      .table-responsive
-        table.table.table-striped
-          thead
-            tr
-              th = I18n.t('invoices.show.id')
-              th = I18n.t('invoices.show.customer')
-              th = I18n.t('invoices.show.employee')
-              th = I18n.t('invoices.show.date_of_an_invoice')
-              th = I18n.t('invoices.show.deadline')
-              th = I18n.t('invoices.show.total')
-              th = I18n.t('invoices.show.status')
-              th = I18n.t('button.view')
-          tbody
-            - @invoices.each do |invoice|
-              tr
-                td = invoice.id
-                td = invoice.customer.name 
-                td = invoice.user.first_name
-                td = invoice.date_of_an_invoice.strftime("%d/%m/%Y")
-                td = invoice.deadline ? invoice.deadline.strftime("%d/%m/%Y") : ''
-                td 
-                td 
-                  - if invoice.status_type.eql?('PAID')
-                    span.label.label-success = invoice.status_type
-                  - elsif invoice.status_type.eql?('PENDING')  
-                    span.label.label-success = invoice.status_type  
-                  - elsif invoice.status_type.eql?('OVERDUE')    
-                td
-                  = link_to invoice, class: 'btn btn-info btn-xs' do
-                    = icon('eye')
-                    |&nbsp; 
-                    = I18n.t('button.view')
-
-      h4 Export Invoices:
-      .btn-toolbar
-        = link_to "Download CSV", invoices_path(format: "csv"), class: 'btn btn-outline btn-primary btn-sm' 
-        = link_to "Download Excel", invoices_path(format: "xls"), class: 'btn btn-outline btn-primary btn-sm'               
+      table#invoices.table.table-striped.table-bordered cellspacing="0" width="100%" data-source="/invoices.json"
+        thead
+          tr
+            th = I18n.t('invoices.show.id')
+            th = I18n.t('invoices.show.customer')
+            th = I18n.t('invoices.show.employee')
+            th = I18n.t('invoices.show.date_of_an_invoice')
+            th = I18n.t('invoices.show.deadline')
+            th = I18n.t('invoices.show.total')
+            th.no-sort = I18n.t('invoices.show.status')
+            th.no-sort.align-center = I18n.t('button.view')
+        tbody            
      
     - else
       p.text-danger = I18n.t('invoices.index.empty_invoices')
-    h4 Import Invoices:
-    /= simple_form_for( :file, url: import_invoices_path, html: { multipart: true, class: 'form-inline'} ) do |f|
-      = f.input :file, as: :file, label: false
-      = f.button :submit, 'Upload Invoices', class: 'btn btn-outline btn-sm'
-    /= form_tag import_invoices_path, multipart: true do 
-      = file_field_tag :file
-      = submit_tag 'Upload file'
-    = link_to "Import products", invoice_imports_path  
-                
-    .btn-toolbar  
-      = link_to new_invoice_path, class: 'btn btn-primary'
-        = icon('plus')
-        |&nbsp;
-        = I18n.t('invoices.index.add_new_invoice_button')
+    
+    = link_to new_invoice_path, class: 'btn btn-primary'
+      = icon('plus')
+      |&nbsp;
+      = I18n.t('invoices.index.add_new_invoice_button')
 
+    hr.x-light-turquoise-hr
+    = link_to "Import products from file", invoice_imports_path, class: 'btn btn-outline btn-primary' 
+                    

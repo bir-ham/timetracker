@@ -21,15 +21,6 @@ class Invoice < ActiveRecord::Base
   validate :choose_xor_deadline_payment_term, if: lambda { |i| i.current_step == 'invoice' }
   validate :date_of_an_invoice_or_deadline_cannot_be_in_the_past, if: lambda { |i| i.current_step == 'invoice' }
 
-  def self.to_csv(options = {})
-    CSV.generate(options) do |csv|
-      csv << column_names
-      all.each do |invoice|
-        csv << invoice.attributes.values_at(*column_names)
-      end
-    end
-  end
-
   # setter
   def current_step
     @current_step || steps.first

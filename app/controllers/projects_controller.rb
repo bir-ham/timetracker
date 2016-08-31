@@ -2,6 +2,12 @@ class ProjectsController < ApplicationController
 
   def index
     @projects = Project.all
+
+    respond_to do |format|
+      format.html
+      format.csv { render text: @invoices.to_csv }
+      format.xls #{ render text: @invoices.to_csv(col_sep: "\t") }
+    end  
   end
 
   def new

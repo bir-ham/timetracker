@@ -32,8 +32,9 @@
           - if @invoice.status_type.eql?('PAID')
             span.label.label-success = @invoice.status_type
           - elsif @invoice.status_type.eql?('PENDING')
-            span.label.label-success = @invoice.status_type
+            span.label.label-warning = @invoice.status_type
           - elsif @invoice.status_type.eql?('OVERDUE')
+            span.label.label-danger = @invoice.status_type
         dt
           |Description:
         dd = @invoice.description

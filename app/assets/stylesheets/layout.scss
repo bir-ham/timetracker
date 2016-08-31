@@ -74,6 +74,11 @@ a {
   background-color: $orange !important;
 }
 
+// Line break
+.x-light-turquoise-hr {
+  border-top: 1px solid $x-light-turquoise;
+}
+
 // Thumbnail
 .thumbnail {
   @include border-radius(0);
@@ -299,6 +304,16 @@ dt {
 .no-gutter > [class*='col-'] {
   padding-right:0;
   padding-left:0;
+}
+
+// Pagination
+.pagination > li > a, .pagination > li > span {
+  color: $turquoise;
+}   
+ 
+.pagination > .active > a, .pagination > .active > a:hover, .pagination > .active > a:focus, .pagination > .active > span, .pagination > .active > span:hover, .pagination > .active > span:focus {
+  background-color: $turquoise;
+  border-color: $dark-turquoise;
 }
 
 // Margins

@@ -9,12 +9,16 @@ class ContactsController < ApplicationController
   def create
     @contact = Contact.new(contact_params)
     @contact.request = request
-    if @contact.deliver
+  
+    if contact_params.value?""
+      flash[:alert] = 'All fields are required.'
+      redirect_to root_path
+    elsif @contact.deliver
       redirect_to root_path, notice: 'Thank you for your message. We will contact you soon!'
     else
-      flash[:alert] = 'Cannot send message.'
-      redirect_to root_path
-    end
+      flash[:alert] = 'Cannot send message. Try again.'
+      redirect_to root_path   
+    end  
   end
 
   private

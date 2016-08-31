@@ -5,10 +5,13 @@ ruby '2.3.1'
 gem 'rails', '4.2.2'
 gem 'pg'
 
+gem 'jquery-rails'
+
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
-gem 'jquery-rails'
+
+gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
 
 gem 'turbolinks'
 gem 'jquery-turbolinks'
@@ -36,6 +39,7 @@ gem 'jquery-easing-rails'
 gem 'nicescroll-rails'
 gem 'mail_form'
 gem 'negative_captcha'
+gem 'will_paginate'
 
 group :development, :test do
   gem 'pry-remote'
