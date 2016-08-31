@@ -19,6 +19,10 @@
 
         ul.list-group
           li.list-group-item = I18n.t('projects.index.no_entries')
+        hr
+        .btn-toolbar
+          = link_to "Download CSV", projects_path(format: "csv"), class: 'btn btn-outline btn-primary btn-sm' 
+          = link_to "Download Excel", projects_path(format: "xls"), class: 'btn btn-outline btn-primary btn-sm'   
     - else
       p.text-danger = I18n.t('projects.index.empty_projects')      
 

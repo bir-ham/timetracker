@@ -74,6 +74,11 @@ a {
   background-color: $orange !important;
 }
 
+// Line break
+.x-light-turquoise-hr {
+  border-top: 1px solid $x-light-turquoise;
+}
+
 // Thumbnail
 .thumbnail {
   @include border-radius(0);
