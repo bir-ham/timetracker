@@ -1,5 +1,5 @@
 h2.text-center
-  = I18n.t('invoices.new.header')
+  = I18n.t('invoices.new.header') 
   small = I18n.t('invoices.new.invoice_details')
 
 = f.input :date_of_an_invoice, as: :date, start_year: Date.today.year, order: [:day, :month, :year], wrapper: :horizontal_form

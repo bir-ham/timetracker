@@ -177,18 +177,33 @@ a {
   background: $xx-light-grey;
 }
 
-.panel-dark-outline {
+.panel-dark-header-outline {
   .panel-heading {
     border-bottom: 1px solid $black;
   }
 }
 
-.panel-turqouise-outline {
+.panel-turqouise-header-outline {
   .panel-heading {
     border-bottom: 1px solid $turquoise;
   }
 }
 
+.panel-success-top-outline {
+  border-top: 2px solid $grass;
+}
+
+.panel-info-top-outline {
+  border-top: 2px solid $blue;
+}
+
+.panel-warning-top-outline {
+  border-top: 2px solid $orange;
+}
+
+.panel-danger-top-outline {
+  border-top: 2px solid $red;
+}
 // Progress bar
 .progress {
   background-color: $xx-light-grey;
