@@ -115,6 +115,8 @@ en:
     new:
       header: New Project
       notice_create: "Project created!"
+      select_customer: '-Select customer-'
+      select_user: '-Select user-'
     edit:
       new:
       header: Edit Project
@@ -159,10 +161,12 @@ en:
     new:
       header: New Invoice
       create_invoice_button: Create Invoice
-      employee: Employee
+      user: User
       confirmation: Confirmation
       invoice_details: Invoice details
       customer_and_user_details: Customer and user details
+      select_customer: '-Select customer-'
+      select_user: '-Select user-'
     edit:
       header: Edit Invoice
     show:
