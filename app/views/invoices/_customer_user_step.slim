@@ -3,5 +3,5 @@ h2.text-center
   
   small = I18n.t('invoices.new.customer_and_user_details')
 
-= f.association :customer, collection: Customer.all, label_method: :name, value_method: :id, prompt: I18n.t('invoices.new.select_customer'), multiple: false
-= f.association :user, collection: User.all, label_method: :first_name, value_method: :id, label: I18n.t('invoices.new.user'), multiple: false, prompt: I18n.t('invoices.new.select_user')
+= f.association :customer, collection: Customer.all, label_method: :name, value_method: :id, prompt: I18n.t('invoices.new.select_customer'), multiple: false, required: true
+= f.association :user, collection: User.all, label_method: :first_name, value_method: :id, label: I18n.t('invoices.new.user'), prompt: I18n.t('invoices.new.select_user'), multiple: false, required: true

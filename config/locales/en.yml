@@ -167,6 +167,7 @@ en:
       customer_and_user_details: Customer and user details
       select_customer: '-Select customer-'
       select_user: '-Select user-'
+      select_status: '-Select status-'
     edit:
       header: Edit Invoice
     show:

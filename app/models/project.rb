@@ -4,10 +4,12 @@ class Project < ActiveRecord::Base
   belongs_to :customer
   belongs_to :user
 
+  validates :customer, presence: true
+  validates :user, presence: true
   validates :name, presence: true, uniqueness: true
-  validates :description, presence: true
   validates :status, presence: true 
   validates :progress, presence: true, allow_nil: true
+  validates :description, presence: false
 
   def self.to_csv(options = {})
     CSV.generate(options) do |csv|
