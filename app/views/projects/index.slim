@@ -1,28 +1,30 @@
 - breadcrumb :projects
 
 .row
-  .col-md-12
+  .col-sm-12
     - unless @projects.empty?  
-      - @projects.each do |project|
-        h3
-          = project.name
-          small = project.client
-          .pull-right
-            .form-inline
-              .form-group
-                = link_to edit_project_path(project), class: "icon-link" do
-                  small
-                    = icon ('cog')
-              .form-group
-                small
-                  = icon ('plus-circle')
+      .row
+        - @projects.each do |project|
+          .col-sm-6
+            .panel.panel-default.panel-success-top-outline
+              .panel-body
+                h3
+                  = project.name
+                  .pull-right
+                    = link_to edit_project_path(project), class: "icon-link" do
+                      small
+                        = icon ('cog')
+               
+                    small
+                      = icon ('plus-circle')
 
-        ul.list-group
-          li.list-group-item = I18n.t('projects.index.no_entries')
-        hr
-        .btn-toolbar
-          = link_to "Download CSV", projects_path(format: "csv"), class: 'btn btn-outline btn-primary btn-sm' 
-          = link_to "Download Excel", projects_path(format: "xls"), class: 'btn btn-outline btn-primary btn-sm'   
+                ul.list-group
+                  li.list-group-item = I18n.t('projects.index.no_entries')
+              .panel-footer    
+      hr
+      .btn-toolbar
+        = link_to "Download CSV", projects_path(format: "csv"), class: 'btn btn-outline btn-primary btn-sm' 
+        = link_to "Download Excel", projects_path(format: "xls"), class: 'btn btn-outline btn-primary btn-sm'   
     - else
       p.text-danger = I18n.t('projects.index.empty_projects')      
 

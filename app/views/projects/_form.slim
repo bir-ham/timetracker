@@ -1,8 +1,25 @@
 = simple_form_for(@project, 
-  wrapper_mappings: { boolean: :vertical_boolean }) do |f| 
+        html: { class: 'form-horizontal' },
+        wrapper: :horizontal_form,
+        wrapper_mappings: { check_boxes: :horizontal_radio_and_checkboxes,
+          radio_buttons: :horizontal_radio_and_checkboxes,
+          boolean: :vertical_boolean }) do |f| 
 
   = f.input :name 
-  = f.input :client 
+  fieldset.custom-fieldset
+    legend.custom-legend Select customer if exists or add a new one
+    = f.association :customer, collection: Customer.all, label_method: :name, value_method: :id, prompt: I18n.t('invoices.new.select_customer'), multiple: false, wrapper: :horizontal_form
+    
+    .col-sm-3
+    .col-sm-9
+      = link_to new_customer_path, class: 'btn btn-primary'
+        = icon('plus')
+        |&nbsp;
+        = I18n.t('customers.index.add_new_customer_button')
+        
+  = f.association :user, collection: User.all, label_method: :first_name, value_method: :id, prompt: I18n.t('invoices.new.select_user'), multiple: false, warpper: :horizontal_form
+  = f.input :status, collection: [['NEW', 'NEW'], ['ONGOING', 'ONGOING'], ['PENDING', 'PENDING'], ['DELAYED', 'DELAYED'], ['FINISHED', 'FINISHED'] ], prompt: false
+  = f.input :description
 
   - if @project.persisted? 
     = f.input :archived, as: :boolean 

@@ -28,11 +28,11 @@ dl.dl-horizontal
   dt
     = I18n.t('invoices.show.status')
   dd
-    - if @invoice.status_type.eql?('PAID')
-      span.label.label-success = @invoice.status_type
-    - elsif @invoice.status_type.eql?('PENDING')
-      span.label.label-success = @invoice.status_type
-    - elsif @invoice.status_type.eql?('OVERDUE')
+    - if @invoice.status.eql?('PAID')
+      span.label.label-success = @invoice.status
+    - elsif @invoice.status.eql?('PENDING')
+      span.label.label-success = @invoice.status
+    - elsif @invoice.status.eql?('OVERDUE')
   dt
     |Description:
   dd = @invoice.description
