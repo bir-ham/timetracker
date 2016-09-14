@@ -14,6 +14,7 @@ html lang="en"
       = stylesheet_link_tag    'landing_page', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', media: 'all', 'data-turbolinks-track' => true
     = csrf_meta_tags
+
   body class="#{controller.controller_name} #{controller.action_name}"
     #wrapper
       - if user_signed_in?
@@ -29,7 +30,7 @@ html lang="en"
           - if user_signed_in?
             == render 'layouts/page_title_breadcrumb'
           div class = ( 'page-content' if user_signed_in? )
-            -if user_signed_in? 
+            -if user_signed_in?
               = flash_messages if show_layout_flash?
 
             = yield

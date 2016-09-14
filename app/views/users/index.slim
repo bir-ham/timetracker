@@ -1,17 +1,18 @@
 - breadcrumb :users
 .row
-  .col-sm-8.col-sm-offset-2    
-    .well          
-      h3 Invite User
-
+  .col-sm-8.col-sm-offset-2
+    .well
+      h3
+        |Invite User
+        small Test
       = simple_form_for(User.new, url: user_invitation_path,
               html: { class: 'form-inline'}) do |f|
-        
+
         = f.input :email, placeholder: I18n.t('users.index.email'), label: I18n.t('users.index.email')
-          
+
         = f.button :submit, I18n.t('users.index.invite_user'), class: 'btn-primary'
 
-    h3 Invited User      
+    h3 Invited User
     table.table.table-striped.table-condensed
       thead
         tr
@@ -26,4 +27,4 @@
             td = user.last_name
             td = user.email
             td = user_status(user)
-    
+
