@@ -22,7 +22,7 @@ html lang="en"
       - if !user_signed_in? && is_landing_header_nav_visible?
         == render 'layouts/landing_page_navigation'
 
-      section id = ( 'wrapper' if user_signed_in? )
+      section
         - if user_signed_in?
           == render 'layouts/side_nav'
 
