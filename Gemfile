@@ -15,7 +15,7 @@ gem 'jquery-datatables-rails'
 
 gem 'turbolinks'
 gem 'jquery-turbolinks'
-gem 'slim-rails'
+gem 'slim-rails', '3.0.1'
 
 gem 'devise'
 gem 'devise_invitable'
@@ -40,6 +40,7 @@ gem 'nicescroll-rails'
 gem 'mail_form'
 gem 'negative_captcha'
 gem 'will_paginate'
+gem 'puma'
 
 group :development, :test do
   gem 'pry-remote'
