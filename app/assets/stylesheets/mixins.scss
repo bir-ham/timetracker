@@ -32,8 +32,12 @@
 }
 
 @mixin transition($options) {
-  -webkit-transition: ($options); /* Safari */
-  transition: ($options);
+  // e.g @include transition (2s ease-in)
+  -webkit-transition: opacity ($options);
+  -moz-transition: opacity ($options);
+  -o-transition: opacity ($options);
+  -ms-transition: opacity ($options);
+  transition: opacity ($options);
 }
 
 @mixin animation-delay($second) {
@@ -44,7 +48,7 @@
           animation-delay: ($second) !important;
 }
 
-@mixin animation-duration($second) {  
+@mixin animation-duration($second) {
   -webkit-animation-duration: ($second);
           animation-duration: ($second);
       -webkit-animation-fill-mode: both;

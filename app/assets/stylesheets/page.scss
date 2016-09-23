@@ -329,12 +329,14 @@ span.block {
 // Side nav
 #sidebar {
   background: $dark-grey;
-  min-height: 100%;
   top: 50px;
 }
 
 .navbar-static-side {
   transition: 0.3s all linear;
+  .link-container a {
+    display: inherit;
+  }
 }
 
 .navbar-static-side ul li {
@@ -371,27 +373,18 @@ span.block {
   margin-left: 10px;
 }
 
-.left-side-collapsed {
-  .navbar-static-side {
-    width: 55px;
-  }
-  #wrapper {
-    margin: 0 0 0 55px;
-  }
-}
-
 .left-side-collapsed .navbar-static-side {
   ul#side-menu li a span {
     display: none;
   }
   .company-profile {
     padding: 20px 5px;
-    a.name, strong {
-      display: none !important;
-    }
   }
   .company-profile img {
     @extend .img-responsive;
+  }
+  .link-container-hidden {
+    display: none;
   }
 }
 
@@ -482,9 +475,6 @@ span.block {
   }
   #wrapper {
     position: relative;
-  }
-  .inner-container {
-    position: relative;
     top: 100px;
   }
   .navbar-nav .open .dropdown-menu {
@@ -513,6 +503,10 @@ span.block {
     overflow: hidden;
     margin: 0 0 0 180px;
   }
+  #sidebar {
+    position: fixed;
+    min-height: 100%;
+  }
   .inner-container {
     position: relative;
     top: 50px;
@@ -530,10 +524,14 @@ span.block {
   .collapse {
     display: inline;
   }
-  #sidebar {
-    position: fixed;
+  .left-side-collapsed {
+    .navbar-static-side {
+      width: 70px;
+    }
+    #wrapper {
+      margin: 0 0 0 55px;
+    }
   }
-
 }
 
 /* Small devices (tablets, 768px and upto desktops, 992px) */

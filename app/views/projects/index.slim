@@ -27,7 +27,7 @@
         = link_to "Download Excel", projects_path(format: "xls"), class: 'btn btn-outline btn-primary btn-sm'
     - else
       p.text-danger = I18n.t('projects.index.empty_projects')
-
+      .m-b-xl
     .btn-toolbar
       = link_to new_project_path, class: 'btn btn-primary'
         = icon('plus')

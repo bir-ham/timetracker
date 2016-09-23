@@ -3,14 +3,16 @@ aside#sidebar.navbar-default.navbar-static-side role="navigation" data-step="2" 
           ul#side-menu.nav
             .clearfix
             .company-profile.hidden-xs
-              = link_to (image_tag current_account[:logo] ? current_account.logo.thumb : 'logo-placeholder-thumb'), current_account, id: 'company-logo-link'
-              = link_to current_account.subdomain, current_account, class: 'visible-all-block text-uppercase m-t-s'
-              = link_to current_account do
-                small
-                  = icon('user')
-                  |&nbsp;
-                  = current_user.first_name
-                  |&nbsp;(Admin)
+              .logo-container
+                = link_to (image_tag current_account[:logo] ? current_account.logo.thumb : 'logo-placeholder-thumb'), current_account, id: 'company-logo-link'
+              .link-container
+                = link_to current_account.subdomain, current_account, class: 'text-uppercase m-t-s'
+                = link_to '#' do
+                  small
+                    = icon('user')
+                    |&nbsp;
+                    = current_user.first_name
+                    |&nbsp;(Admin)
 
             li class = ('active' if (is_controller_name? 'dashboards') && (is_action_name? 'index'))
               = link_to subdomain_root_path do
