@@ -2,24 +2,22 @@ html, body {
   height: 100%;
 }
 
-#wrapper {
-  min-height: 100%;
-}
-
-#wrapper > section {
-  overflow:auto;
-  padding-bottom: 100px; /* this needs to be bigger than footer height*/
-}
-
 // footer
 .footer {
-  position: relative;
-  margin-top: -50px;
-  clear:both;
-  height: 50px;
-  padding: 7px;
+  height: 100px;
+  padding: 10px;
   background-color: $dark-mid-night-blue;
   color: $dark-medium-grey;
+}
+
+.footer-inner {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin-top: -50px;
+  height: 50px;
+  padding: 7px;
 }
 
 // navbar
@@ -351,7 +349,7 @@ span.block {
 
 .navbar-static-side ul li a {
   color: #d9d9d9;
-  padding: 15px;
+  padding: 10px;
   font-weight: 600;
   text-transform: uppercase;
   &:hover, &:focus {
@@ -377,7 +375,7 @@ span.block {
   .navbar-static-side {
     width: 55px;
   }
-  #page-wrapper {
+  #wrapper {
     margin: 0 0 0 55px;
   }
 }
@@ -398,7 +396,7 @@ span.block {
 }
 
 // Container
-#page-wrapper {
+#wrapper {
   min-height: 100%;
   background-color: $body-background-color;
   transition: 0.3s all linear;
@@ -438,7 +436,7 @@ span.block {
 }
 
 .page-content {
-  padding: 20px 20px 50px 20px;
+  padding: 20px 20px 100px 20px;
 }
 
 .dashboard-card {
@@ -463,7 +461,7 @@ span.block {
 }
 
 .company-profile {
-  padding: 30px 20px;
+  padding: 20px 20px;
   text-align: center;
   border-bottom: 1px solid $light-dark-grey;
   a, small {
@@ -482,7 +480,10 @@ span.block {
       height: auto;
     }
   }
-  #page-wrapper {
+  #wrapper {
+    position: relative;
+  }
+  .inner-container {
     position: relative;
     top: 100px;
   }
@@ -502,14 +503,18 @@ span.block {
     float: left;
   }
   .navbar-static-side {
-    z-index: 1;
-    position: absolute;
-    width: 200px;
+    position: fixed;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    width: 197px
   }
-  #page-wrapper {
+  #wrapper {
     position: relative;
-    margin: 0 0 0 200px;
-    padding: 0;
+    overflow: hidden;
+    margin: 0 0 0 180px;
+  }
+  .inner-container {
+    position: relative;
     top: 50px;
   }
   .navbar-static-side ul li a {
