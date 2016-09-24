@@ -3,24 +3,50 @@
 .row
   .col-sm-12
     - unless @projects.empty?
-      .row
-        - @projects.each do |project|
-          .col-sm-6
-            .panel.panel-default.panel-success-top-outline
-              .panel-body
-                h3
-                  = project.name
-                  .pull-right
-                    = link_to edit_project_path(project), class: "icon-link" do
-                      small
-                        = icon ('cog')
+      - @projects.each do |project|
+        .well
+          .clearfix
+            .pull-left
+              h4.m-t-n = project.name
+            .pull-right
+              - if project.status.casecmp('new') == 0
+                span.label.label-info = I18n.t('projects.index.new_status')
+              - elsif project.status.casecmp('ongoing') == 0
+                span.label.label-warning = I18n.t('projects.index.ongoing_status')
+              - elsif project.status.casecmp('delayed') == 0
+                span.label.label-danger = I18n.t('projects.index.delayed_status')
+              - elsif project.status.casecmp('finished') == 0
+                span.label.label-success = I18n.t('projects.index.finished_status')
 
-                    small
-                      = icon ('plus-circle')
+          .row
+            .col-sm-8
+              - if project.description?
+                = project.description
+              - else
+                = I18n.t('projects.index.no_description')
 
-                ul.list-group
-                  li.list-group-item = I18n.t('projects.index.no_entries')
-              .panel-footer
+            .col-sm-4
+              .btn-group.pull-right
+                = link_to I18n.t('button.view'), project, class: 'btn btn-default btn-xs'
+                = link_to I18n.t('button.edit'), edit_project_path(project), class: 'btn btn-default btn-xs'
+          .m-t-m
+          .row
+            .col-xs-2
+              strong.text-uppercase = I18n.t('projects.index.user')
+              span.visible-all-block = project.user.first_name
+            .col-xs-2
+              strong.text-uppercase = I18n.t('projects.index.customer')
+              span.visible-all-block = project.customer.name
+            .col-xs-2
+              strong.text-uppercase = I18n.t('projects.index.deadline')
+              span.visible-all-block = project.deadline
+            .col-xs-2
+              strong.text-uppercase = I18n.t('projects.index.progress')
+              span.visible-all-block = project.progress
+
+          /ul.list-group
+            li.list-group-item = I18n.t('projects.index.no_entries')
+
       hr
       .btn-toolbar
         = link_to "Download CSV", projects_path(format: "csv"), class: 'btn btn-outline btn-primary btn-sm'

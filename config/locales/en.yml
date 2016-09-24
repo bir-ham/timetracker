@@ -102,16 +102,26 @@ en:
       success_update: "Account information updated!"
     subdomain:
       header: Enter your subdomain
-      company_name: Your subdomain is most likely your company name 
-      continue_button: Continue  
+      company_name: Your subdomain is most likely your company name
+      continue_button: Continue
       error: can't be blank
       dont_have_an_account: Don't have and account? Sign up now for free
   projects:
     index:
       header: Projects
+      no_description: No description
       no_entries: No entries yet!
       empty_projects: You have no projects yet
       create_new_project_button: Create new project
+      new_status: New
+      ongoing_status: Ongoing
+      pendigng_status: Pending
+      delayed_status: Delayed
+      finished_status: Finished
+      user: User
+      customer: Customer
+      progress: Progress
+      deadline: Deadline
     new:
       header: New Project
       notice_create: "Project created!"

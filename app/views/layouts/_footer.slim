@@ -2,5 +2,5 @@ footer.footer class = ('footer-inner' if user_signed_in?)
   .container
     .row
       .col-sm-12
-        p.m-b-n = raw I18n.t('landing_page.footer.copy_right')
-        p.m-b-n = I18n.t('landing_page.footer.address')
+        small = raw I18n.t('landing_page.footer.copy_right')
+        small = I18n.t('landing_page.footer.address')
