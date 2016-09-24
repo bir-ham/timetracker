@@ -19,15 +19,15 @@
                 span.label.label-success = I18n.t('projects.index.finished_status')
 
           .row
-            .col-sm-8
+            .col-xs-9.col-sm-9
               - if project.description?
                 = project.description
               - else
                 = I18n.t('projects.index.no_description')
 
-            .col-sm-4
+            .col-xs-3.col-sm-3
               .btn-group.pull-right
-                = link_to I18n.t('button.view'), project, class: 'btn btn-default btn-xs'
+                = link_to I18n.t('button.delete'), project, class: 'btn btn-default btn-xs'
                 = link_to I18n.t('button.edit'), edit_project_path(project), class: 'btn btn-default btn-xs'
           .m-t-m
           .row
