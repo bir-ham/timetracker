@@ -2,23 +2,23 @@
 .row
   .col-sm-6
     .well
-      h1 = I18n.t('customers.show.header')
-      dl.dl-horizontal        
-        dt 
+      h2 = I18n.t('customers.show.header')
+      dl.dl-horizontal
+        dt
           = I18n.t('customers.show.name')
         dd = @customer.name
-        dt 
+        dt
           = I18n.t('customers.show.phone_number')
         dd = @customer.phone_number
-        dt 
+        dt
           = I18n.t('customers.show.email')
-        dd 
-          = @customer.email  
-        dt 
+        dd
+          = @customer.email
+        dt
           = I18n.t('customers.show.address')
         dd = @customer.address
-                
-      .btn-toolbar              
+
+      .btn-toolbar
         = link_to '#confirmation-modal-container', class: 'btn btn-danger confirmation-button', data: { id: @customer.id } do
           = icon('trash')
           |&nbsp;
@@ -27,6 +27,6 @@
         = link_to edit_customer_path(@customer), class: 'btn btn-primary' do
           = icon('pencil-square-o white')
           |&nbsp;
-          = I18n.t('button.edit')       
+          = I18n.t('button.edit')
 
-== render 'layouts/confirmation_modal'        
+== render 'layouts/confirmation_modal'

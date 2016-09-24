@@ -215,6 +215,13 @@ html, body {
   border-top-right-radius: 6px;
 }
 
+.modal-footer {
+  .btn-toolbar {
+    margin: 0;
+    padding: 0;
+  }
+}
+
 // List
 .list-inline, .list-unstyled {
   padding-left: 0;

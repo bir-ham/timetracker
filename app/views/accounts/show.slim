@@ -4,7 +4,7 @@
     .well
       .media
         .media-left
-          h2.text-capitalize.m-t-n = @account.subdomain
+          h2.text-capitalize = @account.subdomain
           = image_tag @account[:logo] ? @account.logo.normal : 'logo-placeholder-normal', class: 'thumbnail'
         .media-body
           dl.dl-horizontal
