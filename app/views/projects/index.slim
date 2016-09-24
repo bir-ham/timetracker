@@ -6,7 +6,7 @@
       /.btn-toolbar.text-center
         = link_to "Download CSV", projects_path(format: "csv"), class: 'btn btn-outline btn-primary btn-sm'
         = link_to "Download Excel", projects_path(format: "xls"), class: 'btn btn-outline btn-primary btn-sm'
-
+      h5 #{Date.today.strftime('%A, %m %Y')}
       - @projects.each do |project|
         .well
           .clearfix
