@@ -42,7 +42,10 @@
               span.visible-all-block = project.deadline
             .col-xs-2
               strong.text-uppercase = I18n.t('projects.index.progress')
-              span.visible-all-block = project.progress
+              - progress = project.progress
+              - progress_percentage = 60
+              .progress.progress-small.m-t-xs.m-b-n
+                .progress-bar.progress-bar-success role="progressbar" aria-valuenow="#{progress_percentage}" aria-valuemin="0" aria-valuemax="100" style="width: #{progress_percentage}%;"
 
           /ul.list-group
             li.list-group-item = I18n.t('projects.index.no_entries')
