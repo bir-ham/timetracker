@@ -21,7 +21,6 @@ html lang="en"
     - if !user_signed_in? && is_landing_header_nav_visible?
       == render 'layouts/landing_page_navigation'
 
-    section class = ('public-section' unless user_signed_in?)
     - if user_signed_in?
       == render 'layouts/side_nav'
 
