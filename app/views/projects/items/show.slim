@@ -1,0 +1,48 @@
+.row
+  .col-md-6
+    h1 = I18n.t('items.show.header')
+    .well.well-sm
+      dl.dl-horizontal
+        dt
+          = I18n.t('items.show.name')
+          |:
+        dd = @item.name
+        dt
+          = I18n.t('items.show.date')
+          |:
+        dd
+          = @item.date
+        dt
+          = I18n.t('items.show.quantity')
+          |:
+        dd = @item.quantity
+        dt
+          = I18n.t('items.show.unit')
+          |:
+        dd = @item.unit
+        dt
+          = I18n.t('items.show.unit_price')
+          |:
+        dd = @item.unit_price
+        dt
+          = I18n.t('items.show.vat')
+          |:
+        dd = @item.vat
+        dt
+          = I18n.t('items.show.total')
+          |:
+        dd
+          /= @item.total
+
+    .btn-toolbar
+      = link_to '#confirmation-modal-container', class: 'btn btn-danger confirmation-button', data: { id: @item.id } do
+        = icon('trash')
+        |&nbsp;
+        = I18n.t('button.delete')
+
+      = link_to edit_item_path(@item), class: 'btn btn-primary' do
+        = icon('pencil-square-o white')
+        |&nbsp;
+        = I18n.t('button.edit')
+
+== render 'layouts/confirmation_modal'

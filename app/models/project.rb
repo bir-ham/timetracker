@@ -3,6 +3,7 @@ class Project < ActiveRecord::Base
   belongs_to :invoice
   belongs_to :customer
   belongs_to :user
+  has_many :items, dependent: :destroy
 
   validates :customer, presence: true
   validates :user, presence: true

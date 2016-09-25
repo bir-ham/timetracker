@@ -15,7 +15,8 @@ Rails.application.routes.draw do
     root 'homepages#dashboard', as: :subdomain_root
     devise_for :users
     resources :users, only: :index
-    resources :projects, except: [:show, :destroy]
+    resources :projects, except: [:show, :destroy] do
+      resources :items, except: [:index], controller: 'projects/items'
     resources :invoices do
       resources :items, except: [:index], controller: 'invoices/items'
     end
@@ -36,11 +37,11 @@ Rails.application.routes.draw do
     #get 'homepages#about'
     #get 'homepages#contact'
     #get 'homepages#faq'
-    resources :accounts, only: [:new, :create, :subdomain, :subdomain_check] do 
+    resources :accounts, only: [:new, :create, :subdomain, :subdomain_check] do
       collection do
         get 'subdomain'
         post 'subdomain_check'
-      end  
+      end
     end
 
     resources :contacts, only: [:new, :create]

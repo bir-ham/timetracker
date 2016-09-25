@@ -6,7 +6,10 @@
       /.btn-toolbar.text-center
         = link_to "Download CSV", projects_path(format: "csv"), class: 'btn btn-outline btn-primary btn-sm'
         = link_to "Download Excel", projects_path(format: "xls"), class: 'btn btn-outline btn-primary btn-sm'
-      h5 #{Date.today.strftime('%A, %m %Y')}
+      .pull-right
+        h5 #{Date.today.strftime('%A, %m %Y')}
+      .clearfix
+
       - @projects.each do |project|
         .well
           .clearfix
@@ -52,7 +55,9 @@
                 .progress-bar.progress-bar-success role="progressbar" aria-valuenow="#{progress_percentage}" aria-valuemin="0" aria-valuemax="100" style="width: #{progress_percentage}%;"
           m-t-m
           p.text-boldm = I18n.t('projects.index.tasks')
-          ul.list-group
+          == render 'items/form'
+
+          /ul.list-group
             li.list-group-item = I18n.t('projects.index.no_tasks')
     - else
       p.text-danger = I18n.t('projects.index.empty_projects')
