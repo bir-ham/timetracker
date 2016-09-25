@@ -37,22 +37,23 @@
           .row
             .col-xs-2
               strong.text-uppercase = I18n.t('projects.index.user')
-              span.visible-all-block = project.user.first_name
+              p = project.user.first_name
             .col-xs-2
               strong.text-uppercase = I18n.t('projects.index.customer')
-              span.visible-all-block = project.customer.name
+              p = project.customer.name
             .col-xs-2
               strong.text-uppercase = I18n.t('projects.index.deadline')
-              span.visible-all-block = project.deadline
+              p = project.deadline
             .col-xs-2
               strong.text-uppercase = I18n.t('projects.index.progress')
               - progress = project.progress
               - progress_percentage = 60
               .progress.progress-small.m-t-xs.m-b-n
                 .progress-bar.progress-bar-success role="progressbar" aria-valuenow="#{progress_percentage}" aria-valuemin="0" aria-valuemax="100" style="width: #{progress_percentage}%;"
-
-          /ul.list-group
-            li.list-group-item = I18n.t('projects.index.no_entries')
+          m-t-m
+          p.text-boldm = I18n.t('projects.index.tasks')
+          ul.list-group
+            li.list-group-item = I18n.t('projects.index.no_tasks')
     - else
       p.text-danger = I18n.t('projects.index.empty_projects')
       .m-b-xl

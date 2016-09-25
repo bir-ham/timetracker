@@ -110,7 +110,7 @@ en:
     index:
       header: Projects
       no_description: No description
-      no_entries: No entries yet!
+      no_tasks: No tasks added
       empty_projects: You have no projects yet
       create_new_project_button: Create new project
       new_status: New
@@ -122,6 +122,7 @@ en:
       customer: Customer
       progress: Progress
       deadline: Deadline
+      tasks: Tasks
     new:
       header: New Project
       notice_create: "Project created!"

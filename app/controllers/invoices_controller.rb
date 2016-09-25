@@ -26,6 +26,7 @@ class InvoicesController < ApplicationController
       if params[:back_button]
         @invoice.previous_step
       elsif @invoice.last_step?
+        @invoice.status = 'PENDING'
         @invoice.save if @invoice.all_valid?
       else
         @invoice.next_step
