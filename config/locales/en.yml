@@ -134,7 +134,7 @@ en:
       header: Update Project
       notice_update: "Project updated!"
     items:
-      header: Tasks
+      header: "Items / Tasks"
       name: Name
       quantity: Quantity
       date: Date
@@ -144,15 +144,15 @@ en:
       total: Total
       are_you_sure: Are you sure you want to delete this item?
       create:
-        empty_items: You have no tasks yet
-        add_new_item_button: Add new task
-        notice_create: "Item created!"
+        empty_items: You have no items / tasks yet
+        add_new_item_button: Add new item / task
+        notice_create: "Item / Task created!"
       update:
-        success_update: "Item updated!"
+        success_update: "Item / Task updated!"
       destroy:
         success_delete: "%{name} was deleted"
-        error_delete: "Task couldn't be deleted, try again after refreshing the page"
-        confirmation_msg: Are you sure to delete this task?
+        error_delete: "Item / task couldn't be deleted, try again after refreshing the page"
+        confirmation_msg: Are you sure to delete this item / item?
         warning_msg: If you click delete, the item will be deleted.
   users:
     index:

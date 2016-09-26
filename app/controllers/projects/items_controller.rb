@@ -11,7 +11,7 @@ class Projects::ItemsController < ApplicationController
   end
 
   def create
-    @project = project.find(params[:project_id])
+    @project = Project.find(params[:project_id])
     @item = Item.new(item_params)
     total_price = params[:item][:quantity].to_i * params[:item][:unit_price].to_d
     @item.total = total_price

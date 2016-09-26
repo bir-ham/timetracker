@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     resources :users, only: :index
     resources :projects, except: [:show, :destroy] do
       resources :items, except: [:index], controller: 'projects/items'
+    end
     resources :invoices do
       resources :items, except: [:index], controller: 'invoices/items'
     end

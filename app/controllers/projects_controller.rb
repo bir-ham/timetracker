@@ -2,7 +2,7 @@ class ProjectsController < ApplicationController
 
   def index
     @projects = Project.all
-    @items = Item.new
+    @item = Item.new
 
     respond_to do |format|
       format.html
