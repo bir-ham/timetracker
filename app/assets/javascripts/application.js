@@ -21,6 +21,10 @@
 //= require bootstrap/carousel
 //= require bootstrap/modal
 
+// Datetimepicker
+//= require moments
+//= require bootstrap-datetimepicker
+
 // Local files
 //= require confirmation_modal
 //= require custome_collapse
