@@ -41,8 +41,9 @@ gem 'mail_form'
 gem 'negative_captcha'
 gem 'will_paginate'
 gem 'puma'
-gem 'momentjs-rails', '>= 2.9.0'
-gem 'bootstrap3-datetimepicker-rails', '~> 4.17.42'
+
+gem 'momentjs-rails', '~> 2.9',  :github => 'derekprior/momentjs-rails'
+gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: 'master', submodules: true
 
 group :development, :test do
   gem 'pry-remote'

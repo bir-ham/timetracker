@@ -1,18 +1,12 @@
-= simple_form_for([project, @item]) do |f|
-  td
-    = f.input :name, label: false
-  td
-    = f.input :date, as: :date, start_year: Date.today.year,  order: [:day, :month, :year], label: false
-  td
-    = f.input :quantity, label: false
-  td
-    = f.input :unit, collection: [['Piece', 'Piece'], ['Meter', 'Meter'], ['Hour', 'Hour'], ['Kilo meter', 'kilo meter'], ['Kilo gram', 'kilo gram']], prompt: '-Select unit-', label: false
-  td
-    = f.input :unit_price, label: false
-  td
-    = f.input :vat, input_html: { min: 0, max: 100 }, label: false
-
-  td colspan="6"
-    .btn-toolbar
-      = link_to I18n.t('button.cancel'), invoices_path, class: 'btn btn-default'
-      = f.button :submit, class: 'btn-primary'
+td
+  = f.input :name, label: false
+td
+  = f.input :date, as: :date_picker, label: false
+td
+  = f.input :quantity, label: false
+td
+  = f.input :unit, collection: [['Piece', 'Piece'], ['Meter', 'Meter'], ['Hour', 'Hour'], ['Kilo meter', 'kilo meter'], ['Kilo gram', 'kilo gram']], prompt: '-Select unit-', label: false
+td
+  = f.input :unit_price, label: false
+td
+  = f.input :vat, input_html: { min: 0, max: 100 }, label: false

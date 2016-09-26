@@ -1,11 +1,12 @@
 /*
 *= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
 *= require dataTables/extras/dataTables.responsive
+
+*= require bootstrap-datetimepicker.min
 */
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
-@import "bootstrap-datetimepicker";
 
 // Font awesome
 @import "font-awesome-sprockets";

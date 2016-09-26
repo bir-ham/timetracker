@@ -54,49 +54,51 @@
               .progress.progress-small.m-t-xs.m-b-n
                 .progress-bar.progress-bar-success role="progressbar" aria-valuenow="#{progress_percentage}" aria-valuemin="0" aria-valuemax="100" style="width: #{progress_percentage}%;"
           m-t-m
-          h4.m-b-xs = I18n.t('projects.items.header')
+          h5.m-b-n = I18n.t('projects.items.header')
           .table-responsive
-            table.table.table-striped
-              thead
-                tr
-                  th = I18n.t('invoices.items.show.name')
-                  th = I18n.t('invoices.items.show.date')
-                  th = I18n.t('invoices.items.show.quantity')
-                  th = I18n.t('invoices.items.show.unit')
-                  th = I18n.t('invoices.items.show.unit_price')
-                  th = I18n.t('invoices.items.show.vat')
-                  th = I18n.t('invoices.items.show.total')
-                  th = I18n.t('button.delete')
-              tbody
-                - if project.items.empty?
+            = simple_form_for([project, @item]) do |f|
+              table.table.table-striped
+                thead
                   tr
-                    td colspan="6"
-                      p.text-danger.text-center = I18n.t('projects.items.create.empty_items')
+                    th = I18n.t('invoices.items.show.name')
+                    th = I18n.t('invoices.items.show.date')
+                    th = I18n.t('invoices.items.show.quantity')
+                    th = I18n.t('invoices.items.show.unit')
+                    th = I18n.t('invoices.items.show.unit_price')
+                    th = I18n.t('invoices.items.show.vat')
+                    - unless project.items.empty?
+                      th = I18n.t('invoices.items.show.total')
+                      th = I18n.t('button.delete')
+                tbody
+                  - running_total = 0
+                  - project.items.each do |item|
+                    tr
+                      td = item.name
+                      td = item.date
+                      td = item.quantity
+                      td = item.unit
+                      td = number_to_currency(item.unit_price)
+                      td = item.vat
+                      td = number_to_currency(item.total)
+                      td
+                        = link_to '#confirmation-modal-container', class: 'btn btn-danger btn-xs confirmation-button', data: { id: item.id } do
+                          = icon('trash')
+                          |&nbsp;
+                          = I18n.t('button.delete')
 
-                - running_total = 0
-                - project.items.each do |item|
+                  - unless project.items.empty?
+                    - running_total += item.total
+                    tr
+                      td colspan="6"
+                      td = number_to_currency(running_total)
+                      td
                   tr
-                    td = item.name
-                    td = item.date
-                    td = item.quantity
-                    td = item.unit
-                    td = number_to_currency(item.unit_price)
-                    td = item.vat
-                    td = number_to_currency(item.total)
-                    td
-                      = link_to '#confirmation-modal-container', class: 'btn btn-danger btn-xs confirmation-button', data: { id: item.id } do
-                        = icon('trash')
-                        |&nbsp;
-                        = I18n.t('button.delete')
+                    == render 'projects/items/form', project: project, f: f
 
-                - unless project.items.empty?
-                  - running_total += item.total
-                  tr
-                    td colspan="6"
-                    td = number_to_currency(running_total)
-                    td
-                tr
-                  == render 'projects/items/form', project: project
+              = button_tag(type: :submit, class: 'btn btn-primary') do
+                = icon('plus')
+                |&nbsp;
+                = I18n.t('projects.index.add_task')
 
           /ul.list-group
             li.list-group-item = I18n.t('projects.index.no_tasks')
@@ -104,7 +106,4 @@
       p.text-danger = I18n.t('projects.index.empty_projects')
       .m-b-xl
     .btn-toolbar
-      = link_to new_project_path, class: 'btn btn-primary'
-        = icon('plus')
-        |&nbsp;
-        = I18n.t('projects.index.create_new_project_button')
+      = link_to I18n.t('projects.index.create_new_project_button'), new_project_path, class: 'btn btn-primary'

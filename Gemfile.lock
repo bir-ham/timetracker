@@ -1,3 +1,19 @@
+GIT
+  remote: git://github.com/derekprior/momentjs-rails.git
+  revision: fa8ac4899554775945704fd6b7a7b3c5ce1bde17
+  specs:
+    momentjs-rails (2.15.1)
+      railties (>= 3.1)
+
+GIT
+  remote: git://github.com/zpaulovics/datetimepicker-rails.git
+  revision: 36d21cec5da7f5b214925804f60e63c61c747023
+  branch: master
+  submodules: true
+  specs:
+    datetimepicker-rails (4.7.16)
+      momentjs-rails (>= 2.9.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -53,8 +69,6 @@ GEM
     bootstrap-sass (3.3.7)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
-    bootstrap3-datetimepicker-rails (4.17.42)
-      momentjs-rails (>= 2.8.1)
     builder (3.2.2)
     capybara (2.7.1)
       addressable
@@ -191,8 +205,6 @@ GEM
     mimemagic (0.3.2)
     mini_portile2 (2.1.0)
     minitest (5.9.0)
-    momentjs-rails (2.15.1)
-      railties (>= 3.1)
     multi_json (1.12.1)
     negative_captcha (0.5)
       actionpack
@@ -355,13 +367,13 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bootstrap-sass (~> 3.3.3)
-  bootstrap3-datetimepicker-rails (~> 4.17.42)
   capybara
   capybara-webkit
   carrierwave
   coffee-rails (~> 4.0.0)
   country_select
   database_cleaner
+  datetimepicker-rails!
   devise
   devise_invitable
   email_spec
@@ -377,7 +389,7 @@ DEPENDENCIES
   jquery-turbolinks
   mail_form
   mailcatcher
-  momentjs-rails (>= 2.9.0)
+  momentjs-rails (~> 2.9)!
   negative_captcha
   nicescroll-rails
   pg
