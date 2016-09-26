@@ -1,17 +1,18 @@
-= simple_form_for([project, @item],
-              html: { class: 'form-horizontal' },
-              warpper: :horizontal_form,
-              warpper_mappings: {  check_boxes: :horizontal_radio_and_checkboxes,
-                radio_buttons: :horizontal_radio_and_checkboxes,
-                file: :horizontal_file_input,
-                boolean: :horizontal_boolean} ) do |f|
-  = f.input :name, wrapper: :horizontal_form
-  = f.input :date, as: :date, start_year: Date.today.year,  order: [:day, :month, :year], wrapper: :horizontal_form
-  = f.input :quantity, wrapper: :horizontal_form
-  = f.input :unit, collection: [['Piece', 'Piece'], ['Meter', 'Meter'], ['Hour', 'Hour'], ['Kilo meter', 'kilo meter'], ['Kilo gram', 'kilo gram']], include_blank: '-', prompt: '-Select unit-', wrapper: :horizontal_form
-  = f.input :unit_price, wrapper: :horizontal_form
-  = f.input :vat, label: 'Vat (in %)', input_html: { min: 0, max: 100 }, wrapper: :horizontal_form
+= simple_form_for([project, @item]) do |f|
+  td
+    = f.input :name, label: false
+  td
+    = f.input :date, as: :date, start_year: Date.today.year,  order: [:day, :month, :year], label: false
+  td
+    = f.input :quantity, label: false
+  td
+    = f.input :unit, collection: [['Piece', 'Piece'], ['Meter', 'Meter'], ['Hour', 'Hour'], ['Kilo meter', 'kilo meter'], ['Kilo gram', 'kilo gram']], prompt: '-Select unit-', label: false
+  td
+    = f.input :unit_price, label: false
+  td
+    = f.input :vat, input_html: { min: 0, max: 100 }, label: false
 
-  .btn-toolbar
-    = link_to I18n.t('button.cancel'), invoices_path, class: 'btn btn-default'
-    = f.button :submit, class: 'btn-primary'
+  td colspan="6"
+    .btn-toolbar
+      = link_to I18n.t('button.cancel'), invoices_path, class: 'btn btn-default'
+      = f.button :submit, class: 'btn-primary'
