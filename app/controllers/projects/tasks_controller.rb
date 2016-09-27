@@ -57,7 +57,7 @@ class Projects::TasksController < ApplicationController
 
   private
     def task_params
-      params.require(:task).permit(:name, :date, :quantity, :unit, :unit_price, :vat)
+      params.require(:task).permit(:name, :date, :price_type, :price, :vat)
     end
 
 end
