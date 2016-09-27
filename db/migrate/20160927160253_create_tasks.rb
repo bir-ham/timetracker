@@ -5,7 +5,7 @@ class CreateTasks < ActiveRecord::Migration
       t.date :date
       t.string :price_type
       t.decimal :price
-      t.int :vat
+      t.integer :vat
 
       t.timestamps null: false
     end
