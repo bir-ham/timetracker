@@ -137,7 +137,7 @@ en:
     tasks:
       header: "Tasks"
       name: Name
-      date: Date
+      hours: Hours
       payment_type: Payment type
       price: Price
       vat: Vat

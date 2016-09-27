@@ -61,7 +61,7 @@
                 thead
                   tr
                     th = I18n.t('projects.tasks.name')
-                    th = I18n.t('projects.tasks.date')
+                    th = I18n.t('projects.tasks.hours')
                     th = I18n.t('projects.tasks.payment_type')
                     th = I18n.t('projects.tasks.price')
                     th = I18n.t('projects.tasks.vat')
@@ -73,7 +73,7 @@
                   - project.tasks.each do |task|
                     tr
                       td = task.name
-                      td = task.date
+                      td = task.hours
                       td = task.quantity
                       td = task.unit
                       td = number_to_currency(task.unit_price)

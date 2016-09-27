@@ -1,7 +1,7 @@
 td.border-top-no
   = f.input :name, label: false
 td.border-top-no
-  = f.input :date, as: :date_picker, label: false
+  = f.input :hours, label: false, placeholder: '0:00'
 td.border-top-no
   = f.input :payment_type, collection: [['Per task', 'Per task'], ['Per hour', 'Per hour']], prompt: '-Select unit-', label: false
 td.border-top-no
