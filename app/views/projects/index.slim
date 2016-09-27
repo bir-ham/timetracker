@@ -87,10 +87,10 @@
 
                     - unless project.tasks.empty?
                       - running_total += task.total
-                  tr.white-background
-                    td colspan="6"
-                    td = number_to_currency(running_total)
-                    td
+                      tr.white-background
+                        td colspan="6"
+                        td = number_to_currency(running_total)
+                        td
                   tr.white-background
                     == render 'projects/tasks/form', project: project, f: f
 
