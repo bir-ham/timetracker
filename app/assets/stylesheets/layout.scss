@@ -101,27 +101,27 @@ a {
 
 // Background
 .yellow-background {
-  background: $yellow !important;
+  background-color: $yellow !important;
 }
 
 .grass-background {
-  background: $grass;
+  background-color: $grass;
 }
 
 .blue-background {
-  background: $blue;
+  background-color: $blue;
 }
 
 .white-background {
-  background: $white;
+  background-color: $white !important;
 }
 
 .light-grey-background {
-  background: $light-grey;
+  background-color: $light-grey;
 }
 
 .xx-light-grey-background {
-  background: $xx-light-grey;
+  background-color: $xx-light-grey;
 }
 
 // Color
@@ -382,6 +382,15 @@ dt {
 
 .no-margins {
   margin: 0 !important;
+}
+
+// borders
+.border-top-no {
+  border-top: none !important;
+}
+
+.border-bottom-no {
+  border-bottom: none !important;
 }
 
 // alignment

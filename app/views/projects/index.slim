@@ -86,16 +86,16 @@
                           |&nbsp;
                           = I18n.t('button.delete')
 
-                  - unless project.items.empty?
-                    - running_total += item.total
-                    tr
-                      td colspan="6"
-                      td = number_to_currency(running_total)
-                      td
-                  tr
+                    - unless project.items.empty?
+                      - running_total += item.total
+                  tr.white-background
+                    td colspan="6"
+                    td = number_to_currency(running_total)
+                    td
+                  tr.white-background
                     == render 'projects/items/form', project: project, f: f
 
-              = button_tag(type: :submit, class: 'btn btn-primary') do
+              = button_tag(type: :submit, class: 'btn btn-primary btn-sm') do
                 = icon('plus')
                 |&nbsp;
                 = I18n.t('projects.index.add_task')

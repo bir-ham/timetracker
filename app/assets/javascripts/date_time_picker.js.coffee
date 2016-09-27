@@ -3,5 +3,7 @@ $(document).ready ->
     autoclose: true,
     todayBtn: true,
     pickerPosition: "bottom-left",
-    format: 'mm-dd-yyyy hh:ii'
+    format: 'mm-dd-yyyy hh:ii',
+    useCurrent: false,
+    debug:true
   });

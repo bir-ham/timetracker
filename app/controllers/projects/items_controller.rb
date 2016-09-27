@@ -18,7 +18,7 @@ class Projects::ItemsController < ApplicationController
     @item.project = @project
 
     if @item.save
-      redirect_to @project, notice: I18n.t('projects.items.create.notice_create')
+      redirect_to projects_path, notice: I18n.t('projects.items.create.notice_create')
     else
       render :new
     end
@@ -49,7 +49,7 @@ class Projects::ItemsController < ApplicationController
     @item = Item.find(params[:id])
     name = @item.name
     if @item.destroy
-      redirect_to @project, notice: I18n.t('projects.items.destroy.success_delete', name: name)
+      redirect_to projects_path, notice: I18n.t('projects.items.destroy.success_delete', name: name)
     else
       flash.now[:error] = I18n.t('projects.items.distroy.error_delete')
     end
