@@ -54,46 +54,45 @@
               .progress.progress-small.m-t-xs.m-b-n
                 .progress-bar.progress-bar-success role="progressbar" aria-valuenow="#{progress_percentage}" aria-valuemin="0" aria-valuemax="100" style="width: #{progress_percentage}%;"
           m-t-m
-          h5.m-b-n = I18n.t('projects.items.header')
+          h5.m-b-n = I18n.t('projects.tasks.header')
           .table-responsive
-            = simple_form_for([project, @item]) do |f|
-              table.table.table-striped
+            = simple_form_for([project, @task]) do |f|
+              table.table.table-striped.m-b-n
                 thead
                   tr
-                    th = I18n.t('invoices.items.show.name')
-                    th = I18n.t('invoices.items.show.date')
-                    th = I18n.t('invoices.items.show.quantity')
-                    th = I18n.t('invoices.items.show.unit')
-                    th = I18n.t('invoices.items.show.unit_price')
-                    th = I18n.t('invoices.items.show.vat')
-                    - unless project.items.empty?
-                      th = I18n.t('invoices.items.show.total')
+                    th = I18n.t('projects.tasks.name')
+                    th = I18n.t('projects.tasks.date')
+                    th = I18n.t('projects.tasks.payment_type')
+                    th = I18n.t('projects.tasks.price')
+                    th = I18n.t('projects.tasks.vat')
+                    - unless project.tasks.empty?
+                      th = I18n.t('projects.tasks.total')
                       th = I18n.t('button.delete')
                 tbody
                   - running_total = 0
-                  - project.items.each do |item|
+                  - project.tasks.each do |task|
                     tr
-                      td = item.name
-                      td = item.date
-                      td = item.quantity
-                      td = item.unit
-                      td = number_to_currency(item.unit_price)
-                      td = item.vat
-                      td = number_to_currency(item.total)
+                      td = task.name
+                      td = task.date
+                      td = task.quantity
+                      td = task.unit
+                      td = number_to_currency(task.unit_price)
+                      td = task.vat
+                      td = number_to_currency(task.total)
                       td
-                        = link_to '#confirmation-modal-container', class: 'btn btn-danger btn-xs confirmation-button', data: { id: item.id } do
+                        = link_to '#confirmation-modal-container', class: 'btn btn-danger btn-xs confirmation-button', data: { id: task.id } do
                           = icon('trash')
                           |&nbsp;
                           = I18n.t('button.delete')
 
-                    - unless project.items.empty?
-                      - running_total += item.total
+                    - unless project.tasks.empty?
+                      - running_total += task.total
                   tr.white-background
                     td colspan="6"
                     td = number_to_currency(running_total)
                     td
                   tr.white-background
-                    == render 'projects/items/form', project: project, f: f
+                    == render 'projects/tasks/form', project: project, f: f
 
               = button_tag(type: :submit, class: 'btn btn-primary btn-sm') do
                 = icon('plus')
