@@ -1,0 +1,14 @@
+= simple_form_for(@sale,
+              html: { class: 'form-horizontal' },
+              wrapper: :horizontal_form,
+              wrapper_mappings: {  check_boxes: :horizontal_radio_and_checkboxes,
+                radio_buttons: :horizontal_radio_and_checkboxes,
+                file: :horizontal_file_input,
+                boolean: :horizontal_boolean} ) do |f|
+  = f.input :date
+  = f.input :status, collection: [['PAID', 'PAID'], ['OVERDUE', 'OVERDUE']], prompt: I18n.t('sales.new.select_status'), wrapper: :horizontal_form
+  = f.input :description
+
+  .btn-toolbar.text-center
+    = link_to I18n.t('button.cancel'), sales_path, class: 'btn btn-primary btn-outline'
+    = f.button :submit, class: 'btn-primary'

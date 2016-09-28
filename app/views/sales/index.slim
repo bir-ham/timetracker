@@ -1,0 +1,42 @@
+- breadcrumb :sales
+.row
+  .col-sm-12
+    - unless @sales.empty?
+      .well
+        .clearfix
+          .pull-left
+            h4.m-t-n = sale.date
+          .pull-right
+            = link_to sale, class: 'btn btn-info btn-xs' do
+              = icon('eye')
+              |&nbsp;
+              = I18n.t('button.view')
+
+        .m-t-m
+        .row
+          .col-xs-2
+            strong.text-uppercase = I18n.t('sales.index.user')
+            p = sale.user.first_name
+          .col-xs-2
+            strong.text-uppercase = I18n.t('sales.index.customer')
+            p = sale.customer.name
+          .col-xs-2
+            strong.text-uppercase = I18n.t('sales.index.status')
+            - if sale.status.casecmp('new') == 0
+              span.label.label-info = I18n.t('sales.index.new_status')
+            - elsif sale.status.casecmp('ongoing') == 0
+              span.label.label-warning = I18n.t('sales.index.ongoing_status')
+            - elsif sale.status.casecmp('delayed') == 0
+              span.label.label-danger = I18n.t('sales.index.delayed_status')
+            - elsif sale.status.casecmp('finished') == 0
+              span.label.label-success = I18n.t('sales.index.finished_status')
+
+    - else
+      p.text-danger = I18n.t('sales.index.empty_sales')
+      .m-b-xl
+
+    .btn-toolbar
+      = link_to new_sale_path, class: 'btn btn-primary'
+        = icon('plus')
+        |&nbsp;
+        = I18n.t('sales.index.add_new_sale_button')
