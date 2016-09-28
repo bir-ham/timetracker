@@ -1,11 +1,6 @@
 class Projects::TasksController < ApplicationController
   include CalculationHelper
 
-  def index
-    @tasks = task.all
-
-  end
-
   def new
     @project = Project.find(params[:project_id])
     @task = Task.new
@@ -35,11 +30,6 @@ class Projects::TasksController < ApplicationController
       @projects = Project.all
       render 'projects/index'
     end
-  end
-
-  # GET /projects/1
-  def show
-    @task = task.find(params[:id])
   end
 
   # GET /projects/1/edit
