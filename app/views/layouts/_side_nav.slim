@@ -19,16 +19,21 @@ aside#sidebar.navbar-default.navbar-static-side role="navigation" data-step="2" 
           = icon('tachometer fa-fw')
             .icon-bg.bg-orange
           span.menu-title = I18n.t('dashboards.index.header')
-      li class = ('active' if is_controller_name? 'invoices')
-        = link_to invoices_path do
-          = icon('file fa-fw')
+      li class = ('active' if is_controller_name? 'sales')
+        = link_to sales_path do
+          = icon('shopping-cart fa-fw')
             .icon-bg.bg-orange
-          span.menu-title = I18n.t('invoices.index.header')
+          span.menu-title = I18n.t('sales.index.header')
       li class = ('active' if is_controller_name? 'projects')
         = link_to projects_path do
           = icon('suitcase fa-fw')
             .icon-bg.bg-orange
           span.menu-title = I18n.t('projects.index.header')
+      li class = ('active' if is_controller_name? 'invoices')
+        = link_to invoices_path do
+          = icon('file fa-fw')
+            .icon-bg.bg-orange
+          span.menu-title = I18n.t('invoices.index.header')
       li class = ('active' if is_controller_name? 'customers')
         = link_to customers_path do
           = icon('money fa-fw')
