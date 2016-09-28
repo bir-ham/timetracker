@@ -32,7 +32,8 @@ class Projects::TasksController < ApplicationController
     if @task.save
       redirect_to projects_path, notice: I18n.t('projects.tasks.create.notice_create')
     else
-      render :new
+      @projects = Project.all
+      render 'projects/index'
     end
   end
 
