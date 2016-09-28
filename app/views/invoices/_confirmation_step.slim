@@ -1,4 +1,4 @@
-h1.text-center 
+h1.text-center
   = I18n.t('invoices.new.header')
   small = I18n.t('invoices.new.confirmation')
 
@@ -25,14 +25,6 @@ dl.dl-horizontal
   dt
     = I18n.t('invoices.show.reference_number')
   dd =h @invoice.reference_number
-  dt
-    = I18n.t('invoices.show.status')
-  dd
-    - if @invoice.status_type.eql?('PAID')
-      span.label.label-success = @invoice.status_type
-    - elsif @invoice.status_type.eql?('PENDING')
-      span.label.label-success = @invoice.status_type
-    - elsif @invoice.status_type.eql?('OVERDUE')
   dt
     |Description:
   dd = @invoice.description

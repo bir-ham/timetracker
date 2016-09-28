@@ -1,6 +1,6 @@
 - breadcrumb :invoices
 .row
-  .col-sm-12            
+  .col-sm-12
     - unless @invoices.empty?
       table#invoices.table.table-striped.table-bordered cellspacing="0" width="100%" data-source="/invoices.json"
         thead
@@ -13,16 +13,15 @@
             th = I18n.t('invoices.show.total')
             th.no-sort = I18n.t('invoices.show.status')
             th.no-sort.align-center = I18n.t('button.view')
-        tbody            
-     
+        tbody
+
     - else
       p.text-danger = I18n.t('invoices.index.empty_invoices')
-    
+      .m-b-xl
     = link_to new_invoice_path, class: 'btn btn-primary'
       = icon('plus')
       |&nbsp;
       = I18n.t('invoices.index.add_new_invoice_button')
 
     hr.x-light-turquoise-hr
-    = link_to "Import products from file", invoice_imports_path, class: 'btn btn-outline btn-primary' 
-                    
+    = link_to "Import products from file", invoice_imports_path, class: 'btn btn-outline btn-primary'

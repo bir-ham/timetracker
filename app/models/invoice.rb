@@ -15,6 +15,7 @@ class Invoice < ActiveRecord::Base
   validates :reference_number, presence: true,
     uniqueness: true,
     numericality: { greater_than_or_equal_to: 0 }, if: lambda { |i| i.current_step == 'invoice' }
+  validates :status, presence: false, if: lambda { |i| i.current_step == 'invoice' }
   validates :description, length: { maximum: 300,
     too_long: "%{count} characters is the maximum allowed" }, if: lambda { |i| i.current_step == 'invoice' }
 

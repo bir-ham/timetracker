@@ -29,13 +29,13 @@ class InvoicesDatatable
           running_total += item.total 
         end
 
-        status_type_label_class = ''
-        if invoice.status_type.eql?('PAID')
-          status_type_label_class = 'label label-success'
-        elsif invoice.status_type.eql?('PENDING')  
-          status_type_label_class = 'label label-warning' 
-        elsif invoice.status_type.eql?('OVERDUE')    
-          status_type_label_class = 'label label-danger'
+        status_label_class = ''
+        if invoice.status.eql?('PAID')
+          status_label_class = 'label label-success'
+        elsif invoice.status.eql?('PENDING')  
+          status_label_class = 'label label-warning' 
+        elsif invoice.status.eql?('OVERDUE')    
+          status_label_class = 'label label-danger'
         end
 
         [
@@ -47,7 +47,7 @@ class InvoicesDatatable
           
           number_to_currency(running_total), 
 
-          content_tag(:span, invoice.status_type, class: status_type_label_class),
+          content_tag(:span, invoice.status, class: status_label_class),
           
           link_to(content_tag(:i, " View", class: 'fa fa-eye'), invoice, class: 'btn btn-info btn-xs')
         ]

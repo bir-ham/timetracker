@@ -1,4 +1,4 @@
-class UpdateColumnName < ActiveRecord::Migration
+class ChangeColumnCompanyToCustomer < ActiveRecord::Migration
   def change
   	rename_column :invoices, :company, :customer
   end

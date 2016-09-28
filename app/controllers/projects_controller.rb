@@ -2,12 +2,13 @@ class ProjectsController < ApplicationController
 
   def index
     @projects = Project.all
+    @task = Task.new
 
     respond_to do |format|
       format.html
       format.csv { render text: @invoices.to_csv }
       format.xls #{ render text: @invoices.to_csv(col_sep: "\t") }
-    end  
+    end
   end
 
   def new
@@ -41,7 +42,7 @@ class ProjectsController < ApplicationController
   private
 
   def project_params
-    params.require(:project).permit(:name, :client, :archived)
+    params.require(:project).permit(:name, :customer_id, :user_id, :status, :archived)
   end
 
 end

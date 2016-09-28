@@ -1,13 +1,13 @@
 = simple_form_for(@invoice,
               html: { class: 'form-horizontal' },
-              warpper: :horizontal_form,
-              warpper_mappings: {  check_boxes: :horizontal_radio_and_checkboxes,
-              radio_buttons: :horizontal_radio_and_checkboxes,
-              file: :horizontal_file_input,
-              boolean: :horizontal_boolean} ) do |f|
-  = f.association :customer, collection: Customer.all, label_method: :name, value_method: :id, prompt: 'Select existing customer', multiple: false, wrapper: :horizontal_form
-  = f.association :user, collection: User.all, label_method: :first_name, value_method: :id, label: I18n.t('invoices.new.employee'), multiple: false, prompt: 'Select employee', wrapper: :horizontal_form
-  = f.input :date_of_an_invoice, as: :date, start_year: Date.today.year, order: [:day, :month, :year], wrapper: :horizontal_form
+              wrapper: :horizontal_form,
+              wrapper_mappings: {  check_boxes: :horizontal_radio_and_checkboxes,
+                radio_buttons: :horizontal_radio_and_checkboxes,
+                file: :horizontal_file_input,
+                boolean: :horizontal_boolean} ) do |f|
+  = f.association :customer, collection: Customer.all, label_method: :name, value_method: :id, prompt: I18n.t('invoices.new.select_customer'), multiple: false, wrapper: :horizontal_form
+  = f.association :user, collection: User.all, label_method: :first_name, value_method: :id, label: I18n.t('invoices.new.user'), multiple: false, prompt: I18n.t('invoices.new.select.user')
+  = f.input :date_of_an_invoice, as: :date, start_year: Date.today.year, order: [:day, :month, :year], wrapper: :horizontal_form, required: true
 
   fieldset.custom-fieldset
     legend.custom-legend Choose either a Payment term or Deadline
@@ -24,7 +24,7 @@
 
   = f.input :interest_in_arrears, label: 'Interest in arrears (in %)', input_html: { min: 0, max: 100 }, wrapper: :horizontal_form
   = f.input :reference_number, wrapper: :horizontal_form
-  = f.input :status_type, collection: [['PAID', 'PAID'], ['PENDING', 'PENDING'], ['OVERDUE', 'OVERDUE']], include_blank: '-', prompt: 'Set status', wrapper: :horizontal_form
+  = f.input :status, collection: [['PENDING', 'PENDING'], ['PAID', 'PAID'], ['OVERDUE', 'OVERDUE']], prompt: I18n.t('invoices.new.select_status'), wrapper: :horizontal_form
   = f.input :description, wrapper: :horizontal_form
 
   .btn-toolbar.text-center

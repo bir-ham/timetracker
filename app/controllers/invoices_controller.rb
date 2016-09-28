@@ -8,7 +8,7 @@ class InvoicesController < ApplicationController
       format.json { render json: InvoicesDatatable.new(view_context) }
       format.csv { render text: @invoices.to_csv }
       format.xls #{ render text: @invoices.to_csv(col_sep: "\t") }
-    end  
+    end
   end
 
   def new
@@ -26,6 +26,7 @@ class InvoicesController < ApplicationController
       if params[:back_button]
         @invoice.previous_step
       elsif @invoice.last_step?
+        @invoice.status = 'PENDING'
         @invoice.save if @invoice.all_valid?
       else
         @invoice.next_step
@@ -79,7 +80,7 @@ class InvoicesController < ApplicationController
   private
     def invoice_params
       params.require(:invoice).permit(:date_of_an_invoice, :deadline, :payment_term, :interest_in_arrears,
-        :reference_number, :status_type, :description, :customer_id, :user_id)
+        :reference_number, :status, :description, :customer_id, :user_id)
     end
 
 end

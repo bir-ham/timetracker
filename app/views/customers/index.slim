@@ -14,20 +14,21 @@
           tbody
             - @customers.each do |customer|
               tr
-                td = customer.name 
+                td = customer.name
                 td = customer.phone_number
                 td = customer.email
                 td = customer.address
                 td
                   = link_to customer, class: 'btn btn-info btn-xs' do
                     = icon('eye')
-                    |&nbsp; 
+                    |&nbsp;
                     = I18n.t('button.view')
-     
+
     - else
       p.text-danger = I18n.t('customers.index.empty_customers')
+      .m-b-xl
 
-    .btn-toolbar  
+    .btn-toolbar
       = link_to new_customer_path, class: 'btn btn-primary'
         = icon('plus')
         |&nbsp;

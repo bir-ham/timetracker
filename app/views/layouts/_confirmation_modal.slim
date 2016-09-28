@@ -4,23 +4,24 @@
       .modal-header
         button type="button" class="close" data-dismiss="modal" aria-hidden="true"
           |&times;
-        h4.modal-title Confirmation
+        h5.modal-title.text-center Confirmation
       .modal-body
         - case controller.controller_name
-        - when 'invoices'  
-          p.text-warning = I18n.t('invoices.destroy.confirmation_msg')
-        - when 'customers'  
-          p.text-warning = I18n.t('customers.destroy.confirmation_msg')  
-       
-      .modal-footer
-        button type="button" class="btn btn-default" data-dismiss="modal"
-          = I18n.t('button.cancel')
-        - case controller.controller_name
-        - when 'invoices'  
-          = link_to I18n.t('button.delete'), invoices_path+'/replacableId', method: :delete, class: 'btn btn-danger'
-        - when 'customers'  
-          = link_to I18n.t('button.delete'), customers_path+'/replacableId', method: :delete, class: 'btn btn-danger'
-        - else
-          | Unknown contoller name
+        - when 'invoices'
+          p.text-danger = I18n.t('invoices.destroy.confirmation_msg')
+        - when 'customers'
+          p.text-danger = I18n.t('customers.destroy.confirmation_msg')
 
-       
+      .modal-footer
+        .btn-toolbar.pull-right
+          - case controller.controller_name
+          - when 'invoices'
+            = link_to I18n.t('button.delete'), invoices_path+'/replacableId', method: :delete, class: 'btn btn-danger'
+          - when 'customers'
+            = link_to I18n.t('button.delete'), customers_path+'/replacableId', method: :delete, class: 'btn btn-danger'
+          - else
+            | Unknown contoller name
+
+          button type="button" class="btn btn-default" data-dismiss="modal"
+            = I18n.t('button.cancel')
+

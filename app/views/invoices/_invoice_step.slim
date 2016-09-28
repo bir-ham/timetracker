@@ -2,10 +2,10 @@ h2.text-center
   = I18n.t('invoices.new.header')
   small = I18n.t('invoices.new.invoice_details')
 
-= f.input :date_of_an_invoice, as: :date, start_year: Date.today.year, order: [:day, :month, :year], wrapper: :horizontal_form
+= f.input :date_of_an_invoice, as: :date, start_year: Date.today.year, order: [:day, :month, :year], wrapper: :horizontal_form, wrapper: :horizontal_form, required: true
 
 fieldset.custom-fieldset
-  legend.custom-legend Choose either a Payment term or Deadline
+  legend.custom-legend Select either a Payment term or Deadline
   - unless @invoice.errors[:base].empty?
     .has-error
       = f.input :payment_term, collection: 1..31, prompt: 'Select days', include_blank: '-', label: 'Payment term \n (in days)', wrapper: :horizontal_form
@@ -18,6 +18,5 @@ fieldset.custom-fieldset
     = f.input :deadline, as: :date, start_year: Date.today.year,  order: [:day, :month, :year], wrapper: :horizontal_form, prompt: '-'
 
 = f.input :interest_in_arrears, label: 'Interest in arrears (in %)', input_html: { min: 0, max: 100 }, wrapper: :horizontal_form
-= f.input :reference_number, wrapper: :horizontal_form
-= f.input :status_type, collection: [['PAID', 'PAID'], ['PENDING', 'PENDING'], ['OVERDUE', 'OVERDUE']], include_blank: '-', prompt: 'Set status', wrapper: :horizontal_form
+= f.input :reference_number, required: true, wrapper: :horizontal_form
 = f.input :description, wrapper: :horizontal_form

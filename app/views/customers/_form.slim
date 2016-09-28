@@ -8,7 +8,7 @@
   = f.input :name, wrapper: :horizontal_form    
 
   fieldset.custom-fieldset 
-    legend.custom-legend You must give at least a Phone number or an Email
+    legend.custom-legend Fill at least Phone number or Email
     - unless @customer.errors[:base].empty?
       .has-error      
         = f.input :phone_number, wrapper: :horizontal_form, input_html: { min: 10, max: 15 }

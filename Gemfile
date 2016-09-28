@@ -11,11 +11,11 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 
-gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
+gem 'jquery-datatables-rails'
 
 gem 'turbolinks'
 gem 'jquery-turbolinks'
-gem 'slim-rails'
+gem 'slim', '2.0.3'
 
 gem 'devise'
 gem 'devise_invitable'
@@ -40,6 +40,10 @@ gem 'nicescroll-rails'
 gem 'mail_form'
 gem 'negative_captcha'
 gem 'will_paginate'
+gem 'puma'
+
+gem 'momentjs-rails', '~> 2.9',  :github => 'derekprior/momentjs-rails'
+gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: 'master', submodules: true
 
 group :development, :test do
   gem 'pry-remote'

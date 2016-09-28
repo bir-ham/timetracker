@@ -101,27 +101,27 @@ a {
 
 // Background
 .yellow-background {
-  background: $yellow !important;
+  background-color: $yellow !important;
 }
 
 .grass-background {
-  background: $grass;
+  background-color: $grass;
 }
 
 .blue-background {
-  background: $blue;
+  background-color: $blue;
 }
 
 .white-background {
-  background: $white;
+  background-color: $white !important;
 }
 
 .light-grey-background {
-  background: $light-grey;
+  background-color: $light-grey !important;
 }
 
 .xx-light-grey-background {
-  background: $xx-light-grey;
+  background-color: $xx-light-grey;
 }
 
 // Color
@@ -177,18 +177,33 @@ a {
   background: $xx-light-grey;
 }
 
-.panel-dark-outline {
+.panel-dark-header-outline {
   .panel-heading {
     border-bottom: 1px solid $black;
   }
 }
 
-.panel-turqouise-outline {
+.panel-turqouise-header-outline {
   .panel-heading {
     border-bottom: 1px solid $turquoise;
   }
 }
 
+.panel-success-top-outline {
+  border-top: 2px solid $grass;
+}
+
+.panel-info-top-outline {
+  border-top: 2px solid $blue;
+}
+
+.panel-warning-top-outline {
+  border-top: 2px solid $orange;
+}
+
+.panel-danger-top-outline {
+  border-top: 2px solid $red;
+}
 // Progress bar
 .progress {
   background-color: $xx-light-grey;
@@ -295,7 +310,7 @@ dt {
     width: auto;
     margin-bottom: 15px;
     font-size: 13px;
-    color: $dark-grey;
+    color: $body-font-color;
     border-bottom: none;
   }
 }
@@ -309,8 +324,8 @@ dt {
 // Pagination
 .pagination > li > a, .pagination > li > span {
   color: $turquoise;
-}   
- 
+}
+
 .pagination > .active > a, .pagination > .active > a:hover, .pagination > .active > a:focus, .pagination > .active > span, .pagination > .active > span:hover, .pagination > .active > span:focus {
   background-color: $turquoise;
   border-color: $dark-turquoise;
@@ -325,8 +340,16 @@ dt {
   margin-bottom: 0 !important;
 }
 
+.m-t-xxs {
+  margin-top: 3px !important;
+}
+
 .m-t-xs {
   margin-top: 5px !important;
+}
+
+.m-b-xxs {
+  margin-bottom: 3px !important;
 }
 
 .m-b-xs {
@@ -361,12 +384,21 @@ dt {
   margin-top: 30px !important;
 }
 
-.m-t-xl {
-  margin-top: 30px !important;
+.m-b-xl {
+  margin-bottom: 30px !important;
 }
 
 .no-margins {
   margin: 0 !important;
+}
+
+// borders
+.border-top-no {
+  border-top: none !important;
+}
+
+.border-bottom-no {
+  border-bottom: none !important;
 }
 
 // alignment
