@@ -44,14 +44,15 @@ class Projects::TasksController < ApplicationController
 
   # GET /projects/1/edit
   def edit
+    @projects = Project.all
     @task = Task.find(params[:id])
+    render 'projects/index'
   end
 
   def update
     @task = Task.find(params[:id])
     if @task.update_attributes(task_params)
-      flash.now[:success] = I18n.t('projects.tasks.update.success_update')
-      render :show
+      redirect_to projects_path, notice: I18n.t('projects.tasks.update.success_update')
     else
       render :edit
     end
