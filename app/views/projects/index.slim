@@ -51,9 +51,9 @@
               strong.text-uppercase = I18n.t('projects.index.progress')
               - progress = project.progress
               - progress_percentage = 60
-              .progress.progress-small.m-t-xs.m-b-n
+              .progress.progress-small.m-t-xxs.m-b-n
                 .progress-bar.progress-bar-success role="progressbar" aria-valuenow="#{progress_percentage}" aria-valuemin="0" aria-valuemax="100" style="width: #{progress_percentage}%;"
-          m-t-m
+
           h5.m-b-n = I18n.t('projects.tasks.header')
           .table-responsive
             = simple_form_for([project, @task]) do |f|
@@ -74,9 +74,8 @@
                     tr
                       td = task.name
                       td = task.hours
-                      td = task.quantity
-                      td = task.unit
-                      td = number_to_currency(task.unit_price)
+                      td = task.payment_type
+                      td = number_to_currency(task.price)
                       td = task.vat
                       td = number_to_currency(task.total)
                       td

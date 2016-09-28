@@ -1,4 +1,5 @@
 class Projects::TasksController < ApplicationController
+  include CalculationHelper
 
   def index
     @tasks = task.all
@@ -13,7 +14,18 @@ class Projects::TasksController < ApplicationController
   def create
     @project = Project.find(params[:project_id])
     @task = Task.new(task_params)
-    total_price = params[:task][:quantity].to_i * params[:task][:unit_price].to_d
+
+    total_price = 0
+    if (params[:task][:payment_type] == 'Per hour')
+      tokens = params[:task][:hours].split(':')
+      hours = tokens[0]
+      minutes = tokens[1]
+      converted_minutes = convert_minutes_to_hour(minutes)
+      duration = hours.to_i + converted_minutes
+      total_price = duration * params[:task][:price].to_d
+    else
+      total_price = params[:task][:price].to_d
+    end
     @task.total = total_price
     @task.project = @project
 
@@ -57,7 +69,7 @@ class Projects::TasksController < ApplicationController
 
   private
     def task_params
-      params.require(:task).permit(:name, :date, :price_type, :price, :vat)
+      params.require(:task).permit(:name, :hours, :payment_type, :price, :vat)
     end
 
 end
