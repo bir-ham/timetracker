@@ -52,7 +52,7 @@ class Sales::ItemsController < ApplicationController
 
   private
     def item_params
-      params.require(:item).permit(:name, :date, :quantity, :unit, :unit_price, :vat)
+      params.require(:item).permit(:name, :quantity, :unit, :unit_price, :vat)
     end
 
 end

@@ -7,7 +7,6 @@ class Sale < ActiveRecord::Base
 
   validates :customer, presence: true
   validates :user, presence: true
-  validates :date, presence: true
   validates :status, presence: true
   validates :description, presence: false
 

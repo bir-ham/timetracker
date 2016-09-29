@@ -39,7 +39,6 @@
               thead
                 tr
                   th = I18n.t('sales.items.show.name')
-                  th = I18n.t('sales.items.show.date')
                   th = I18n.t('sales.items.show.quantity')
                   th = I18n.t('sales.items.show.unit')
                   th = I18n.t('sales.items.show.unit_price')
@@ -54,7 +53,6 @@
                   tr
                     - if params[:action] == 'edit' && params[:id] == "#{item.id}"
                       td.light-grey-background = item.name
-                      td.light-grey-background = item.date
                       td.light-grey-background = item.quintity
                       td.light-grey-background = item.unit
                       td.light-grey-background = item.unit_price

@@ -273,7 +273,6 @@ en:
         header: View Item
         name: Name
         quantity: Quantity
-        date: Date
         unit: Unit
         unit_price: Unit price
         vat: Vat
