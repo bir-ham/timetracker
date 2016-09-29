@@ -1,0 +1,12 @@
+td.border-top-no
+  = f.input :name, label: false
+td.border-top-no
+  = f.input :date, as: :date_picker, label: false
+td.border-top-no
+  = f.input :quantity, label: false
+td.border-top-no
+  = f.input :unit, collection: [['Piece', 'Piece'], ['Meter', 'Meter'], ['Hour', 'Hour'], ['Kilo meter', 'Kilo meter'], ['Kilo gram', 'Kilo gram']], prompt: '-Select unit-', label: false
+td.border-top-no
+  = f.input :unit_price, label: false
+td.border-top-no
+  = f.input :vat, label: 'Vat (in %)', input_html: { min: 0, max: 100 }, label: false

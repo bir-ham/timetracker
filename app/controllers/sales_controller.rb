@@ -21,11 +21,13 @@ class SalesController < ApplicationController
   # GET /invoices/1
   def show
     @sale = Sale.find(params[:id])
+    @item = Item.new
   end
 
   # GET /invoices/1/edit
   def edit
     @sale = Sale.find(params[:id])
+    @item = Item.new
   end
 
   def update

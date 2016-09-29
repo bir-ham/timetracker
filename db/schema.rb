@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160928145955) do
+ActiveRecord::Schema.define(version: 20160929115435) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,13 +62,13 @@ ActiveRecord::Schema.define(version: 20160928145955) do
     t.string   "unit"
     t.decimal  "unit_price"
     t.integer  "vat"
-    t.integer  "invoice_id"
+    t.integer  "sale_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.decimal  "total"
   end
 
-  add_index "items", ["invoice_id"], name: "index_items_on_invoice_id", using: :btree
+  add_index "items", ["sale_id"], name: "index_items_on_sale_id", using: :btree
 
   create_table "projects", force: :cascade do |t|
     t.string   "name"
@@ -141,5 +141,5 @@ ActiveRecord::Schema.define(version: 20160928145955) do
   add_index "users", ["invited_by_id"], name: "index_users_on_invited_by_id", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
-  add_foreign_key "items", "invoices"
+  add_foreign_key "items", "invoices", column: "sale_id"
 end
