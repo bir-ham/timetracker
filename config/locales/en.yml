@@ -116,6 +116,7 @@ en:
       customer: Customer
       progress: Progress
       deadline: Deadline
+      new_status: New
       ongoing_status: Ongoing
       pendigng_status: Pending
       delayed_status: Delayed

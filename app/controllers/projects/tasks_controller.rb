@@ -53,7 +53,7 @@ class Projects::TasksController < ApplicationController
     @task = Task.find(params[:id])
     name = @task.name
     if @task.destroy
-      redirect_to @projects, notice: I18n.t('projects.tasks.destroy.success_delete', name: name)
+      redirect_to @project, notice: I18n.t('projects.tasks.destroy.success_delete', name: name)
     else
       flash.now[:error] = I18n.t('projects.tasks.distroy.error_delete')
     end

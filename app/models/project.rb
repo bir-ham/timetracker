@@ -9,7 +9,7 @@ class Project < ActiveRecord::Base
   validates :user, presence: true
   validates :name, presence: true, uniqueness: true
   validates :deadline, presence: false
-  validates :status, presence: true
+  validates :status, presence: true, on: :edit
   validates :progress, presence: true, allow_nil: true
   validates :description, presence: false
 
