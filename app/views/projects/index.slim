@@ -100,13 +100,14 @@
                           = link_to [project, task], method: :delete, class: 'btn btn-danger btn-xs' do
                             = icon('trash')
 
-                    - unless project.tasks.empty?
-                      - running_total += task.total
-                  tr.white-background
-                    td colspan="5"
-                    td = number_to_currency(running_total)
-                    td
-                    td
+                    - running_total += task.total
+
+                  - unless project.tasks.empty?
+                    tr.white-background
+                      td colspan="5"
+                      td = number_to_currency(running_total)
+                      td
+                      td
                   tr.white-background
                     == render 'projects/tasks/form', project: project, f: f
 

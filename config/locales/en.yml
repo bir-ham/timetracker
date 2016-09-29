@@ -221,17 +221,58 @@ en:
       warning_msg: If you click delete, the invoice will be deleted.
     import:
       notice_import: Invoices imported
+  invoice_imports:
+    index:
+      header: Invoice import
+    create:
+      no_file_selected: No file selected
+      success_import: Invoice imported
+  sales:
+    index:
+      header: Sales
+      no_description: No description
+      empty_sales: You have no sales yet
+      add_new_sale_button: Add new sale
+      status: Status
+      pending_status: Pending
+      delayed_status: Delayed
+      overdue_status: Overdue
+      user: User
+      customer: Customer
+      date: Date
+      items: Item
+      add_item: Add item
+    new:
+      header: New Sale
+      notice_create: "Sale created!"
+      select_customer: '-Select customer-'
+      select_user: '-Select user-'
+      select_status: '-Select status-'
+    create:
+      notice_create: "Sale created!"
+    show:
+      header: View Sale
+      id: Id
+      customer: Customer
+      date: Date
+      user: User
+      status: Status
+      description: Description
+    edit:
+      header: Edit Sale
+    update:
+      header: Update Sale
+      notice_update: "Sale updated!"
     items:
+      header: Items
       new:
-        header: New Item
-        add_item_button: Add Item
+        add_item: Add Item
       edit:
         header: Edit Item
       show:
         header: View Item
         name: Name
         quantity: Quantity
-        date: Date
         unit: Unit
         unit_price: Unit price
         vat: Vat
@@ -242,20 +283,13 @@ en:
         add_new_item_button: Add new item
         notice_create: "Item created!"
       update:
+        update_item: Update item
         success_update: "Item updated!"
       destroy:
         success_delete: "%{name} was deleted"
         error_delete: "Item couldn't be deleted, try again after refreshing the page"
         confirmation_msg: Are you sure to delete this item?
         warning_msg: If you click delete, the item will be deleted.
-      import:
-        notice_import: Item imported
-  invoice_imports:
-    index:
-      header: Invoice import
-    create:
-      no_file_selected: No file selected
-      success_import: Invoice imported
 
   settings:
     index:

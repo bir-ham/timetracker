@@ -1,0 +1,110 @@
+- breadcrumb :show_sale, @sale
+.row
+  .col-sm-9
+    .well
+      h2 = I18n.t('sales.show.header')
+      dl.dl-horizontal
+        dt
+          = I18n.t('sales.show.customer')
+        dd = @sale.customer.name
+        dt
+          = I18n.t('sales.show.user')
+        dd
+          = @sale.user.first_name
+        dt
+          = I18n.t('sales.show.date')
+        dd = @sale.date
+        dt
+          = I18n.t('sales.show.status')
+        dd
+          - if @sale.status.eql?('PAID')
+            span.label.label-success = @sale.status
+          - elsif @sale.status.eql?('PENDING')
+            span.label.label-warning = @sale.status
+          - elsif @sale.status.eql?('OVERDUE')
+            span.label.label-danger = @sale.status
+        dt
+          = I18n.t('sales.show.description')
+        dd
+          - if @sale.description?
+            = @sale.description
+          - else
+            span -
+
+      h5.m-b-n = I18n.t('sales.items.header')
+      .table-responsive
+        = simple_form_for([@sale, @item]) do |f|
+          .table-responsive
+            table.table.table-striped.m-b-n
+              thead
+                tr
+                  th = I18n.t('sales.items.show.name')
+                  th = I18n.t('sales.items.show.quantity')
+                  th = I18n.t('sales.items.show.unit')
+                  th = I18n.t('sales.items.show.unit_price')
+                  th = I18n.t('sales.items.show.vat')
+                  - unless @sale.items.empty?
+                    th = I18n.t('sales.items.show.total')
+                    th.text-center = I18n.t('button.edit')
+                    th.text-center = I18n.t('button.delete')
+              tbody
+                - running_total = 0
+                - @sale.items.each do |item|
+                  tr
+                    - if params[:action] == 'edit' && params[:id] == "#{item.id}"
+                      td.light-grey-background = item.name
+                      td.light-grey-background = item.quantity
+                      td.light-grey-background = item.unit
+                      td.light-grey-background = item.unit_price
+                      td.light-grey-background = item.vat
+                      td.light-grey-background = number_to_currency(item.total)
+                      td.light-grey-background.text-center
+                        = link_to edit_sale_item_path(@sale,item), class: 'btn btn-info btn-xs disabled' do
+                          = icon('pencil-square-o')
+                      td.light-grey-background.text-center
+                        = link_to [@sale, item], method: :delete, class: 'btn btn-danger btn-xs disabled' do
+                          = icon('trash')
+                    - else
+                      td = item.name
+                      td = item.quantity
+                      td = item.unit
+                      td = item.unit_price
+                      td = item.vat
+                      td = number_to_currency(item.total)
+                      td.text-center
+                        = link_to edit_sale_item_path(@sale,item), class: 'btn btn-info btn-xs' do
+                          = icon('pencil-square-o')
+                      td.text-center
+                        = link_to [@sale, item], method: :delete, class: 'btn btn-danger btn-xs' do
+                          = icon('trash')
+
+                  - running_total += item.total
+                - unless @sale.items.empty?
+                  tr.white-background
+                    td colspan="5"
+                    td = number_to_currency(running_total)
+                    td
+                    td
+                tr.white-background
+                  == render 'sales/items/form', sale: @sale, f: f
+
+            = button_tag(type: :submit, class: 'btn btn-primary btn-sm') do
+              = icon('plus')
+              |&nbsp;
+              - if params[:action] == 'edit'
+                = I18n.t('sales.items.update.update_item')
+              - else
+                = I18n.t('sales.items.new.add_item')
+
+    .btn-toolbar
+      = link_to '#confirmation-modal-container', class: 'btn btn-danger confirmation-button', data: { id: @sale.id } do
+        = icon('trash')
+        |&nbsp;
+        = I18n.t('button.delete')
+
+      = link_to edit_sale_path(@sale), class: 'btn btn-primary btn-outline' do
+        = icon('pencil-square-o white')
+        |&nbsp;
+        = I18n.t('button.edit')
+
+== render 'layouts/confirmation_modal'

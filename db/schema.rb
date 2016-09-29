@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160928083609) do
+ActiveRecord::Schema.define(version: 20160929122456) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,18 +57,17 @@ ActiveRecord::Schema.define(version: 20160928083609) do
 
   create_table "items", force: :cascade do |t|
     t.string   "name"
-    t.date     "date"
     t.integer  "quantity"
     t.string   "unit"
     t.decimal  "unit_price"
     t.integer  "vat"
-    t.integer  "invoice_id"
+    t.integer  "sale_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.decimal  "total"
   end
 
-  add_index "items", ["invoice_id"], name: "index_items_on_invoice_id", using: :btree
+  add_index "items", ["sale_id"], name: "index_items_on_sale_id", using: :btree
 
   create_table "projects", force: :cascade do |t|
     t.string   "name"
@@ -82,6 +81,16 @@ ActiveRecord::Schema.define(version: 20160928083609) do
     t.text     "description"
     t.integer  "user_id"
     t.date     "deadline"
+  end
+
+  create_table "sales", force: :cascade do |t|
+    t.integer  "customer_id"
+    t.integer  "user_id"
+    t.date     "date"
+    t.string   "status"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "tasks", force: :cascade do |t|
@@ -131,5 +140,5 @@ ActiveRecord::Schema.define(version: 20160928083609) do
   add_index "users", ["invited_by_id"], name: "index_users_on_invited_by_id", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
-  add_foreign_key "items", "invoices"
+  add_foreign_key "items", "invoices", column: "sale_id"
 end

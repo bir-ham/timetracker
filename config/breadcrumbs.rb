@@ -32,6 +32,26 @@ crumb :new_project do |project|
   parent :projects
 end
 
+# sale
+crumb :sales do
+  link "sales", sales_path
+end
+
+crumb :show_sale do |sale|
+  link I18n.t('sales.show.header'), sale_path(sale)
+  parent :sales
+end
+
+crumb :edit_sale do |sale|
+  link I18n.t('sales.edit.header'), sale_path(sale)
+  parent :invoices
+end
+
+crumb :new_sale do |sale|
+  link I18n.t('sales.new.header'), new_sale_path
+  parent :sales
+end
+
 # invoice
 crumb :invoices do
   link "Invoices", invoices_path

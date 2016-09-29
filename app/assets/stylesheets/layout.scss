@@ -470,14 +470,19 @@ dt {
   .navbar-right {
     margin-right: 0;
   }
-  .dl-horizontal dt {
-    float: left;
-    width: 160px;
-    overflow: hidden;
-    clear: left;
-    text-align: right;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+  .dl-horizontal {
+    dt {
+      float: left;
+      width: 120px;
+      overflow: hidden;
+      clear: left;
+      text-align: right;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    dd {
+      margin-left: 140px;
+    }
   }
 
 }
