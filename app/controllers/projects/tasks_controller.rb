@@ -25,24 +25,24 @@ class Projects::TasksController < ApplicationController
     @task.project = @project
 
     if @task.save
-      redirect_to projects_path, notice: I18n.t('projects.tasks.create.notice_create')
+      redirect_to @project, notice: I18n.t('projects.tasks.create.notice_create')
     else
-      @projects = Project.all
-      render 'projects/index'
+      render 'projects/show'
     end
   end
 
   # GET /projects/1/edit
   def edit
-    @projects = Project.all
+    @project = Project.find(params[:project_id])
     @task = Task.find(params[:id])
-    render 'projects/index'
+    render 'projects/show'
   end
 
   def update
+    @project = Project.find(params[:project_id])
     @task = Task.find(params[:id])
     if @task.update_attributes(task_params)
-      redirect_to projects_path, notice: I18n.t('projects.tasks.update.success_update')
+      redirect_to @projects, notice: I18n.t('projects.tasks.update.success_update')
     else
       render :edit
     end
@@ -53,7 +53,7 @@ class Projects::TasksController < ApplicationController
     @task = Task.find(params[:id])
     name = @task.name
     if @task.destroy
-      redirect_to projects_path, notice: I18n.t('projects.tasks.destroy.success_delete', name: name)
+      redirect_to @projects, notice: I18n.t('projects.tasks.destroy.success_delete', name: name)
     else
       flash.now[:error] = I18n.t('projects.tasks.distroy.error_delete')
     end

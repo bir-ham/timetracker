@@ -1,0 +1,114 @@
+- breadcrumb :show_project, @project
+.row
+  .col-sm-10
+    .well
+      h2 = I18n.t('projects.show.header')
+      dl.dl-horizontal
+        dt
+          = I18n.t('projects.show.customer')
+        dd = @project.customer.name
+        dt
+          = I18n.t('projects.show.user')
+        dd
+          = @project.user.first_name
+        dt
+          = I18n.t('projects.show.deadline')
+        dd = @project.deadline
+        dt
+          = I18n.t('projects.show.status')
+        dd
+          - if @project.status.casecmp('new') == 0
+            span.label.label-info = I18n.t('projects.index.new_status')
+          - elsif @project.status.casecmp('ongoing') == 0
+            span.label.label-warning = I18n.t('projects.index.ongoing_status')
+          - elsif @project.status.casecmp('delayed') == 0
+            span.label.label-danger = I18n.t('projects.index.delayed_status')
+          - elsif @project.status.casecmp('finished') == 0
+            span.label.label-success = I18n.t('projects.index.finished_status')
+        dt
+          = I18n.t('projects.show.description')
+        dd
+          - if @project.description?
+            = @project.description
+          - else
+            span -
+
+      h5.m-b-n = I18n.t('projects.tasks.header')
+      .table-responsive
+        = simple_form_for([@project, @task]) do |f|
+          table.table.table-striped.m-b-n
+            thead
+              tr
+                th = I18n.t('projects.tasks.show.name')
+                th = I18n.t('projects.tasks.show.hours')
+                th = I18n.t('projects.tasks.show.payment_type')
+                th = I18n.t('projects.tasks.show.price')
+                th = I18n.t('projects.tasks.show.vat')
+                - unless @project.tasks.empty?
+                  th = I18n.t('projects.tasks.show.total')
+                  th.text-center = I18n.t('button.edit')
+                  th.text-center = I18n.t('button.delete')
+            tbody
+              - running_total = 0
+              - @project.tasks.each do |task|
+                tr
+                  - if params[:action] == 'edit' && params[:id] == "#{task.id}"
+                    td.light-grey-background = task.name
+                    td.light-grey-background = task.hours
+                    td.light-grey-background = task.payment_type
+                    td.light-grey-background = number_to_currency(task.price)
+                    td.light-grey-background = task.vat
+                    td.light-grey-background = number_to_currency(task.total)
+                    td.light-grey-background.text-center
+                      = link_to edit_project_task_path(@project,task), class: 'btn btn-info btn-xs disabled' do
+                        = icon('pencil-square-o')
+                    td.light-grey-background.text-center
+                      = link_to [@project, task], method: :delete, class: 'btn btn-danger btn-xs disabled' do
+                        = icon('trash')
+                  - else
+                    td = task.name
+                    td = task.hours
+                    td = task.payment_type
+                    td = number_to_currency(task.price)
+                    td = task.vat
+                    td = number_to_currency(task.total)
+                    td.text-center
+                      = link_to edit_project_task_path(@project,task), class: 'btn btn-info btn-xs' do
+                        = icon('pencil-square-o')
+                    td.text-center
+                      = link_to [@project, task], method: :delete, class: 'btn btn-danger btn-xs' do
+                        = icon('trash')
+
+                - running_total += task.total
+
+              - unless @project.tasks.empty?
+                tr.white-background
+                  td colspan="5"
+                  td = number_to_currency(running_total)
+                  td
+                  td
+              tr.white-background
+                == render 'projects/tasks/form', project: @project, f: f
+
+          = button_tag(type: :submit, class: 'btn btn-primary btn-sm') do
+            - if params[:action] == 'edit'
+              = icon('arrow-up')
+              |&nbsp;
+              = I18n.t('projects.tasks.update.update_task')
+            - else
+              = icon('plus')
+              |&nbsp;
+              = I18n.t('projects.tasks.new.add_task')
+
+    .btn-toolbar
+      = link_to '#confirmation-modal-container', class: 'btn btn-danger confirmation-button', data: { id: @project.id } do
+        = icon('trash')
+        |&nbsp;
+        = I18n.t('button.delete')
+
+      = link_to edit_project_path(@project), class: 'btn btn-primary btn-outline' do
+        = icon('pencil-square-o white')
+        |&nbsp;
+        = I18n.t('button.edit')
+
+== render 'layouts/confirmation_modal'

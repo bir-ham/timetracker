@@ -1,6 +1,6 @@
 - breadcrumb :show_sale, @sale
 .row
-  .col-sm-9
+  .col-sm-10
     .well
       h2 = I18n.t('sales.show.header')
       dl.dl-horizontal
@@ -89,11 +89,13 @@
                   == render 'sales/items/form', sale: @sale, f: f
 
             = button_tag(type: :submit, class: 'btn btn-primary btn-sm') do
-              = icon('plus')
-              |&nbsp;
               - if params[:action] == 'edit'
+                = icon('arrow-up')
+                |&nbsp;
                 = I18n.t('sales.items.update.update_item')
               - else
+                = icon('plus')
+                |&nbsp;
                 = I18n.t('sales.items.new.add_item')
 
     .btn-toolbar
