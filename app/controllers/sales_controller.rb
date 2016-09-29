@@ -18,13 +18,13 @@ class SalesController < ApplicationController
     end
   end
 
-  # GET /invoices/1
+  # GET /sales/1
   def show
     @sale = Sale.find(params[:id])
     @item = Item.new
   end
 
-  # GET /invoices/1/edit
+  # GET /sales/1/edit
   def edit
     @sale = Sale.find(params[:id])
     @item = Item.new
@@ -45,7 +45,7 @@ class SalesController < ApplicationController
     if @sale.destroy
       redirect_to sales_url, notice: I18n.t('sales.destroy.success_delete')
     else
-      flash.now[:error] = I18n.t('invoices.distroy.error_delete')
+      flash.now[:error] = I18n.t('sales.distroy.error_delete')
     end
   end
 

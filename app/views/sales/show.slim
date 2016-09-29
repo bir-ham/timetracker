@@ -59,24 +59,23 @@
                       td.light-grey-background = item.vat
                       td.light-grey-background = number_to_currency(item.total)
                       td.light-grey-background.text-center
-                        = link_to edit_sale_item_path(sale,item), class: 'btn btn-info btn-xs disabled' do
+                        = link_to edit_sale_item_path(@sale,item), class: 'btn btn-info btn-xs disabled' do
                           = icon('pencil-square-o')
                       td.light-grey-background.text-center
-                        = link_to [sale, item], method: :delete, class: 'btn btn-danger btn-xs disabled' do
+                        = link_to [@sale, item], method: :delete, class: 'btn btn-danger btn-xs disabled' do
                           = icon('trash')
                     - else
                       td = item.name
-                      td = item.date
                       td = item.quantity
                       td = item.unit
                       td = item.unit_price
                       td = item.vat
                       td = number_to_currency(item.total)
                       td.text-center
-                        = link_to edit_sale_item_path(sale,item), class: 'btn btn-info btn-xs' do
+                        = link_to edit_sale_item_path(@sale,item), class: 'btn btn-info btn-xs' do
                           = icon('pencil-square-o')
                       td.text-center
-                        = link_to [sale, item], method: :delete, class: 'btn btn-danger btn-xs' do
+                        = link_to [@sale, item], method: :delete, class: 'btn btn-danger btn-xs' do
                           = icon('trash')
 
                   - running_total += item.total

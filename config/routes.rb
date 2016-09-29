@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     devise_for :users
     resources :users, only: :index
     resources :sales do
-      resources :items, except: [:index, :show], controller: 'invoices/items'
+      resources :items, except: [:index, :show], controller: 'sales/items'
     end
     resources :projects do
       resources :tasks, except: [:index, :show], controller: 'projects/tasks'

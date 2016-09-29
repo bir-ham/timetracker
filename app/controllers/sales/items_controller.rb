@@ -6,7 +6,7 @@ class Sales::ItemsController < ApplicationController
   end
 
   def create
-    @sale = sale.find(params[:sale_id])
+    @sale = Sale.find(params[:sale_id])
     @item = Item.new(item_params)
     total_price = params[:item][:quantity].to_i * params[:item][:unit_price].to_d
     @item.total = total_price
