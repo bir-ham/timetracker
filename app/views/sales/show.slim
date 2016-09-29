@@ -1,6 +1,6 @@
 - breadcrumb :show_sale, @sale
 .row
-  .col-sm-8
+  .col-sm-9
     .well
       h2 = I18n.t('sales.show.header')
       dl.dl-horizontal
@@ -53,7 +53,7 @@
                   tr
                     - if params[:action] == 'edit' && params[:id] == "#{item.id}"
                       td.light-grey-background = item.name
-                      td.light-grey-background = item.quintity
+                      td.light-grey-background = item.quantity
                       td.light-grey-background = item.unit
                       td.light-grey-background = item.unit_price
                       td.light-grey-background = item.vat
@@ -91,7 +91,10 @@
             = button_tag(type: :submit, class: 'btn btn-primary btn-sm') do
               = icon('plus')
               |&nbsp;
-              = I18n.t('sales.items.new.add_item')
+              - if params[:action] == 'edit'
+                = I18n.t('sales.items.update.update_item')
+              - else
+                = I18n.t('sales.items.new.add_item')
 
     .btn-toolbar
       = link_to '#confirmation-modal-container', class: 'btn btn-danger confirmation-button', data: { id: @sale.id } do

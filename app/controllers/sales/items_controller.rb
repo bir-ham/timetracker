@@ -19,21 +19,18 @@ class Sales::ItemsController < ApplicationController
     end
   end
 
-  # GET /sales/1
-  def show
-    @item = Item.find(params[:id])
-  end
-
   # GET /sales/1/edit
   def edit
+    @sale = Sale.find(params[:sale_id])
     @item = Item.find(params[:id])
+    render 'sales/show'
   end
 
   def update
+    @sale = Sale.find(params[:sale_id])
     @item = Item.find(params[:id])
     if @item.update_attributes(item_params)
-      flash.now[:success] = I18n.t('sales.items.update.success_update')
-      render :show
+      redirect_to @sale, notice: I18n.t('sales.items.update.success_update')
     else
       render :edit
     end

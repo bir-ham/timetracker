@@ -283,6 +283,7 @@ en:
         add_new_item_button: Add new item
         notice_create: "Item created!"
       update:
+        update_item: Update item
         success_update: "Item updated!"
       destroy:
         success_delete: "%{name} was deleted"
