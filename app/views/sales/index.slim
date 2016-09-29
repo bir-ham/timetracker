@@ -2,34 +2,35 @@
 .row
   .col-sm-12
     - unless @sales.empty?
-      .well
-        .clearfix
-          .pull-left
-            h4.m-t-n = sale.date
-          .pull-right
-            = link_to sale, class: 'btn btn-info btn-xs' do
-              = icon('eye')
-              |&nbsp;
-              = I18n.t('button.view')
+      - @sales.each do |sale|
+        .well
+          .clearfix
+            .pull-left
+              h5.m-t-n = sale.date
+            .pull-right
+              = link_to sale, class: 'btn btn-info btn-sm' do
+                = icon('eye')
+                |&nbsp;
+                = I18n.t('button.view')
 
-        .m-t-m
-        .row
-          .col-xs-2
-            strong.text-uppercase = I18n.t('sales.index.user')
-            p = sale.user.first_name
-          .col-xs-2
-            strong.text-uppercase = I18n.t('sales.index.customer')
-            p = sale.customer.name
-          .col-xs-2
-            strong.text-uppercase = I18n.t('sales.index.status')
-            - if sale.status.casecmp('new') == 0
-              span.label.label-info = I18n.t('sales.index.new_status')
-            - elsif sale.status.casecmp('ongoing') == 0
-              span.label.label-warning = I18n.t('sales.index.ongoing_status')
-            - elsif sale.status.casecmp('delayed') == 0
-              span.label.label-danger = I18n.t('sales.index.delayed_status')
-            - elsif sale.status.casecmp('finished') == 0
-              span.label.label-success = I18n.t('sales.index.finished_status')
+          .row.m-b-n
+            .col-xs-2
+              strong.text-uppercase = I18n.t('sales.index.user')
+              .clearfix
+              span = sale.user.first_name
+            .col-xs-2
+              strong.text-uppercase = I18n.t('sales.index.customer')
+              .clearfix
+              span = sale.customer.name
+            .col-xs-2
+              strong.text-uppercase = I18n.t('sales.index.status')
+              .clearfix
+              - if sale.status.casecmp('pending') == 0
+                span.label.label-warning = I18n.t('sales.index.pending_status')
+              - elsif sale.status.casecmp('overdue') == 0
+                span.label.label-danger = I18n.t('sales.index.overdue_status')
+              - elsif sale.status.casecmp('payed') == 0
+                span.label.label-success = I18n.t('sales.index.payed_status')
 
     - else
       p.text-danger = I18n.t('sales.index.empty_sales')

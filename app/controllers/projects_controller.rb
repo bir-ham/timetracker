@@ -17,6 +17,7 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.new(project_params)
+    @project.status = 'NEW'
     if @project.save
       redirect_to projects_path, notice: I18n.t('projects.new.notice_create')
     else
@@ -42,7 +43,7 @@ class ProjectsController < ApplicationController
   private
 
   def project_params
-    params.require(:project).permit(:name, :customer_id, :user_id, :status, :archived)
+    params.require(:project).permit(:name, :customer_id, :user_id, :archived)
   end
 
 end

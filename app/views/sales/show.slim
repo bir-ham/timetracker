@@ -2,7 +2,7 @@
 .row
   .col-sm-8
     .well
-      h1 = I18n.t('sales.show.header')
+      h2 = I18n.t('sales.show.header')
       dl.dl-horizontal
         dt
           = I18n.t('sales.show.customer')
@@ -12,11 +12,8 @@
         dd
           = @sale.user.first_name
         dt
-          = I18n.t('sales.show.date_of_an_sale')
+          = I18n.t('sales.show.date')
         dd = @sale.date
-        dt
-          = I18n.t('sales.show.deadline')
-        dd = @sale.status
         dt
           = I18n.t('sales.show.status')
         dd
@@ -28,9 +25,13 @@
             span.label.label-danger = @sale.status
         dt
           = I18n.t('sales.show.description')
-        dd = @sale.description
+        dd
+          - if @sale.description?
+            = @sale.description
+          - else
+            span -
 
-      - unless @sale.items.empty?
+      /- unless @sale.items.empty?
         h3.m-b-xs = I18n.t('sales.items.show.header')
         .table-responsive
           table.table.table-striped
@@ -66,16 +67,11 @@
                 td = number_to_currency(running_total)
                 td
 
-      = link_to new_sale_item_path(@sale), class: 'btn btn-primary' do
+      /= link_to new_sale_item_path(@sale), class: 'btn btn-primary' do
         = icon('plus')
         |&nbsp;
         = I18n.t('sales.items.new.add_item_button')
 
-      /.page-header
-        /= link_to @sale, method: :delete, class: 'btn btn-danger btn-sm', data: { confirm: I18n.t('sales.index.are_you_sure') } do
-          = icon('trash')
-          |&nbsp;
-          = I18n.t('button.delete')
     .btn-toolbar
       = link_to '#confirmation-modal-container', class: 'btn btn-danger confirmation-button', data: { id: @sale.id } do
         = icon('trash')

@@ -261,8 +261,9 @@ en:
       header: Sales
       no_description: No description
       empty_sales: You have no sales yet
-      create_new_sale_button: Create new project
-      pendigng_status: Pending
+      add_new_sale_button: Add new sale
+      status: Status
+      pending_status: Pending
       delayed_status: Delayed
       overdue_status: Overdue
       user: User
@@ -275,6 +276,9 @@ en:
       notice_create: "Sale created!"
       select_customer: '-Select customer-'
       select_user: '-Select user-'
+      select_status: '-Select status-'
+    create:
+      notice_create: "Sale created!"
     show:
       header: View Sale
       id: Id

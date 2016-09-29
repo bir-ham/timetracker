@@ -1,21 +1,18 @@
 class SalesController < ApplicationController
-def index
+
+  def index
     @sales = Sale.all
   end
 
   def new
     @sale = Sale.new
-    session[:new_action_called_from] = URI(request.referer).path
   end
 
   def create
     @sale = Sale.new(sale_params)
+    @sale.status = 'PENDING'
     if @sale.save
-      if session[:new_action_called_from] == '/projects/new'
-        redirect_to new_project_path
-      else
-        redirect_to sales_path, notice: I18n.t('sales.create.notice_create')
-      end
+      redirect_to sales_path, notice: I18n.t('sales.create.notice_create')
     else
       render :new
     end
@@ -53,7 +50,7 @@ def index
   private
 
   def sale_params
-    params.require(:sale).permit(:date, :status, :description)
+    params.require(:sale).permit(:date, :customer_id, :user_id, :description)
   end
 
 end

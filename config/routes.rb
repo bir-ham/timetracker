@@ -15,7 +15,8 @@ Rails.application.routes.draw do
     root 'homepages#dashboard', as: :subdomain_root
     devise_for :users
     resources :users, only: :index
-    resources :projects, except: [:show, :destroy] do
+    resources :sales
+    resources :projects do
       resources :tasks, except: [:index], controller: 'projects/tasks'
     end
     resources :invoices do
