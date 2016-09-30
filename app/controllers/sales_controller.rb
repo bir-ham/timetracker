@@ -43,7 +43,7 @@ class SalesController < ApplicationController
   def destroy
     @sale = Sale.find(params[:id])
     if @sale.destroy
-      redirect_to sales_url, notice: I18n.t('sales.destroy.success_delete')
+      redirect_to @sale, notice: I18n.t('sales.destroy.success_delete')
     else
       flash.now[:error] = I18n.t('sales.distroy.error_delete')
     end
@@ -52,7 +52,7 @@ class SalesController < ApplicationController
   private
 
   def sale_params
-    params.require(:sale).permit(:date, :customer_id, :user_id, :description)
+    params.require(:sale).permit(:date, :customer_id, :status, :user_id, :description)
   end
 
 end

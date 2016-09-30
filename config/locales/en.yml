@@ -109,25 +109,25 @@ en:
   projects:
     index:
       header: Projects
-      no_description: No description
       empty_projects: You have no projects yet
-      create_new_project_button: Create new project
-      new_status: New
-      ongoing_status: Ongoing
-      pendigng_status: Pending
-      delayed_status: Delayed
-      finished_status: Finished
+      create_new_project: Create new project
+      status: Status
       user: User
       customer: Customer
       progress: Progress
       deadline: Deadline
-      tasks: Tasks
-      add_task: Add task
     new:
       header: New Project
       notice_create: "Project created!"
       select_customer: '-Select customer-'
       select_user: '-Select user-'
+    show:
+      header: View Project
+      customer: Customer
+      deadline: Deadline
+      user: User
+      status: Status
+      description: Description
     edit:
       new:
       header: Edit Project
@@ -136,18 +136,24 @@ en:
       notice_update: "Project updated!"
     tasks:
       header: "Tasks"
-      name: Name
-      hours: Hours
-      payment_type: Payment type
-      price: Price
-      vat: Vat
-      total: Total
-      are_you_sure: Are you sure you want to delete this task?
+      show:
+        header: View Item
+        name: Name
+        hours: Hours
+        payment_type: Payment type
+        price: Price
+        vat: Vat
+        total: Total
+      new:
+        add_task: Add Task
+      edit:
+        edit_task: Edit Task
       create:
         add_new_task_button: Add new task
         notice_create: "Task created!"
       update:
         success_update: "Task updated!"
+        update_task: Update task
       destroy:
         success_delete: "%{name} was deleted"
         error_delete: "Task couldn't be deleted, try again after refreshing the page"
@@ -230,18 +236,12 @@ en:
   sales:
     index:
       header: Sales
-      no_description: No description
       empty_sales: You have no sales yet
-      add_new_sale_button: Add new sale
+      add_new_sale: Add new sale
       status: Status
-      pending_status: Pending
-      delayed_status: Delayed
-      overdue_status: Overdue
       user: User
       customer: Customer
       date: Date
-      items: Item
-      add_item: Add item
     new:
       header: New Sale
       notice_create: "Sale created!"
@@ -277,7 +277,6 @@ en:
         unit_price: Unit price
         vat: Vat
         total: Total
-        are_you_sure: Are you sure you want to delete this item?
       create:
         empty_items: You have no items yet
         add_new_item_button: Add new item

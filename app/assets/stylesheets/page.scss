@@ -469,6 +469,13 @@ span.block {
   }
 }
 
+.projects, .sales {
+  form table .form-group {
+    margin-bottom: 10px;
+  }
+}
+
+
 /* Extra small devices (phones, less than 768px) */
 @media (max-width: $screen-xs-max) {
   #topbar .navbar-header {

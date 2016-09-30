@@ -25,6 +25,12 @@ class ProjectsController < ApplicationController
     end
   end
 
+  # GET /sales/1
+  def show
+    @project = Project.find(params[:id])
+    @task = Task.new
+  end
+
   def edit
     @project = Project.find(params[:id])
   end
@@ -43,7 +49,7 @@ class ProjectsController < ApplicationController
   private
 
   def project_params
-    params.require(:project).permit(:name, :customer_id, :user_id, :archived)
+    params.require(:project).permit(:name, :status, :customer_id, :user_id, :archived)
   end
 
 end

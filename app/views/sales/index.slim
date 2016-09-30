@@ -3,7 +3,7 @@
   .col-sm-12
     - unless @sales.empty?
       - @sales.each do |sale|
-        .well
+        .well.well-sm.m-b-xs
           .clearfix
             .pull-left
               h5.m-t-n = sale.date
@@ -25,12 +25,15 @@
             .col-xs-2
               strong.text-uppercase = I18n.t('sales.index.status')
               .clearfix
-              - if sale.status.casecmp('pending') == 0
-                span.label.label-warning = I18n.t('sales.index.pending_status')
-              - elsif sale.status.casecmp('overdue') == 0
-                span.label.label-danger = I18n.t('sales.index.overdue_status')
-              - elsif sale.status.casecmp('payed') == 0
-                span.label.label-success = I18n.t('sales.index.payed_status')
+              - case sale.status
+              - when 'PENDING'
+                span.label.label-warning = sale.status
+              - when 'OVERDUE'
+                span.label.label-danger = sale.status
+              - when 'PAYED'
+                span.label.label-success = sale.status
+              - else
+                | Unknown status
 
     - else
       p.text-danger = I18n.t('sales.index.empty_sales')
@@ -40,4 +43,4 @@
       = link_to new_sale_path, class: 'btn btn-primary'
         = icon('plus')
         |&nbsp;
-        = I18n.t('sales.index.add_new_sale_button')
+        = I18n.t('sales.index.add_new_sale')
