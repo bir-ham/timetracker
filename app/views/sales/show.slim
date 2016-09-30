@@ -17,12 +17,15 @@
         dt
           = I18n.t('sales.show.status')
         dd
-          - if @sale.status.eql?('PAID')
-            span.label.label-success = @sale.status
-          - elsif @sale.status.eql?('PENDING')
+          - case @sale.status
+          - when 'PENDING'
             span.label.label-warning = @sale.status
-          - elsif @sale.status.eql?('OVERDUE')
+          - when 'OVERDUE'
             span.label.label-danger = @sale.status
+          - when 'PAYED'
+            span.label.label-success = @sale.status
+          - else
+            | Unknown status
         dt
           = I18n.t('sales.show.description')
         dd

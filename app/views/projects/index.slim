@@ -8,7 +8,7 @@
         = link_to "Download Excel", projects_path(format: "xls"), class: 'btn btn-outline btn-primary btn-sm'
 
       - @projects.each do |project|
-        .well.well-sm.m-b-s
+        .well.well-sm.m-b-xs
           .clearfix
             .pull-left
               h4.m-t-n = project.name
@@ -34,14 +34,17 @@
             .col-xs-2
               strong.text-uppercase = I18n.t('projects.index.status')
               .clearfix
-              - if project.status.casecmp('new') == 0
-                span.label.label-info = I18n.t('projects.index.new_status')
-              - elsif project.status.casecmp('ongoing') == 0
-                span.label.label-warning = I18n.t('projects.index.ongoing_status')
-              - elsif project.status.casecmp('delayed') == 0
-                span.label.label-danger = I18n.t('projects.index.delayed_status')
-              - elsif project.status.casecmp('finished') == 0
-                span.label.label-success = I18n.t('projects.index.finished_status')
+              - case project.status
+              - when 'NEW'
+                span.label.label-info = project.status
+              - when 'ONGOING'
+                span.label.label-warning  = project.status
+              - when 'DELAYED'
+                span.label.label-danger  = project.status
+              - when 'FINISHED'
+                span.label.label-success  = project.status
+              - else
+                | Unknown status
             .col-xs-2
               strong.text-uppercase = I18n.t('projects.index.progress')
               - progress = project.progress
