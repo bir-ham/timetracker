@@ -7,7 +7,7 @@
 
   = f.input :name
   fieldset.custom-fieldset
-    legend.custom-legend Select customer if exists or add a new one
+    legend.custom-legend = I18n.t('projects.new.select_or_add_new_customer')
     = f.association :customer, collection: Customer.all, label_method: :name, value_method: :id, prompt: I18n.t('invoices.new.select_customer'), multiple: false, wrapper: :horizontal_form
 
     .col-sm-3

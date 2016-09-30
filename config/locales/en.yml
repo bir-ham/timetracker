@@ -121,6 +121,8 @@ en:
       notice_create: "Project created!"
       select_customer: '-Select customer-'
       select_user: '-Select user-'
+      select_project: '-Select project'
+      select_or_add_new_customer: Select customer if exists or add a new one
     show:
       header: View Project
       customer: Customer
@@ -248,6 +250,7 @@ en:
       select_customer: '-Select customer-'
       select_user: '-Select user-'
       select_status: '-Select status-'
+      select_sale: '-Select sale-'
     create:
       notice_create: "Sale created!"
     show:

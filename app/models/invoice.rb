@@ -3,10 +3,13 @@ class Invoice < ActiveRecord::Base
 
   belongs_to :customer
   belongs_to :user
-  has_many :items, dependent: :destroy
+  has_many :sales, dependent: :destroy
+  has_many :projects, dependent: :destroy
 
-  validates :customer, presence: true, if: lambda { |i| i.current_step == 'customer_user' }
-  validates :user, presence: true, if: lambda { |i| i.current_step == 'customer_user' }
+  validates :customer, presence: true, if: lambda { |i| i.current_step == 'customer_user_sale_project' }
+  validates :user, presence: true, if: lambda { |i| i.current_step == 'customer_user_sale_project' }
+  validates :sale, presence: true, if: lambda { |i| i.current_step == 'customer_user_sale_project' }
+  validates :project, presence: true, if: lambda { |i| i.current_step == 'customer_user_sale_project' }
   validates :date_of_an_invoice, presence: true, if: lambda { |i| i.current_step == 'invoice' }
   validates :deadline, presence: true, allow_nil: true
   validates :payment_term, presence: true, allow_nil: true
