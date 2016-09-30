@@ -220,6 +220,10 @@ a {
   background-color: #dc6767;
 }
 
+.progress .progress-bar.progress-bar-turquoise {
+  background-color: $turquoise !important;
+}
+
 .progress .progress-bar.progress-bar-success {
   background-color: $grass !important;
 }
