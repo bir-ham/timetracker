@@ -10,7 +10,7 @@
   = f.input :date_of_an_invoice, as: :date, start_year: Date.today.year, order: [:day, :month, :year], wrapper: :horizontal_form, required: true
 
   fieldset.custom-fieldset
-    legend.custom-legend Choose either a Payment term or Deadline
+    legend.custom-legend = I18n.t('invoices.new.select_payment_term_or_deadline')
     - unless @invoice.errors[:base].empty?
       .has-error
         = f.input :payment_term, collection: 1..31, prompt: 'Select days', include_blank: '-', label: 'Payment term \n (in days)', wrapper: :horizontal_form

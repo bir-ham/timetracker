@@ -4,60 +4,62 @@ class InvoicesDatatable
   def initialize(view)
     @view = view
   end
-  
+
   def as_json(options = {})
     {
       sEcho: params[:sEcho].to_i,
       iTotalRecords: Invoice.count,
       iTotalDisplayRecords: invoices.total_entries,
       aaData: data
-    }    
+    }
   end
 
   private
     def data
       invoices.map do |invoice|
-        deadline = nil
-        if invoice.deadline 
-          deadline = invoice.deadline.strftime("%d/%m/%Y") 
-        else
-          deadline = ''
+        name = nil
+        if invoice.sale.name
+          name = invoice.sale.name
+        elsif invoice.project.name
+          name = invoice.project.name
         end
 
-        running_total = 0        
+        running_total = 0
         invoice.items.each do |item|
-          running_total += item.total 
+          running_total += item.total
         end
 
         status_label_class = ''
         if invoice.status.eql?('PAID')
           status_label_class = 'label label-success'
-        elsif invoice.status.eql?('PENDING')  
-          status_label_class = 'label label-warning' 
-        elsif invoice.status.eql?('OVERDUE')    
+        elsif invoice.status.eql?('PENDING')
+          status_label_class = 'label label-warning'
+        elsif invoice.status.eql?('OVERDUE')
           status_label_class = 'label label-danger'
         end
 
         [
           invoice.id,
-          invoice.customer.name, 
+
+          name,
+
+          invoice.customer.name,
           invoice.user.first_name,
           invoice.date_of_an_invoice.strftime("%d/%m/%Y"),
-          deadline, 
-          
-          number_to_currency(running_total), 
+
+          number_to_currency(running_total),
 
           content_tag(:span, invoice.status, class: status_label_class),
-          
+
           link_to(content_tag(:i, " View", class: 'fa fa-eye'), invoice, class: 'btn btn-info btn-xs')
         ]
-      end  
+      end
     end
 
     def invoices
       @invoices ||= fetch_invoices
     end
-  
+
     def fetch_invoices
       invoices = Invoice.order("#{sort_column} #{sort_direction}")
       invoices = invoices.page(page).per_page(per_page)
