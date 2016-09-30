@@ -3,8 +3,8 @@ class Invoice < ActiveRecord::Base
 
   belongs_to :customer
   belongs_to :user
-  has_many :sales, dependent: :destroy
-  has_many :projects, dependent: :destroy
+  belongs_to :sale, dependent: :destroy
+  belongs_to :project, dependent: :destroy
 
   validates :customer, presence: true, if: lambda { |i| i.current_step == 'customer_user_sale_project' }
   validates :user, presence: true, if: lambda { |i| i.current_step == 'customer_user_sale_project' }
@@ -32,7 +32,7 @@ class Invoice < ActiveRecord::Base
   end
 
   def steps
-    %w[customer_user invoice confirmation]
+    %w[customer_user_sale_project invoice confirmation]
   end
 
   def next_step

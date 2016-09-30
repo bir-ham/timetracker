@@ -22,6 +22,27 @@
       = f.input :payment_term, collection: 1..31, prompt: 'Select days',  include_blank: '-', label: 'Payment term (in days)', wrapper: :horizontal_form
       = f.input :deadline, as: :date, start_year: Date.today.year,  order: [:day, :month, :year], wrapper: :horizontal_form, prompt: '-'
 
+  fieldset.custom-fieldset
+    legend.custom-legend = I18n.t('invoices.new.select_sale_or_project')
+    - unless @invoice.errors[:base].empty?
+      .has-error
+        = f.association :sale, collection: Sale.all, label_method: lambda { |sale| "#{sale.created_at}" " to " "#{sale.customer.name}" }, value_method: :id, prompt: I18n.t('sales.new.select_sale'), multiple: false, multiple: false, required: true
+        .m-t-l
+        h5.horizontal-line-with-text
+          span OR
+        .m-b-s
+        = f.association :project, collection: Project.all, label_method: :name, value_method: :id, prompt: I18n.t('projects.new.select_project'), multiple: false, multiple: false, required: true
+        .col-sm-3
+        .col-sm-9
+          span.help-block = @invoice.errors[:base][0]
+    - else
+      = f.association :sale, collection: Sale.all, label_method: lambda { |sale| "#{sale.created_at}" " to " "#{sale.customer.name}" }, value_method: :id, prompt: I18n.t('sales.new.select_sale'), multiple: false, multiple: false, required: true
+      .m-t-l
+      h5.horizontal-line-with-text
+        span OR
+      .m-b-s
+      = f.association :project, collection: Project.all, label_method: :name, value_method: :id, prompt: I18n.t('projects.new.select_project'), multiple: false, multiple: false, required: true
+
   = f.input :interest_in_arrears, label: 'Interest in arrears (in %)', input_html: { min: 0, max: 100 }, wrapper: :horizontal_form
   = f.input :reference_number, wrapper: :horizontal_form
   = f.input :status, collection: [['PENDING', 'PENDING'], ['PAID', 'PAID'], ['OVERDUE', 'OVERDUE']], prompt: I18n.t('invoices.new.select_status'), wrapper: :horizontal_form

@@ -6,7 +6,7 @@ html {
 
 body {
   background-color: $body-background-color;
-  color: $body-font-color;
+  color: $body-text-color;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 13px;
   line-height: 1.42857143;
@@ -314,7 +314,7 @@ dt {
     width: auto;
     margin-bottom: 15px;
     font-size: 13px;
-    color: $body-font-color;
+    color: $body-text-color;
     border-bottom: none;
   }
 }
@@ -415,6 +415,21 @@ dt {
 .center-block {
   display: table;
 }
+
+.horizontal-line-with-text {
+   width: 100%;
+   text-align: center;
+   border-bottom: 1px solid $medium-grey;
+   line-height: 0.1em;
+   margin: 10px 0 20px;
+
+   span {
+    background:#fff;
+    padding:0 10px;
+  }
+}
+
+
 
 /* Extremely very extra small devices (phones, less than 480px) */
 @media (max-width: $screen-xxxs-max) {

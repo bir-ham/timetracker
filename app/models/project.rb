@@ -1,6 +1,6 @@
 class Project < ActiveRecord::Base
 
-  belongs_to :invoice
+  has_one :invoice
   belongs_to :customer
   belongs_to :user
   has_many :tasks, dependent: :destroy
