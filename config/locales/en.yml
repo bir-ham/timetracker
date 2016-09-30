@@ -204,6 +204,7 @@ en:
       select_customer: '-Select customer-'
       select_user: '-Select user-'
       select_status: '-Select status-'
+      select_days: -Select days-'
       select_sale_or_project: Select Sale or Project
       select_payment_term_or_deadline: Select either a Payment term or Deadline
     edit:
