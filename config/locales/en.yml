@@ -124,7 +124,7 @@ en:
       select_project: '-Select project'
       select_or_add_new_customer: Select Customer if exists or add new
     show:
-      header: View Project
+      header: Project
       customer: Customer
       deadline: Deadline
       user: User
@@ -139,7 +139,7 @@ en:
     tasks:
       header: "Tasks"
       show:
-        header: View Item
+        header: Task
         name: Name
         hours: Hours
         payment_type: Payment type
@@ -176,7 +176,7 @@ en:
     edit:
       header: Edit customer
     show:
-      header: View Customer
+      header: Customer
       name: Name
       phone_number: Phone number
       email: Email
@@ -210,12 +210,12 @@ en:
     edit:
       header: Edit Invoice
     show:
-      header: View Invoice
+      header: Invoice
       id: Id
       name: Name
       customer: Customer
-      date_of_an_invoice: Date
-      employee: Employee
+      date: Date
+      user: User
       deadline: Deadline
       total: Total
       status: Status
@@ -258,7 +258,7 @@ en:
     create:
       notice_create: "Sale created!"
     show:
-      header: View Sale
+      header: Sale
       id: Id
       customer: Customer
       date: Date

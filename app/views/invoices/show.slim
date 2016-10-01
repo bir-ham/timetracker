@@ -2,17 +2,17 @@
 .row
   .col-sm-8
     .well
-      h1 = I18n.t('invoices.show.header')
+      h2 = I18n.t('invoices.show.header')
       dl.dl-horizontal
         dt
           = I18n.t('invoices.show.customer')
         dd = @invoice.customer.name
         dt
-          = I18n.t('invoices.show.employee')
+          = I18n.t('invoices.show.user')
         dd
           = @invoice.user.first_name
         dt
-          = I18n.t('invoices.show.date_of_an_invoice')
+          = I18n.t('invoices.show.date')
         dd = @invoice.date_of_an_invoice
         dt
           = I18n.t('invoices.show.deadline')
@@ -39,52 +39,144 @@
           |Description:
         dd = @invoice.description
 
-      - unless @invoice.items.empty?
-        h3.m-b-xs = I18n.t('invoices.items.show.header')
-        .table-responsive
-          table.table.table-striped
+      - if @invoice.sale_id?
+        h3 = I18n.t('sales.show.header')
+        dl.dl-horizontal
+          dt
+            = I18n.t('sales.show.customer')
+          dd = @invoice.sale.customer.name
+          dt
+            = I18n.t('sales.show.user')
+          dd
+            = @invoice.sale.user.first_name
+          dt
+            = I18n.t('sales.show.date')
+          dd = @invoice.sale.date
+          dt
+            = I18n.t('sales.show.status')
+          dd
+            - case @invoice.sale.status
+            - when 'PENDING'
+              span.label.label-warning = @invoice.sale.status
+            - when 'OVERDUE'
+              span.label.label-danger = @invoice.sale.status
+            - when 'PAYED'
+              span.label.label-success = @invoice.sale.status
+            - else
+              | Unknown status
+          dt
+            = I18n.t('sales.show.description')
+          dd
+            - if @invoice.sale.description?
+              = @invoice.sale.description
+            - else
+              span -
+
+          h5.m-b-n = I18n.t('sales.items.header')
+          .table-responsive
+            table.table.table-striped.m-b-n
+              thead
+                tr
+                  th = I18n.t('sales.items.show.name')
+                  th = I18n.t('sales.items.show.quantity')
+                  th = I18n.t('sales.items.show.unit')
+                  th = I18n.t('sales.items.show.unit_price')
+                  th = I18n.t('sales.items.show.vat')
+                  - unless @invoice.sale.items.empty?
+                    th = I18n.t('sales.items.show.total')
+              tbody
+                - running_total = 0
+                - @invoice.sale.items.each do |item|
+                  tr
+                    td = item.name
+                    td = item.quantity
+                    td = item.unit
+                    td = item.unit_price
+                    td = item.vat
+                    td = number_to_currency(item.total)
+
+                  - running_total += item.total
+                - unless @invoice.sale.items.empty?
+                  tr.white-background
+                    td colspan="7"
+                    td = number_to_currency(running_total)
+                    td
+                    td
+
+      - elsif @invoice.project_id?
+        h3 = I18n.t('projects.show.header')
+        dl.dl-horizontal
+          dt
+            = I18n.t('projects.show.customer')
+          dd = @invoice.project.customer.name
+          dt
+            = I18n.t('projects.show.user')
+          dd
+            = @invoice.project.user.first_name
+          dt
+            = I18n.t('projects.show.deadline')
+          dd = @invoice.project.deadline
+          dt
+            = I18n.t('projects.show.status')
+          dd
+            - case @invoice.project.status
+            - when 'NEW'
+              span.label.label-info = @invoice.project.status
+            - when 'ONGOING'
+              span.label.label-warning  = @invoice.project.status
+            - when 'DELAYED'
+              span.label.label-danger  = @invoice.project.status
+            - when 'FINISHED'
+              span.label.label-success  = @invoice.project.status
+            - else
+              | Unknown status
+          dt
+            = I18n.t('projects.show.description')
+          dd
+            - if @invoice.project.description?
+              = @invoice.project.description
+            - else
+              span -
+
+          h5.m-b-n = I18n.t('projects.tasks.header')
+          table.table.table-striped.m-b-n
             thead
               tr
-                th = I18n.t('invoices.items.show.name')
-                th = I18n.t('invoices.items.show.date')
-                th = I18n.t('invoices.items.show.quantity')
-                th = I18n.t('invoices.items.show.unit')
-                th = I18n.t('invoices.items.show.unit_price')
-                th = I18n.t('invoices.items.show.vat')
-                th = I18n.t('invoices.items.show.total')
-                th = I18n.t('button.delete')
+                th = I18n.t('projects.tasks.show.name')
+                th = I18n.t('projects.tasks.show.hours')
+                th = I18n.t('projects.tasks.show.payment_type')
+                th = I18n.t('projects.tasks.show.price')
+                th = I18n.t('projects.tasks.show.vat')
+                - unless @invoice.sale.project.tasks.empty?
+                  th = I18n.t('projects.tasks.show.total')
+                  th.text-center = I18n.t('button.edit')
+                  th.text-center = I18n.t('button.delete')
             tbody
               - running_total = 0
-              - @items.each do |item|
+              - @sale.project.tasks.each do |task|
                 tr
-                  td = item.name
-                  td = item.date
-                  td = item.quantity
-                  td = item.unit
-                  td = number_to_currency(item.unit_price)
-                  td = item.vat
-                  td = number_to_currency(item.total)
-                  td
-                    = link_to '#confirmation-modal-container', class: 'btn btn-danger btn-xs confirmation-button', data: { id: item.id } do
+                  td = task.name
+                  td = task.hours
+                  td = task.payment_type
+                  td = number_to_currency(task.price)
+                  td = task.vat
+                  td = number_to_currency(task.total)
+                  td.text-center
+                    = link_to edit_project_task_path(@project,task), class: 'btn btn-info btn-xs' do
+                      = icon('pencil-square-o')
+                  td.text-center
+                    = link_to [@project, task], method: :delete, class: 'btn btn-danger btn-xs' do
                       = icon('trash')
-                      |&nbsp;
-                      = I18n.t('button.delete')
-                - running_total += item.total
-              tr
-                td colspan="6"
-                td = number_to_currency(running_total)
-                td
 
-      = link_to new_invoice_item_path(@invoice), class: 'btn btn-primary' do
-        = icon('plus')
-        |&nbsp;
-        = I18n.t('invoices.items.new.add_item_button')
+                - running_total += task.total
 
-      /.page-header
-        /= link_to @invoice, method: :delete, class: 'btn btn-danger btn-sm', data: { confirm: I18n.t('invoices.index.are_you_sure') } do
-          = icon('trash')
-          |&nbsp;
-          = I18n.t('button.delete')
+              - unless @sale.project.tasks.empty?
+                tr.white-background
+                  td colspan="7"
+                  td = number_to_currency(running_total)
+                  td
+                  td
+
     .btn-toolbar
       = link_to '#confirmation-modal-container', class: 'btn btn-danger confirmation-button', data: { id: @invoice.id } do
         = icon('trash')

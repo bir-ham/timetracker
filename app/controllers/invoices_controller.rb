@@ -44,7 +44,6 @@ class InvoicesController < ApplicationController
   # GET /invoices/1
   def show
     @invoice = Invoice.find(params[:id])
-    @items = @invoice.items
   end
 
   # GET /invoices/1/edit
