@@ -193,10 +193,10 @@ en:
       header: Invoices
       are_you_sure: Are you sure?
       empty_invoices: You have no invoices yet
-      add_new_invoice_button: Add new invoice
+      create_invoice: Create Invoice
     new:
       header: New Invoice
-      create_invoice_button: Create Invoice
+      create_invoice: Create Invoice
       user: User
       confirmation: Confirmation
       invoice_details: Invoice details
@@ -204,7 +204,7 @@ en:
       select_customer: '-Select customer-'
       select_user: '-Select user-'
       select_status: '-Select status-'
-      select_days: -Select days-'
+      select_days: '-Select days-'
       select_sale_or_project: Select Sale or Project
       select_payment_term_or_deadline: Select either a Payment term or Deadline
     edit:

@@ -18,15 +18,20 @@ class InvoicesDatatable
     def data
       invoices.map do |invoice|
         name = nil
-        if invoice.sale.name
-          name = invoice.sale.name
-        elsif invoice.project.name
+        if invoice.sale_id?
+          name = invoice.sale.date.to_s+ " ("+invoice.customer.name+")"
+        elsif invoice.project_id?
           name = invoice.project.name
         end
-
         running_total = 0
-        invoice.items.each do |item|
-          running_total += item.total
+        if invoice.sale_id?
+          invoice.sale.items.each do |item|
+            running_total += item.total
+          end
+        elsif invoice.project_id?
+          invoice.project.task.each do |task|
+            running_total += task.total
+          end
         end
 
         status_label_class = ''
