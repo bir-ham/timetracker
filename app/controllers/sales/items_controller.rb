@@ -15,7 +15,7 @@ class Sales::ItemsController < ApplicationController
     if @item.save
       redirect_to @sale, notice: I18n.t('sales.items.create.notice_create')
     else
-      render :new
+      render 'sales/show'
     end
   end
 

@@ -5,9 +5,6 @@
       h2 = I18n.t('invoices.show.header')
       dl.dl-horizontal
         dt
-          = I18n.t('invoices.show.customer')
-        dd = @invoice.customer.name
-        dt
           = I18n.t('invoices.show.user')
         dd
           = @invoice.user.first_name

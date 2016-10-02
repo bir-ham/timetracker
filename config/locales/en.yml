@@ -213,7 +213,6 @@ en:
       header: Invoice
       id: Id
       name: Name
-      customer: Customer
       date: Date
       user: User
       deadline: Deadline

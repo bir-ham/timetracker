@@ -15,7 +15,7 @@ gem 'jquery-datatables-rails'
 
 gem 'turbolinks'
 gem 'jquery-turbolinks'
-gem 'slim', '2.0.3'
+gem 'slim-rails'
 
 gem 'devise'
 gem 'devise_invitable'

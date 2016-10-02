@@ -5,14 +5,11 @@ h1.text-center
   .col-sm-6.col-sm-offset-3
     dl.dl-horizontal
       dt
-        = I18n.t('invoices.show.customer')
-      dd =h @invoice.customer.name
-      dt
-        = I18n.t('invoices.show.employee')
+        = I18n.t('invoices.show.user')
       dd
         =h @invoice.user.first_name
       dt
-        = I18n.t('invoices.show.date_of_an_invoice')
+        = I18n.t('invoices.show.date')
       dd =h @invoice.date_of_an_invoice
       dt
         = I18n.t('invoices.show.deadline')
