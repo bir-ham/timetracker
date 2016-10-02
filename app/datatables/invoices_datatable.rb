@@ -18,11 +18,16 @@ class InvoicesDatatable
     def data
       invoices.map do |invoice|
         name = nil
+        customer_name = nil
+
         if invoice.sale_id?
-          name = invoice.sale.date.to_s+ " ("+invoice.customer.name+")"
+          name = invoice.sale.date.strftime("%d/%m/%Y")+ " ("+invoice.sale.customer.name+")"
+          customer_name = invoice.sale.customer.name
         elsif invoice.project_id?
           name = invoice.project.name
+          customer_name = invoice.project.customer.name
         end
+
         running_total = 0
         if invoice.sale_id?
           invoice.sale.items.each do |item|
@@ -45,17 +50,12 @@ class InvoicesDatatable
 
         [
           invoice.id,
-
           name,
-
-          invoice.customer.name,
+          customer_name,
           invoice.user.first_name,
           invoice.date_of_an_invoice.strftime("%d/%m/%Y"),
-
           number_to_currency(running_total),
-
           content_tag(:span, invoice.status, class: status_label_class),
-
           link_to(content_tag(:i, " View", class: 'fa fa-eye'), invoice, class: 'btn btn-info btn-xs')
         ]
       end
