@@ -214,7 +214,7 @@ en:
       id: Id
       name: Name
       customer: Customer
-      date: Date
+      date_of_an_invoice: Date of an invoice
       user: User
       deadline: Deadline
       total: Total

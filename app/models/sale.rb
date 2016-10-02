@@ -19,4 +19,13 @@ class Sale < ActiveRecord::Base
         errors.add(:date, "can't be in the past")
       end
     end
+
+  def self.get_sales_without_invoice
+    sales = Array.new
+    for sale in Sale.all do
+      sales.push(sale) if sale.invoice.nil?
+    end
+    return sales
+  end
+
 end
