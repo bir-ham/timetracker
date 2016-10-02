@@ -4,60 +4,67 @@ class InvoicesDatatable
   def initialize(view)
     @view = view
   end
-  
+
   def as_json(options = {})
     {
       sEcho: params[:sEcho].to_i,
       iTotalRecords: Invoice.count,
       iTotalDisplayRecords: invoices.total_entries,
       aaData: data
-    }    
+    }
   end
 
   private
     def data
       invoices.map do |invoice|
-        deadline = nil
-        if invoice.deadline 
-          deadline = invoice.deadline.strftime("%d/%m/%Y") 
-        else
-          deadline = ''
+        name = nil
+        customer_name = nil
+
+        if invoice.sale_id?
+          name = invoice.sale.date.strftime("%d/%m/%Y")+ " ("+invoice.sale.customer.name+")"
+          customer_name = invoice.sale.customer.name
+        elsif invoice.project_id?
+          name = invoice.project.name
+          customer_name = invoice.project.customer.name
         end
 
-        running_total = 0        
-        invoice.items.each do |item|
-          running_total += item.total 
+        running_total = 0
+        if invoice.sale_id?
+          invoice.sale.items.each do |item|
+            running_total += item.total
+          end
+        elsif invoice.project_id?
+          invoice.project.task.each do |task|
+            running_total += task.total
+          end
         end
 
         status_label_class = ''
         if invoice.status.eql?('PAID')
           status_label_class = 'label label-success'
-        elsif invoice.status.eql?('PENDING')  
-          status_label_class = 'label label-warning' 
-        elsif invoice.status.eql?('OVERDUE')    
+        elsif invoice.status.eql?('PENDING')
+          status_label_class = 'label label-warning'
+        elsif invoice.status.eql?('OVERDUE')
           status_label_class = 'label label-danger'
         end
 
         [
           invoice.id,
-          invoice.customer.name, 
+          name,
+          customer_name,
           invoice.user.first_name,
           invoice.date_of_an_invoice.strftime("%d/%m/%Y"),
-          deadline, 
-          
-          number_to_currency(running_total), 
-
+          number_to_currency(running_total),
           content_tag(:span, invoice.status, class: status_label_class),
-          
           link_to(content_tag(:i, " View", class: 'fa fa-eye'), invoice, class: 'btn btn-info btn-xs')
         ]
-      end  
+      end
     end
 
     def invoices
       @invoices ||= fetch_invoices
     end
-  
+
     def fetch_invoices
       invoices = Invoice.order("#{sort_column} #{sort_direction}")
       invoices = invoices.page(page).per_page(per_page)

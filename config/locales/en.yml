@@ -121,8 +121,10 @@ en:
       notice_create: "Project created!"
       select_customer: '-Select customer-'
       select_user: '-Select user-'
+      select_project: '-Select project'
+      select_or_add_new_customer: Select Customer if exists or add new
     show:
-      header: View Project
+      header: Project
       customer: Customer
       deadline: Deadline
       user: User
@@ -137,7 +139,7 @@ en:
     tasks:
       header: "Tasks"
       show:
-        header: View Item
+        header: Task
         name: Name
         hours: Hours
         payment_type: Payment type
@@ -174,7 +176,7 @@ en:
     edit:
       header: Edit customer
     show:
-      header: View Customer
+      header: Customer
       name: Name
       phone_number: Phone number
       email: Email
@@ -191,25 +193,29 @@ en:
       header: Invoices
       are_you_sure: Are you sure?
       empty_invoices: You have no invoices yet
-      add_new_invoice_button: Add new invoice
+      create_invoice: Create Invoice
     new:
       header: New Invoice
-      create_invoice_button: Create Invoice
+      create_invoice: Create Invoice
       user: User
       confirmation: Confirmation
       invoice_details: Invoice details
-      customer_and_user_details: Customer and user details
+      customer_and_user_details: Customer and User details
       select_customer: '-Select customer-'
       select_user: '-Select user-'
       select_status: '-Select status-'
+      select_days: '-Select days-'
+      select_sale_or_project: Select Sale or Project
+      select_payment_term_or_deadline: Select either a Payment term or Deadline
     edit:
       header: Edit Invoice
     show:
-      header: View Invoice
+      header: Invoice
       id: Id
+      name: Name
       customer: Customer
-      date_of_an_invoice: Date
-      employee: Employee
+      date_of_an_invoice: Date of an invoice
+      user: User
       deadline: Deadline
       total: Total
       status: Status
@@ -248,10 +254,11 @@ en:
       select_customer: '-Select customer-'
       select_user: '-Select user-'
       select_status: '-Select status-'
+      select_sale: '-Select sale-'
     create:
       notice_create: "Sale created!"
     show:
-      header: View Sale
+      header: Sale
       id: Id
       customer: Customer
       date: Date

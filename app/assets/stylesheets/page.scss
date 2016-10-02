@@ -197,7 +197,7 @@ html, body {
 }
 
 .dropdown-menu.settings li > a i {
-  color: $body-font-color !important;
+  color: $body-text-color!important;
   font-size: 14px !important;
 }
 
@@ -436,12 +436,16 @@ span.block {
 }
 
 .page-content {
-  padding: 20px 20px 100px 20px;
+  padding: 20px 20px 120px 20px;
 }
 
 .dashboard-card {
   -webkit-transition: all 0.3s ease 0s;
   transition: all 0.3s ease 0s;
+}
+
+.dashboard-card .fa-area-chart {
+  font-size: 5.5em;
 }
 
 .dashboard-card .main-icon .fa {

@@ -6,7 +6,7 @@ html {
 
 body {
   background-color: $body-background-color;
-  color: $body-font-color;
+  color: $body-text-color;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 13px;
   line-height: 1.42857143;
@@ -220,6 +220,10 @@ a {
   background-color: #dc6767;
 }
 
+.progress .progress-bar.progress-bar-turquoise {
+  background-color: $turquoise !important;
+}
+
 .progress .progress-bar.progress-bar-success {
   background-color: $grass !important;
 }
@@ -310,7 +314,7 @@ dt {
     width: auto;
     margin-bottom: 15px;
     font-size: 13px;
-    color: $body-font-color;
+    color: $body-text-color;
     border-bottom: none;
   }
 }
@@ -334,6 +338,7 @@ dt {
 // Margins
 .m-t-n {
   margin-top: 0 !important;
+  padding-top: 0 !important;
 }
 
 .m-b-n {
@@ -411,6 +416,21 @@ dt {
 .center-block {
   display: table;
 }
+
+.horizontal-line-with-text {
+   width: 100%;
+   text-align: center;
+   border-bottom: 1px solid $medium-grey;
+   line-height: 0.1em;
+   margin: 10px 0 20px;
+
+   span {
+    background:#fff;
+    padding:0 10px;
+  }
+}
+
+
 
 /* Extremely very extra small devices (phones, less than 480px) */
 @media (max-width: $screen-xxxs-max) {

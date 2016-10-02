@@ -91,15 +91,23 @@
                 tr.white-background
                   == render 'sales/items/form', sale: @sale, f: f
 
-            = button_tag(type: :submit, class: 'btn btn-primary btn-sm') do
+            .btn-toolbar.m-t-n
+              = button_tag(type: :submit, class: 'btn btn-primary btn-sm') do
+                - if params[:action] == 'edit'
+                  = icon('arrow-up')
+                  |&nbsp;
+                  = I18n.t('sales.items.update.update_item')
+                - else
+                  = icon('plus')
+                  |&nbsp;
+                  = I18n.t('sales.items.new.add_item')
+
               - if params[:action] == 'edit'
-                = icon('arrow-up')
-                |&nbsp;
-                = I18n.t('sales.items.update.update_item')
-              - else
-                = icon('plus')
-                |&nbsp;
-                = I18n.t('sales.items.new.add_item')
+                = link_to sale_path(@sale), class: 'btn btn-primary btn-sm btn-outline' do
+                  = icon('times')
+                  |&nbsp;
+                  = I18n.t('button.cancel')
+
 
     .btn-toolbar
       = link_to '#confirmation-modal-container', class: 'btn btn-danger confirmation-button', data: { id: @sale.id } do

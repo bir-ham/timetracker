@@ -1,66 +1,99 @@
 h1.text-center
   = I18n.t('invoices.new.header')
   small = I18n.t('invoices.new.confirmation')
+.row
+  .col-sm-6.col-sm-offset-3
+    dl.dl-horizontal
+      dt
+        = I18n.t('invoices.show.user')
+      dd
+        =h @invoice.user.first_name
+      dt
+        = I18n.t('invoices.show.date_of_an_invoice')
+      dd =h @invoice.date_of_an_invoice
+      dt
+        = I18n.t('invoices.show.deadline')
+      dd =h @invoice.deadline
+      dt
+        = I18n.t('invoices.show.payment_term')
+      dd =h @invoice.payment_term
+      dt
+        = I18n.t('invoices.show.interest_in_arrears')
+      dd =h @invoice.interest_in_arrears
+      dt
+        = I18n.t('invoices.show.reference_number')
+      dd =h @invoice.reference_number
+      dt
+        |Description:
+      dd = @invoice.description
 
-dl.dl-horizontal
-  dt
-    = I18n.t('invoices.show.customer')
-  dd =h @invoice.customer.name
-  dt
-    = I18n.t('invoices.show.employee')
-  dd
-    =h @invoice.user.first_name
-  dt
-    = I18n.t('invoices.show.date_of_an_invoice')
-  dd =h @invoice.date_of_an_invoice
-  dt
-    = I18n.t('invoices.show.deadline')
-  dd =h @invoice.deadline
-  dt
-    = I18n.t('invoices.show.payment_term')
-  dd =h @invoice.payment_term
-  dt
-    = I18n.t('invoices.show.interest_in_arrears')
-  dd =h @invoice.interest_in_arrears
-  dt
-    = I18n.t('invoices.show.reference_number')
-  dd =h @invoice.reference_number
-  dt
-    |Description:
-  dd = @invoice.description
-
-- unless @invoice.items.empty?
-  h3.m-b-xs = I18n.t('invoices.items.show.header')
-  .table-responsive
-    table.table.table-striped
-      thead
-        tr
-          th = I18n.t('invoices.items.show.name')
-          th = I18n.t('invoices.items.show.date')
-          th = I18n.t('invoices.items.show.quantity')
-          th = I18n.t('invoices.items.show.unit')
-          th = I18n.t('invoices.items.show.unit_price')
-          th = I18n.t('invoices.items.show.vat')
-          th = I18n.t('invoices.items.show.total')
-          th = I18n.t('button.delete')
-      tbody
-        - running_total = 0
-        - @items.each do |item|
-          tr
-            td = item.name
-            td = item.date
-            td = item.quantity
-            td = item.unit
-            td = number_to_currency(item.unit_price)
-            td = item.vat
-            td = number_to_currency(item.total)
-            td
-              = link_to '#confirmation-modal-container', class: 'btn btn-danger btn-xs confirmation-button', data: { id: item.id } do
-                = icon('trash')
-                |&nbsp;
-                = I18n.t('button.delete')
-          - running_total += item.total
-        tr
-          td colspan="6"
-          td = number_to_currency(running_total)
-          td
+- if @invoice.sale_id?
+  .row
+    .col-sm-6.col-sm-offset-3
+      h3 = I18n.t('sales.show.header')
+      dl.dl-horizontal
+        dt
+          = I18n.t('sales.show.customer')
+        dd = @invoice.sale.customer.name
+        dt
+          = I18n.t('sales.show.user')
+        dd
+          = @invoice.sale.user.first_name
+        dt
+          = I18n.t('sales.show.date')
+        dd = @invoice.sale.date
+        dt
+          = I18n.t('sales.show.status')
+        dd
+          - case @invoice.sale.status
+          - when 'PENDING'
+            span.label.label-warning = @invoice.sale.status
+          - when 'OVERDUE'
+            span.label.label-danger = @invoice.sale.status
+          - when 'PAYED'
+            span.label.label-success = @invoice.sale.status
+          - else
+            | Unknown status
+        dt
+          = I18n.t('sales.show.description')
+        dd
+          - if @invoice.sale.description?
+            = @invoice.sale.description
+          - else
+            span -
+- elsif @invoice.project_id?
+  .row
+    .col-sm-6.col-sm-offset-3
+      h3 = I18n.t('projects.show.header')
+      dl.dl-horizontal
+        dt
+          = I18n.t('projects.show.customer')
+        dd = @invoice.project.customer.name
+        dt
+          = I18n.t('projects.show.user')
+        dd
+          = @invoice.project.user.first_name
+        dt
+          = I18n.t('projects.show.deadline')
+        dd = @invoice.project.deadline
+        dt
+          = I18n.t('projects.show.status')
+        dd
+          - case @invoice.project.status
+          - when 'NEW'
+            span.label.label-info = @invoice.project.status
+          - when 'ONGOING'
+            span.label.label-warning  = @invoice.project.status
+          - when 'DELAYED'
+            span.label.label-danger  = @invoice.project.status
+          - when 'FINISHED'
+            span.label.label-success  = @invoice.project.status
+          - else
+            | Unknown status
+        dt
+          = I18n.t('projects.show.description')
+        dd
+          - if @invoice.project.description?
+            = @invoice.project.description
+          - else
+            span -

@@ -3,6 +3,7 @@ class InvoicesController < ApplicationController
 
   def index
     @invoices = Invoice.all
+
     respond_to do |format|
       format.html
       format.json { render json: InvoicesDatatable.new(view_context) }
@@ -15,6 +16,8 @@ class InvoicesController < ApplicationController
     session[:invoice_params] ||= {}
     @invoice = Invoice.new(session[:invoice_params])
     @invoice.current_step = session[:invoice_step]
+
+    @sales = Sale.get_sales_without_invoice
   end
 
   def create
@@ -44,7 +47,6 @@ class InvoicesController < ApplicationController
   # GET /invoices/1
   def show
     @invoice = Invoice.find(params[:id])
-    @items = @invoice.items
   end
 
   # GET /invoices/1/edit
@@ -80,7 +82,7 @@ class InvoicesController < ApplicationController
   private
     def invoice_params
       params.require(:invoice).permit(:date_of_an_invoice, :deadline, :payment_term, :interest_in_arrears,
-        :reference_number, :status, :description, :customer_id, :user_id)
+        :reference_number, :status, :description, :sale_id, :project_id, :customer_id, :user_id)
     end
 
 end

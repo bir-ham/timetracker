@@ -12,7 +12,7 @@ class SalesController < ApplicationController
     @sale = Sale.new(sale_params)
     @sale.status = 'PENDING'
     if @sale.save
-      redirect_to sales_path, notice: I18n.t('sales.create.notice_create')
+      redirect_to @sale, notice: I18n.t('sales.create.notice_create')
     else
       render :new
     end
