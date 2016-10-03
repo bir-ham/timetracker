@@ -12,11 +12,11 @@ FactoryGirl.define do
     description 'Lorem lipsum'
 
     factory :invoice_with_sale do
-      create(:invoice, sale: sale)
+      association :sale, strategy: :build
     end
 
     factory :invoice_with_project do
-      create(:invoice, project: project)
+      association :project, strategy: :build
     end
 
   end

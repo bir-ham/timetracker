@@ -8,6 +8,11 @@ FactoryGirl.define do
     status "PENDING"
     description "Text"
 
+    factory :sale_with_customer_and_user do
+      association :customer, strategy: :build
+      association :user, strategy: :build
+    end
+
     factory :sale_with_item do
       after(:create) do |sale|
         create(:item, sale: sale)

@@ -7,7 +7,7 @@ describe 'sales' do
   before do
     set_subdomain(account.subdomain)
     sign_user_in(user)
-     @customer = create(:customer)
+    @customer = create(:customer)
   end
 
   it "allows sale to be created" do

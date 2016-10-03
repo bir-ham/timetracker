@@ -62,5 +62,5 @@ describe 'projects' do
   #	within find("h3", text: project_name) do
   #		page.first("a").click
   #	end
-  end
+  #end
 end
