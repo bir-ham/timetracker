@@ -13,7 +13,7 @@ describe 'items' do
   it 'allows user to create items' do
     visit sale_path(@sale)
 
-    expect(page).to have_link I18n.t('invoices.items.new.add_item')
+    expect(page).to have_link I18n.t('sales.items.new.add_item')
 
     fill_in 'Name', with: 'Lorem lipsum'
     fill_in 'Quantity', with: '3'
@@ -25,7 +25,7 @@ describe 'items' do
 
     submit_form
 
-    expect(page).to have_text I18n.t('invoices.items.create.notice_create')
+    expect(page).to have_text I18n.t('sales.items.create.notice_create')
     expect(page).to have_text '24.40'
     expect(page).to have_text '10'
   end
@@ -33,7 +33,7 @@ describe 'items' do
   it 'display item validations' do
     visit sale_path(@sale)
 
-    expect(page).to have_link I18n.t('invoices.items.new.add_item')
+    expect(page).to have_link I18n.t('sales.items.new.add_item')
 
     fill_in 'Quantity', with: 'abc'
 
@@ -63,7 +63,7 @@ describe 'items' do
 
       submit_form
 
-      expect(page).to have_text I18n.t('invoices.items.update.success_update')
+      expect(page).to have_text I18n.t('sales.items.update.success_update')
       expect(page).to have_text @invoice.items[0].name
       expect(page).to have_text '4'
     end
