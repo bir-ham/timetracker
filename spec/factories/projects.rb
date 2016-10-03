@@ -1,7 +1,9 @@
 FactoryGirl.define do
   factory :project do
+    association :customer
+    association :user
     sequence(:name) { |n| "My Project #{n}"}
-    client "My Client"
+    date Date.today
     archived false
   end
 
