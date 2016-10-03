@@ -1,14 +1,7 @@
 FactoryGirl.define do
   factory :invoice do
-    association :customer
+    association :sale
     association :user
-
-    factory :invoice_with_item do
-      payment_term ""
-      after(:create) do |invoice|
-        create(:item, invoice: invoice)
-      end  
-    end
 
     date_of_an_invoice Date.tomorrow
     deadline Date.tomorrow

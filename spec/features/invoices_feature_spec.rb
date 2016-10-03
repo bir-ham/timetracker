@@ -12,14 +12,14 @@ describe 'invoices' do
 
   it 'allows user to create invoices' do
     visit invoices_path
-    click_link I18n.t('invoices.index.add_new_invoice_button')
-
-    within('.invoice_customer') do
-      select_generic(@customer.name, from: 'invoice_customer')
-    end
+    click_link I18n.t('invoices.index.create_new_invoice')
 
     within('.invoice_user') do
       select_generic(user.first_name, from: 'invoice_user')
+    end
+
+    within('.invoice_sale') do
+      select_generic(@sale.date+ " to " +@sale.customer.name, from: 'invoice_sale')
     end
 
     submit_form
@@ -37,35 +37,34 @@ describe 'invoices' do
 
     submit_form
 
-    expect(page).to have_text @customer.name
+    expect(page).to have_text Date.tomorrow
     expect(page).to have_text '1234'
+
+    expect(page).to have_text @sale.date
+    expect(page).to have_text @sale.customer.name
 
     submit_form
 
     expect(page).to have_text I18n.t('invoices.create.notice_create')
-    expect(page).to have_text @customer.name
+    expect(page).to have_text @sale.date+ " to " +@sale.customer.name
   end
 
   it 'display invoice validations' do
     visit invoices_path
-    click_link I18n.t('invoices.index.add_new_invoice_button')
-
-    within('.invoice_customer') do
-      select_generic(@customer.name, from: 'invoice_customer')
-    end
+    click_link I18n.t('invoices.index.create_new_invoice')
 
     within('.invoice_user') do
       select_generic(user.first_name, from: 'invoice_user')
+    end
+
+    within('.invoice_sale') do
+      select_generic(@sale.date+ " to " +@sale.customer.name, from: 'invoice_sale')
     end
 
     submit_form
 
     fill_in 'Reference number', with: 'abcd'
     fill_in 'Description', with: 'Lorem lipsum'
-
-    within('.invoice_status_type') do
-      select_generic('PAID', from: 'invoice_status_type')
-    end
 
     within('.invoice_payment_term') do
       select_generic(13, from: 'invoice_payment_term')
@@ -88,13 +87,12 @@ describe 'invoices' do
 
   describe 'when invoice exists' do
     before(:each) do
-      @invoice = create(:invoice, user: user, customer: @customer, deadline: Date.tomorrow, payment_term: '')
-      sleep 5
+      @invoice = create(:invoice, user: user, sale: @sale, deadline: Date.tomorrow, payment_term: '')
       visit invoices_path
 
       click_link I18n.t('button.view')
       expect(page).to have_text @invoice.date_of_an_invoice
-      expect(page).to have_text @invoice.customer.name
+      expect(page).to have_text @invoice.sale.customer.name
       expect(page).to have_text @invoice.reference_number
 
       expect(page).to have_link I18n.t('button.delete')
@@ -104,8 +102,12 @@ describe 'invoices' do
     it 'allows invoice to be edited' do
       click_link I18n.t('button.edit')
 
-      within('.invoice_customer') do
-        select_generic(@customer.name, from: 'invoice_customer')
+      within('.invoice_user') do
+        select_generic(user.first_name, from: 'invoice_user')
+      end
+
+      within('.invoice_sale') do
+        select_generic(@sale.date+ " to " +@sale.customer.name, from: 'invoice_sale')
       end
 
       within('.invoice_date_of_an_invoice') do
