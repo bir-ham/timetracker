@@ -1,6 +1,8 @@
 FactoryGirl.define do
   factory :invoice do
     association :user
+    #association :sale
+    #association :project
 
     date_of_an_invoice Date.tomorrow
     deadline Date.tomorrow
@@ -10,11 +12,11 @@ FactoryGirl.define do
     description 'Lorem lipsum'
 
     factory :invoice_with_sale do
-      association :sale, strategy: :build
+      association :sale
     end
 
     factory :invoice_with_project do
-      association :project, strategy: :build
+      association :project
     end
 
   end

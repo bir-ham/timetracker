@@ -1,5 +1,6 @@
 FactoryGirl.define do
   factory :sale do
+    association :invoice
     association :customer
     association :user
     association :items

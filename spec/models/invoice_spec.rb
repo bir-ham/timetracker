@@ -30,9 +30,9 @@ RSpec.describe Invoice, type: :model do
       it { should allow_value('lorem').for(:description) }
 
       it 'should validate deadline or payment term' do
-        expect(build(:invoice_with_sale, deadline: Date.current.tomorrow, payment_term: nil)).to be_valid
-        expect(build(:invoice_with_sale, deadline: '', payment_term: 2)).to be_valid
-        expect(build(:invoice_with_sale, deadline: Date.current.tomorrow, payment_term: 2)).to be_invalid
+        expect(build(:invoice, sale: Sale.new, project: nil, deadline: Date.current.tomorrow, payment_term: nil)).to be_valid
+        expect(build(:invoice, sale: Sale.new, project: nil, deadline: '', payment_term: 2)).to be_valid
+        expect(build(:invoice, sale: Sale.new, project: nil, deadline: Date.current.tomorrow, payment_term: 2)).to be_invalid
       end
     end
   end
