@@ -30,6 +30,9 @@ RSpec.describe Invoice, type: :model do
         expect(build(:invoice, deadline: '', payment_term: 2)).to be_valid
         expect(build(:invoice, deadline: Date.current.tomorrow, payment_term: 2)).to be_invalid
       end
+      it 'should validate sale or project' do
+        expect(build(:invoice, sale: sale, project: project).to be_invalid
+      end
     end
   end
 

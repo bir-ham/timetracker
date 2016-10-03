@@ -1,7 +1,8 @@
 FactoryGirl.define do
   factory :invoice do
-    association :sale
     association :user
+    association :sale
+    association :project
 
     date_of_an_invoice Date.tomorrow
     deadline Date.tomorrow
@@ -9,6 +10,15 @@ FactoryGirl.define do
     interest_in_arrears 9
     sequence(:reference_number) { |n| "1234#{n}" }
     description 'Lorem lipsum'
+
+    factory :invoice_with_sale do
+      create(:invoice, sale: sale)
+    end
+
+    factory :invoice_with_project do
+      create(:invoice, project: project)
+    end
+
   end
 
 end

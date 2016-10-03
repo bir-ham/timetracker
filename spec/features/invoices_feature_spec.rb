@@ -8,6 +8,7 @@ describe 'invoices' do
     set_subdomain(account.subdomain)
     sign_user_in(user)
     @customer = create(:customer)
+    @sale = create(:sale, customer: @customer)
   end
 
   it 'allows user to create invoices' do
