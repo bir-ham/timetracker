@@ -10,9 +10,10 @@ RSpec.describe Sale, type: :model do
   end
 
   describe 'associations' do
-    it {should belong_to :user }
-    it {should belong_to :customer }
-    it {should has_many :items }
+    it { should belong_to :user }
+    it { should belong_to :customer }
+    it { should have_one :invoice }
+    it { should have_many :items }
   end
 
 end

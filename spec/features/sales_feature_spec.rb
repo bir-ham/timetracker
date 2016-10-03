@@ -26,6 +26,7 @@ describe 'sales' do
 
     expect(page).to have_text I18n.t('sales.new.notice_create')
     expect(page).to have_text Date.today
+    expect(page).to have_text 'ONGOING'
     expect(page).to have_text @customer.name
   end
 

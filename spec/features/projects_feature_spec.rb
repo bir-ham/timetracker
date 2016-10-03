@@ -30,6 +30,7 @@ describe 'projects' do
     expect(page).to have_text Date.today
     expect(page).to have_text @customer.name
   	expect(page).to have_text "Project foo"
+    expect(page).to have_text "PENDING"
     expect(page).to_not have_text "Archived"
   end
 

@@ -8,8 +8,9 @@ RSpec.describe Invoice, type: :model do
     context 'if invoice step' do
       before { subject.current_step = 'user_sale_project' }
 
-      it { should validate_presence_of :sale }
       it { should validate_presence_of :user }
+      it { should validate_presence_of :sale }
+      it { should validate_presence_of :project }
     end
 
     context 'if invoice step' do
@@ -31,7 +32,7 @@ RSpec.describe Invoice, type: :model do
         expect(build(:invoice, deadline: Date.current.tomorrow, payment_term: 2)).to be_invalid
       end
       it 'should validate sale or project' do
-        expect(build(:invoice, sale: sale, project: project).to be_invalid
+        expect(build(:invoice, sale: sale, project: project)).to be_invalid
       end
     end
   end
