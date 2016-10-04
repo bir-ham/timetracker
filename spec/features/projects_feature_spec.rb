@@ -15,7 +15,7 @@ describe 'projects' do
   	click_link I18n.t('projects.index.create_new_project')
 
     fill_in "Name", with: "Project foo"
-  	fill_in "Date", with: Date.today
+  	fill_in "Deadline", with: Date.today
     within('.project_user') do
       select_generic(user.first_name, from: 'project_user')
     end
@@ -30,8 +30,7 @@ describe 'projects' do
     expect(page).to have_text Date.today
     expect(page).to have_text @customer.name
   	expect(page).to have_text "Project foo"
-    expect(page).to have_text "PENDING"
-    expect(page).to_not have_text "Archived"
+    expect(page).to have_text "NEW"
   end
 
   it "displays project validations" do
@@ -51,12 +50,13 @@ describe 'projects' do
     #click_edit_project_button project.name
 
   	fill_in "Name", with: "Project foo edited"
-  	check "Archived"
+    check 'Archived'
+
   	submit_form
 
   	expect(page).to have_text I18n.t('projects.update.notice_update')
-  	expect(page).to have_text "Project foo edited"
-    expect(page).to have_text "Archived"
+  	expect(page).to have_text I18n.t('projects.update.notice_update')
+    expect(page).to have_text I18n.t('projects.show.archived')
   end
 
   #def click_edit_project_button(project_name)

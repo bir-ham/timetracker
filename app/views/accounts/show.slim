@@ -8,33 +8,23 @@
           = image_tag @account[:logo] ? @account.logo.normal : 'logo-placeholder-normal', class: 'thumbnail'
         .media-body
           dl.dl-horizontal
-            dt
-              = I18n.t('accounts.show.url')
+            dt = I18n.t('accounts.show.url')
             dd www.#{@account.subdomain}.toolsio.com
-            dt
-              = I18n.t('accounts.show.industry')
+            dt = I18n.t('accounts.show.industry')
             dd = @account.industry
-            dt
-              = I18n.t('accounts.show.phone_number')
+            dt = I18n.t('accounts.show.phone_number')
             dd = @account.phone_number
-            dt
-              = I18n.t('accounts.show.email')
-            dd
-              = @account.email
-            dt
-              = I18n.t('accounts.show.address1')
+            dt = I18n.t('accounts.show.email')
+            dd = @account.email
+            dt = I18n.t('accounts.show.address1')
             dd = @account.address1
-            dt
-              = I18n.t('accounts.show.address2')
+            dt = I18n.t('accounts.show.address2')
             dd = @account.address2
-            dt
-              = I18n.t('accounts.show.zip')
+            dt = I18n.t('accounts.show.zip')
             dd = @account.zip
-            dt
-              = I18n.t('accounts.show.town')
+            dt = I18n.t('accounts.show.town')
             dd = @account.town
-            dt
-              = I18n.t('accounts.show.country')
+            dt = I18n.t('accounts.show.country')
             dd = @account.country
       .m-t-m
       = link_to edit_account_path(@account), class: 'btn btn-primary' do

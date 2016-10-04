@@ -13,5 +13,5 @@
   = f.input :description
 
   .btn-toolbar.text-center
-    = link_to I18n.t('button.cancel'), sales_path, class: 'btn btn-primary btn-outline'
+    = link_to I18n.t('button.cancel'), @back, class: 'btn btn-primary btn-outline'
     = f.button :submit, class: 'btn-primary'

@@ -129,6 +129,7 @@ en:
       deadline: Deadline
       user: User
       status: Status
+      archived: Archived
       description: Description
     edit:
       new:
