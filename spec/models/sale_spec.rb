@@ -5,8 +5,7 @@ RSpec.describe Sale, type: :model do
     it {should validate_presence_of :customer }
     it {should validate_presence_of :user }
     it {should validate_presence_of :date }
-    it {should validate_presence_of :status }
-    it {should allow_value('', nil).for(:customer) }
+    it {should allow_value('', nil).for(:status) }
   end
 
   describe 'associations' do

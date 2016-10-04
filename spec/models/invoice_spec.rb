@@ -5,15 +5,10 @@ RSpec.describe Invoice, type: :model do
 
     subject { (described_class.new) }
 
-    context 'if invoice step' do
+    context 'if user sale project step' do
       before { subject.current_step = 'user_sale_project' }
 
       it { should validate_presence_of :user }
-
-      it 'should validate sale or project' do
-        expect(build(:invoice, sale: Sale.new, project: Project.new)).to be_invalid
-        expect(build(:invoice, sale: Sale.new, project: nil)).to be_valid
-      end
     end
 
     context 'if invoice step' do
@@ -29,11 +24,12 @@ RSpec.describe Invoice, type: :model do
       it { should_not allow_value('101').for(:interest_in_arrears) }
       it { should allow_value('lorem').for(:description) }
 
-      it 'should validate deadline or payment term' do
-        expect(build(:invoice, sale: Sale.new, project: nil, deadline: Date.current.tomorrow, payment_term: nil)).to be_valid
-        expect(build(:invoice, sale: Sale.new, project: nil, deadline: '', payment_term: 2)).to be_valid
-        expect(build(:invoice, sale: Sale.new, project: nil, deadline: Date.current.tomorrow, payment_term: 2)).to be_invalid
-      end
+    end
+
+    it 'should validate deadline or payment term' do
+      #expect(build(:invoice_with_sale, deadline: Date.current.tomorrow, payment_term: nil)).to be_valid
+      #expect(build(:invoice_with_sale, deadline: '', payment_term: 2)).to be_valid
+      #expect(build(:invoice_with_sale, deadline: Date.current.tomorrow, payment_term: 2)).to be_invalid
     end
   end
 
