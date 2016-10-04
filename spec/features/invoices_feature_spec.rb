@@ -8,33 +8,29 @@ describe 'invoices' do
     set_subdomain(account.subdomain)
     sign_user_in(user)
     @customer = create(:customer)
-    @sale = create(:sale, customer: @customer)
+    @sale = create(:sale, user: user, customer: @customer)
   end
 
   it 'allows user to create invoices' do
     visit invoices_path
-    click_link I18n.t('invoices.index.create_new_invoice')
+    click_link I18n.t('invoices.index.create_invoice')
 
     within('.invoice_user') do
       select_generic(user.first_name, from: 'invoice_user')
     end
 
     within('.invoice_sale') do
-      select_generic(@sale.date+ " to " +@sale.customer.name, from: 'invoice_sale')
+      select_generic("#{@sale.date} to #{@sale.customer.name}", from: 'invoice_sale')
     end
 
     submit_form
 
     fill_in 'Reference number', with: '1234'
     fill_in 'Description', with: 'Lorem lipsum'
+    fill_in 'invoice_date_of_an_invoice', with: Date.today
+    fill_in 'invoice_deadline', with: Date.tomorrow
 
-    within('.invoice_date_of_an_invoice') do
-      select_date(Date.tomorrow, from: 'invoice_date_of_an_invoice')
-    end
     #select_date_and_time(DateTime.now, from: 'invoice_deadline')
-    within('.invoice_deadline') do
-      select_date(Date.tomorrow, from: 'invoice_deadline')
-    end
 
     submit_form
 
@@ -47,19 +43,18 @@ describe 'invoices' do
     submit_form
 
     expect(page).to have_text I18n.t('invoices.create.notice_create')
-    expect(page).to have_text @sale.date+ " to " +@sale.customer.name
   end
 
   it 'display invoice validations' do
     visit invoices_path
-    click_link I18n.t('invoices.index.create_new_invoice')
+    click_link I18n.t('invoices.index.create_invoice')
 
     within('.invoice_user') do
       select_generic(user.first_name, from: 'invoice_user')
     end
 
     within('.invoice_sale') do
-      select_generic(@sale.date+ " to " +@sale.customer.name, from: 'invoice_sale')
+      select_generic("#{@sale.date} to #{@sale.customer.name}", from: 'invoice_sale')
     end
 
     submit_form
@@ -71,19 +66,14 @@ describe 'invoices' do
       select_generic(13, from: 'invoice_payment_term')
     end
 
-    within('.invoice_date_of_an_invoice') do
-      select_date(Date.tomorrow, from: 'invoice_date_of_an_invoice')
-    end
-
-    within('.invoice_deadline') do
-      select_date(7.days.ago, from: 'invoice_deadline')
-    end
+    fill_in 'invoice_date_of_an_invoice', with: Date.today
+    fill_in 'invoice_deadline', with: 7.days.ago
 
     submit_form
 
     expect(page).to have_text 'is not a number'
     expect(page).to have_text "can't be in the past"
-    expect(page).to have_text 'specify a deadline or a payment term. Not both empty, nor both filled'
+    expect(page).to have_text 'specify deadline or payment term. Not both filled, nor both empty'
   end
 
   describe 'when invoice exists' do
@@ -91,7 +81,7 @@ describe 'invoices' do
       @invoice = create(:invoice, user: user, sale: @sale, deadline: Date.tomorrow, payment_term: '')
       visit invoices_path
 
-      click_link I18n.t('button.view')
+      visit "/invoices/#{@invoice.id}"
       expect(page).to have_text @invoice.date_of_an_invoice
       expect(page).to have_text @invoice.sale.customer.name
       expect(page).to have_text @invoice.reference_number
@@ -108,19 +98,13 @@ describe 'invoices' do
       end
 
       within('.invoice_sale') do
-        select_generic(@sale.date+ " to " +@sale.customer.name, from: 'invoice_sale')
+        select_generic("#{@sale.date} to #{@sale.customer.name}", from: 'invoice_sale')
       end
 
-      within('.invoice_date_of_an_invoice') do
-        select_date(Date.tomorrow, from: 'invoice_date_of_an_invoice')
-      end
-
+      fill_in 'invoice_date_of_an_invoice', with: Date.today
       fill_in 'Reference number', with: '1234'
       fill_in 'Description', with: 'Lorem lipsum edited'
-
-      within('.invoice_deadline') do
-        select_date(Date.tomorrow, from: 'invoice_deadline')
-      end
+      fill_in 'invoice_deadline', with: Date.tomorrow
 
       submit_form
       expect(page).to have_text I18n.t('invoices.update.success_update')
