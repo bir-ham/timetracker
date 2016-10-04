@@ -17,10 +17,10 @@
             span.label.label-info = @project.status
           - when 'ONGOING'
             span.label.label-warning  = @project.status
-          - when 'DELAYED'
-            span.label.label-danger  = @project.status
-          - when 'FINISHED'
+          - when 'FINISHEDD'
             span.label.label-success  = @project.status
+          - when 'DELAYE'
+            span.label.label-danger  = @project.status
           - else
             | Unknown status
         dt

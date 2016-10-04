@@ -23,5 +23,8 @@
   = f.input :address, wrapper: :horizontal_form
 
   .btn-toolbar.text-center
-    = link_to I18n.t('button.cancel'), customers_path, class: 'btn btn-primary btn-outline'
+    - if (is_action_name? 'edit') || (is_action_name? 'update')
+      = link_to I18n.t('button.cancel'), customer_path(@customer), class: 'btn btn-primary btn-outline'
+    - else
+      = link_to I18n.t('button.cancel'), customers_path, class: 'btn btn-primary btn-outline'
     = f.button :submit, class: 'btn-primary'

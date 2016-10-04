@@ -8,10 +8,13 @@
   = f.input :date, as: :date_picker
   = f.association :customer, collection: Customer.all, label_method: :name, value_method: :id, prompt: I18n.t('sales.new.select_customer'), multiple: false, required: true
   = f.association :user, collection: User.all, label_method: :first_name, value_method: :id, prompt: I18n.t('invoices.new.select_user'), multiple: false, required: true
-  - if is_action_name? 'edit'
-    = f.input :status, collection: [['PAID', 'PAID'], ['OVERDUE', 'OVERDUE']], prompt: I18n.t('sales.new.select_status'), wrapper: :horizontal_form
+  - if (is_action_name? 'edit') || (is_action_name? 'update')
+    = f.input :status, collection: [['PENDING', 'PENDING'], ['PAID', 'PAID'], ['OVERDUE', 'OVERDUE']], prompt: I18n.t('sales.new.select_status'), wrapper: :horizontal_form
   = f.input :description
 
   .btn-toolbar.text-center
-    = link_to I18n.t('button.cancel'), @back, class: 'btn btn-primary btn-outline'
+    - if (is_action_name? 'edit') || (is_action_name? 'update')
+      = link_to I18n.t('button.cancel'), sale_path(@sale), class: 'btn btn-primary btn-outline'
+    - else
+      = link_to I18n.t('button.cancel'), sales_path, class: 'btn btn-primary btn-outline'
     = f.button :submit, class: 'btn-primary'

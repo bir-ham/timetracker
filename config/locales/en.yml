@@ -270,7 +270,7 @@ en:
       header: Edit Sale
     update:
       header: Update Sale
-      notice_update: "Sale updated!"
+      success_update: "Sale updated!"
     items:
       header: Items
       new:

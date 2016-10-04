@@ -15,10 +15,10 @@
           - case @sale.status
           - when 'PENDING'
             span.label.label-warning = @sale.status
+          - when 'PAID'
+            span.label.label-success = @sale.status
           - when 'OVERDUE'
             span.label.label-danger = @sale.status
-          - when 'PAYED'
-            span.label.label-success = @sale.status
           - else
             | Unknown status
         dt

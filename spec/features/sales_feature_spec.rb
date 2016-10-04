@@ -26,7 +26,7 @@ describe 'sales' do
 
     expect(page).to have_text I18n.t('sales.new.notice_create')
     expect(page).to have_text Date.today
-    expect(page).to have_text 'ONGOING'
+    expect(page).to have_text 'PENDING'
     expect(page).to have_text @customer.name
   end
 
@@ -43,10 +43,10 @@ describe 'sales' do
   end
 
   it "allows projects to be edited" do
-    sale = create(:sale)
+    sale = create(:sale, user: user)
 
     visit sales_path
-    click_link I18n.t('button.view')
+    first('.well').click_link I18n.t('button.view')
     click_link I18n.t('button.edit')
 
     fill_in "Date", with: Date.today
@@ -56,7 +56,7 @@ describe 'sales' do
     fill_in "Description", with: 'Lorem lipsum edited'
     submit_form
 
-    expect(page).to have_text I18n.t('projects.update.notice_update')
+    expect(page).to have_text I18n.t('sales.update.success_update')
     expect(page).to have_text user.first_name
     expect(page).to have_text "Lorem lipsum edited"
   end

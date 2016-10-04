@@ -27,11 +27,11 @@ class SalesController < ApplicationController
   # GET /sales/1/edit
   def edit
     @sale = Sale.find(params[:id])
-    @item = Item.new
   end
 
   def update
     @sale = Sale.find(params[:id])
+    @item = Item.new
     if @sale.update_attributes(sale_params)
       flash.now[:success] = I18n.t('sales.update.success_update')
       render :show
