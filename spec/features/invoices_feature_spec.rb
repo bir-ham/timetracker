@@ -16,11 +16,11 @@ describe 'invoices' do
     click_link I18n.t('invoices.index.create_invoice')
 
     within('.invoice_user') do
-      select_generic(user.first_name, from: 'invoice_user')
+      select_generic(user.first_name, from: 'invoice[user_id]')
     end
 
     within('.invoice_sale') do
-      select_generic("#{@sale.date} to #{@sale.customer.name}", from: 'invoice_sale')
+      select_generic("#{@sale.date} to #{@sale.customer.name}", from: 'invoice[sale_id]')
     end
 
     submit_form
@@ -50,11 +50,11 @@ describe 'invoices' do
     click_link I18n.t('invoices.index.create_invoice')
 
     within('.invoice_user') do
-      select_generic(user.first_name, from: 'invoice_user')
+      select_generic(user.first_name, from: 'invoice[user_id]')
     end
 
     within('.invoice_sale') do
-      select_generic("#{@sale.date} to #{@sale.customer.name}", from: 'invoice_sale')
+      select_generic("#{@sale.date} to #{@sale.customer.name}", from: 'invoice[sale_id]')
     end
 
     submit_form
@@ -94,11 +94,11 @@ describe 'invoices' do
       click_link I18n.t('button.edit')
 
       within('.invoice_user') do
-        select_generic(user.first_name, from: 'invoice_user')
+        select_generic(user.first_name, from: 'invoice[user_id]')
       end
 
       within('.invoice_sale') do
-        select_generic("#{@sale.date} to #{@sale.customer.name}", from: 'invoice_sale')
+        select_generic("#{@sale.date} to #{@sale.customer.name}", from: 'invoice[sale_id]')
       end
 
       fill_in 'invoice_date_of_an_invoice', with: Date.today

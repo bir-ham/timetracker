@@ -1,5 +1,6 @@
 FactoryGirl.define do
   factory :invoice do
+    association :user
 
     date_of_an_invoice Date.tomorrow
     deadline Date.tomorrow

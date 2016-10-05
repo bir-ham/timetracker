@@ -8,7 +8,7 @@ describe 'customers' do
     set_subdomain(account.subdomain)
     sign_user_in(user)
 
-    visit customers_path      
+    visit customers_path
   end
 
   it "allows customers to be created" do
@@ -18,7 +18,7 @@ describe 'customers' do
     fill_in "Phone number", with: "12345678910"
     fill_in "Email", with: "alex@example.com"
     fill_in "Address", with: "Kifle ketam: Bole, Kebele: 21, House number: 324"
-    
+
     submit_form
 
     expect(page).to have_text I18n.t('customers.create.notice_create')
@@ -33,16 +33,16 @@ describe 'customers' do
 
   describe 'when customer exists' do
     before(:each) do
-      @customer = create(:customer) 
+      @customer = create(:customer)
       visit customers_path
-   
+
       click_link I18n.t('button.view')
-      expect(page).to have_text @customer.name 
-    
+      expect(page).to have_text @customer.name
+
       expect(page).to have_link I18n.t('button.delete')
       expect(page).to have_link I18n.t('button.edit')
-    end  
-    
+    end
+
     it "allows customers to be edited" do
       click_link I18n.t('button.edit')
 
@@ -55,18 +55,18 @@ describe 'customers' do
 
     it 'allows customer to be deleted', js: true do
       click_link I18n.t('button.delete')
-      
+
       wait_for_ajax
 
-      expect(page).to have_text I18n.t('customers.destroy.confirmation_msg') 
+      expect(page).to have_text I18n.t('customers.destroy.confirmation_msg')
 
-      within('.modal-footer') do 
+      within('.modal-footer') do
         click_link I18n.t('button.delete')
       end
-            
+
       expect(page).to have_text I18n.t('customers.destroy.success_delete')
-      expect(page).to_not have_text @customer.name      
-    end  
-  end 
+      expect(page).to_not have_text @customer.name
+    end
+  end
 
 end

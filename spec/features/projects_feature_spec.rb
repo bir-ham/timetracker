@@ -17,10 +17,10 @@ describe 'projects' do
     fill_in "Name", with: "Project foo"
   	fill_in "Deadline", with: Date.today
     within('.project_user') do
-      select_generic(user.first_name, from: 'project_user')
+      select_generic(user.first_name, from: 'project[user_id]')
     end
     within('.project_customer') do
-      select_generic(@customer.name, from: 'project_customer')
+      select_generic(@customer.name, from: 'project[customer_id]')
     end
     fill_in "Description", with: 'Lorem lipsum'
 

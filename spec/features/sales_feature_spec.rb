@@ -16,10 +16,10 @@ describe 'sales' do
 
     fill_in "Date", with: Date.today
     within('.sale_user') do
-      select_generic(user.first_name, from: 'sale_user')
+      select_generic(user.first_name, from: 'sale[user_id]')
     end
     within('.sale_customer') do
-      select_generic(@customer.name, from: 'sale_customer')
+      select_generic(@customer.name, from: 'sale[customer_id]')
     end
     fill_in "Description", with: 'Lorem lipsum'
     submit_form
@@ -34,10 +34,6 @@ describe 'sales' do
     visit sales_path
     click_link I18n.t('sales.index.add_new_sale')
 
-    within('.sale_user') do
-      select_generic(user.first_name, from: 'sale_user')
-    end
-
     submit_form
     expect(page).to have_text "can't be blank"
   end
@@ -50,9 +46,6 @@ describe 'sales' do
     click_link I18n.t('button.edit')
 
     fill_in "Date", with: Date.today
-    within('.sale_user') do
-      select_generic(user.first_name, from: 'sale_user')
-    end
     fill_in "Description", with: 'Lorem lipsum edited'
     submit_form
 
