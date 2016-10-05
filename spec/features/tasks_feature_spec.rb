@@ -7,37 +7,37 @@ describe 'tasks' do
   before do
     set_subdomain(account.subdomain)
     sign_user_in(user)
-    @project = create(:project_with_customer_and_user)
+    @project = create(:project, user: user)
   end
 
   it 'allows user to create tasks' do
     visit project_path(@project)
 
-    expect(page).to have_link I18n.t('projects.tasks.new.add_task')
+    expect(page).to have_css 'button[type=submit]'
 
-    fill_in 'Name', with: 'Task'
-    fill_in 'Hour', with: '3'
+    fill_in 'task[name]', with: 'Task'
+    fill_in 'task[hours]', with: '3'
     within('.task_payment_type') do
-      select_generic('Per hour', from: 'payment_type')
+      select_generic('Per hour', from: 'task_payment_type')
     end
-    fill_in 'Price', with: '24.40'
-    fill_in 'Vat (in %)', with: '10'
+    fill_in 'task[price]', with: '24.40'
+    fill_in 'task[vat]', with: '10'
 
-    submit_form
+    submit_form_button
 
     expect(page).to have_text I18n.t('projects.tasks.create.notice_create')
-    expect(page).to have_text '24.40'
+    expect(page).to have_text '3'
     expect(page).to have_text '10'
   end
 
   it 'display task validations' do
     visit project_path(@project)
 
-    expect(page).to have_link I18n.t('projects.tasks.new.add_task')
+    expect(page).to have_css 'button[type=submit]'
 
-    fill_in 'Hour', with: 'abc'
+    fill_in 'task[hours]', with: 'abc'
 
-    submit_form
+    submit_form_button
 
     expect(page).to have_text 'should be only numbers and colon'
     expect(page).to have_text "can't be blank"
@@ -45,35 +45,33 @@ describe 'tasks' do
 
   describe 'when task exists' do
     before(:each) do
-      @task = create(:task, project: @project)
+      @project = create(:project_with_task, user: user)
       visit projects_path
       visit project_path(@project)
 
       expect(page).to have_text @project.tasks[0].name
-      expect(page).to have_text @project.tasks[0].hourquantity
+      expect(page).to have_text @project.tasks[0].hours
 
-      expect(page).to have_css '.fa-pencil-square-o'
-      expect(page).to have_css '.fa-trash'
+      expect(page).to have_xpath "//a[@href='/projects/#{@project.id}/tasks/#{@project.tasks[0].id}/edit']"
+      expect(page).to have_xpath "//a[@href='/projects/#{@project.id}/tasks/#{@project.tasks[0].id}']"
     end
 
-    it 'allows invoice to be edited' do
-      find('.fa-pencil-square-o').click
+    it 'allows task to be edited' do
+      find(:xpath, "//a[@href='/projects/#{@project.id}/tasks/#{@project.tasks[0].id}/edit']").click
 
-      fill_in 'Hour', with: '4'
+      fill_in 'task[hours]', with: '4'
 
-      submit_form
+      submit_form_button
 
       expect(page).to have_text I18n.t('projects.tasks.update.success_update')
-      expect(page).to have_text @invoice.tasks[0].name
+      expect(page).to have_text @project.tasks[0].name
       expect(page).to have_text '4'
     end
 
-    it 'allows invoice to be deleted' do
-      find('.trash').click
+    it 'allows task to be deleted' do
+      find(:xpath, "//a[@href='/projects/#{@project.id}/tasks/#{@project.tasks[0].id}']").click
 
-      expect(page).to have_text I18n.t('tasks.destroy.success_delete')
-      expect(page).to_not have_text @invoice.tasks[0].name
-      expect(page).to_not have_text @invoice.tasks[0].hour
+      expect(page).to have_text I18n.t('projects.tasks.destroy.success_delete', name: 'Task')
     end
   end
 

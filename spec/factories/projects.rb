@@ -1,9 +1,7 @@
 FactoryGirl.define do
   factory :project do
-    #association :invoice
-    association :customer
     association :user
-    #association :item
+    association :customer
 
     sequence(:name) { |n| "My Project #{n}"}
     deadline Date.today

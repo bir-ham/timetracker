@@ -1,9 +1,7 @@
 FactoryGirl.define do
   factory :sale do
-    #association :invoice
     association :customer
     association :user
-    #association :item
 
     date Date.today
     status "PENDING"
