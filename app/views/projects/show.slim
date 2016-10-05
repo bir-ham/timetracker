@@ -56,16 +56,16 @@
               - @project.tasks.each do |task|
                 tr
                   - if params[:action] == 'edit' && params[:id] == "#{task.id}"
-                    td.light-grey-background = task.name
-                    td.light-grey-background = task.hours
-                    td.light-grey-background = task.payment_type
-                    td.light-grey-background = number_to_currency(task.price)
-                    td.light-grey-background = task.vat
-                    td.light-grey-background = number_to_currency(task.total)
-                    td.light-grey-background.text-center
+                    td.background-light-grey = task.name
+                    td.background-light-grey = task.hours
+                    td.background-light-grey = task.payment_type
+                    td.background-light-grey = number_to_currency(task.price)
+                    td.background-light-grey = task.vat
+                    td.background-light-grey = number_to_currency(task.total)
+                    td.background-light-grey.text-center
                       = link_to edit_project_task_path(@project,task), class: 'btn btn-info btn-xs disabled' do
                         = icon('pencil-square-o')
-                    td.light-grey-background.text-center
+                    td.background-light-grey.text-center
                       = link_to [@project, task], method: :delete, class: 'btn btn-danger btn-xs disabled' do
                         = icon('trash')
                   - else
@@ -85,12 +85,12 @@
                 - running_total += task.total
 
               - unless @project.tasks.empty?
-                tr.white-background
+                tr.background-white
                   td colspan="5"
                   td = number_to_currency(running_total)
                   td
                   td
-              tr.white-background
+              tr.background-white
                 == render 'projects/tasks/form', project: @project, f: f
 
           .btn-toolbar.m-t-n

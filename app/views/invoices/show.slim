@@ -86,7 +86,7 @@
 
                   - running_total += item.total
                 - unless @invoice.sale.items.empty?
-                  tr.white-background
+                  tr.background-white
                     td colspan="7"
                     td = number_to_currency(running_total)
                     td
@@ -160,7 +160,7 @@
                 - running_total += task.total
 
               - unless @sale.project.tasks.empty?
-                tr.white-background
+                tr.background-white
                   td colspan="7"
                   td = number_to_currency(running_total)
                   td

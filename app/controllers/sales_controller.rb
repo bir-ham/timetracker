@@ -10,7 +10,7 @@ class SalesController < ApplicationController
 
   def create
     @sale = Sale.new(sale_params)
-    @sale.status = 'PENDING'
+    @sale.status = 'PREPARING'
     if @sale.save
       redirect_to @sale, notice: I18n.t('sales.create.notice_create')
     else

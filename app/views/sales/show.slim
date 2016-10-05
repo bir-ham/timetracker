@@ -13,12 +13,12 @@
         dt = I18n.t('sales.show.status')
         dd
           - case @sale.status
-          - when 'PENDING'
+          - when 'PREPARING'
+            span.label.label-info = @sale.status
+          - when 'WAITTING'
             span.label.label-warning = @sale.status
-          - when 'PAID'
+          - when 'DELIVERED'
             span.label.label-success = @sale.status
-          - when 'OVERDUE'
-            span.label.label-danger = @sale.status
           - else
             | Unknown status
         dt
@@ -50,16 +50,16 @@
                 - @sale.items.each do |item|
                   tr
                     - if params[:action] == 'edit' && params[:id] == "#{item.id}"
-                      td.light-grey-background = item.name
-                      td.light-grey-background = item.quantity
-                      td.light-grey-background = item.unit
-                      td.light-grey-background = item.unit_price
-                      td.light-grey-background = item.vat
-                      td.light-grey-background = number_to_currency(item.total)
-                      td.light-grey-background.text-center
+                      td.background-light-grey = item.name
+                      td.background-light-grey = item.quantity
+                      td.background-light-grey = item.unit
+                      td.background-light-grey = item.unit_price
+                      td.background-light-grey = item.vat
+                      td.background-light-grey = number_to_currency(item.total)
+                      td.background-light-grey.text-center
                         = link_to edit_sale_item_path(@sale,item), class: 'btn btn-info btn-xs disabled' do
                           = icon('pencil-square-o')
-                      td.light-grey-background.text-center
+                      td.background-light-grey.text-center
                         = link_to [@sale, item], method: :delete, class: 'btn btn-danger btn-xs disabled' do
                           = icon('trash')
                     - else
@@ -78,12 +78,12 @@
 
                   - running_total += item.total
                 - unless @sale.items.empty?
-                  tr.white-background
+                  tr.background-white
                     td colspan="5"
                     td = number_to_currency(running_total)
                     td
                     td
-                tr.white-background
+                tr.background-white
                   == render 'sales/items/form', sale: @sale, f: f
 
             .btn-toolbar.m-t-n

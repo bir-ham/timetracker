@@ -100,27 +100,35 @@ a {
 // Font awesome
 
 // Background
-.yellow-background {
-  background-color: $yellow !important;
-}
-
-.grass-background {
+.background-success {
   background-color: $grass;
 }
 
-.blue-background {
+.background-info {
   background-color: $blue;
 }
 
-.white-background {
+.background-warning {
+  background-color: $orange;
+}
+
+.background-danger {
+  background-color: $red;
+}
+
+.background-yellow {
+  background-color: $yellow !important;
+}
+
+.background-white {
   background-color: $white !important;
 }
 
-.light-grey-background {
+.background-light-grey {
   background-color: $light-grey !important;
 }
 
-.xx-light-grey-background {
+.background-xx-light-grey {
   background-color: $xx-light-grey;
 }
 
@@ -242,6 +250,7 @@ a {
 
 // Well
 .well {
+  position: relative;
   background-color: $white;
   border: 1px solid $light-grey;
   @include border-radius(3px);
@@ -276,11 +285,16 @@ dt {
 // Custome note box
 .bs-callout {
   padding: 20px;
-  margin: 20px 0;
+  margin-bottom: 20px;
   border: 1px solid $light-grey;
   border-left-width: 5px;
   @include border-radius(3px);
   background-color: $white
+}
+
+.bs-callout-sm {
+  padding: 10px;
+  margin-bottom: 10px;
 }
 
 .bs-callout-success {
@@ -297,10 +311,42 @@ dt {
   }
 }
 
+.bs-callout-warning {
+  border-left-color: $orange;
+  .heading {
+    color: $orange;
+  }
+}
+
 .bs-callout-danger {
   border-left-color: $red;
   .heading {
     color: $red;
+  }
+}
+
+.well-left-text {
+  .pull-left h3, h4, h5 {
+    margin-left: 25px;
+  }
+  .row {
+    margin-left: 10px;
+  }
+}
+
+.well-text-container {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 100%;
+  width: 20px;
+  span {
+    color: $white;
+    font-weight: bold;
+    transform: rotate(-90deg);
+    position: absolute;
+    bottom: 7px;
+    width: 100%;
   }
 }
 

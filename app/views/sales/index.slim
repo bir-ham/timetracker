@@ -3,38 +3,38 @@
   .col-sm-12
     - unless @sales.empty?
       - @sales.each do |sale|
-        = link_to @sale, class: 'visible-all-block' do
-          .well.well-sm.m-b-xs
-            .clearfix
-              .pull-left
-                h5.m-t-n = sale.date
-              .pull-right
-                = link_to sale, class: 'btn btn-info btn-sm' do
-                  = icon('eye')
-                  |&nbsp;
-                  = I18n.t('button.view')
+        - background = ''
+        - case sale.status
+        - when 'DELIVERED'
+          - background = 'background-success'
+        - when 'PREPARING'
+          - background = 'background-info'
+        - when 'WAITING'
+          - background = 'background-warning'
+        - else
+          | Unknown status
+        .well.well-sm.m-b-xs.well-left-text
+          .well-text-container class = (background)
+              span = sale.status
+          .clearfix
+            .pull-left
+              h4.m-t-n = sale.date
+            .pull-right
+              = link_to sale, class: 'btn btn-info btn-sm' do
+                = icon('eye')
+                |&nbsp;
+                = I18n.t('button.view')
 
-            .row.m-b-n
-              .col-xs-2
-                strong.text-uppercase = I18n.t('sales.index.user')
-                .clearfix
-                span = sale.user.first_name
-              .col-xs-2
-                strong.text-uppercase = I18n.t('sales.index.customer')
-                .clearfix
-                span = sale.customer.name
-              .col-xs-2
-                strong.text-uppercase = I18n.t('sales.index.status')
-                .clearfix
-                - case sale.status
-                - when 'PENDING'
-                  span.label.label-warning = sale.status
-                -  when 'PAID'
-                  span.label.label-success = sale.status
-                - when 'OVERDUE'
-                  span.label.label-danger = sale.status
-                - else
-                  | Unknown status
+          .row.m-b-n
+            .col-xs-2
+              strong.text-uppercase = I18n.t('sales.index.user')
+              .clearfix
+              span = sale.user.first_name
+            .col-xs-2
+              strong.text-uppercase = I18n.t('sales.index.customer')
+              .clearfix
+              span = sale.customer.name
+
 
     - else
       p.text-danger = I18n.t('sales.index.empty_sales')
