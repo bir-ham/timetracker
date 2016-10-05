@@ -42,7 +42,7 @@ class Projects::TasksController < ApplicationController
     @project = Project.find(params[:project_id])
     @task = Task.find(params[:id])
     if @task.update_attributes(task_params)
-      redirect_to @projects, notice: I18n.t('projects.tasks.update.success_update')
+      redirect_to @project, notice: I18n.t('projects.tasks.update.success_update')
     else
       render :edit
     end
@@ -55,7 +55,7 @@ class Projects::TasksController < ApplicationController
     if @task.destroy
       redirect_to @project, notice: I18n.t('projects.tasks.destroy.success_delete', name: name)
     else
-      flash.now[:error] = I18n.t('projects.tasks.distroy.error_delete')
+      flash.now[:error] = I18n.t('projects.tasks.destroy.error_delete')
     end
   end
 

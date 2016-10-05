@@ -43,7 +43,7 @@ class Sales::ItemsController < ApplicationController
     if @item.destroy
       redirect_to @sale, notice: I18n.t('sales.items.destroy.success_delete', name: name)
     else
-      flash.now[:error] = I18n.t('sales.items.distroy.error_delete')
+      flash.now[:error] = I18n.t('sales.items.destroy.error_delete')
     end
   end
 

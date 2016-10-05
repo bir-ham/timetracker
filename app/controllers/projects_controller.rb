@@ -36,10 +36,11 @@ class ProjectsController < ApplicationController
   end
 
   def update
-    @Project = Project.find(params[:id])
-
-    if @Project.update(project_params)
-      redirect_to projects_path, notice: I18n.t('projects.update.notice_update')
+    @project = Project.find(params[:id])
+    @task = Task.new
+    if @project.update(project_params)
+      flash.now[:success] = I18n.t('projects.update.notice_update')
+      render :show
     else
       render :edit
     end
@@ -49,7 +50,7 @@ class ProjectsController < ApplicationController
   private
 
   def project_params
-    params.require(:project).permit(:name, :status, :customer_id, :user_id, :archived)
+    params.require(:project).permit(:name, :status, :deadline, :customer_id, :user_id, :archived)
   end
 
 end

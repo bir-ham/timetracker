@@ -4,32 +4,32 @@
     .well
       h2 = I18n.t('projects.show.header')
       dl.dl-horizontal
-        dt
-          = I18n.t('projects.show.customer')
+        dt = I18n.t('projects.show.customer')
         dd = @project.customer.name
-        dt
-          = I18n.t('projects.show.user')
-        dd
-          = @project.user.first_name
-        dt
-          = I18n.t('projects.show.deadline')
+        dt = I18n.t('projects.show.user')
+        dd = @project.user.first_name
+        dt = I18n.t('projects.show.deadline')
         dd = @project.deadline
-        dt
-          = I18n.t('projects.show.status')
+        dt = I18n.t('projects.show.status')
         dd
           - case @project.status
           - when 'NEW'
             span.label.label-info = @project.status
           - when 'ONGOING'
             span.label.label-warning  = @project.status
-          - when 'DELAYED'
-            span.label.label-danger  = @project.status
-          - when 'FINISHED'
+          - when 'FINISHEDD'
             span.label.label-success  = @project.status
+          - when 'DELAYE'
+            span.label.label-danger  = @project.status
           - else
             | Unknown status
         dt
-          = I18n.t('projects.show.description')
+          - if @project.archived?
+            = I18n.t('projects.show.archived')
+        dd
+          - if @project.archived?
+            = icon('check text-success')
+        dt = I18n.t('projects.show.description')
         dd
           - if @project.description?
             = @project.description
@@ -95,7 +95,7 @@
 
           .btn-toolbar.m-t-n
             = button_tag(type: :submit, class: 'btn btn-primary btn-sm') do
-              - if params[:action] == 'edit'
+              - if is_action_name?('edit')
                 = icon('arrow-up')
                 |&nbsp;
                 = I18n.t('projects.tasks.update.update_task')
@@ -104,7 +104,7 @@
                 |&nbsp;
                 = I18n.t('projects.tasks.new.add_task')
 
-            - if params[:action] == 'edit'
+            - if is_action_name?('edit')
               = link_to project_path(@project), class: 'btn btn-primary btn-sm btn-outline' do
                 = icon('times')
                 |&nbsp;

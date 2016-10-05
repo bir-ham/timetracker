@@ -39,7 +39,7 @@ module FormHelper
   end
 
   def select_generic(field_value, options = {})
-    field = options[:form]
+    field = options[:from]
     select field_value, from: "#{field}" #field_value
   end
 
@@ -47,4 +47,7 @@ module FormHelper
     find('input[name="commit"]').click
   end
 
+  def submit_form_button
+    find('button[type=submit]').click
+  end
 end

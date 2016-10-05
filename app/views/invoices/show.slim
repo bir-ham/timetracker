@@ -4,27 +4,19 @@
     .well
       h2 = I18n.t('invoices.show.header')
       dl.dl-horizontal
-        dt
-          = I18n.t('invoices.show.user')
-        dd
-          = @invoice.user.first_name
-        dt
-          = I18n.t('invoices.show.date_of_an_invoice')
+        dt = I18n.t('invoices.show.user')
+        dd = @invoice.user.first_name
+        dt = I18n.t('invoices.show.date_of_an_invoice')
         dd = @invoice.date_of_an_invoice
-        dt
-          = I18n.t('invoices.show.deadline')
+        dt = I18n.t('invoices.show.deadline')
         dd = @invoice.deadline
-        dt
-          = I18n.t('invoices.show.payment_term')
+        dt = I18n.t('invoices.show.payment_term')
         dd = @invoice.payment_term
-        dt
-          = I18n.t('invoices.show.interest_in_arrears')
+        dt = I18n.t('invoices.show.interest_in_arrears')
         dd = @invoice.interest_in_arrears
-        dt
-          = I18n.t('invoices.show.reference_number')
+        dt = I18n.t('invoices.show.reference_number')
         dd = @invoice.reference_number
-        dt
-          = I18n.t('invoices.show.status')
+        dt = I18n.t('invoices.show.status')
         dd
           - if @invoice.status.eql?('PAID')
             span.label.label-success = @invoice.status

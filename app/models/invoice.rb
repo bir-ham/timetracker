@@ -63,7 +63,7 @@ class Invoice < ActiveRecord::Base
   private
     def choose_xor_deadline_payment_term
       unless deadline.blank? ^ payment_term.blank?
-        errors.add(:base, 'specify deadline or a payment term. Not both filled, nor both empty')
+        errors.add(:base, 'specify deadline or payment term. Not both filled, nor both empty')
       end
     end
 

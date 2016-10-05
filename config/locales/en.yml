@@ -129,6 +129,7 @@ en:
       deadline: Deadline
       user: User
       status: Status
+      archived: Archived
       description: Description
     edit:
       new:
@@ -144,7 +145,7 @@ en:
         hours: Hours
         payment_type: Payment type
         price: Price
-        vat: Vat
+        vat: Vat (in %)
         total: Total
       new:
         add_task: Add Task
@@ -157,7 +158,7 @@ en:
         success_update: "Task updated!"
         update_task: Update task
       destroy:
-        success_delete: "%{name} was deleted"
+        success_delete: "%{name} is deleted"
         error_delete: "Task couldn't be deleted, try again after refreshing the page"
   users:
     index:
@@ -269,7 +270,7 @@ en:
       header: Edit Sale
     update:
       header: Update Sale
-      notice_update: "Sale updated!"
+      success_update: "Sale updated!"
     items:
       header: Items
       new:
@@ -282,7 +283,7 @@ en:
         quantity: Quantity
         unit: Unit
         unit_price: Unit price
-        vat: Vat
+        vat: Vat (in %)
         total: Total
       create:
         empty_items: You have no items yet
@@ -292,7 +293,7 @@ en:
         update_item: Update item
         success_update: "Item updated!"
       destroy:
-        success_delete: "%{name} was deleted"
+        success_delete: "%{name} is deleted"
         error_delete: "Item couldn't be deleted, try again after refreshing the page"
         confirmation_msg: Are you sure to delete this item?
         warning_msg: If you click delete, the item will be deleted.

@@ -1,9 +1,11 @@
 FactoryGirl.define do
   factory :task do
-    name "MyString"
-    date "2016-09-27"
-    price_type "MyString"
+
+    name "Task"
+    hours '3:21'
+    payment_type "Per task"
     price "9.99"
-    vat ""
+    vat 9.99
+    total 10
   end
 end

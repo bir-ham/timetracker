@@ -15,6 +15,6 @@
   = f.input :country, prompt: 'Select country', wrapper: :horizontal_form
   = f.input :logo, as: :image_preview, input_html: { preview_version: :thumb }, wrapper: :horizontal_form
 
-  .btn-toolbar
-    = link_to I18n.t('button.cancel'), current_account, class: 'btn btn-default'
+  .btn-toolbar.text-center
+    = link_to I18n.t('button.cancel'), current_account, class: 'btn btn-primary btn-outline'
     = f.button :submit, class: 'btn-primary'

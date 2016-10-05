@@ -5,12 +5,12 @@
                 radio_buttons: :horizontal_radio_and_checkboxes,
                 file: :horizontal_file_input,
                 boolean: :horizontal_boolean} ) do |f|
-  = f.input :name, wrapper: :horizontal_form    
+  = f.input :name, wrapper: :horizontal_form
 
-  fieldset.custom-fieldset 
+  fieldset.custom-fieldset
     legend.custom-legend Fill at least Phone number or Email
     - unless @customer.errors[:base].empty?
-      .has-error      
+      .has-error
         = f.input :phone_number, wrapper: :horizontal_form, input_html: { min: 10, max: 15 }
         = f.input :email, wrapper: :horizontal_form
         .col-sm-3
@@ -23,5 +23,8 @@
   = f.input :address, wrapper: :horizontal_form
 
   .btn-toolbar.text-center
-    = link_to I18n.t('button.cancel'), customers_path, class: 'btn btn-primary btn-outline'  
+    - if (is_action_name? 'edit') || (is_action_name? 'update')
+      = link_to I18n.t('button.cancel'), customer_path(@customer), class: 'btn btn-primary btn-outline'
+    - else
+      = link_to I18n.t('button.cancel'), customers_path, class: 'btn btn-primary btn-outline'
     = f.button :submit, class: 'btn-primary'
