@@ -274,32 +274,31 @@ dt {
 }
 
 // Custome note box
-.note {
-  margin: 0 0 20px 0;
-  padding: 15px 30px 15px 15px;
-  border-left: 3px solid #e5e5e5;
+.bs-callout {
+  padding: 20px;
+  margin: 20px 0;
+  border: 1px solid $light-grey;
+  border-left-width: 5px;
   @include border-radius(3px);
+  background-color: $white
 }
 
-.note-success {
-  border-color: $grass;
-  background: $white-grass;
+.bs-callout-success {
+  border-left-color: $grass;
   .heading {
     color: $grass;
   }
 }
 
-.note-info {
-  border-color: $blue;
-  background: $white-blue;
+.bs-callout-info {
+  border-left-color: $blue;
   .heading {
     color: $blue;
   }
 }
 
-.note-alert {
-  border-color: $red;
-  background: $white-red;
+.bs-callout-danger {
+  border-left-color: $red;
   .heading {
     color: $red;
   }
