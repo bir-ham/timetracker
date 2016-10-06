@@ -9,7 +9,7 @@ fieldset.custom-fieldset
   legend.custom-legend = I18n.t('invoices.new.select_sale_or_project')
   - unless @invoice.errors[:base].empty?
     .has-error
-      = f.association :sale, collection: Sale.get_sales_without_invoice, label_method: lambda { |sale| "#{sale.date}" " to " "#{sale.customer.name}" }, value_method: :id, prompt: I18n.t('sales.new.select_sale'), multiple: false, required: true
+      = f.association :sale, collection: @sales, label_method: lambda { |sale| "#{sale.date}" " to " "#{sale.customer.name}" }, value_method: :id, prompt: I18n.t('sales.new.select_sale'), multiple: false, required: true
       .m-t-l
       h5.horizontal-line-with-text
         span OR

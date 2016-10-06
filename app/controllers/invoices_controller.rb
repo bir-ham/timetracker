@@ -25,6 +25,8 @@ class InvoicesController < ApplicationController
     @invoice = Invoice.new(session[:invoice_params])
     @invoice.current_step = session[:invoice_step]
 
+     @sales = Sale.get_sales_without_invoice
+
     if @invoice.valid?
       if params[:back_button]
         @invoice.previous_step

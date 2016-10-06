@@ -25,7 +25,7 @@
     legend.custom-legend = I18n.t('invoices.new.select_sale_or_project')
     - unless @invoice.errors[:base].empty?
       .has-error
-        = f.association :sale, collection: Sale.all, label_method: lambda { |sale| "#{sale.date}" " to " "#{sale.customer.name}" }, value_method: :id, prompt: I18n.t('sales.new.select_sale'), multiple: false, required: true
+        = f.association :sale, collection: @sale, label_method: lambda { |sale| "#{sale.date}" " to " "#{sale.customer.name}" }, value_method: :id, prompt: I18n.t('sales.new.select_sale'), multiple: false, required: true
         .m-t-l
         h5.horizontal-line-with-text
           span OR
@@ -35,7 +35,7 @@
         .col-sm-9
           span.help-block = @invoice.errors[:base][0]
     - else
-      = f.association :sale, collection: Sale.all, label_method: lambda { |sale| "#{sale.date}" " to " "#{sale.customer.name}" }, value_method: :id, prompt: I18n.t('sales.new.select_sale'), multiple: false, required: true
+      = f.association :sale, collection: @sale, label_method: lambda { |sale| "#{sale.date}" " to " "#{sale.customer.name}" }, value_method: :id, prompt: I18n.t('sales.new.select_sale'), multiple: false, required: true
       .m-t-l
       h5.horizontal-line-with-text
         span OR
