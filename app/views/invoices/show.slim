@@ -1,7 +1,20 @@
 - breadcrumb :show_invoice, @invoice
 .row
   .col-sm-9
+    - background = ''
+    - case @invoice.status
+    - when 'PAID'
+      - background = 'background-success'
+    - when 'PENDING'
+      - background = 'background-warning'
+    - when 'OVERDUE'
+      - background = 'background-danger'
+    - else
+      | Unknown status
     .well
+      .ribbon-wrapper
+        .ribbon class = (background)
+          = @invoice.status
       h2
         = I18n.t('invoices.show.header')
         small
@@ -22,14 +35,6 @@
             dd = @invoice.interest_in_arrears
             dt = I18n.t('invoices.show.reference_number')
             dd = @invoice.reference_number
-            dt = I18n.t('invoices.show.status')
-            dd
-              - if @invoice.status.eql?('PAID')
-                span.label.label-success = @invoice.status
-              - elsif @invoice.status.eql?('PENDING')
-                span.label.label-warning = @invoice.status
-              - elsif @invoice.status.eql?('OVERDUE')
-                span.label.label-danger = @invoice.status
             dt
               |Description:
             dd = @invoice.description
