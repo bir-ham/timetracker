@@ -23,7 +23,7 @@
           .clearfix
             .pull-left
               h5.m-t-n class = (text_color)
-                = sale.date
+                = sale.date.strftime("%d/%m/%Y")
             .pull-right
               = link_to sale, class: 'btn btn-info btn-sm' do
                 = icon('eye')
