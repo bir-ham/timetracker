@@ -6,7 +6,7 @@ html, body {
 .footer {
   height: 100px;
   padding: 10px;
-  background-color: $dark-mid-night-blue;
+  background-color: $x-dark-mid-night-blue;
   color: $dark-medium-grey;
 }
 
@@ -335,7 +335,7 @@ span.block {
 
 // Side nav
 #sidebar {
-  background: $dark-grey;
+  background: $dark-mid-night-blue;
   top: 50px;
 }
 
@@ -347,7 +347,7 @@ span.block {
 }
 
 .navbar-static-side ul li {
-  background: $dark-grey;
+  background: $dark-mid-night-blue;
   outline: none;
   color: #d9d9d9;
 }
@@ -362,18 +362,18 @@ span.block {
   font-weight: 600;
   text-transform: uppercase;
   &:hover, &:focus {
-    background: #303030;
+    background: $body-background-color;
     transition: 0.2s all ease-in-out;
     outline: none;
-    color: #FFF;
+    color: $body-text-color;
   }
 }
 
 .navbar-static-side ul li.active a {
-  background: #303030;
+  background: $body-background-color;
   transition: 0.2s all ease-in-out;
   outline: none;
-  color: #FFF;
+  color: $body-text-color;
 }
 
 .navbar-static-side ul li a span.menu-title {
@@ -562,12 +562,8 @@ span.block {
   .navbar-static-side ul li a {
     text-align: center;
     .fa {
-      font-size: 24px;
+      font-size: 16px;
     }
-  }
-  .navbar-static-side ul li a span.menu-title {
-    margin-left: 0;
-    display: block;
   }
   .collapse {
     display: inline;
