@@ -48,17 +48,17 @@
               dt = I18n.t('invoices.show.invoice_for')
               dd = @invoice.sale.customer.name
               dt
-                = I18n.t('sales.show.date')
-              dd = @invoice.sale.date
+                = I18n.t('invoices.show.date')
+              dd = @invoice.sale.date.strftime("%d/%m/%Y")
               dt
-                = I18n.t('sales.show.status')
+                = I18n.t('invoices.show.sale_status')
               dd
                 - case @invoice.sale.status
-                - when 'PENDING'
+                - when 'PREPARING'
+                  span.label.label-info = @invoice.sale.status
+                - when 'WAITTING'
                   span.label.label-warning = @invoice.sale.status
-                - when 'OVERDUE'
-                  span.label.label-danger = @invoice.sale.status
-                - when 'PAYED'
+                - when 'DELIVERED'
                   span.label.label-success = @invoice.sale.status
                 - else
                   | Unknown status
@@ -66,8 +66,8 @@
               dt = I18n.t('invoices.show.invoice_for')
               dd = @invoice.project.customer.name
               dt = I18n.t('projects.show.deadline')
-              dd = @invoice.project.deadline
-              dt = I18n.t('projects.show.status')
+              dd = @invoice.project.deadline.strftime("%d/%m/%Y")
+              dt = I18n.t('invoices.show.project_status')
               dd
                 - case @invoice.project.status
                 - when 'NEW'

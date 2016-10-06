@@ -54,10 +54,12 @@ class InvoicesController < ApplicationController
   # GET /invoices/1/edit
   def edit
     @invoice = Invoice.find(params[:id])
+    @sales = Sale.get_sales_without_invoice
   end
 
   def update
     @invoice = Invoice.find(params[:id])
+    @sales = Sale.get_sales_without_invoice
     if @invoice.update_attributes(invoice_params)
       flash.now[:success] = I18n.t('invoices.update.success_update')
       render :show

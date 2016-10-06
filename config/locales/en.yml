@@ -208,6 +208,7 @@ en:
       select_days: '-Select days-'
       select_sale_or_project: Select Sale or Project
       select_payment_term_or_deadline: Select either a Payment term or Deadline
+      sale_or_project_already_selected: Sale or Project already selected
     edit:
       header: Edit Invoice
     show:
@@ -219,6 +220,8 @@ en:
       from: From
       customer: Customer
       date: Date
+      sale_status: Sale status
+      project_status: Project status
       user: User
       deadline: Deadline
       total: Total

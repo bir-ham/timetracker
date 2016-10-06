@@ -311,8 +311,26 @@ dt {
   }
 }
 
+.bs-callout-info-colored {
+  border-left-color: $blue;
+  background: $white-blue;
+  border-color: $blue;
+  .heading {
+    color: $blue;
+  }
+}
+
 .bs-callout-warning {
   border-left-color: $orange;
+  .heading {
+    color: $orange;
+  }
+}
+
+.bs-callout-warning-colored {
+  border-left-color: $orange;
+  background: $white-orange;
+  border-color: $orange;
   .heading {
     color: $orange;
   }
