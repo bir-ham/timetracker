@@ -214,9 +214,9 @@ en:
       header: Invoice
       id: Id
       name: Name
-      customer: Customer
+      invoice_for: Invoice for
       date_of_an_invoice: Date of an invoice
-      user: User
+      from: From
       deadline: Deadline
       total: Total
       status: Status
