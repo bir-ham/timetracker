@@ -1,7 +1,7 @@
 Toolsio
 =======
 
-Business automation software
+Sale and Project management tool
 ----------------
 
 
