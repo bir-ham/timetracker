@@ -4,21 +4,26 @@
     - unless @sales.empty?
       - @sales.each do |sale|
         - background = ''
+        - text_color = ''
         - case sale.status
         - when 'DELIVERED'
           - background = 'background-success'
+          - text_color = 'text-success'
         - when 'PREPARING'
           - background = 'background-info'
+          - text_color = 'text-info'
         - when 'WAITING'
           - background = 'background-warning'
+          - text_color = 'text-danger'
         - else
           | Unknown status
         .well.well-sm.m-b-xs.well-left-text
           .well-text-container class = (background)
-              span = sale.status
+            span = sale.status
           .clearfix
             .pull-left
-              h4.m-t-n = sale.date
+              h5.m-t-n class = (text_color)
+                = sale.date
             .pull-right
               = link_to sale, class: 'btn btn-info btn-sm' do
                 = icon('eye')

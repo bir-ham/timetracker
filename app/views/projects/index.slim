@@ -9,24 +9,30 @@
 
       - @projects.each do |project|
           - background = ''
+          - text_color = ''
           - case project.status
           - when 'FINISHED'
             - background = 'background-success'
+            - text_color = 'text-success'
           - when 'NEW'
             - background = 'background-info'
+            - text_color = 'text-info'
           - when 'ONGOING'
             - background = 'background-warning'
+            - text_color = 'text-warning'
           - when 'DELAYED'
             - background = 'background-danger'
+            - text_color = 'text-danger'
           - else
               | Unknown status
           .well.well-sm.m-b-xs.well-left-text
             .well-text-container class = (background)
-                span = project.status
+              span = project.status
 
             .clearfix
               .pull-left
-                h5.m-t-n = project.name
+                h5.m-t-n class = (text_color)
+                  = project.name
               .pull-right
                 = link_to project, class: 'btn btn-info btn-sm' do
                   = icon('eye')

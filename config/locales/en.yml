@@ -217,6 +217,9 @@ en:
       invoice_for: Invoice for
       date_of_an_invoice: Date of an invoice
       from: From
+      customer: Customer
+      date: Date
+      user: User
       deadline: Deadline
       total: Total
       status: Status

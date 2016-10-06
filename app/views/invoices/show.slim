@@ -14,7 +14,7 @@
     .well
       .ribbon-wrapper
         .ribbon class = (background)
-          = @invoice.status
+          strong = @invoice.status
       h2
         = I18n.t('invoices.show.header')
         small
