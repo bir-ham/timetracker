@@ -1,6 +1,5 @@
 h2.text-center
   = I18n.t('invoices.new.header')
-
   small = I18n.t('invoices.new.customer_and_user_details')
 
 = f.association :user, collection: User.all, label_method: :first_name, value_method: :id, prompt: I18n.t('invoices.new.select_user'), multiple: false, required: true
@@ -9,19 +8,31 @@ fieldset.custom-fieldset
   legend.custom-legend = I18n.t('invoices.new.select_sale_or_project')
   - unless @invoice.errors[:base].empty?
     .has-error
-      = f.association :sale, collection: @sales, label_method: lambda { |sale| "#{sale.date}" " to " "#{sale.customer.name}" }, value_method: :id, prompt: I18n.t('sales.new.select_sale'), multiple: false, required: true
-      .m-t-l
-      h5.horizontal-line-with-text
-        span OR
-      .m-b-s
-      = f.association :project, collection: Project.all, label_method: :name, value_method: :id, prompt: I18n.t('projects.new.select_project'), multiple: false, required: true
+      - if @sales.empty?
+        = f.association :sale, collection: @sales, label_method: lambda { |sale| "#{sale.date}" " to " "#{sale.customer.name}" }, value_method: :id, prompt: I18n.t('sales.new.select_sale'), multiple: false, required: true, disabled: true
+      - else
+        = f.association :sale, collection: @sales, label_method: lambda { |sale| "#{sale.date}" " to " "#{sale.customer.name}" }, value_method: :id, prompt: I18n.t('sales.new.select_sale'), multiple: false, required: true
+        .m-t-l
+        h5.horizontal-line-with-text
+          span OR
+        .m-b-s
+        - if @projects.nil?
+          = f.association :project, collection: @projects, label_method: :name, value_method: :id, prompt: I18n.t('projects.new.select_project'), multiple: false, required: true, disabled: true
+        - else
+          = f.association :project, collection: @projects, label_method: :name, value_method: :id, prompt: I18n.t('projects.new.select_project'), multiple: false, required: true
       .col-sm-3
       .col-sm-9
         span.help-block = @invoice.errors[:base][0]
   - else
-    = f.association :sale, collection: @sales, label_method: lambda { |sale| "#{sale.date}" " to " "#{sale.customer.name}" }, value_method: :id, prompt: I18n.t('sales.new.select_sale'), multiple: false, required: true
+    - if @sales.empty?
+      = f.association :sale, collection: @sales, label_method: lambda { |sale| "#{sale.date}" " to " "#{sale.customer.name}" }, value_method: :id, prompt: I18n.t('sales.new.select_sale'), multiple: false, required: true, disabled: true
+    - else
+      = f.association :sale, collection: @sales, label_method: lambda { |sale| "#{sale.date}" " to " "#{sale.customer.name}" }, value_method: :id, prompt: I18n.t('sales.new.select_sale'), multiple: false, required: true
     .m-t-l
     h5.horizontal-line-with-text
       span OR
     .m-b-s
-    = f.association :project, collection: Project.all, label_method: :name, value_method: :id, prompt: I18n.t('projects.new.select_project'), multiple: false, required: true
+    - if @projects.nil?
+      = f.association :project, collection: @projects, label_method: :name, value_method: :id, prompt: I18n.t('projects.new.select_project'), multiple: false, required: true, disabled: true
+    - else
+      = f.association :project, collection: @projects, label_method: :name, value_method: :id, prompt: I18n.t('projects.new.select_project'), multiple: false, required: true
