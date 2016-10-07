@@ -381,6 +381,9 @@ span.block {
 }
 
 .left-side-collapsed .navbar-static-side {
+  ul#side-menu li {
+    text-align: center;
+  }
   ul#side-menu li a span {
     display: none;
   }
@@ -560,7 +563,6 @@ span.block {
     top: 50px;
   }
   .navbar-static-side ul li a {
-    text-align: center;
     .fa {
       font-size: 16px;
     }
