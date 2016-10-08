@@ -132,6 +132,7 @@ en:
       status: Status
       archived: Archived
       description: Description
+      no_items: The Project in this invoice has no tasks
     edit:
       new:
       header: Edit Project
@@ -274,6 +275,7 @@ en:
       user: User
       status: Status
       description: Description
+      no_items: The Sale in this invoice has no items
     edit:
       header: Edit Sale
     update:
