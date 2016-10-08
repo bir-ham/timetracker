@@ -58,8 +58,13 @@
                 - progress_percentage = 60
                 .progress.progress-small.m-t-xxs.m-b-n
                   .progress-bar.progress-bar-success role="progressbar" aria-valuenow="#{progress_percentage}" aria-valuemin="0" aria-valuemax="100" style="width: #{progress_percentage}%;"
-
-
+              .col-xs-2
+                strong.text-uppercase = I18n.t('projects.index.invoiced')
+                .clearfix
+                - unless project.invoice.nil?
+                  h4.m-t-n.m-b-n = icon ('check-circle-o text-success')
+                - else
+                  h4.m-t-n.m-b-n = icon ('times-circle-o text-danger')
 
           /ul.list-group
             li.list-group-item = I18n.t('projects.index.no_tasks')

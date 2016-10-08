@@ -116,6 +116,7 @@ en:
       customer: Customer
       progress: Progress
       deadline: Deadline
+      invoiced: Invoiced
     new:
       header: New Project
       notice_create: "Project created!"
@@ -257,6 +258,7 @@ en:
       user: User
       customer: Customer
       date: Date
+      invoiced: Invoiced
     new:
       header: New Sale
       notice_create: "Sale created!"

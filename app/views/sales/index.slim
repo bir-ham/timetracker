@@ -39,7 +39,13 @@
               strong.text-uppercase = I18n.t('sales.index.customer')
               .clearfix
               span = sale.customer.name
-
+            .col-xs-2
+              strong.text-uppercase = I18n.t('sales.index.invoiced')
+              .clearfix
+              - unless sale.invoice.nil?
+                h4.m-t-n.m-b-n = icon ('check-circle-o text-success')
+              - else
+                h4.m-t-n.m-b-n = icon ('times-circle-o text-danger')
 
     - else
       p.text-danger = I18n.t('sales.index.empty_sales')
