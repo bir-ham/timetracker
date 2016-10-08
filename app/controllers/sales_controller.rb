@@ -6,13 +6,18 @@ class SalesController < ApplicationController
 
   def new
     @sale = Sale.new
+    session[:new_action_called_from] = URI(request.referer).path
   end
 
   def create
     @sale = Sale.new(sale_params)
     @sale.status = 'PREPARING'
     if @sale.save
-      redirect_to @sale, notice: I18n.t('sales.create.notice_create')
+      if session[:new_action_called_from] == '/invoices/new'
+        redirect_to new_invoice_path
+      else
+        redirect_to @sale, notice: I18n.t('sales.create.notice_create')
+      end
     else
       render :new
     end

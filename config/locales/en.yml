@@ -119,9 +119,10 @@ en:
     new:
       header: New Project
       notice_create: "Project created!"
-      select_customer: '-Select customer-'
-      select_user: '-Select user-'
-      select_project: '-Select project'
+      select_customer: '-Select Customer-'
+      select_user: '-Select User-'
+      select_project: '-Select Project-'
+      no_select_project: '-No Project to select-'
       select_or_add_new_customer: Select Customer if exists or add new
     show:
       header: Project
@@ -258,10 +259,11 @@ en:
     new:
       header: New Sale
       notice_create: "Sale created!"
-      select_customer: '-Select customer-'
-      select_user: '-Select user-'
+      select_customer: '-Select Customer-'
+      select_user: '-Select User-'
       select_status: '-Select status-'
-      select_sale: '-Select sale-'
+      select_sale: '-Select Sale-'
+      no_select_sale: '-No Sale to select-'
     create:
       notice_create: "Sale created!"
     show:
