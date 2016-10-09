@@ -4,12 +4,14 @@
     .well
       h3
         |Invite User
-        small Test
+        small  Test
       = simple_form_for(User.new, url: user_invitation_path,
               html: { class: 'form-inline'}) do |f|
-
-        = f.input :email, placeholder: I18n.t('users.index.email'), label: I18n.t('users.index.email')
-
+        '
+        = f.label I18n.t('users.index.email')
+        '
+        = f.input :email, placeholder: I18n.t('users.index.email'), label: false
+        '
         = f.button :submit, I18n.t('users.index.invite_user'), class: 'btn-primary'
 
     h3 Invited User
