@@ -18,12 +18,16 @@ class InvoicesController < ApplicationController
     @invoice.current_step = session[:invoice_step]
 
     @sales = Sale.get_sales_without_invoice
+    @projects = Project.get_projects_without_invoice
   end
 
   def create
     session[:invoice_params].deep_merge!(params[:invoice]) if params[:invoice]
     @invoice = Invoice.new(session[:invoice_params])
     @invoice.current_step = session[:invoice_step]
+
+    @sales = Sale.get_sales_without_invoice
+    @projects = Project.get_projects_without_invoice
 
     if @invoice.valid?
       if params[:back_button]
@@ -52,10 +56,12 @@ class InvoicesController < ApplicationController
   # GET /invoices/1/edit
   def edit
     @invoice = Invoice.find(params[:id])
+    @sales = Sale.get_sales_without_invoice
   end
 
   def update
     @invoice = Invoice.find(params[:id])
+    @sales = Sale.get_sales_without_invoice
     if @invoice.update_attributes(invoice_params)
       flash.now[:success] = I18n.t('invoices.update.success_update')
       render :show

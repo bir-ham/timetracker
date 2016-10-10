@@ -13,13 +13,18 @@ class ProjectsController < ApplicationController
 
   def new
     @project = Project.new
+    session[:new_action_called_from] = URI(request.referer).path
   end
 
   def create
     @project = Project.new(project_params)
     @project.status = 'NEW'
     if @project.save
-      redirect_to projects_path, notice: I18n.t('projects.new.notice_create')
+      if session[:new_action_called_from] == '/invoices/new'
+        redirect_to new_invoice_path
+      else
+        redirect_to projects_path, notice: I18n.t('projects.new.notice_create')
+      end
     else
       render :new
     end

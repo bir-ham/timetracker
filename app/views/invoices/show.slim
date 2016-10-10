@@ -1,67 +1,89 @@
 - breadcrumb :show_invoice, @invoice
 .row
-  .col-sm-8
+  .col-sm-9
+    - background = ''
+    - case @invoice.status
+    - when 'PAID'
+      - background = 'background-success'
+    - when 'PENDING'
+      - background = 'background-warning'
+    - when 'OVERDUE'
+      - background = 'background-danger'
+    - else
+      | Unknown status
     .well
-      h2 = I18n.t('invoices.show.header')
-      dl.dl-horizontal
-        dt = I18n.t('invoices.show.user')
-        dd = @invoice.user.first_name
-        dt = I18n.t('invoices.show.date_of_an_invoice')
-        dd = @invoice.date_of_an_invoice
-        dt = I18n.t('invoices.show.deadline')
-        dd = @invoice.deadline
-        dt = I18n.t('invoices.show.payment_term')
-        dd = @invoice.payment_term
-        dt = I18n.t('invoices.show.interest_in_arrears')
-        dd = @invoice.interest_in_arrears
-        dt = I18n.t('invoices.show.reference_number')
-        dd = @invoice.reference_number
-        dt = I18n.t('invoices.show.status')
-        dd
-          - if @invoice.status.eql?('PAID')
-            span.label.label-success = @invoice.status
-          - elsif @invoice.status.eql?('PENDING')
-            span.label.label-warning = @invoice.status
-          - elsif @invoice.status.eql?('OVERDUE')
-            span.label.label-danger = @invoice.status
-        dt
-          |Description:
-        dd = @invoice.description
+      .ribbon-wrapper
+        .ribbon class = (background)
+          strong = @invoice.status
+      h2
+        = I18n.t('invoices.show.header')
+        small
+          - if @invoice.sale_id?
+            = I18n.t('sales.show.header')
+          - elsif @invoice.project_id?
+            = I18n.t('projects.show.header')
+      .row
+        .col-sm-6
+          dl.dl-horizontal
+            dt = I18n.t('invoices.show.date_of_an_invoice')
+            dd = @invoice.date_of_an_invoice
+            dt = I18n.t('invoices.show.deadline')
+            dd = @invoice.deadline
+            dt = I18n.t('invoices.show.payment_term')
+            dd = @invoice.payment_term
+            dt = I18n.t('invoices.show.interest_in_arrears')
+            dd = @invoice.interest_in_arrears
+            dt = I18n.t('invoices.show.reference_number')
+            dd = @invoice.reference_number
+            dt
+              |Description:
+            dd = @invoice.description
+
+        .col-sm-6
+          dl.dl-horizontal
+            dt = I18n.t('invoices.show.from')
+            dd = @invoice.user.first_name
+            .m-t-xl
+            - if @invoice.sale_id?
+              dt = I18n.t('invoices.show.invoice_for')
+              dd = @invoice.sale.customer.name
+              dt
+                = I18n.t('invoices.show.date')
+              dd = @invoice.sale.date.strftime("%d/%m/%Y")
+              dt
+                = I18n.t('invoices.show.sale_status')
+              dd
+                - case @invoice.sale.status
+                - when 'PREPARING'
+                  span.label.label-info = @invoice.sale.status
+                - when 'WAITTING'
+                  span.label.label-warning = @invoice.sale.status
+                - when 'DELIVERED'
+                  span.label.label-success = @invoice.sale.status
+                - else
+                  | Unknown status
+            - elsif  @invoice.project_id?
+              dt = I18n.t('invoices.show.invoice_for')
+              dd = @invoice.project.customer.name
+              dt = I18n.t('projects.show.deadline')
+              dd = @invoice.project.deadline.strftime("%d/%m/%Y")
+              dt = I18n.t('invoices.show.project_status')
+              dd
+                - case @invoice.project.status
+                - when 'NEW'
+                  span.label.label-info = @invoice.project.status
+                - when 'ONGOING'
+                  span.label.label-warning  = @invoice.project.status
+                - when 'DELAYED'
+                  span.label.label-danger  = @invoice.project.status
+                - when 'FINISHED'
+                  span.label.label-success  = @invoice.project.status
+                - else
+                  | Unknown status
 
       - if @invoice.sale_id?
-        h3 = I18n.t('sales.show.header')
-        dl.dl-horizontal
-          dt
-            = I18n.t('sales.show.customer')
-          dd = @invoice.sale.customer.name
-          dt
-            = I18n.t('sales.show.user')
-          dd
-            = @invoice.sale.user.first_name
-          dt
-            = I18n.t('sales.show.date')
-          dd = @invoice.sale.date
-          dt
-            = I18n.t('sales.show.status')
-          dd
-            - case @invoice.sale.status
-            - when 'PENDING'
-              span.label.label-warning = @invoice.sale.status
-            - when 'OVERDUE'
-              span.label.label-danger = @invoice.sale.status
-            - when 'PAYED'
-              span.label.label-success = @invoice.sale.status
-            - else
-              | Unknown status
-          dt
-            = I18n.t('sales.show.description')
-          dd
-            - if @invoice.sale.description?
-              = @invoice.sale.description
-            - else
-              span -
-
-          h5.m-b-n = I18n.t('sales.items.header')
+        h4.m-b-n = I18n.t('sales.items.header')
+        - unless @invoice.sale.items.empty?
           .table-responsive
             table.table.table-striped.m-b-n
               thead
@@ -86,48 +108,19 @@
 
                   - running_total += item.total
                 - unless @invoice.sale.items.empty?
-                  tr.white-background
-                    td colspan="7"
+                  tr.background-white
+                    td colspan="5"
                     td = number_to_currency(running_total)
-                    td
-                    td
+        - else
+          p.text-danger.m-t-s = I18n.t('sales.show.no_items')
+          = link_to @invoice.sale, class: 'btn btn-primary btn-sm m-b-m'
+            = icon ('plus')
+            |&nbsp;
+            = I18n.t('sales.items.new.add_item')
 
       - elsif @invoice.project_id?
-        h3 = I18n.t('projects.show.header')
-        dl.dl-horizontal
-          dt
-            = I18n.t('projects.show.customer')
-          dd = @invoice.project.customer.name
-          dt
-            = I18n.t('projects.show.user')
-          dd
-            = @invoice.project.user.first_name
-          dt
-            = I18n.t('projects.show.deadline')
-          dd = @invoice.project.deadline
-          dt
-            = I18n.t('projects.show.status')
-          dd
-            - case @invoice.project.status
-            - when 'NEW'
-              span.label.label-info = @invoice.project.status
-            - when 'ONGOING'
-              span.label.label-warning  = @invoice.project.status
-            - when 'DELAYED'
-              span.label.label-danger  = @invoice.project.status
-            - when 'FINISHED'
-              span.label.label-success  = @invoice.project.status
-            - else
-              | Unknown status
-          dt
-            = I18n.t('projects.show.description')
-          dd
-            - if @invoice.project.description?
-              = @invoice.project.description
-            - else
-              span -
-
-          h5.m-b-n = I18n.t('projects.tasks.header')
+        h4.m-b-n = I18n.t('projects.tasks.header')
+        - unless @invoice.project.tasks.empty?
           table.table.table-striped.m-b-n
             thead
               tr
@@ -160,11 +153,29 @@
                 - running_total += task.total
 
               - unless @sale.project.tasks.empty?
-                tr.white-background
-                  td colspan="7"
+                tr.background-white
+                  td colspan="5"
                   td = number_to_currency(running_total)
-                  td
-                  td
+
+        - else
+          p.text-danger.m-t-s = I18n.t('projects.show.no_items')
+          = link_to @invoice.project, class: 'btn btn-primary btn-sm m-b-m'
+            = icon ('plus')
+            |&nbsp;
+            = I18n.t('projects.tasks.new.add_item')
+
+
+      .page-header.m-b-s
+      .row
+        .col-sm-6.col-xs-6
+
+        .col-sm-6.col-xs-6
+          small.pull-right.text-dark-medium-grey
+            .visible-all-blcok.text-capitalize = current_account.subdomain
+            .visible-all-blcok = current_account.phone_number
+            .visible-all-blcok = current_account.address1
+            .visible-all-blcok = current_account.town
+            .visible-all-blcok = current_account.country
 
     .btn-toolbar
       = link_to '#confirmation-modal-container', class: 'btn btn-danger confirmation-button', data: { id: @invoice.id } do

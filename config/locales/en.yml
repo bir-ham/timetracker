@@ -41,7 +41,7 @@ en:
     home:
       header: Home
       welcome: Welcome to
-      slogan: Automate and Track your day-to-day business acitvitaies with the most effective business tool ever
+      slogan: Automate and manage your Sales and Projects more efficently, right now!
       get_started: Get started for free
     features:
       header: Features
@@ -116,12 +116,14 @@ en:
       customer: Customer
       progress: Progress
       deadline: Deadline
+      invoiced: Invoiced
     new:
       header: New Project
       notice_create: "Project created!"
-      select_customer: '-Select customer-'
-      select_user: '-Select user-'
-      select_project: '-Select project'
+      select_customer: '-Select Customer-'
+      select_user: '-Select User-'
+      select_project: '-Select Project-'
+      no_select_project: '-No Project to select-'
       select_or_add_new_customer: Select Customer if exists or add new
     show:
       header: Project
@@ -131,6 +133,7 @@ en:
       status: Status
       archived: Archived
       description: Description
+      no_items: The Project in this invoice has no tasks
     edit:
       new:
       header: Edit Project
@@ -208,14 +211,20 @@ en:
       select_days: '-Select days-'
       select_sale_or_project: Select Sale or Project
       select_payment_term_or_deadline: Select either a Payment term or Deadline
+      sale_or_project_already_selected: Sale or Project already selected
     edit:
       header: Edit Invoice
     show:
       header: Invoice
       id: Id
       name: Name
-      customer: Customer
+      invoice_for: Invoice for
       date_of_an_invoice: Date of an invoice
+      from: From
+      customer: Customer
+      date: Date
+      sale_status: Sale status
+      project_status: Project status
       user: User
       deadline: Deadline
       total: Total
@@ -249,13 +258,15 @@ en:
       user: User
       customer: Customer
       date: Date
+      invoiced: Invoiced
     new:
       header: New Sale
       notice_create: "Sale created!"
-      select_customer: '-Select customer-'
-      select_user: '-Select user-'
+      select_customer: '-Select Customer-'
+      select_user: '-Select User-'
       select_status: '-Select status-'
-      select_sale: '-Select sale-'
+      select_sale: '-Select Sale-'
+      no_select_sale: '-No Sale to select-'
     create:
       notice_create: "Sale created!"
     show:
@@ -266,6 +277,7 @@ en:
       user: User
       status: Status
       description: Description
+      no_items: The Sale in this invoice has no items
     edit:
       header: Edit Sale
     update:

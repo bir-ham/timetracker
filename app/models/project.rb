@@ -13,6 +13,14 @@ class Project < ActiveRecord::Base
   validates :progress, presence: true, allow_nil: true
   validates :description, presence: false
 
+  def self.get_projects_without_invoice
+    projects = Array.new
+    for project in Project.all do
+      projects.push(project) if project.invoice.nil?
+    end
+    return projects
+  end
+
   def self.to_csv(options = {})
     CSV.generate(options) do |csv|
       csv << column_names

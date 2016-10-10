@@ -20,7 +20,7 @@ abbr, accronym {
   margin-right: 0;
 }
 
-// Customize date dropdowns take auto width 
+// Customize date dropdowns take auto width
 .date > .col-sm-9 .form-control {
   display: inline-block;
   width: auto;
@@ -114,8 +114,8 @@ abbr, accronym {
   border-color: $mid-night-blue;
   &:hover, &.focus {
     color: $white;
-    background-color: $dark-mid-night-blue;
-    border-color: $dark-mid-night-blue;
+    background-color: $x-dark-mid-night-blue;
+    border-color: $x-dark-mid-night-blue;
   }
 }
 

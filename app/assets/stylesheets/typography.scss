@@ -25,8 +25,8 @@ h3 {
   letter-spacing: -0.2px;
 }
 
-.text-danger {
-  color: $red;
+h5, .h5 {
+  font-size: 15px;
 }
 
 .panel, .well {
@@ -44,12 +44,13 @@ h3 {
   }
 }
 
-.text-muted {
-  color: $dark-grey;
-}
-
+// Sizes
 .text-bold {
   font-weight: bold;
+}
+
+.small-font {
+  font-size: 85%;
 }
 
 // Labels
@@ -84,4 +85,16 @@ h3 {
 
 .text-danger {
   color: $red;
+}
+
+.text-muted {
+  color: $dark-grey;
+}
+
+.text-dark-medium-grey {
+  color: $dark-medium-grey;
+}
+
+.text-x-light-dark-grey {
+  color: $x-light-dark-grey;
 }

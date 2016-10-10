@@ -12,10 +12,10 @@ jQuery ->
 
     lengthMenu: [ [10, 25, 50, -1], [10, 25, 50, "All"] ]
     buttons: [
-        {extend: 'excel', title: 'ExampleFile', className: 'btn-sm'},
-        {extend: 'csv', title: 'ExampleFile', className: 'btn-sm'},
-        {extend: 'pdf', title: 'ExampleFile', className: 'btn-sm'},
-        {extend: 'print', title: 'ExampleFile', className: 'btn-sm'}
+        {extend: 'excel', title: 'Invoices', className: 'btn-sm'},
+        {extend: 'csv', title: 'Invoices', className: 'btn-sm'},
+        {extend: 'pdf', title: 'Invoices', className: 'btn-sm'},
+        {extend: 'print', title: 'Invoices', className: 'btn-sm'}
     ]
 
     columnDefs: [ {

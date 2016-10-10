@@ -3,38 +3,49 @@
   .col-sm-12
     - unless @sales.empty?
       - @sales.each do |sale|
-        = link_to @sale, class: 'visible-all-block' do
-          .well.well-sm.m-b-xs
-            .clearfix
-              .pull-left
-                h5.m-t-n = sale.date
-              .pull-right
-                = link_to sale, class: 'btn btn-info btn-sm' do
-                  = icon('eye')
-                  |&nbsp;
-                  = I18n.t('button.view')
+        - background = ''
+        - text_color = ''
+        - case sale.status
+        - when 'DELIVERED'
+          - background = 'background-success'
+          - text_color = 'text-success'
+        - when 'PREPARING'
+          - background = 'background-info'
+          - text_color = 'text-info'
+        - when 'WAITING'
+          - background = 'background-warning'
+          - text_color = 'text-danger'
+        - else
+          | Unknown status
+        .well.well-sm.m-b-xs.well-left-text
+          .well-text-container class = (background)
+            span = sale.status
+          .clearfix
+            .pull-left
+              h5.m-t-n class = (text_color)
+                = sale.date.strftime("%d/%m/%Y")
+            .pull-right
+              = link_to sale, class: 'btn btn-info btn-sm' do
+                = icon('eye')
+                |&nbsp;
+                = I18n.t('button.view')
 
-            .row.m-b-n
-              .col-xs-2
-                strong.text-uppercase = I18n.t('sales.index.user')
-                .clearfix
-                span = sale.user.first_name
-              .col-xs-2
-                strong.text-uppercase = I18n.t('sales.index.customer')
-                .clearfix
-                span = sale.customer.name
-              .col-xs-2
-                strong.text-uppercase = I18n.t('sales.index.status')
-                .clearfix
-                - case sale.status
-                - when 'PENDING'
-                  span.label.label-warning = sale.status
-                -  when 'PAID'
-                  span.label.label-success = sale.status
-                - when 'OVERDUE'
-                  span.label.label-danger = sale.status
-                - else
-                  | Unknown status
+          .row.m-b-n
+            .col-xs-2
+              strong.text-uppercase = I18n.t('sales.index.user')
+              .clearfix
+              span = sale.user.first_name
+            .col-xs-2
+              strong.text-uppercase = I18n.t('sales.index.customer')
+              .clearfix
+              span = sale.customer.name
+            .col-xs-2
+              strong.text-uppercase = I18n.t('sales.index.invoiced')
+              .clearfix
+              - unless sale.invoice.nil?
+                h4.m-t-n.m-b-n = icon ('check-circle-o text-success')
+              - else
+                h4.m-t-n.m-b-n = icon ('times-circle-o text-danger')
 
     - else
       p.text-danger = I18n.t('sales.index.empty_sales')

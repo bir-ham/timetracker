@@ -23,24 +23,11 @@
 
   fieldset.custom-fieldset
     legend.custom-legend = I18n.t('invoices.new.select_sale_or_project')
-    - unless @invoice.errors[:base].empty?
-      .has-error
-        = f.association :sale, collection: Sale.all, label_method: lambda { |sale| "#{sale.date}" " to " "#{sale.customer.name}" }, value_method: :id, prompt: I18n.t('sales.new.select_sale'), multiple: false, required: true
-        .m-t-l
-        h5.horizontal-line-with-text
-          span OR
-        .m-b-s
-        = f.association :project, collection: Project.all, label_method: :name, value_method: :id, prompt: I18n.t('projects.new.select_project'), multiple: false, required: true
-        .col-sm-3
-        .col-sm-9
-          span.help-block = @invoice.errors[:base][0]
-    - else
-      = f.association :sale, collection: Sale.all, label_method: lambda { |sale| "#{sale.date}" " to " "#{sale.customer.name}" }, value_method: :id, prompt: I18n.t('sales.new.select_sale'), multiple: false, required: true
-      .m-t-l
-      h5.horizontal-line-with-text
-        span OR
-      .m-b-s
-      = f.association :project, collection: Project.all, label_method: :name, value_method: :id, prompt: I18n.t('projects.new.select_project'), multiple: false, required: true
+    .bs-callout.bs-callout-sm.bs-callout-info-colored
+      h5.heading
+        = icon('info-circle')
+        |&nbsp;
+        = I18n.t('invoices.new.sale_or_project_already_selected')
 
   = f.input :interest_in_arrears, label: 'Interest in arrears (in %)', input_html: { min: 0, max: 100 }
   = f.input :reference_number
