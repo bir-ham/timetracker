@@ -8,7 +8,7 @@ describe 'account creation' do
     expect(page).to have_text I18n.t('devise.registrations.signed_up_but_unconfirmed')
   end
 
-  describe 'confirmation email' do
+  describe 'when user is created an account' do
     before :each do
       open_email 'birhanu@example.com'
       expect(current_email).to have_body_text("You can confirm your account email through the link below:")
@@ -51,7 +51,7 @@ describe 'account creation' do
 
   def sign_up(subdomain)
     visit root_url(subdomain: false)
-    click_link 'Create Account'
+    click_link I18n.t('button.sign_up')
 
     reset_mailer
 
