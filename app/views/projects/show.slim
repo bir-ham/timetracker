@@ -17,9 +17,9 @@
             span.label.label-info = @project.status
           - when 'ONGOING'
             span.label.label-warning  = @project.status
-          - when 'FINISHEDD'
+          - when 'FINISHED'
             span.label.label-success  = @project.status
-          - when 'DELAYE'
+          - when 'DELAYED'
             span.label.label-danger  = @project.status
           - else
             | Unknown status
