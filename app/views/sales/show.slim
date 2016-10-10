@@ -16,7 +16,7 @@
           - when 'PREPARING'
             span.label.label-info = @sale.status
           - when 'WAITTING'
-            span.label.label-warning = @sale.status
+            span.label.label-danger = @sale.status
           - when 'DELIVERED'
             span.label.label-success = @sale.status
           - else
