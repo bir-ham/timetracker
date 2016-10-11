@@ -2,7 +2,7 @@
 .row
   .col-sm-10
     .well
-      h2 = I18n.t('projects.show.header')
+      h2 = @project.name
       dl.dl-horizontal
         dt = I18n.t('projects.show.customer')
         dd = @project.customer.name
