@@ -29,25 +29,33 @@
             small = I18n.t('dashboards.index.this_week')
             h4.m-t-xs.text-bold
               = number_to_currency(@this_week_incomes)
-              span = icon('level-up text-success')
+              - if @this_week_incomes.to_f > @last_week_incomes.to_f
+                span = icon('level-up text-success')
+              - else
+                span = icon('level-down text-danger')
+
   .col-sm-6.col-md-3
     .panel.panel-default.m-b-m
       .panel-body
         .clearfix
           .pull-left
-            strong.text-uppercase = I18n.t('dashboards.index.invoices')
+            strong.text-uppercase = I18n.t('dashboards.index.customers')
           .pull-right
             .main-icon = icon('money')
         = icon('area-chart turquoise')
         .clearfix
           .pull-left
             small = I18n.t('dashboards.index.average_visits')
-            h4.m-t-xs.text-bold 7.8
+            h4.m-t-xs.text-bold = @customers_per_day
           .pull-right
             small = I18n.t('dashboards.index.visits_today')
             h4.m-t-xs.text-bold
-              |2
-              span = icon('level-down text-danger')
+              = @this_week_customers.size
+              - if @this_week_customers.size.to_f > @customers_per_day.to_f
+                span = icon('level-up text-success')
+              - else
+                span = icon('level-down text-danger')
+
   .col-sm-6.col-md-3
     .panel.task.panel-default.m-b-m
       .panel-body
