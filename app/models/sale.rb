@@ -13,19 +13,19 @@ class Sale < ActiveRecord::Base
 
   validate :date_of_a_sale_cannot_be_in_the_past
 
-  private
-    def date_of_a_sale_cannot_be_in_the_past
-      if date.present? && date < Date.today
-        errors.add(:date, "can't be in the past")
-      end
-    end
-
-  def self.get_sales_without_invoice
+  def get_sales_without_invoice
     sales = Array.new
     for sale in Sale.all do
       sales.push(sale) if sale.invoice.nil?
     end
     return sales
   end
+
+  private
+    def date_of_a_sale_cannot_be_in_the_past
+      if date.present? && date < Date.today
+        errors.add(:date, "can't be in the past")
+      end
+    end
 
 end
