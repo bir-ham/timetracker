@@ -60,6 +60,33 @@ class Invoice < ActiveRecord::Base
     end
   end
 
+  def get_all_incomes
+    paid_invoices = Invoice.where('status = ?', 'PAID')
+
+    items_total = 0
+    tasks_total = 0
+    for invoice in paid_invoices
+      if invoice.sale_id?
+        for item in invoice.sale.items
+          items_total += item.total
+        end
+      elsif invoice.project_id?
+        for task in invoice.project.tasks
+          tasks_total += task.total
+        end
+      end
+    end
+    return items_total + tasks_total
+  end
+
+  def get_this_week_invoices
+    Invoice.where('date_of_an_invoice BETWEEN ? AND ?', Date.today.beginning_of_week, Date.today)
+  end
+
+  def get_previous_week_invoices
+    Invoice.where('date_of_an_invoice BETWEEN ? AND ?', Date.today.beginning_of_week - 7.days, Date.today.beginning_of_week)
+  end
+
   private
     def choose_xor_deadline_payment_term
       unless deadline.blank? ^ payment_term.blank?
