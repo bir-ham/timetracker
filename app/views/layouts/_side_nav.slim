@@ -36,12 +36,12 @@ aside#sidebar.navbar-default.navbar-static-side role="navigation" data-step="2" 
           span.menu-title = I18n.t('invoices.index.header')
       li class = ('active' if is_controller_name? 'customers')
         = link_to customers_path do
-          = icon('money fa-fw')
+          = icon('group fa-fw')
             .icon-bg.bg-orange
           span.menu-title = I18n.t('customers.index.header')
       li class = ('active' if is_controller_name? 'users')
         = link_to users_path do
-          = icon('group fa-fw')
+          = icon('user fa-fw')
             .icon-bg.bg-orange
           span.menu-title = I18n.t('users.index.header')
 

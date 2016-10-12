@@ -8,6 +8,8 @@ class HomepagesController < ApplicationController
     @invoices = Invoice.all
     @paid_invoices = @invoice.get_all_paid_invoices
     @all_incomes = @invoice.get_all_paid_invoices_amount
+    @this_week_invoices = @invoice.get_this_week_paid_invoices.all.size
+    @last_week_invoices = @invoice.get_last_week_paid_invoices.all.size
     @this_week_incomes = @invoice.get_this_week_paid_invoices_amount
     @last_week_incomes = @invoice.get_last_week_paid_invoices_amount
 

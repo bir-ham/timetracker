@@ -12,6 +12,28 @@
       .panel-body
         .clearfix
           .pull-left
+            strong.text-uppercase = I18n.t('dashboards.index.incomes')
+          .pull-right
+            .main-icon = icon('money')
+
+        = icon('area-chart turquoise')
+        .clearfix
+          .pull-left
+            small = I18n.t('dashboards.index.last_week')
+            h4.m-t-xs.m-b-n.text-bold = number_to_currency(@last_week_incomes)
+          .pull-right
+            small = I18n.t('dashboards.index.this_week')
+            h4.m-t-xs.m-b-n.text-bold
+              = number_to_currency(@this_week_incomes)
+              - if @this_week_incomes.to_f > @last_week_incomes.to_f
+                span = icon('level-up text-success')
+              - else
+                span = icon('level-down text-danger')
+  .col-sm-6.col-md-3
+    .panel.task.panel-default.m-b-m
+      .panel-body
+        .clearfix
+          .pull-left
             strong.text-uppercase = I18n.t('dashboards.index.invoices')
           .pull-right
             .main-icon = icon('file-o')
@@ -24,16 +46,15 @@
         .clearfix
           .pull-left
             small = I18n.t('dashboards.index.last_week')
-            h4.m-t-xs.text-bold = number_to_currency(@last_week_incomes)
+            h4.m-t-xs.m-b-n.text-bold = @last_week_invoices
           .pull-right
             small = I18n.t('dashboards.index.this_week')
-            h4.m-t-xs.text-bold
-              = number_to_currency(@this_week_incomes)
-              - if @this_week_incomes.to_f > @last_week_incomes.to_f
+            h4.m-t-xs.m-b-n.text-bold
+              = @this_week_invoices
+              - if @this_week_invoices.to_f > @last_week_invoices.to_f
                 span = icon('level-up text-success')
               - else
                 span = icon('level-down text-danger')
-
   .col-sm-6.col-md-3
     .panel.panel-default.m-b-m
       .panel-body
@@ -41,38 +62,20 @@
           .pull-left
             strong.text-uppercase = I18n.t('dashboards.index.customers')
           .pull-right
-            .main-icon = icon('money')
-        = icon('area-chart turquoise')
+            .main-icon = icon('group')
+        h3.m-t-s.m-b-s = @customers.size
         .clearfix
           .pull-left
             small = I18n.t('dashboards.index.average_visits')
-            h4.m-t-xs.text-bold = @customers_per_day
+            h4.m-t-xs.m-b-n.text-bold = @customers_per_day
           .pull-right
             small = I18n.t('dashboards.index.visits_today')
-            h4.m-t-xs.text-bold
+            h4.m-t-xs.m-b-n.text-bold
               = @this_week_customers.size
               - if @this_week_customers.size.to_f > @customers_per_day.to_f
                 span = icon('level-up text-success')
               - else
                 span = icon('level-down text-danger')
-
-  .col-sm-6.col-md-3
-    .panel.task.panel-default.m-b-m
-      .panel-body
-        .clearfix
-          .pull-left
-            strong.text-uppercase = I18n.t('dashboards.index.tasks')
-          .pull-right
-            .main-icon = icon('tasks')
-        h2.m-t-s.m-b-s.turquoise
-          |34
-          small
-            '
-            = I18n.t('dashboards.index.completed')
-        strong Summary
-        .clearfix
-        - tasks = 12
-        small = raw I18n.t('dashboards.index.you_left_with', tasks: content_tag(:strong, tasks))
 
 .row.mbl
   .col-lg-7
