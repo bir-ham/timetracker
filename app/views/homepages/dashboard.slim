@@ -1,5 +1,5 @@
 - breadcrumb :root
-.row.dashboard-card.m-b-l
+.row.dashboard-card
   .col-sm-6.col-md-3
     .panel.profit.panel-default.m-b-m
       .panel-body.text-center
@@ -12,7 +12,7 @@
       .panel-body
         .clearfix
           .pull-left
-            strong.text-uppercase = I18n.t('dashboards.index.incomes')
+            h5.text-uppercase = I18n.t('dashboards.index.incomes')
           .pull-right
             .main-icon = icon('money')
 
@@ -34,7 +34,7 @@
       .panel-body
         .clearfix
           .pull-left
-            strong.text-uppercase = I18n.t('dashboards.index.invoices')
+            h5.text-uppercase = I18n.t('dashboards.index.invoices')
           .pull-right
             .main-icon = icon('file-o')
         h3.m-t-s.m-b-s = @invoices.size
@@ -60,7 +60,7 @@
       .panel-body
         .clearfix
           .pull-left
-            strong.text-uppercase = I18n.t('dashboards.index.customers')
+            h5.text-uppercase = I18n.t('dashboards.index.customers')
           .pull-right
             .main-icon = icon('group')
         h3.m-t-s.m-b-s = @customers.size
@@ -77,19 +77,17 @@
               - else
                 span = icon('level-down text-danger')
 
-.row.mbl
+.row
   .col-lg-7
-    .panel.panel-default
+    .panel.panel-default.panel-transparent-header
+      .panel-heading
+        .panel-title = I18n.t('dashboards.index.invoicing_performance')
       .panel-body
-        h4.mbs Salling performance
-        p.help-block Sed ut perspiciatis unde omnis iste natus error sit voluptatem...
-        #area-chart-spline style="width: 100%; height: 300px; padding: 0px; position: relative;"
-          canvas class="flot-base" width="206" height="300" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 206px; height: 300px;"
 
   .col-lg-5
-    .panel.panel-default
+    .panel.panel-default.panel-transparent-header
       .panel-heading
-        .panel-title Todo List
+        .panel-title = I18n.t('dashboards.index.sales_and_projects')
       .panel-body
         .portlet-body style="overflow: hidden;"
           .slimScrollDiv style="position: relative; overflow: hidden; width: 100%; height: 250px;"

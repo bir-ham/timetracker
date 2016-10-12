@@ -90,6 +90,7 @@ en:
       this_week: This week
       average_visits: "Average visits/day"
       visits_today: Visits today
+      invoicing_performance: Invoicing performance
   accounts:
     new:
       header: Create an Account
