@@ -60,8 +60,8 @@ class Invoice < ActiveRecord::Base
     end
   end
 
-  def get_all_incomes
-    paid_invoices = Invoice.where('status = ?', 'PAID')
+  def get_all_paid_invoices_amount
+    paid_invoices = self.get_all_paid_invoices
 
     items_total = 0
     tasks_total = 0
@@ -79,11 +79,61 @@ class Invoice < ActiveRecord::Base
     return items_total + tasks_total
   end
 
+  def get_this_week_paid_invoices_amount
+    paid_invoices = self.get_this_week_paid_invoices
+
+    items_total = 0
+    tasks_total = 0
+    for invoice in paid_invoices
+      if invoice.sale_id?
+        for item in invoice.sale.items
+          items_total += item.total
+        end
+      elsif invoice.project_id?
+        for task in invoice.project.tasks
+          tasks_total += task.total
+        end
+      end
+    end
+    return items_total + tasks_total
+  end
+
+  def get_last_week_paid_invoices_amount
+    paid_invoices = self.get_last_week_paid_invoices
+
+    items_total = 0
+    tasks_total = 0
+    for invoice in paid_invoices
+      if invoice.sale_id?
+        for item in invoice.sale.items
+          items_total += item.total
+        end
+      elsif invoice.project_id?
+        for task in invoice.project.tasks
+          tasks_total += task.total
+        end
+      end
+    end
+    return items_total + tasks_total
+  end
+
+  def get_all_paid_invoices
+    paid_invoices = Invoice.where('status = ?', 'PAID')
+  end
+
+  def get_this_week_paid_invoices
+    Invoice.where('status = ? AND date_of_an_invoice BETWEEN ? AND ?', 'PAID', Date.today.beginning_of_week, Date.today)
+  end
+
+  def get_last_week_paid_invoices
+    Invoice.where('status = ? AND date_of_an_invoice BETWEEN ? AND ?', 'PAID', Date.today.beginning_of_week - 7.days, Date.today.beginning_of_week)
+  end
+
   def get_this_week_invoices
     Invoice.where('date_of_an_invoice BETWEEN ? AND ?', Date.today.beginning_of_week, Date.today)
   end
 
-  def get_previous_week_invoices
+  def get_last_week_invoices
     Invoice.where('date_of_an_invoice BETWEEN ? AND ?', Date.today.beginning_of_week - 7.days, Date.today.beginning_of_week)
   end
 

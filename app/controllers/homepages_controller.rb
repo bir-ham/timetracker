@@ -5,7 +5,11 @@ class HomepagesController < ApplicationController
 
   def dashboard
     @invoice = Invoice.new
-    @all_incomes = @invoice.get_all_incomes
+    @invoices = Invoice.all
+    @paid_invoices = @invoice.get_all_paid_invoices
+    @all_incomes = @invoice.get_all_paid_invoices_amount
+    @this_week_incomes = @invoice.get_this_week_paid_invoices_amount
+    @last_week_incomes = @invoice.get_last_week_paid_invoices_amount
   end
 
   def landing_page
