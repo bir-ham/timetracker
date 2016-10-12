@@ -4,7 +4,7 @@
     .panel.profit.panel-default.m-b-m
       .panel-body.text-center
         h2.m-t-s.m-b-s $233,000
-        h3.text-bold.m-b-n.turquoise All income
+        h3.text-bold.m-b-n.turquoise = I18n.t('dashboards.index.all_income')
         small Lorem ipsum dolor sit amet, consectetur adipiscing elit vestibulum.
 
   .col-sm-6.col-md-3
@@ -12,7 +12,7 @@
       .panel-body
         .clearfix
           .pull-left
-            strong.text-uppercase Invoices
+            strong.text-uppercase = I18n.t('dashboards.index.invoices')
           .pull-right
             .main-icon = icon('file-o')
         h3.m-t-s.m-b-s 136
@@ -22,47 +22,48 @@
             .sr-only 60% Complete (success)
         .clearfix
           .pull-left
-            small Today
-            h4.m-t-n.text-bold $75,000
+            small = I18n.t('dashboards.index.last_week')
+            h4.m-t-xs.text-bold $75,000
           .pull-right
-            small % Last week
-            h4.m-t-n.text-bold
+            small = I18n.t('dashboards.index.this_week')
+            h4.m-t-xs.text-bold
               |$2,000
-              span.turquoise
-                = icon('level-up')
-  .col-sm-6.col-md-3
-    .panel.task.panel-default.m-b-m
-      .panel-body
-        .clearfix
-          .pull-left
-            strong.text-uppercase Tasks
-          .pull-right
-            .main-icon = icon('tasks')
-        h2.m-t-s.m-b-s.turquoise
-          |34
-          small  completed
-        strong Summary
-        .clearfix
-        small
-          |You are left with
-          strong 12
-          |undone tasks
+              span = icon('level-up text-success')
   .col-sm-6.col-md-3
     .panel.panel-default.m-b-m
       .panel-body
         .clearfix
           .pull-left
-            strong.text-uppercase Customers
+            strong.text-uppercase = I18n.t('dashboards.index.invoices')
           .pull-right
             .main-icon = icon('money')
         = icon('area-chart turquoise')
         .clearfix
           .pull-left
-            small Visits/Day
-            h4.m-t-n.text-bold 7.8
+            small = I18n.t('dashboards.index.average_visits')
+            h4.m-t-xs.text-bold 7.8
           .pull-right
-            small % New Visists
-            h4.m-t-n.text-bold 2%
+            small = I18n.t('dashboards.index.visits_today')
+            h4.m-t-xs.text-bold
+              |2
+              span = icon('level-down text-danger')
+  .col-sm-6.col-md-3
+    .panel.task.panel-default.m-b-m
+      .panel-body
+        .clearfix
+          .pull-left
+            strong.text-uppercase = I18n.t('dashboards.index.tasks')
+          .pull-right
+            .main-icon = icon('tasks')
+        h2.m-t-s.m-b-s.turquoise
+          |34
+          small
+            '
+            = I18n.t('dashboards.index.completed')
+        strong Summary
+        .clearfix
+        - tasks = 12
+        small = raw I18n.t('dashboards.index.you_left_with', tasks: content_tag(:strong, tasks))
 
 .row.mbl
   .col-lg-7

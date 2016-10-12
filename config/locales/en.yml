@@ -78,6 +78,20 @@ en:
     index:
       header: Dashboard
       description: Welcome this is your dashboard
+      invoices: Invoices
+      all_income: All income
+      customers: Customers
+      paid_invoices: Paid invoces
+      summary: Summary
+      today: Today
+      sales_and_projects: Sales and Projects
+      tasks: Tasks
+      last_week: Last_week
+      this_week: This week
+      average_visits: "Average visits/day"
+      visits_today: Visits today
+      completed: Completed
+      you_left_with: "You left with %{tasks} uncompleted tasks"
   accounts:
     new:
       header: Create an Account
