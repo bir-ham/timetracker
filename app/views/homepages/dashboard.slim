@@ -16,7 +16,7 @@
           .pull-right
             .main-icon = icon('money')
 
-        = content_tag :canvas, "", id: "incomes", data: {incomes: paid_invoices_chart_data }
+        = content_tag :canvas, "", id: "incomes", data: {paid_invoices: paid_invoices_chart_data }
         .clearfix
           .pull-left
             small = I18n.t('dashboards.index.last_week')
@@ -78,15 +78,14 @@
                 span = icon('level-down text-danger')
 
 .row
-  .col-lg-7
+  .col-lg-6
     .panel.panel-default.panel-transparent-header
       .panel-heading
         .panel-title = I18n.t('dashboards.index.invoicing_performance')
       .panel-body
-        = content_tag :canvas, "", id: "invoicing-performance"
-        /,  data: {paid_invoices: paid_invoices_chart_data, pending_invoices: pending_invoices_chart_data, overdue_invoices: overdue_invoices_chart_data}
+        = content_tag :canvas, "", id: "invoicing-performance", data: {pending_invoices: pending_invoices_chart_data, overdue_invoices: overdue_invoices_chart_data}
 
-  .col-lg-5
+  .col-lg-6
     .panel.panel-default.panel-transparent-header
       .panel-heading
         .panel-title = I18n.t('dashboards.index.tasks')

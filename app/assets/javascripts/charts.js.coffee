@@ -3,23 +3,47 @@ jQuery ->
   Date::formatMMDDYYY = ->
     @getDate() + '/' + (@getMonth() + 1) + '/' + @getFullYear()
 
+
+  # JSON
+  paid_invoices_data = []
+  paid_invoices_labels = []
+  paid_invoices = $('#incomes').data('paid-invoices')
+
+  pending_invoices_data = []
+  pending_invoices = $('#invoicing-performance').data('pending-invoices')
+
+  overdue_invoices_data = []
+  overdue_invoices = $('#invoicing-performance').data('overdue-invoices')
+
+  paid_invoices.forEach (item) ->
+    paid_invoices_labels.push(item.date_of_an_invoice)
+    paid_invoices_data.push(parseFloat(item.paid))
+    return
+  pending_invoices.forEach (item) ->
+    pending_invoices_data.push(parseFloat(item.paid))
+    return
+  overdue_invoices.forEach (item) ->
+    overdue_invoices_data.push(parseFloat(item.paid))
+    return
+
+  # invoicing performance
   new Chart($('#invoicing-performance'), {
     type: 'bar',
     data: {
-      labels: ["2014", "2013", "2012", "2011"],
+      labels: paid_invoices_labels,
       datasets: [{
         label: 'Paid'
-        data: [727, 589, 537, 543],
+        data: paid_invoices_data,
         backgroundColor: "rgba(63,103,126,1)",
         hoverBackgroundColor: "rgba(50,90,100,1)"
       },{
         label: 'Pending'
-        data: [238, 553, 746, 884],
+        data: pending_invoices_data,
         backgroundColor: "rgba(163,103,126,1)",
         hoverBackgroundColor: "rgba(140,85,100,1)"
       },{
         label: 'Overdue'
-        data: [1238, 553, 746, 884],
+        data: overdue_invoices_data,
         backgroundColor: "rgba(63,203,226,1)",
         hoverBackgroundColor: "rgba(46,185,235,1)"
       }]
@@ -28,56 +52,54 @@ jQuery ->
       hover :{
         animationDuration:0
       },
+      legend: {
+        lineWidth: 0
+      },
       scales: {
         yAxes: [{
           ticks: {
             beginAtZero:true
-            fontSize:11
           }
-          stacked: true
-        }]
+          stacked: true,
+          barThickness: 10,
+        }],
         xAxes: [{
-          stacked: true
+          stacked: true,
+          barThickness: 10,
         }]
       }
     }
   });
 
-
-  income_data = []
-  income_labels = []
-  incomes = $('#incomes').data('incomes')
-
-  incomes.forEach (item) ->
-    income_labels.push(item.date_of_an_invoice)
-    income_data.push(parseFloat(item.paid))
-    return
-
   # Incomes
   data = {
     type: 'line',
     data: {
-      labels : income_labels,
+      labels : paid_invoices_labels,
       datasets : [{
-        fillColor             : "rgba(151,187,205,0.2)",
-        strokeColor           : "rgba(151,187,205,1)",
-        pointColor            : "rgba(151,187,205,1)",
-        pointStrokeColor      : "#fff",
-        pointHighlightFill    : "#fff",
-        pointHighlightStroke  : "rgba(151,187,205,1)",
-        data                  : income_data
+        backgroundColor           : "rgb(125,164,13)",
+        borderColor            : "rgb(125,164,13)",
+        data                  : paid_invoices_data
       }]
     }
     options: {
+      legend: {
+        display: false,
+        labels: {
+          display: false
+        }
+      },
       scales: {
         xAxes: [{
-          display: false,
-          position: 'bottom'
-        }],
-        yAxes: {
-          left: 5,
-          bottom: 5
-        }
+          display: false
+        }]
+        yAxes: [{
+          paddingLeft: -10
+          margins: {
+            left: -10,
+            bottom: -10,
+          }
+        }]
       }
     }
 

@@ -1,7 +1,7 @@
 module InvoicesHelper
 
   def paid_invoices_chart_data
-    (4.weeks.ago.to_date..Date.today).select(&:sunday?).each_with_index.map do |date, index|
+    (4.weeks.ago.to_date..Date.today).select(&:sunday?).map do |date|
       sales = Sale.joins(:invoice).where(invoices: {status: 'PAID', date_of_an_invoice: date..date+7})
       projects = Project.joins(:invoice).where(invoices: {status: 'PAID', date_of_an_invoice: date..date+7})
 
@@ -35,7 +35,7 @@ module InvoicesHelper
   end
 
   def pending_invoices_chart_data
-    (4.weeks.ago.to_date..Date.today).select(&:sunday?).each_with_index.map do |date, index|
+    (4.weeks.ago.to_date..Date.today).select(&:sunday?).map do |date|
       sales = Sale.joins(:invoice).where(invoices: {status: 'PENDING', date_of_an_invoice: date..date+7})
       projects = Project.joins(:invoice).where(invoices: {status: 'PENDING', date_of_an_invoice: date..date+7})
 
@@ -69,7 +69,7 @@ module InvoicesHelper
   end
 
   def overdue_invoices_chart_data
-    (4.weeks.ago.to_date..Date.today).map do |date|
+    (4.weeks.ago.to_date..Date.today).select(&:sunday?).map do |date|
       sales = Sale.joins(:invoice).where(invoices: {status: 'OVERDUE', date_of_an_invoice: date..date+7})
       projects = Project.joins(:invoice).where(invoices: {status: 'OVERDUE', date_of_an_invoice: date..date+7})
 
