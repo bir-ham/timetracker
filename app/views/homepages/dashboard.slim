@@ -16,7 +16,7 @@
           .pull-right
             .main-icon = icon('money')
 
-        = icon('area-chart turquoise')
+        = content_tag :canvas, "", id: "incomes", data: {incomes: paid_invoices_chart_data }
         .clearfix
           .pull-left
             small = I18n.t('dashboards.index.last_week')
@@ -83,6 +83,8 @@
       .panel-heading
         .panel-title = I18n.t('dashboards.index.invoicing_performance')
       .panel-body
+        = content_tag :canvas, "", id: "invoicing-performance"
+        /,  data: {paid_invoices: paid_invoices_chart_data, pending_invoices: pending_invoices_chart_data, overdue_invoices: overdue_invoices_chart_data}
 
   .col-lg-5
     .panel.panel-default.panel-transparent-header

@@ -27,7 +27,7 @@
 //= require pickers
 
 // ChartsJS
-//= requrie Chart
+//= require Chart
 
 // Local files
 //= require confirmation_modal
@@ -35,3 +35,4 @@
 //= require scroll
 //= require datatable
 //= require date_time_picker
+//= require charts
