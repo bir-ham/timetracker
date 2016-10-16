@@ -102,4 +102,31 @@ module InvoicesHelper
     end
   end
 
+  def two_weeks_projects_chart_data
+    projects = Project.where(created_at: 2.weeks.ago.to_date..Date.today)
+
+    new_projects = 0
+    ongoing_projects = 0
+    finished_projects = 0
+    delayed_projects = 0
+    for project in projects
+      if project.status == 'NEW'
+        new_projects +=1
+      elsif project.status == 'ONGOING'
+        ongoing_projects +=1
+      elsif project.status == 'FINISHED'
+        finished_projects +=1
+      elsif project.status == 'DELAYED'
+        delayed_projects +=1
+      end
+    end
+
+    {
+      new_projects: new_projects,
+      ongoing_projects: ongoing_projects,
+      finished_projects: finished_projects,
+      delayed_projects: delayed_projects
+    }
+  end
+
 end

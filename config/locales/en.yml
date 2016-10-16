@@ -83,6 +83,7 @@ en:
       customers: Customers
       paid_invoices: Paid invoces
       tasks: Tasks
+      projects: Projects
       summary: Summary
       today: Today
       sales_and_projects: Sales and Projects

@@ -3,7 +3,7 @@ jQuery ->
   Date::formatMMDDYYY = ->
     @getDate() + '/' + (@getMonth() + 1) + '/' + @getFullYear()
 
-  # JSON
+  # invoicing performance
   paid_invoices_data = []
   paid_invoices_labels = []
   paid_invoices = $('#incomes').data('paid-invoices')
@@ -25,7 +25,6 @@ jQuery ->
     overdue_invoices_data.push(parseFloat(item.paid))
     return
 
-  # invoicing performance
   new Chart($('#invoicing-performance'), {
     type: 'bar',
     data: {
@@ -51,6 +50,29 @@ jQuery ->
       legend: {
         label: {
           border: false
+        }
+      }
+    }
+  });
+
+  # Projects doughnut chart
+  two_weeks_projects = $('#projects').data('two-weeks-projects')
+
+  new Chart($('#projects'), {
+    type: 'doughnut',
+    data: {
+      labels: ['NEW', 'PENDING', 'FINISHED', 'OVERDUE'],
+      datasets: [{
+        data: [two_weeks_projects.new_projects, two_weeks_projects.delayed_projects,
+          two_weeks_projects.ongoing_projects, two_weeks_projects.finished_projects],
+        backgroundColor: ["#199CD5", "#F0730F", "#7DA40D", "#be0a0a"]
+      }]
+    },
+    options: {
+      legend: {
+        display: false,
+        labels: {
+          display: false
         }
       }
     }

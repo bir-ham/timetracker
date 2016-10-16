@@ -34,15 +34,10 @@
       .panel-body
         .clearfix
           .pull-left
-            h5.text-uppercase = I18n.t('dashboards.index.invoices')
+            h5.text-uppercase = I18n.t('dashboards.index.projects')
           .pull-right
             .main-icon = icon('file-o')
-        h3.m-t-s.m-b-s = @invoices.size
-        strong = I18n.t('dashboards.index.paid_invoices')
-        - pecentage_of_paid_invoices = (@paid_invoices.size * 100)/@invoices.size
-        .progress.progress-small.m-t-xs.m-b-m
-          .progress-bar.progress-bar-turquoise role="progressbar" aria-valuenow="#{pecentage_of_paid_invoices}" aria-valuemin="0" aria-valuemax="100" style="width: #{pecentage_of_paid_invoices}%;"
-            .sr-only #{pecentage_of_paid_invoices}% Complete (success)
+        = content_tag :canvas, "", id: "projects", data: {two_weeks_projects: two_weeks_projects_chart_data }
         .clearfix
           .pull-left
             small = I18n.t('dashboards.index.last_week')
@@ -55,6 +50,13 @@
                 span = icon('level-up text-success')
               - else
                 span = icon('level-down text-danger')
+
+        /strong = I18n.t('dashboards.index.paid_invoices')
+        /- pecentage_of_paid_invoices = (@paid_invoices.size * 100)/@invoices.size
+        /.progress.progress-small.m-t-xs.m-b-m
+          .progress-bar.progress-bar-turquoise role="progressbar" aria-valuenow="#{pecentage_of_paid_invoices}" aria-valuemin="0" aria-valuemax="100" style="width: #{pecentage_of_paid_invoices}%;"
+            .sr-only #{pecentage_of_paid_invoices}% Complete (success)
+
   .col-sm-6.col-md-3
     .panel.panel-default.m-b-m
       .panel-body
