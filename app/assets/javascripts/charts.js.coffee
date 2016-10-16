@@ -3,7 +3,6 @@ jQuery ->
   Date::formatMMDDYYY = ->
     @getDate() + '/' + (@getMonth() + 1) + '/' + @getFullYear()
 
-
   # JSON
   paid_invoices_data = []
   paid_invoices_labels = []
@@ -34,39 +33,25 @@ jQuery ->
       datasets: [{
         label: 'Paid'
         data: paid_invoices_data,
-        backgroundColor: "rgba(63,103,126,1)",
-        hoverBackgroundColor: "rgba(50,90,100,1)"
+        backgroundColor: "rgb(125,164,13)",
+        hoverBackgroundColor: "rgb(148,168,13)"
       },{
         label: 'Pending'
         data: pending_invoices_data,
-        backgroundColor: "rgba(163,103,126,1)",
-        hoverBackgroundColor: "rgba(140,85,100,1)"
+        backgroundColor: "rgb(240,115,15)",
+        hoverBackgroundColor: "rgb(241,149,70)"
       },{
         label: 'Overdue'
         data: overdue_invoices_data,
-        backgroundColor: "rgba(63,203,226,1)",
-        hoverBackgroundColor: "rgba(46,185,235,1)"
+        backgroundColor: "rgb(190,10,10)",
+        hoverBackgroundColor: "rgb(190,59,10)"
       }]
     },
     options: {
-      hover :{
-        animationDuration:0
-      },
       legend: {
-        lineWidth: 0
-      },
-      scales: {
-        yAxes: [{
-          ticks: {
-            beginAtZero:true
-          }
-          stacked: true,
-          barThickness: 10,
-        }],
-        xAxes: [{
-          stacked: true,
-          barThickness: 10,
-        }]
+        label: {
+          border: false
+        }
       }
     }
   });
@@ -106,3 +91,5 @@ jQuery ->
   }
 
   new Chart($('#incomes'), data)
+
+
