@@ -125,7 +125,8 @@ module InvoicesHelper
       new_projects: new_projects,
       ongoing_projects: ongoing_projects,
       finished_projects: finished_projects,
-      delayed_projects: delayed_projects
+      delayed_projects: delayed_projects,
+      total: new_projects + ongoing_projects + finished_projects + delayed_projects
     }
   end
 

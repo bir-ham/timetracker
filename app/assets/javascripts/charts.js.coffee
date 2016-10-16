@@ -52,13 +52,23 @@ jQuery ->
           border: false
         }
       }
+      scales: {
+        xAxes: [{
+          ticks: {
+            beginAtZero:true
+          },
+          gridLines: {
+            display:false
+          }
+        }]
+      }
     }
   });
 
   # Projects doughnut chart
   two_weeks_projects = $('#projects').data('two-weeks-projects')
-
-  new Chart($('#projects'), {
+  (two_weeks_projects.new_projects*100)/(two_weeks_projects.total * 100)
+  doughnutData =  {
     type: 'doughnut',
     data: {
       labels: ['NEW', 'PENDING', 'FINISHED', 'OVERDUE'],
@@ -69,14 +79,19 @@ jQuery ->
       }]
     },
     options: {
+      animation: {
+        animateScale: true,
+        animateRotate: true
+      }
       legend: {
         display: false,
         labels: {
-          display: false
+          display: false,
         }
       }
     }
-  });
+  }
+  new Chart($('#projects'), doughnutData)
 
   # Incomes
   data = {
