@@ -35,7 +35,7 @@
           .pull-left
             h5.text-uppercase = I18n.t('dashboards.index.projects')
           .pull-right
-            .main-icon = icon('file-o')
+            .main-icon = icon('suitcase')
         = content_tag :canvas, "", id: "projects", data: {two_weeks_projects: two_weeks_projects_chart_data }
         .clearfix
           strong = I18n.t('dashboards.index.new_projects')
@@ -67,16 +67,17 @@
             h5.text-uppercase = I18n.t('dashboards.index.customers')
           .pull-right
             .main-icon = icon('group')
-        h3.m-t-s.m-b-s = @customers.size
+        = content_tag :canvas, "", id: "customers", data: {customers: customers_chart_data }
+        - customers_visit_this_week = customers_chart_data[3][:customers_visit_per_week]
         .clearfix
           .pull-left
-            small = I18n.t('dashboards.index.average_visits')
-            h4.m-t-xs.m-b-n.text-bold = @customers_per_day
+            small = I18n.t('dashboards.index.average_visits_per_week')
+            h4.m-t-xs.m-b-n.text-bold = customers_chart_data[0][:customers_visit_average]
           .pull-right
-            small = I18n.t('dashboards.index.visits_this_week')
+            small = I18n.t('dashboards.index.this_week_visits')
             h4.m-t-xs.m-b-n.text-bold
-              = @this_week_customers.size
-              - if @this_week_customers.size.to_f > @customers_per_day.to_f
+              = customers_visit_this_week
+              - if customers_visit_this_week.to_f > customers_chart_data[0][:customers_average].to_f
                 span = icon('level-up text-success')
               - else
                 span = icon('level-down text-danger')

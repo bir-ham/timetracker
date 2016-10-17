@@ -1,4 +1,6 @@
 class Customer < ActiveRecord::Base
+  has_many :sales, dependent: :destroy
+  has_many :projects, dependent: :destroy
 
   validates :name, presence: true, uniqueness: { case_sensitive: false }
   validates :phone_number, presence: true, uniqueness: true, allow_blank: true,

@@ -60,24 +60,23 @@ class Invoice < ActiveRecord::Base
     end
   end
 
-  def get_all_paid_invoices
-    paid_invoices = Invoice.where('status = ?', 'PAID')
-  end
+  def get_all_paid_invoices_amount
+    sales = Sale.joins(:invoice).where(invoices: {status: 'PAID'})
+    projects = Project.joins(:invoice).where(invoices: {status: 'PAID'})
 
-  def get_this_week_paid_invoices
-    Invoice.where('status = ? AND date_of_an_invoice BETWEEN ? AND ?', 'PAID', Date.today.beginning_of_week, Date.today)
-  end
-
-  def get_last_week_paid_invoices
-    Invoice.where('status = ? AND date_of_an_invoice BETWEEN ? AND ?', 'PAID', Date.today.beginning_of_week - 7.days, Date.today.beginning_of_week)
-  end
-
-  def get_this_week_invoices
-    Invoice.where('date_of_an_invoice BETWEEN ? AND ?', Date.today.beginning_of_week, Date.today)
-  end
-
-  def get_last_week_invoices
-    Invoice.where('date_of_an_invoice BETWEEN ? AND ?', Date.today.beginning_of_week - 7.days, Date.today.beginning_of_week)
+    paid_items = 0
+    for sale in sales
+      for item in sale.items
+        paid_items += item.total
+      end
+    end
+    paid_tasks = 0
+    for project in projects
+      for task in project.tasks
+        paid_tasks += task.total
+      end
+    end
+    return paid_items + paid_tasks
   end
 
   private

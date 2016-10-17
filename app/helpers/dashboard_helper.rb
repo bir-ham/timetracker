@@ -1,4 +1,4 @@
-module InvoicesHelper
+module DashboardHelper
 
   def paid_invoices_chart_data
     (4.weeks.ago.to_date..Date.today).select(&:sunday?).map do |date|
@@ -136,6 +136,32 @@ module InvoicesHelper
         finished_projects: finished_projects,
         delayed_projects: delayed_projects,
         total: new_projects + ongoing_projects + finished_projects + delayed_projects
+      }
+    end
+  end
+
+  def customers_chart_data
+    all_customers = Customer.joins(:sales, :projects)
+    days_since_account_creation = Date.today - (current_account.created_at).to_date
+    weeks_since_account_creation = days_since_account_creation/7
+    customers_visist_average = '%.2f' % (all_customers.size.to_f/weeks_since_account_creation.to_f)
+
+    (4.weeks.ago.to_date..Date.today).select(&:sunday?).map do |date|
+      customers = Customer.joins(:sales, :projects).where(created_at:  date..date+7)
+
+      date_name = ''
+      if date.strftime("%U").to_i == Date.today.strftime("%U").to_i
+        date_name = 'This week'
+      elsif date.strftime("%U").to_i == 7.days.ago.to_date.strftime("%U").to_i
+        date_name = 'Last week'
+      else
+        date_name = 'Week ' +date.strftime("%U").to_i.to_s
+      end
+
+      {
+        date_name: date_name,
+        customers_visit_per_week: customers.size,
+        customers_visit_average: customers_visist_average
       }
     end
   end

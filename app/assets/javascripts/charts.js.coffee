@@ -14,18 +14,18 @@ jQuery ->
   overdue_invoices_data = []
   overdue_invoices = $('#invoicing-performance').data('overdue-invoices')
 
-  paid_invoices.forEach (item) ->
-    paid_invoices_labels.push(item.date_of_an_invoice)
-    paid_invoices_data.push(parseFloat(item.paid))
+  paid_invoices.forEach (invoice) ->
+    paid_invoices_labels.push(invoice.date_of_an_invoice)
+    paid_invoices_data.push(parseFloat(invoice.paid))
     return
-  pending_invoices.forEach (item) ->
-    pending_invoices_data.push(parseFloat(item.paid))
+  pending_invoices.forEach (invoice) ->
+    pending_invoices_data.push(parseFloat(invoice.paid))
     return
-  overdue_invoices.forEach (item) ->
-    overdue_invoices_data.push(parseFloat(item.paid))
+  overdue_invoices.forEach (invoice) ->
+    overdue_invoices_data.push(parseFloat(invoice.paid))
     return
 
-  barOptions = {
+  invoiceOptions = {
     scaleBeginAtZero : true,
     scaleShowGridLines : true,
     scaleGridLineColor : "rgba(0,0,0,.05)",
@@ -52,7 +52,7 @@ jQuery ->
     }
   }
 
-  barData = {
+  invoicesData = {
     type: 'bar',
     data: {
       labels: paid_invoices_labels,
@@ -74,7 +74,7 @@ jQuery ->
       }]
     }
   }
-  new Chart($('#invoicing-performance'), barData, barOptions)
+  new Chart($('#invoicing-performance'), invoicesData, invoiceOptions)
 
   # Projects doughnut chart
   two_weeks_projects = $('#projects').data('two-weeks-projects')
@@ -83,7 +83,7 @@ jQuery ->
   ongoing_projects = two_weeks_projects[0].ongoing_projects + two_weeks_projects[1].ongoing_projects
   finished_projects = two_weeks_projects[0].finished_projects + two_weeks_projects[1].finished_projects
 
-  doughnutData =  {
+  projectsData =  {
     type: 'doughnut',
     data: {
       labels: ['NEW', 'PENDING', 'FINISHED', 'OVERDUE'],
@@ -105,10 +105,10 @@ jQuery ->
       }
     }
   }
-  new Chart($('#projects'), doughnutData)
+  new Chart($('#projects'), projectsData)
 
   # Incomes
-  data = {
+  incomesData = {
     type: 'line',
     data: {
       labels : paid_invoices_labels,
@@ -116,6 +116,8 @@ jQuery ->
         backgroundColor: "rgba(125,164,13, 0.75)",
         borderColor: "rgba(125,164,13, 1)",
         borderWidth: 1,
+        pointRadius: 2,
+        pointBackgroundColor: "rgba(125,164,13, 1)",
         data: paid_invoices_data
       }]
     }
@@ -142,6 +144,55 @@ jQuery ->
 
   }
 
-  new Chart($('#incomes'), data)
+  new Chart($('#incomes'), incomesData)
 
+  # Customers
+  customers = $('#customers').data('customers')
+  customers_visit_per_week = []
+  customers_visit_average = []
+  customers_visit_labels = []
+  console.log('Customers', customers_visit_per_week)
+  customers.forEach (customer) ->
+    customers_visit_average.push(customer.customers_visit_average)
+    customers_visit_per_week.push(customer.customers_visit_per_week)
+    customers_visit_labels.push(customer.date_name)
 
+  customersData = {
+    type: 'line',
+    data: {
+      labels : customers_visit_labels,
+      datasets: [
+        {
+          borderColor: "#7DA40D",
+          borderWidth: 1,
+          fill: false,
+          pointRadius: 2,
+          pointBackgroundColor: "#7DA40D",
+          data:  customers_visit_per_week
+        },
+        {
+          borderColor: "#be0a0a",
+          borderWidth: 1,
+          fill: false,
+          pointRadius: 2,
+          pointBackgroundColor: "#be0a0a",
+          data: customers_visit_average
+        }
+      ]
+    },
+    options: {
+      legend: {
+        display: false,
+        labels: {
+          display: false
+        }
+      },
+      scales: {
+        xAxes: [{
+          display: false
+        }]
+      }
+    }
+
+  }
+  new Chart($('#customers'), customersData)
