@@ -90,9 +90,10 @@ en:
       incomes: Incomes
       last_week: Last week
       this_week: This week
-      average_visits: "Average visits/day"
-      visits_today: Visits today
+      average_visits: "Average visits/week"
+      visits_this_week: Visits this week
       invoicing_performance: Invoicing performance
+      new_projects: New projects
   accounts:
     new:
       header: Create an Account

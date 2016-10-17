@@ -25,32 +25,19 @@ jQuery ->
     overdue_invoices_data.push(parseFloat(item.paid))
     return
 
-  new Chart($('#invoicing-performance'), {
-    type: 'bar',
-    data: {
-      labels: paid_invoices_labels,
-      datasets: [{
-        label: 'Paid'
-        data: paid_invoices_data,
-        backgroundColor: "rgb(125,164,13)",
-        hoverBackgroundColor: "rgb(148,168,13)"
-      },{
-        label: 'Pending'
-        data: pending_invoices_data,
-        backgroundColor: "rgb(240,115,15)",
-        hoverBackgroundColor: "rgb(241,149,70)"
-      },{
-        label: 'Overdue'
-        data: overdue_invoices_data,
-        backgroundColor: "rgb(190,10,10)",
-        hoverBackgroundColor: "rgb(190,59,10)"
-      }]
-    },
+  barOptions = {
+    scaleBeginAtZero : true,
+    scaleShowGridLines : true,
+    scaleGridLineColor : "rgba(0,0,0,.05)",
+    scaleGridLineWidth : 1,
+    barShowStroke : true,
+    barStrokeWidth : 1,
+    barValueSpacing : 5,
+    barDatasetSpacing : 1,
+    responsive:true,
     options: {
       legend: {
-        label: {
-          border: false
-        }
+        borderWidth: false
       }
       scales: {
         xAxes: [{
@@ -63,19 +50,46 @@ jQuery ->
         }]
       }
     }
-  });
+  }
+
+  barData = {
+    type: 'bar',
+    data: {
+      labels: paid_invoices_labels,
+      datasets: [{
+        label: 'Paid'
+        data: paid_invoices_data,
+        backgroundColor: "rgba(125,164,13,0.75)",
+        borderWidth     : 2,
+      },{
+        label: 'Pending'
+        data: pending_invoices_data,
+        backgroundColor: "rgba(240,115,15,0.75)",
+        borderWidth     : 2,
+      },{
+        label: 'Overdue'
+        data: overdue_invoices_data,
+        backgroundColor: "rgba(190,10,10,0.75)",
+        borderWidth     : 2,
+      }]
+    }
+  }
+  new Chart($('#invoicing-performance'), barData, barOptions)
 
   # Projects doughnut chart
   two_weeks_projects = $('#projects').data('two-weeks-projects')
-  (two_weeks_projects.new_projects*100)/(two_weeks_projects.total * 100)
+  new_projects = two_weeks_projects[0].new_projects + two_weeks_projects[1].new_projects
+  delayed_projects = two_weeks_projects[0].delayed_projects + two_weeks_projects[1].delayed_projects
+  ongoing_projects = two_weeks_projects[0].ongoing_projects + two_weeks_projects[1].ongoing_projects
+  finished_projects = two_weeks_projects[0].finished_projects + two_weeks_projects[1].finished_projects
+
   doughnutData =  {
     type: 'doughnut',
     data: {
       labels: ['NEW', 'PENDING', 'FINISHED', 'OVERDUE'],
       datasets: [{
-        data: [two_weeks_projects.new_projects, two_weeks_projects.delayed_projects,
-          two_weeks_projects.ongoing_projects, two_weeks_projects.finished_projects],
-        backgroundColor: ["#199CD5", "#F0730F", "#7DA40D", "#be0a0a"]
+        data: [new_projects, delayed_projects, ongoing_projects, finished_projects],
+        backgroundColor: ["rgba(25,156,213, 0.75)", "rgba(240,115,15, 0.75)", "rgba(125,164,13, 0.75)", "rgba(190,10,10, 075)"]
       }]
     },
     options: {
@@ -99,9 +113,10 @@ jQuery ->
     data: {
       labels : paid_invoices_labels,
       datasets : [{
-        backgroundColor           : "rgb(125,164,13)",
-        borderColor            : "rgb(125,164,13)",
-        data                  : paid_invoices_data
+        backgroundColor: "rgba(125,164,13, 0.75)",
+        borderColor: "rgba(125,164,13, 1)",
+        borderWidth: 1,
+        data: paid_invoices_data
       }]
     }
     options: {

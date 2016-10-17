@@ -60,63 +60,6 @@ class Invoice < ActiveRecord::Base
     end
   end
 
-  def get_all_paid_invoices_amount
-    paid_invoices = self.get_all_paid_invoices
-
-    items_total = 0
-    tasks_total = 0
-    for invoice in paid_invoices
-      if invoice.sale_id?
-        for item in invoice.sale.items
-          items_total += item.total
-        end
-      elsif invoice.project_id?
-        for task in invoice.project.tasks
-          tasks_total += task.total
-        end
-      end
-    end
-    return items_total + tasks_total
-  end
-
-  def get_this_week_paid_invoices_amount
-    paid_invoices = self.get_this_week_paid_invoices
-
-    items_total = 0
-    tasks_total = 0
-    for invoice in paid_invoices
-      if invoice.sale_id?
-        for item in invoice.sale.items
-          items_total += item.total
-        end
-      elsif invoice.project_id?
-        for task in invoice.project.tasks
-          tasks_total += task.total
-        end
-      end
-    end
-    return items_total + tasks_total
-  end
-
-  def get_last_week_paid_invoices_amount
-    paid_invoices = self.get_last_week_paid_invoices
-
-    items_total = 0
-    tasks_total = 0
-    for invoice in paid_invoices
-      if invoice.sale_id?
-        for item in invoice.sale.items
-          items_total += item.total
-        end
-      elsif invoice.project_id?
-        for task in invoice.project.tasks
-          tasks_total += task.total
-        end
-      end
-    end
-    return items_total + tasks_total
-  end
-
   def get_all_paid_invoices
     paid_invoices = Invoice.where('status = ?', 'PAID')
   end

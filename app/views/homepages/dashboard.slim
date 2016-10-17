@@ -1,36 +1,35 @@
 - breadcrumb :root
 .row.dashboard-card
   .col-sm-6.col-md-3
-    .panel.profit.panel-default.m-b-m
+    .panel.profit.panel-default
       .panel-body.text-center
         h2.m-t-s.m-b-s = number_to_currency(@all_incomes)
         h3.text-bold.m-b-n.text-success = I18n.t('dashboards.index.all_income')
         small Lorem ipsum dolor sit amet, consectetur adipiscing elit vestibulum.
 
   .col-sm-6.col-md-3
-    .panel.income.panel-default.m-b-m
+    .panel.income.panel-default
       .panel-body
         .clearfix
           .pull-left
             h5.text-uppercase = I18n.t('dashboards.index.incomes')
           .pull-right
             .main-icon = icon('money')
-
         = content_tag :canvas, "", id: "incomes", data: {paid_invoices: paid_invoices_chart_data }
         .clearfix
           .pull-left
             small = I18n.t('dashboards.index.last_week')
-            h4.m-t-xs.m-b-n.text-bold = number_to_currency(@last_week_incomes)
+            h4.m-t-xs.m-b-n.text-bold = number_to_currency(paid_invoices_chart_data[2][:paid])
           .pull-right
             small = I18n.t('dashboards.index.this_week')
             h4.m-t-xs.m-b-n.text-bold
-              = number_to_currency(@this_week_incomes)
-              - if @this_week_incomes.to_f > @last_week_incomes.to_f
+              = number_to_currency( paid_invoices_chart_data[3][:paid])
+              - if  paid_invoices_chart_data[3][:paid].to_f >  paid_invoices_chart_data[2][:paid].to_f
                 span = icon('level-up text-success')
               - else
                 span = icon('level-down text-danger')
   .col-sm-6.col-md-3
-    .panel.task.panel-default.m-b-m
+    .panel.task.panel-default
       .panel-body
         .clearfix
           .pull-left
@@ -39,14 +38,17 @@
             .main-icon = icon('file-o')
         = content_tag :canvas, "", id: "projects", data: {two_weeks_projects: two_weeks_projects_chart_data }
         .clearfix
+          strong = I18n.t('dashboards.index.new_projects')
+          hr.m-t-n.m-b-n
+          .clearfix
           .pull-left
             small = I18n.t('dashboards.index.last_week')
-            h4.m-t-xs.m-b-n.text-bold = @last_week_invoices
+            h4.m-t-xs.m-b-n.text-bold = two_weeks_projects_chart_data[0][:new_projects]
           .pull-right
             small = I18n.t('dashboards.index.this_week')
             h4.m-t-xs.m-b-n.text-bold
-              = @this_week_invoices
-              - if @this_week_invoices.to_f > @last_week_invoices.to_f
+              = two_weeks_projects_chart_data[1][:new_projects]
+              - if two_weeks_projects_chart_data[1][:new_projects].to_i > two_weeks_projects_chart_data[0][:new_projects].to_i
                 span = icon('level-up text-success')
               - else
                 span = icon('level-down text-danger')
@@ -58,7 +60,7 @@
             .sr-only #{pecentage_of_paid_invoices}% Complete (success)
 
   .col-sm-6.col-md-3
-    .panel.panel-default.m-b-m
+    .panel.panel-default
       .panel-body
         .clearfix
           .pull-left
@@ -71,7 +73,7 @@
             small = I18n.t('dashboards.index.average_visits')
             h4.m-t-xs.m-b-n.text-bold = @customers_per_day
           .pull-right
-            small = I18n.t('dashboards.index.visits_today')
+            small = I18n.t('dashboards.index.visits_this_week')
             h4.m-t-xs.m-b-n.text-bold
               = @this_week_customers.size
               - if @this_week_customers.size.to_f > @customers_per_day.to_f
