@@ -60,17 +60,20 @@ jQuery ->
         label: 'Paid'
         data: paid_invoices_data,
         backgroundColor: "rgba(125,164,13,0.75)",
-        borderWidth     : 2,
+        hoverBackgroundColor: "rgba(125,164,13,1)",
+        borderWidth: 2
       },{
         label: 'Pending'
         data: pending_invoices_data,
         backgroundColor: "rgba(240,115,15,0.75)",
-        borderWidth     : 2,
+        hoverBackgroundColor: "rgba(240,115,15,1)",
+        borderWidth: 2,
       },{
         label: 'Overdue'
         data: overdue_invoices_data,
         backgroundColor: "rgba(190,10,10,0.75)",
-        borderWidth     : 2,
+        hoverBackgroundColor: "rgba(240,115,15,0.75)",
+        borderWidth: 2
       }]
     }
   }
@@ -89,7 +92,8 @@ jQuery ->
       labels: ['NEW', 'PENDING', 'FINISHED', 'OVERDUE'],
       datasets: [{
         data: [new_projects, delayed_projects, ongoing_projects, finished_projects],
-        backgroundColor: ["rgba(25,156,213, 0.75)", "rgba(240,115,15, 0.75)", "rgba(125,164,13, 0.75)", "rgba(190,10,10, 075)"]
+        backgroundColor: ["rgba(25,156,213,0.75)", "rgba(240,115,15,0.75)", "rgba(125,164,13,0.75)", "rgba(190,10,10,0.75)"]
+        hoverBackgroundColor: ["rgba(25,156,213,1)", "rgba(240,115,15,1)",  "rgba(240,115,15,1)", "rgba(240,115,15,1)"]
       }]
     },
     options: {
