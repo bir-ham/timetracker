@@ -1,20 +1,24 @@
 module DashboardHelper
 
   def paid_invoices_chart_data
-    (4.weeks.ago.to_date..Date.today).select(&:sunday?).map do |date|
-      sales = Sale.joins(:invoice).where(invoices: {status: 'PAID', date_of_an_invoice: date..date+7})
-      projects = Project.joins(:invoice).where(invoices: {status: 'PAID', date_of_an_invoice: date..date+7})
+    paid_items = Item.paid_items_grouped_by_date_of_an_invoice(4.weeks.ago)
+    paid_tasks = Task.paid_tasks_grouped_by_date_of_an_invoice(4.weeks.ago)
 
-      paid_items = 0
-      for sale in sales
-        for item in sale.items
-          paid_items += item.total
+    (4.weeks.ago.to_date..Date.today).select(&:monday?).map do |date|
+      items = paid_items[date]
+      tasks = paid_tasks[date]
+
+      items_total = 0
+      unless items.nil?
+        for item in items
+          items_total += item.total
         end
       end
-      paid_tasks = 0
-      for project in projects
-        for task in project.tasks
-          paid_tasks += task.total
+
+      tasks_total = 0
+      unless tasks.nil?
+        for task in tasks
+          tasks_total += task.total
         end
       end
 
@@ -29,26 +33,30 @@ module DashboardHelper
 
       {
         date_of_an_invoice: date_name,
-        paid: paid_items + paid_tasks
+        paid: items_total + tasks_total
       }
     end
   end
 
   def pending_invoices_chart_data
-    (4.weeks.ago.to_date..Date.today).select(&:sunday?).map do |date|
-      sales = Sale.joins(:invoice).where(invoices: {status: 'PENDING', date_of_an_invoice: date..date+7})
-      projects = Project.joins(:invoice).where(invoices: {status: 'PENDING', date_of_an_invoice: date..date+7})
+    pending_items = Item.pending_items_grouped_by_date_of_an_invoice(4.weeks.ago)
+    pending_tasks = Task.pending_tasks_grouped_by_date_of_an_invoice(4.weeks.ago)
 
-      paid_items = 0
-      for sale in sales
-        for item in sale.items
-          paid_items += item.total
+    (4.weeks.ago.to_date..Date.today).select(&:monday?).map do |date|
+      items = pending_items[date]
+      tasks = pending_tasks[date]
+
+      items_total = 0
+      unless items.nil?
+        for item in items
+          items_total += item.total
         end
       end
-      paid_tasks = 0
-      for project in projects
-        for task in project.tasks
-          paid_tasks += task.total
+
+      tasks_total = 0
+      unless tasks.nil?
+        for task in tasks
+          tasks_total += task.total
         end
       end
 
@@ -63,26 +71,30 @@ module DashboardHelper
 
       {
         date_of_an_invoice: date_name,
-        paid: paid_items + paid_tasks
+        paid: items_total + tasks_total
       }
     end
   end
 
   def overdue_invoices_chart_data
-    (4.weeks.ago.to_date..Date.today).select(&:sunday?).map do |date|
-      sales = Sale.joins(:invoice).where(invoices: {status: 'OVERDUE', date_of_an_invoice: date..date+7})
-      projects = Project.joins(:invoice).where(invoices: {status: 'OVERDUE', date_of_an_invoice: date..date+7})
+    overdue_items = Item.overdue_items_grouped_by_date_of_an_invoice(4.weeks.ago)
+    overdue_tasks = Task.overdue_tasks_grouped_by_date_of_an_invoice(4.weeks.ago)
 
-      paid_items = 0
-      for sale in sales
-        for item in sale.items
-          paid_items += item.total
+    (4.weeks.ago.to_date..Date.today).select(&:monday?).map do |date|
+     items = overdue_items[date]
+      tasks = overdue_tasks[date]
+
+      items_total = 0
+      unless items.nil?
+        for item in items
+          items_total += item.total
         end
       end
-      paid_tasks = 0
-      for project in projects
-        for task in project.tasks
-          paid_tasks += task.total
+
+      tasks_total = 0
+      unless tasks.nil?
+        for task in tasks
+          tasks_total += task.total
         end
       end
 
@@ -97,7 +109,7 @@ module DashboardHelper
 
       {
         date_of_an_invoice: date_name,
-        paid: paid_items + paid_tasks
+        paid: items_total + tasks_total
       }
     end
   end
