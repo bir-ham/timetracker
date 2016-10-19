@@ -1,6 +1,11 @@
 - breadcrumb :customers
 .row
   .col-sm-12
+    = link_to new_customer_path, class: 'btn btn-primary'
+      = icon('plus')
+      |&nbsp;
+      = I18n.t('customers.index.add_new_customer_button')
+    .m-b-xl
     - unless @customers.empty?
       .table-responsive
         table.table.table-striped
@@ -26,11 +31,3 @@
 
     - else
       p.text-danger = I18n.t('customers.index.empty_customers')
-      .m-b-xl
-
-    .btn-toolbar
-      = link_to new_customer_path, class: 'btn btn-primary'
-        = icon('plus')
-        |&nbsp;
-        = I18n.t('customers.index.add_new_customer_button')
-

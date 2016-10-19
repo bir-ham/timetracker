@@ -215,7 +215,7 @@ en:
       header: Invoices
       are_you_sure: Are you sure?
       empty_invoices: You have no invoices yet
-      create_invoice: Create Invoice
+      create_invoice: Create new Invoice
     new:
       header: New Invoice
       create_invoice: Create Invoice

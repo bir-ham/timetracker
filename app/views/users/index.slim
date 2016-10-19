@@ -4,7 +4,8 @@
     .well
       h3
         |Invite User
-        small  Test
+        '
+        small Test
       = simple_form_for(User.new, url: user_invitation_path,
               html: { class: 'form-inline'}) do |f|
         '

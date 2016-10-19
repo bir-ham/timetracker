@@ -17,11 +17,12 @@
           strong = @invoice.status
       h2
         = I18n.t('invoices.show.header')
+        '
         small
           - if @invoice.sale_id?
-            = I18n.t('sales.show.header')
+            = @invoice.sale.date.strftime("%d/%m/%Y")+ " ("+@invoice.sale.customer.name+")"
           - elsif @invoice.project_id?
-            = I18n.t('projects.show.header')
+            = @invoice.project.name
       .row
         .col-sm-6
           dl.dl-horizontal
@@ -39,8 +40,8 @@
               |Description:
             dd = @invoice.description
 
-        .col-sm-6
-          dl.dl-horizontal
+        .col-sm-6.pull-right
+          dl.dl-horizontal.pull-right
             dt = I18n.t('invoices.show.from')
             dd = @invoice.user.first_name
             .m-t-xl
@@ -93,8 +94,7 @@
                   th = I18n.t('sales.items.show.unit')
                   th = I18n.t('sales.items.show.unit_price')
                   th = I18n.t('sales.items.show.vat')
-                  - unless @invoice.sale.items.empty?
-                    th = I18n.t('sales.items.show.total')
+                  th = I18n.t('sales.items.show.total')
               tbody
                 - running_total = 0
                 - @invoice.sale.items.each do |item|
@@ -107,10 +107,16 @@
                     td = number_to_currency(item.total)
 
                   - running_total += item.total
-                - unless @invoice.sale.items.empty?
-                  tr.background-white
-                    td colspan="5"
-                    td = number_to_currency(running_total)
+
+                tr.background-white
+                  td colspan="5"
+                  td = number_to_currency(running_total)
+
+          = link_to @invoice.sale, class: 'btn btn-primary btn-sm btn-outline' do
+            = icon('pencil-square-o white')
+            |&nbsp;
+            = I18n.t('button.edit')
+
         - else
           p.text-danger.m-t-s = I18n.t('sales.show.no_items')
           = link_to @invoice.sale, class: 'btn btn-primary btn-sm m-b-m'
@@ -129,13 +135,10 @@
                 th = I18n.t('projects.tasks.show.payment_type')
                 th = I18n.t('projects.tasks.show.price')
                 th = I18n.t('projects.tasks.show.vat')
-                - unless @invoice.sale.project.tasks.empty?
-                  th = I18n.t('projects.tasks.show.total')
-                  th.text-center = I18n.t('button.edit')
-                  th.text-center = I18n.t('button.delete')
+                th = I18n.t('projects.tasks.show.total')
             tbody
               - running_total = 0
-              - @sale.project.tasks.each do |task|
+              - @invoice.project.tasks.each do |task|
                 tr
                   td = task.name
                   td = task.hours
@@ -144,18 +147,17 @@
                   td = task.vat
                   td = number_to_currency(task.total)
                   td.text-center
-                    = link_to edit_project_task_path(@project,task), class: 'btn btn-info btn-xs' do
-                      = icon('pencil-square-o')
-                  td.text-center
-                    = link_to [@project, task], method: :delete, class: 'btn btn-danger btn-xs' do
-                      = icon('trash')
 
                 - running_total += task.total
 
-              - unless @sale.project.tasks.empty?
-                tr.background-white
-                  td colspan="5"
-                  td = number_to_currency(running_total)
+              tr.background-white
+                td colspan="5"
+                td = number_to_currency(running_total)
+
+          = link_to @invoice.project, class: 'btn btn-primary btn-sm btn-outline' do
+            = icon('pencil-square-o white')
+            |&nbsp;
+            = I18n.t('button.edit')
 
         - else
           p.text-danger.m-t-s = I18n.t('projects.show.no_items')
