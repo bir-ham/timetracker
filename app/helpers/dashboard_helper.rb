@@ -81,7 +81,7 @@ module DashboardHelper
     overdue_tasks = Task.overdue_tasks_grouped_by_date_of_an_invoice(4.weeks.ago)
 
     (4.weeks.ago.to_date..Date.today).select(&:monday?).map do |date|
-     items = overdue_items[date]
+      items = overdue_items[date]
       tasks = overdue_tasks[date]
 
       items_total = 0
