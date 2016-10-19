@@ -84,6 +84,7 @@ en:
       paid_invoices: Paid invoces
       tasks: Tasks
       projects: Projects
+      sales: Sales
       summary: Summary
       today: Today
       sales_and_projects: Sales and Projects
@@ -94,6 +95,7 @@ en:
       this_week_visits: This week visits
       invoicing_performance: Invoicing performance
       new_projects: New projects
+      preparing_sales: Preparing sales
   accounts:
     new:
       header: Create an Account

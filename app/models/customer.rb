@@ -13,8 +13,13 @@ class Customer < ActiveRecord::Base
 
   validate :any_or_both_phone_email
 
-   def get_this_week_customer_number
+  def get_this_week_customer_number
     Customer.where('created_at BETWEEN ? AND ?', Date.today.beginning_of_week, Date.today)
+  end
+
+  def self.grouped_by_week(start)
+    customers = Customer.joins(:sales, :projects).where(created_at: start.beginning_of_day..Time.zone.now)
+    customers.group_by { |c| c.created_at.to_date.beginning_of_week }
   end
 
   private

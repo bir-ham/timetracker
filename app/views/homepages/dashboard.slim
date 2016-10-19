@@ -25,8 +25,10 @@
             h4.m-t-xs.m-b-n.text-bold
               = number_to_currency( paid_invoices_chart_data[3][:paid])
               - if  paid_invoices_chart_data[3][:paid].to_f >  paid_invoices_chart_data[2][:paid].to_f
+                |&nbsp;
                 span = icon('level-up text-success')
               - else
+                |&nbsp;
                 span = icon('level-down text-danger')
   .col-sm-6.col-md-3
     .panel.task.panel-default
@@ -36,21 +38,23 @@
             h5.text-uppercase = I18n.t('dashboards.index.projects')
           .pull-right
             .main-icon = icon('suitcase')
-        = content_tag :canvas, "", id: "projects", data: {two_weeks_projects: two_weeks_projects_chart_data }
+        = content_tag :canvas, "", id: "projects", data: {projects_status: projects_status_chart_data }
         .clearfix
           strong = I18n.t('dashboards.index.new_projects')
           hr.m-t-n.m-b-n
           .clearfix
           .pull-left
             small = I18n.t('dashboards.index.last_week')
-            h4.m-t-xs.m-b-n.text-bold = two_weeks_projects_chart_data[0][:new_projects]
+            h4.m-t-xs.m-b-n.text-bold = projects_status_chart_data[2][:new_projects]
           .pull-right
             small = I18n.t('dashboards.index.this_week')
             h4.m-t-xs.m-b-n.text-bold
-              = two_weeks_projects_chart_data[1][:new_projects]
-              - if two_weeks_projects_chart_data[1][:new_projects].to_i > two_weeks_projects_chart_data[0][:new_projects].to_i
+              = projects_status_chart_data[3][:new_projects]
+              - if projects_status_chart_data[3][:new_projects].to_i > projects_status_chart_data[2][:new_projects].to_i
+                |&nbsp;
                 span = icon('level-up text-success')
               - else
+                |&nbsp;
                 span = icon('level-down text-danger')
 
         /strong = I18n.t('dashboards.index.paid_invoices')
@@ -64,22 +68,26 @@
       .panel-body
         .clearfix
           .pull-left
-            h5.text-uppercase = I18n.t('dashboards.index.customers')
+            h5.text-uppercase = I18n.t('dashboards.index.sales')
           .pull-right
-            .main-icon = icon('group')
-        = content_tag :canvas, "", id: "customers", data: {customers: customers_chart_data }
-        - customers_visit_this_week = customers_chart_data[3][:customers_visit_per_week]
+            .main-icon = icon('shopping-cart')
+        = content_tag :canvas, "", id: "sales", data: {sales_status: sales_status_chart_data }
         .clearfix
+          strong = I18n.t('dashboards.index.preparing_sales')
+          hr.m-t-n.m-b-n
+          .clearfix
           .pull-left
-            small = I18n.t('dashboards.index.average_visits_per_week')
-            h4.m-t-xs.m-b-n.text-bold = customers_chart_data[0][:customers_visit_average]
+            small = I18n.t('dashboards.index.last_week')
+            h4.m-t-xs.m-b-n.text-bold = sales_status_chart_data[2][:preparing_sales]
           .pull-right
-            small = I18n.t('dashboards.index.this_week_visits')
+            small = I18n.t('dashboards.index.this_week')
             h4.m-t-xs.m-b-n.text-bold
-              = customers_visit_this_week
-              - if customers_visit_this_week.to_f > customers_chart_data[0][:customers_average].to_f
+              = sales_status_chart_data[3][:preparing_sales]
+              - if sales_status_chart_data[3][:preparing_sales].to_i > sales_status_chart_data[2][:preparing_sales].to_i
+                |&nbsp;
                 span = icon('level-up text-success')
               - else
+                |&nbsp;
                 span = icon('level-down text-danger')
 
 .row
@@ -130,3 +138,29 @@
                     = icon('trash-o')
       .panel-footer
         Lorem lipsum
+
+.row
+  .col-sm-6.col-md-3
+    .panel.panel-default
+      .panel-body
+        .clearfix
+          .pull-left
+            h5.text-uppercase = I18n.t('dashboards.index.customers')
+          .pull-right
+            .main-icon = icon('group')
+        = content_tag :canvas, "", id: "customers", data: {customers: customers_chart_data }
+        - customers_visit_this_week = customers_chart_data[3][:customers_visit_per_week]
+        .clearfix
+          .pull-left
+            small = I18n.t('dashboards.index.average_visits_per_week')
+            h4.m-t-xs.m-b-n.text-bold = customers_chart_data[0][:customers_visit_average]
+          .pull-right
+            small = I18n.t('dashboards.index.this_week_visits')
+            h4.m-t-xs.m-b-n.text-bold
+              = customers_visit_this_week
+              - if customers_visit_this_week.to_f > customers_chart_data[0][:customers_average].to_f
+                |&nbsp;
+                span = icon('level-up text-success')
+              - else
+                |&nbsp;
+                span = icon('level-down text-danger')
