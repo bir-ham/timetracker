@@ -185,6 +185,20 @@ a {
   background: $xx-light-grey;
 }
 
+.panel-transparent-header {
+  background: none;
+  border: none;
+  .panel-heading {
+    background: transparent;
+  }
+  .panel-body {
+    background: $white;
+    border-left: 1px solid $light-grey;
+    border-right: 1px solid $light-grey;
+    border-bottom: 1px solid $light-grey;
+  }
+}
+
 .panel-dark-header-outline {
   .panel-heading {
     border-bottom: 1px solid $black;
@@ -212,6 +226,7 @@ a {
 .panel-danger-top-outline {
   border-top: 2px solid $red;
 }
+
 // Progress bar
 .progress {
   background-color: $xx-light-grey;

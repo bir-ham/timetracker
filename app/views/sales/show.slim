@@ -2,21 +2,21 @@
 .row
   .col-sm-10
     .well
-      h2 = I18n.t('sales.show.header')
+      h2 #{@sale.date.strftime("%d/%m/%Y")+ " ("+@sale.customer.name+")"}
       dl.dl-horizontal
         dt = I18n.t('sales.show.customer')
         dd = @sale.customer.name
         dt = I18n.t('sales.show.user')
         dd = @sale.user.first_name
         dt = I18n.t('sales.show.date')
-        dd = @sale.date
+        dd = @sale.date.strftime("%d/%m/%Y")
         dt = I18n.t('sales.show.status')
         dd
           - case @sale.status
           - when 'PREPARING'
             span.label.label-info = @sale.status
           - when 'WAITTING'
-            span.label.label-warning = @sale.status
+            span.label.label-danger = @sale.status
           - when 'DELIVERED'
             span.label.label-success = @sale.status
           - else

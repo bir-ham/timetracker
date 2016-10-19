@@ -34,7 +34,7 @@ class InvoicesDatatable
             running_total += item.total
           end
         elsif invoice.project_id?
-          invoice.project.task.each do |task|
+          invoice.project.tasks.each do |task|
             running_total += task.total
           end
         end

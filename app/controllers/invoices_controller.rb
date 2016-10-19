@@ -17,8 +17,8 @@ class InvoicesController < ApplicationController
     @invoice = Invoice.new(session[:invoice_params])
     @invoice.current_step = session[:invoice_step]
 
-    @sales = Sale.get_sales_without_invoice
-    @projects = Project.get_projects_without_invoice
+    @sales = Sale.new.get_sales_without_invoice
+    @projects = Project.new.get_projects_without_invoice
   end
 
   def create

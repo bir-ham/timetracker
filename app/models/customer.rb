@@ -1,4 +1,6 @@
 class Customer < ActiveRecord::Base
+  has_many :sales, dependent: :destroy
+  has_many :projects, dependent: :destroy
 
   validates :name, presence: true, uniqueness: { case_sensitive: false }
   validates :phone_number, presence: true, uniqueness: true, allow_blank: true,
@@ -11,11 +13,20 @@ class Customer < ActiveRecord::Base
 
   validate :any_or_both_phone_email
 
-  private
-  def any_or_both_phone_email
-    if phone_number.blank? and email.blank?
-      errors.add(:base, 'add a phone number or an email. Not both empty')
-    end
+  def get_this_week_customer_number
+    Customer.where('created_at BETWEEN ? AND ?', Date.today.beginning_of_week, Date.today)
   end
+
+  def self.grouped_by_week(start)
+    customers = Customer.joins(:sales, :projects).where(created_at: start.beginning_of_day..Time.zone.now)
+    customers.group_by { |c| c.created_at.to_date.beginning_of_week }
+  end
+
+  private
+    def any_or_both_phone_email
+      if phone_number.blank? and email.blank?
+        errors.add(:base, 'add a phone number or an email. Not both empty')
+      end
+    end
 
 end

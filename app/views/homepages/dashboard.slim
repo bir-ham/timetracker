@@ -1,82 +1,107 @@
 - breadcrumb :root
-.row.dashboard-card.m-b-l
+.row.dashboard-card
   .col-sm-6.col-md-3
-    .panel.profit.panel-default.m-b-m
+    .panel.profit.panel-default
       .panel-body.text-center
-        h2.m-t-s.m-b-s $233,000
-        h3.text-bold.m-b-n.turquoise All income
+        h2.m-t-s.m-b-s = number_to_currency(@all_incomes)
+        h3.text-bold.m-b-n.text-success = I18n.t('dashboards.index.all_income')
         small Lorem ipsum dolor sit amet, consectetur adipiscing elit vestibulum.
 
   .col-sm-6.col-md-3
-    .panel.income.panel-default.m-b-m
+    .panel.income.panel-default
       .panel-body
         .clearfix
           .pull-left
-            strong.text-uppercase Invoices
-          .pull-right
-            .main-icon = icon('file-text')
-        h3.m-t-s.m-b-s 136
-        strong Paid invoices
-        .progress.progress-small.m-t-xs.m-b-m
-          .progress-bar.progress-bar-turquoise role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"
-            .sr-only 60% Complete (success)
-        .clearfix
-          .pull-left
-            small Today
-            h4.m-t-n.text-bold $75,000
-          .pull-right
-            small % Last week
-            h4.m-t-n.text-bold
-              |$2,000
-              span.turquoise
-                = icon('level-up')
-  .col-sm-6.col-md-3
-    .panel.task.panel-default.m-b-m
-      .panel-body
-        .clearfix
-          .pull-left
-            strong.text-uppercase Tasks
-          .pull-right
-            .main-icon = icon('tasks')
-        h2.m-t-s.m-b-s.turquoise
-          |34
-          small  completed
-        strong Summary
-        .clearfix
-        small
-          |You are left with
-          strong 12
-          |undone tasks
-  .col-sm-6.col-md-3
-    .panel.panel-default.m-b-m
-      .panel-body
-        .clearfix
-          .pull-left
-            strong.text-uppercase Customers
+            h5.text-uppercase = I18n.t('dashboards.index.incomes')
           .pull-right
             .main-icon = icon('money')
-        = icon('area-chart turquoise')
+        = content_tag :canvas, "", id: "incomes", data: {paid_invoices: paid_invoices_chart_data }
         .clearfix
           .pull-left
-            small Visits/Day
-            h4.m-t-n.text-bold 7.8
+            small = I18n.t('dashboards.index.last_week')
+            h4.m-t-xs.m-b-n.text-bold = number_to_currency(paid_invoices_chart_data[2][:paid])
           .pull-right
-            small % New Visists
-            h4.m-t-n.text-bold 2%
+            small = I18n.t('dashboards.index.this_week')
+            h4.m-t-xs.m-b-n.text-bold
+              = number_to_currency( paid_invoices_chart_data[3][:paid])
+              - if  paid_invoices_chart_data[3][:paid].to_f >  paid_invoices_chart_data[2][:paid].to_f
+                |&nbsp;
+                span = icon('level-up text-success')
+              - else
+                |&nbsp;
+                span = icon('level-down text-danger')
+  .col-sm-6.col-md-3
+    .panel.task.panel-default
+      .panel-body
+        .clearfix
+          .pull-left
+            h5.text-uppercase = I18n.t('dashboards.index.projects')
+          .pull-right
+            .main-icon = icon('suitcase')
+        = content_tag :canvas, "", id: "projects", data: {projects_status: projects_status_chart_data }
+        .clearfix
+          strong = I18n.t('dashboards.index.new_projects')
+          hr.m-t-n.m-b-n
+          .clearfix
+          .pull-left
+            small = I18n.t('dashboards.index.last_week')
+            h4.m-t-xs.m-b-n.text-bold = projects_status_chart_data[2][:new_projects]
+          .pull-right
+            small = I18n.t('dashboards.index.this_week')
+            h4.m-t-xs.m-b-n.text-bold
+              = projects_status_chart_data[3][:new_projects]
+              - if projects_status_chart_data[3][:new_projects].to_i > projects_status_chart_data[2][:new_projects].to_i
+                |&nbsp;
+                span = icon('level-up text-success')
+              - else
+                |&nbsp;
+                span = icon('level-down text-danger')
 
-.row.mbl
-  .col-lg-7
+        /strong = I18n.t('dashboards.index.paid_invoices')
+        /- pecentage_of_paid_invoices = (@paid_invoices.size * 100)/@invoices.size
+        /.progress.progress-small.m-t-xs.m-b-m
+          .progress-bar.progress-bar-turquoise role="progressbar" aria-valuenow="#{pecentage_of_paid_invoices}" aria-valuemin="0" aria-valuemax="100" style="width: #{pecentage_of_paid_invoices}%;"
+            .sr-only #{pecentage_of_paid_invoices}% Complete (success)
+
+  .col-sm-6.col-md-3
     .panel.panel-default
       .panel-body
-        h4.mbs Salling performance
-        p.help-block Sed ut perspiciatis unde omnis iste natus error sit voluptatem...
-        #area-chart-spline style="width: 100%; height: 300px; padding: 0px; position: relative;"
-          canvas class="flot-base" width="206" height="300" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 206px; height: 300px;"
+        .clearfix
+          .pull-left
+            h5.text-uppercase = I18n.t('dashboards.index.sales')
+          .pull-right
+            .main-icon = icon('shopping-cart')
+        = content_tag :canvas, "", id: "sales", data: {sales_status: sales_status_chart_data }
+        .clearfix
+          strong = I18n.t('dashboards.index.preparing_sales')
+          hr.m-t-n.m-b-n
+          .clearfix
+          .pull-left
+            small = I18n.t('dashboards.index.last_week')
+            h4.m-t-xs.m-b-n.text-bold = sales_status_chart_data[2][:preparing_sales]
+          .pull-right
+            small = I18n.t('dashboards.index.this_week')
+            h4.m-t-xs.m-b-n.text-bold
+              = sales_status_chart_data[3][:preparing_sales]
+              - if sales_status_chart_data[3][:preparing_sales].to_i > sales_status_chart_data[2][:preparing_sales].to_i
+                |&nbsp;
+                span = icon('level-up text-success')
+              - else
+                |&nbsp;
+                span = icon('level-down text-danger')
 
-  .col-lg-5
-    .panel.panel-default
+.row
+  .col-lg-6
+    .panel.panel-default.panel-transparent-header
       .panel-heading
-        .panel-title Todo List
+        .panel-title = I18n.t('dashboards.index.invoicing_performance')
+      .panel-body
+        = content_tag :canvas, "", id: "invoicing-performance", data: {pending_invoices: pending_invoices_chart_data, overdue_invoices: overdue_invoices_chart_data}
+
+  .col-lg-6
+    .panel.panel-default.panel-transparent-header
+      .panel-heading
+        .panel-title = I18n.t('dashboards.index.tasks')
       .panel-body
         .portlet-body style="overflow: hidden;"
           .slimScrollDiv style="position: relative; overflow: hidden; width: 100%; height: 250px;"
@@ -113,3 +138,29 @@
                     = icon('trash-o')
       .panel-footer
         Lorem lipsum
+
+.row.dashboard-card
+  .col-sm-6.col-md-3
+    .panel.panel-default
+      .panel-body
+        .clearfix
+          .pull-left
+            h5.text-uppercase = I18n.t('dashboards.index.customers')
+          .pull-right
+            .main-icon = icon('group')
+        = content_tag :canvas, "", id: "customers", data: {customers: customers_chart_data }
+        - customers_visit_this_week = customers_chart_data[3][:customers_visit_per_week]
+        .clearfix
+          .pull-left
+            small = I18n.t('dashboards.index.average_visits_per_week')
+            h4.m-t-xs.m-b-n.text-bold = customers_chart_data[0][:customers_visit_average]
+          .pull-right
+            small = I18n.t('dashboards.index.this_week_visits')
+            h4.m-t-xs.m-b-n.text-bold
+              = customers_visit_this_week
+              - if customers_visit_this_week.to_f > customers_chart_data[0][:customers_average].to_f
+                |&nbsp;
+                span = icon('level-up text-success')
+              - else
+                |&nbsp;
+                span = icon('level-down text-danger')

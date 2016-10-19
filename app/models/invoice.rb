@@ -2,8 +2,8 @@ class Invoice < ActiveRecord::Base
   attr_accessor :current_step
 
   belongs_to :user
-  belongs_to :sale, dependent: :destroy
-  belongs_to :project, dependent: :destroy
+  belongs_to :sale
+  belongs_to :project
 
   validates :user, presence: true, if: lambda { |i| i.current_step == 'user_sale_project' }
   validates :sale, presence: true, allow_nil: true, if: lambda { |i| i.current_step == 'user_sale_project' }
@@ -58,6 +58,25 @@ class Invoice < ActiveRecord::Base
       self.current_step = step
       valid?
     end
+  end
+
+  def get_all_paid_invoices_amount
+    sales = Sale.joins(:invoice).where(invoices: {status: 'PAID'})
+    projects = Project.joins(:invoice).where(invoices: {status: 'PAID'})
+
+    paid_items = 0
+    for sale in sales
+      for item in sale.items
+        paid_items += item.total
+      end
+    end
+    paid_tasks = 0
+    for project in projects
+      for task in project.tasks
+        paid_tasks += task.total
+      end
+    end
+    return paid_items + paid_tasks
   end
 
   private

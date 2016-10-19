@@ -2,6 +2,11 @@
 
 .row
   .col-sm-12
+    = link_to new_project_path, class: 'btn btn-primary'
+      = icon ('pencil')
+      |&nbsp;
+      = I18n.t('projects.index.create_new_project')
+    .m-b-xl
     - unless @projects.empty?
       /.btn-toolbar.text-center
         = link_to "Download CSV", projects_path(format: "csv"), class: 'btn btn-outline btn-primary btn-sm'
@@ -70,9 +75,3 @@
             li.list-group-item = I18n.t('projects.index.no_tasks')
     - else
       p.text-danger = I18n.t('projects.index.empty_projects')
-      .m-b-xl
-    .btn-toolbar
-      = link_to new_project_path, class: 'btn btn-primary'
-        = icon ('pencil')
-        |&nbsp;
-        = I18n.t('projects.index.create_new_project')

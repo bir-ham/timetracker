@@ -78,6 +78,24 @@ en:
     index:
       header: Dashboard
       description: Welcome this is your dashboard
+      invoices: Invoices
+      all_income: All income
+      customers: Customers
+      paid_invoices: Paid invoces
+      tasks: Tasks
+      projects: Projects
+      sales: Sales
+      summary: Summary
+      today: Today
+      sales_and_projects: Sales and Projects
+      incomes: Incomes
+      last_week: Last week
+      this_week: This week
+      average_visits_per_week: "Average visits/week"
+      this_week_visits: This week visits
+      invoicing_performance: Invoicing performance
+      new_projects: New projects
+      preparing_sales: Preparing sales
   accounts:
     new:
       header: Create an Account
@@ -197,7 +215,7 @@ en:
       header: Invoices
       are_you_sure: Are you sure?
       empty_invoices: You have no invoices yet
-      create_invoice: Create Invoice
+      create_invoice: Create new Invoice
     new:
       header: New Invoice
       create_invoice: Create Invoice

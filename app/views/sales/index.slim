@@ -1,6 +1,11 @@
 - breadcrumb :sales
 .row
   .col-sm-12
+    = link_to new_sale_path, class: 'btn btn-primary'
+      = icon('plus')
+      |&nbsp;
+      = I18n.t('sales.index.add_new_sale')
+    .m-b-xl
     - unless @sales.empty?
       - @sales.each do |sale|
         - background = ''
@@ -14,7 +19,7 @@
           - text_color = 'text-info'
         - when 'WAITING'
           - background = 'background-warning'
-          - text_color = 'text-danger'
+          - text_color = 'text-warning'
         - else
           | Unknown status
         .well.well-sm.m-b-xs.well-left-text
@@ -49,10 +54,3 @@
 
     - else
       p.text-danger = I18n.t('sales.index.empty_sales')
-      .m-b-xl
-
-    .btn-toolbar
-      = link_to new_sale_path, class: 'btn btn-primary'
-        = icon('plus')
-        |&nbsp;
-        = I18n.t('sales.index.add_new_sale')

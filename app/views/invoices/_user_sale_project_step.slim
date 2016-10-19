@@ -1,5 +1,6 @@
 h2.text-center
   = I18n.t('invoices.new.header')
+  '
   small = I18n.t('invoices.new.customer_and_user_details')
 
 = f.association :user, collection: User.all, label_method: :first_name, value_method: :id, prompt: I18n.t('invoices.new.select_user'), multiple: false, required: true

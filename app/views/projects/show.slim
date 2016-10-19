@@ -2,7 +2,7 @@
 .row
   .col-sm-10
     .well
-      h2 = I18n.t('projects.show.header')
+      h2 = @project.name
       dl.dl-horizontal
         dt = I18n.t('projects.show.customer')
         dd = @project.customer.name
@@ -17,9 +17,9 @@
             span.label.label-info = @project.status
           - when 'ONGOING'
             span.label.label-warning  = @project.status
-          - when 'FINISHEDD'
+          - when 'FINISHED'
             span.label.label-success  = @project.status
-          - when 'DELAYE'
+          - when 'DELAYED'
             span.label.label-danger  = @project.status
           - else
             | Unknown status
