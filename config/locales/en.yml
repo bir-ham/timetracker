@@ -96,6 +96,7 @@ en:
       invoicing_performance: Invoicing performance
       new_projects: New projects
       preparing_sales: Preparing sales
+      no_tasks: You have no tasks
   accounts:
     new:
       header: Create an Account

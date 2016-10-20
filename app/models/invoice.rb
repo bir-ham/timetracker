@@ -60,25 +60,6 @@ class Invoice < ActiveRecord::Base
     end
   end
 
-  def get_all_paid_invoices_amount
-    sales = Sale.joins(:invoice).where(invoices: {status: 'PAID'})
-    projects = Project.joins(:invoice).where(invoices: {status: 'PAID'})
-
-    paid_items = 0
-    for sale in sales
-      for item in sale.items
-        paid_items += item.total
-      end
-    end
-    paid_tasks = 0
-    for project in projects
-      for task in project.tasks
-        paid_tasks += task.total
-      end
-    end
-    return paid_items + paid_tasks
-  end
-
   private
     def choose_xor_deadline_payment_term
       unless deadline.blank? ^ payment_term.blank?

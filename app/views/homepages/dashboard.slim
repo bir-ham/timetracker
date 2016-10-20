@@ -98,69 +98,56 @@
       .panel-body
         = content_tag :canvas, "", id: "invoicing-performance", data: {pending_invoices: pending_invoices_chart_data, overdue_invoices: overdue_invoices_chart_data}
 
+    .row.dashboard-card
+      .col-sm-6.col-md-6
+        .panel.panel-default
+          .panel-body
+            .clearfix
+              .pull-left
+                h5.text-uppercase = I18n.t('dashboards.index.customers')
+              .pull-right
+                .main-icon = icon('group')
+            = content_tag :canvas, "", id: "customers", data: {customers: customers_chart_data }
+            - customers_visit_this_week = customers_chart_data[3][:customers_visit_per_week]
+            .clearfix
+              .pull-left
+                small = I18n.t('dashboards.index.average_visits_per_week')
+                h4.m-t-xs.m-b-n.text-bold = customers_chart_data[0][:customers_visit_average]
+              .pull-right
+                small = I18n.t('dashboards.index.this_week_visits')
+                h4.m-t-xs.m-b-n.text-bold
+                  = customers_visit_this_week
+                  - if customers_visit_this_week.to_f > customers_chart_data[0][:customers_average].to_f
+                    |&nbsp;
+                    span = icon('level-up text-success')
+                  - else
+                    |&nbsp;
+                    span = icon('level-down text-danger')
+
   .col-lg-6
     .panel.panel-default.panel-transparent-header
       .panel-heading
         .panel-title = I18n.t('dashboards.index.tasks')
       .panel-body
-        .portlet-body style="overflow: hidden;"
-          .slimScrollDiv style="position: relative; overflow: hidden; width: 100%; height: 250px;"
-            ul.todo-list.sortable.ui-sortable style="overflow: hidden; width: 100%; height: 250px;"
-              li.clearfix
-                span.drag-drop
-                  = icon('')
-                .todo-check.pull-left
-                  .icheckbox_minimal-grey style="position: relative;"
-                    input type="checkbox" value="" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"
-                    ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"
-                .todo-title Sed ut perspiciatis unde omnis iste
-                .todo-actions.pull-right.clearfix
-                  a href="#" class="todo-complete"
-                    = icon('check')
-                  a href="#" class="todo-edit"
-                    = icon('edit')
-                  a href="#" class="todo-remove"
-                    = icon('trash-o')
-              li.clearfix
-                span.drag-drop
-                  = icon('')
-                .todo-check.pull-left
-                  .icheckbox_minimal-grey style="position: relative;"
-                    input type="checkbox" value="" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"
-                    ins class="iCheck-helper" style="position: absolute; top: -20%; left: -20%; display: block; width: 140%; height: 140%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"
-                .todo-title Sed ut perspiciatis unde omnis iste
-                .todo-actions.pull-right.clearfix
-                  a href="#" class="todo-complete"
-                    = icon('check')
-                  a href="#" class="todo-edit"
-                    = icon('edit')
-                  a href="#" class="todo-remove"
-                    = icon('trash-o')
+        p.text-uppercase = I18n.t('invoices.index.header')
+        ul.list-group
+          li.list-group-item
+        p.text-uppercase = I18n.t('projects.index.header')
+        ul.list-group
+          li.list-group-item
+        p.text-uppercase = I18n.t('sales.index.header')
+        ul.list-group
+          li.list-group-item
+        p.text-uppercase = I18n.t('customers.index.header')
+        ul.list-group
+          li.list-group-item
+        p.text-uppercase = I18n.t('users.index.header')
+        ul.list-group
+          li.list-group-item
+
+        p.text-primary = I18n.t('dashboards.index.no_tasks')
+
       .panel-footer
         Lorem lipsum
 
-.row.dashboard-card
-  .col-sm-6.col-md-3
-    .panel.panel-default
-      .panel-body
-        .clearfix
-          .pull-left
-            h5.text-uppercase = I18n.t('dashboards.index.customers')
-          .pull-right
-            .main-icon = icon('group')
-        = content_tag :canvas, "", id: "customers", data: {customers: customers_chart_data }
-        - customers_visit_this_week = customers_chart_data[3][:customers_visit_per_week]
-        .clearfix
-          .pull-left
-            small = I18n.t('dashboards.index.average_visits_per_week')
-            h4.m-t-xs.m-b-n.text-bold = customers_chart_data[0][:customers_visit_average]
-          .pull-right
-            small = I18n.t('dashboards.index.this_week_visits')
-            h4.m-t-xs.m-b-n.text-bold
-              = customers_visit_this_week
-              - if customers_visit_this_week.to_f > customers_chart_data[0][:customers_average].to_f
-                |&nbsp;
-                span = icon('level-up text-success')
-              - else
-                |&nbsp;
-                span = icon('level-down text-danger')
+
