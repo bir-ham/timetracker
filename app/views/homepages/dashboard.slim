@@ -12,7 +12,7 @@
       .panel-body
         .clearfix
           .pull-left
-            h5.text-uppercase = I18n.t('dashboards.index.incomes')
+            p.text-uppercase = I18n.t('dashboards.index.incomes')
           .pull-right
             .main-icon = icon('money')
         = content_tag :canvas, "", id: "incomes", data: {paid_invoices: paid_invoices_chart_data }
@@ -35,7 +35,7 @@
       .panel-body
         .clearfix
           .pull-left
-            h5.text-uppercase = I18n.t('dashboards.index.projects')
+            p.text-uppercase = I18n.t('dashboards.index.projects')
           .pull-right
             .main-icon = icon('suitcase')
         = content_tag :canvas, "", id: "projects", data: {projects_status: projects_status_chart_data }
@@ -68,7 +68,7 @@
       .panel-body
         .clearfix
           .pull-left
-            h5.text-uppercase = I18n.t('dashboards.index.sales')
+            p.text-uppercase = I18n.t('dashboards.index.sales')
           .pull-right
             .main-icon = icon('shopping-cart')
         = content_tag :canvas, "", id: "sales", data: {sales_status: sales_status_chart_data }
@@ -104,7 +104,7 @@
           .panel-body
             .clearfix
               .pull-left
-                h5.text-uppercase = I18n.t('dashboards.index.customers')
+                p.text-uppercase = I18n.t('dashboards.index.customers')
               .pull-right
                 .main-icon = icon('group')
             = content_tag :canvas, "", id: "customers", data: {customers: customers_chart_data }
@@ -130,8 +130,41 @@
         .panel-title = I18n.t('dashboards.index.tasks')
       .panel-body
         p.text-uppercase = I18n.t('invoices.index.header')
-        ul.list-group
-          li.list-group-item
+        - unless @pending_invoices.nil? || @overdue_invoices.nil?
+          - unless @pending_invoices.nil?
+            p.text-primary = raw I18n.t('dashboards.index.tasks_pending_invoices', pending_numbers: @pending_invoices.size)
+            ul.list-group
+              - @pending_invoices.each do |invoice|
+                - if invoice.project_id
+                  - invoice_name = invoice.project.name
+                  li.list-group-item
+                    = link_to invoice, class: 'text-warning'
+                      = raw I18n.t('dashboards.index.tasks_send_customer', invoice_name: invoice_name, customer_name: invoice.project.customer.name) do
+
+                - elsif invoice.sale_id
+                  - invoice_name = "#{invoice.sale.date} (#{invoice.sale.customer.name})"
+                  li.list-group-item
+                    = link_to invoice, class: 'text-warning'
+                      = raw I18n.t('dashboards.index.tasks_send_customer', invoice_name: invoice_name, customer_name: invoice.sale.customer.name) do
+
+          - unless @pending_invoices.nil?
+            p.text-primary = raw I18n.t('dashboards.index.tasks_overdue_invoices', overdue_numbers: @overdue_invoices.size)
+            ul.list-group
+              - @overdue_invoices.each do |invoice|
+                - if invoice.project_id
+                  - invoice_name = invoice.project.name
+                  li.list-group-item.text-danger
+                    = link_to invoice, class: 'text-danger'
+                      = raw I18n.t('dashboards.index.tasks_send_customer', invoice_name: invoice_name, customer_name: invoice.project.customer.name) do
+
+                - elsif invoice.sale_id
+                  - invoice_name = "#{invoice.sale.date} (#{invoice.sale.customer.name})"
+                  li.list-group-item.text-danger
+                    = link_to invoice, class: 'text-danger'
+                      = raw I18n.t('dashboards.index.tasks_send_customer', invoice_name: invoice_name, customer_name: invoice.sale.customer.name) do
+        - else
+          p.text-primary = I18n.t('dashboards.index.no_tasks')
+
         p.text-uppercase = I18n.t('projects.index.header')
         ul.list-group
           li.list-group-item
@@ -145,9 +178,7 @@
         ul.list-group
           li.list-group-item
 
-        p.text-primary = I18n.t('dashboards.index.no_tasks')
 
-      .panel-footer
-        Lorem lipsum
+
 
 

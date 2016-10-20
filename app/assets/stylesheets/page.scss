@@ -263,6 +263,7 @@ ol ol, ol ul, ul ol, ul ul {
   margin-bottom: -1px;
   background-color: #fff;
   border: 1px solid #eff2f7;
+  border-radius: 0;
 }
 
 ul.todo-list {
@@ -452,7 +453,8 @@ span.block {
 }
 
 .dashboard-card .main-icon .fa {
-  font-size: 2.5em;
+  font-size: 2em;
+  margin-top: -5px;
 }
 
 .portlet .portlet-body {

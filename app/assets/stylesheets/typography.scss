@@ -102,3 +102,20 @@ h5, .h5 {
 .text-x-light-dark-grey {
   color: $x-light-dark-grey;
 }
+
+// Links
+a.text-info:hover, a.text-info:focus {
+  color: $dark-blue;
+}
+
+a.text-success:hover, a.text-success:focus {
+  color: $dark-grass;
+}
+
+a.text-warning:hover, a.text-warning:focus {
+  color: $dark-orange;
+}
+
+a.text-danger:hover, a.text-danger:focus {
+  color: $dark-red;
+}

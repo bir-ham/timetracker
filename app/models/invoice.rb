@@ -60,6 +60,14 @@ class Invoice < ActiveRecord::Base
     end
   end
 
+  def self.all_unpaid_invoices_by_status
+    unpaid_invoices = Hash.new
+    unpaid_invoices['pending'] = Invoice.where(status: 'PENDING')
+    unpaid_invoices['overdue'] = Invoice.where(status: 'OVERDUE')
+    return unpaid_invoices
+    #unpaid_invoices_counted = unpaid_invoices.group(:status).count
+  end
+
   private
     def choose_xor_deadline_payment_term
       unless deadline.blank? ^ payment_term.blank?
