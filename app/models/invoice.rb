@@ -65,7 +65,6 @@ class Invoice < ActiveRecord::Base
     unpaid_invoices['pending'] = Invoice.where(status: 'PENDING')
     unpaid_invoices['overdue'] = Invoice.where(status: 'OVERDUE')
     return unpaid_invoices
-    #unpaid_invoices_counted = unpaid_invoices.group(:status).count
   end
 
   private

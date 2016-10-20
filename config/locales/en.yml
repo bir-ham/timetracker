@@ -96,15 +96,17 @@ en:
       invoicing_performance: Invoicing performance
       new_projects: New projects
       preparing_sales: Preparing sales
-      no_tasks: You have no tasks
+      no_tasks_invoice: No tasks for invoice
+      no_tasks_project: No tasks for project
+      no_tasks_sale: No tasks for sale
+      no_tasks_user: No tasks for user
+      no_tasks_customer: No tasks for customer
       tasks_pending_invoices: You have <strong>%{pending_numbers}</strong> pending invoices
       tasks_overdue_invoices: You have <strong>%{overdue_numbers}</strong> overdue invoices
       tasks_send_customer: Send invoice <strong>%{invoice_name}</strong> to <small class="text-x-light-dark-grey">%{customer_name}</small>
       tasks_remind_customer: Remind <strong>%{customer_name}</strong> to pay for <small class="text-x-light-dark-grey">%{invoice_name}</small> invoice
       tasks_new_projects: You have <strong>%{new_numbers}</strong> new projects
-      tasks_ongoing_projects: You have <strong>%{ongoing_numbers}</strong> ongoing projects
       tasks_delayed_projects: You have <strong>%{delayed_numbers}</strong> delayed projects
-      tasks_preparing_sales: You have <strong>%{preparing_numbers}</strong> preparing sales
       tasks_waiting_sales: You have <strong>%{waiting_numbers}</strong> waiting sales
   accounts:
     new:

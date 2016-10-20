@@ -145,7 +145,7 @@
                   - invoice_name = "#{invoice.sale.date} (#{invoice.sale.customer.name})"
                   li.list-group-item
                     = link_to invoice, class: 'text-warning'
-                      = raw I18n.t('dashboards.index.tasks_send_customer', invoice_name: invoice_name, customer_name: invoice.sale.customer.name) do
+                      = raw I18n.t('dashboards.index.tasks_send_customer', invoice_name: invoice_name, customer_name: invoice.sale.customer.name)
 
           - unless @pending_invoices.nil?
             p.text-primary = raw I18n.t('dashboards.index.tasks_overdue_invoices', overdue_numbers: @overdue_invoices.size)
@@ -155,22 +155,39 @@
                   - invoice_name = invoice.project.name
                   li.list-group-item.text-danger
                     = link_to invoice, class: 'text-danger'
-                      = raw I18n.t('dashboards.index.tasks_send_customer', invoice_name: invoice_name, customer_name: invoice.project.customer.name) do
+                      = raw I18n.t('dashboards.index.tasks_send_customer', invoice_name: invoice_name, customer_name: invoice.project.customer.name)
 
                 - elsif invoice.sale_id
                   - invoice_name = "#{invoice.sale.date} (#{invoice.sale.customer.name})"
                   li.list-group-item.text-danger
                     = link_to invoice, class: 'text-danger'
-                      = raw I18n.t('dashboards.index.tasks_send_customer', invoice_name: invoice_name, customer_name: invoice.sale.customer.name) do
+                      = raw I18n.t('dashboards.index.tasks_send_customer', invoice_name: invoice_name, customer_name: invoice.sale.customer.name)
         - else
-          p.text-primary = I18n.t('dashboards.index.no_tasks')
+          p.text-success = I18n.t('dashboards.index.no_tasks_invoice')
 
         p.text-uppercase = I18n.t('projects.index.header')
-        ul.list-group
-          li.list-group-item
+        - unless @new_delayed_projects_count['NEW'] == 0 && @new_delayed_projects_count['DELAYED'] == 0
+          ul.list-group
+            - unless @new_delayed_projects_count['NEW'] == 0
+              li.list-group-item
+                = link_to projects_path, class: 'text-info'
+                  = raw I18n.t('dashboards.index.tasks_new_projects', new_numbers: @new_delayed_projects_count['NEW'])
+            - unless @new_delayed_projects_count['DELAYED'] == 0
+              li.list-group-item
+                = link_to projects_path, class: 'text-danger'
+                  = raw I18n.t('dashboards.index.tasks_delayed_projects', delayed_numbers: @new_delayed_projects_count['DELAYED'])
+        - else
+          p.text-success = I18n.t('dashboards.index.no_tasks_project')
+
         p.text-uppercase = I18n.t('sales.index.header')
-        ul.list-group
-          li.list-group-item
+        - unless @waiting_sales_count['WAITING'] == 0
+          ul.list-group
+            - unless @waiting_sales_count['WAITING'] == 0
+              li.list-group-item
+                = link_to sales_path, class: 'text-danger'
+                  = raw I18n.t('dashboards.index.tasks_waiting_sales', waiting_numbers: @waiting_sales_count['WAITING'])
+        - else
+          p.text-success = I18n.t('dashboards.index.no_tasks_project')
         p.text-uppercase = I18n.t('customers.index.header')
         ul.list-group
           li.list-group-item
