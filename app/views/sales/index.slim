@@ -11,7 +11,7 @@
         = search_form_for @q, html: { class: 'form-inline' } do |f|
           // Attributes may be chained. Search multiple attributes for one value...
           .form-group
-            = f.search_field :status_or_description_cont, placeholder: 'Date, Status or Description', class: 'form-control'
+            = f.search_field :customer_name_user_or_first_name_or_status_or_description_cont, placeholder: 'Customer, Status or Description', class: 'form-control'
           '
           = button_tag(type: :submit, class: 'btn btn-primary') do
             = icon('search')
