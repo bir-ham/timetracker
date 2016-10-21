@@ -2,10 +2,7 @@
 .row
   .col-sm-8.col-sm-offset-2
     .well
-      h3
-        |Invite User
-        '
-        small Test
+      h3 Invite User
       = simple_form_for(User.new, url: user_invitation_path,
               html: { class: 'form-inline'}) do |f|
         '

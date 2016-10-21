@@ -67,6 +67,11 @@ class Invoice < ActiveRecord::Base
     return unpaid_invoices
   end
 
+  def self.unpaid_invoices_by_invited_users
+    invoices = Invoice.joins(:user).where('status != ? AND users.invited_by_id IS NOT NULL', 'PAID')
+    invoices.group_by { |i| i.user.first_name }
+  end
+
   private
     def choose_xor_deadline_payment_term
       unless deadline.blank? ^ payment_term.blank?
