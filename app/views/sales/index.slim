@@ -63,5 +63,7 @@
               - else
                 h4.m-t-n.m-b-n = icon ('times-circle-o text-danger')
 
+      .pull-right
+        = will_paginate @projects, renderer: BootstrapPagination::Rails
     - else
       p.text-danger = I18n.t('sales.index.empty_sales')

@@ -13,6 +13,9 @@ class Project < ActiveRecord::Base
   validates :progress, presence: true, allow_nil: true
   validates :description, presence: false
 
+  # for the Post model
+  self.per_page = 10
+
   def self.all_new_delayed_by_status
     projects = Project.where('status = ? or status = ?', 'NEW', 'DELAYED')
     projects_count = projects.group(:status).count

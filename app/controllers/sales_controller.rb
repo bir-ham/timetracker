@@ -2,7 +2,7 @@ class SalesController < ApplicationController
 
   def index
     @q = Sale.ransack(params[:q])
-    @sales = @q.result(distinct: true)
+    @sales = @q.result(distinct: true).paginate(:page => params[:page]).order("created_at ASC")
   end
 
   def new

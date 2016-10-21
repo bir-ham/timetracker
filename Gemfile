@@ -39,7 +39,7 @@ gem 'jquery-easing-rails'
 gem 'nicescroll-rails'
 gem 'mail_form'
 gem 'negative_captcha'
-gem 'will_paginate'
+gem 'will_paginate-bootstrap'
 gem 'puma'
 gem 'chart-js-rails'
 

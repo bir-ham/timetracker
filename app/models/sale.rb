@@ -13,6 +13,8 @@ class Sale < ActiveRecord::Base
 
   validate :date_of_a_sale_cannot_be_in_the_past
 
+  self.per_page = 10
+
   def self.all_waiting_by_status
     sales = Sale.where(status: 'WAITING')
     sales_count = sales.group(:status).count

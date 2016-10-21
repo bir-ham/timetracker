@@ -2,7 +2,7 @@ class ProjectsController < ApplicationController
 
   def index
     @q = Project.ransack(params[:q])
-    @projects = @q.result(distinct: true)
+    @projects = @q.result(distinct: true).paginate(:page => params[:page]).order("created_at ASC")
   end
 
   def new
