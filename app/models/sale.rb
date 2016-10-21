@@ -25,7 +25,7 @@ class Sale < ActiveRecord::Base
     sales.group_by { |s| s.created_at.to_date.beginning_of_week }
   end
 
-  def get_sales_without_invoice
+  def self.get_sales_without_invoice
     sales = Array.new
     for sale in Sale.all do
       sales.push(sale) if sale.invoice.nil?

@@ -212,7 +212,7 @@ jQuery ->
   customers_visit_per_week = []
   customers_visit_average = []
   customers_visit_labels = []
-  console.log('Customers', customers_visit_per_week)
+
   customers.forEach (customer) ->
     customers_visit_average.push(customer.customers_visit_average)
     customers_visit_per_week.push(customer.customers_visit_per_week)

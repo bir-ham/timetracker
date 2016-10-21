@@ -26,13 +26,7 @@
 //= require bootstrap-datetimepicker
 //= require pickers
 
-// ChartsJS
-//= require Chart
-
 // Local files
 //= require confirmation_modal
 //= require custome_collapse
 //= require scroll
-//= require datatable
-//= require date_time_picker
-//= require charts

@@ -26,7 +26,7 @@ class Project < ActiveRecord::Base
     projects.group_by { |p| p.created_at.to_date.beginning_of_week }
   end
 
-  def get_projects_without_invoice
+  def self.get_projects_without_invoice
     projects = Array.new
     for project in Project.all do
       projects.push(project) if project.invoice.nil?

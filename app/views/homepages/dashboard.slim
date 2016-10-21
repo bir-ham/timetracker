@@ -198,6 +198,10 @@
         - else
           p = I18n.t('dashboards.index.no_tasks_users')
 
+- content_for :javascript_includes do
+  // ChartsJS
+  = javascript_include_tag "Chart"
+  = javascript_include_tag "charts"
 
 
 
