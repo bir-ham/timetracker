@@ -13,6 +13,11 @@ class Project < ActiveRecord::Base
   validates :progress, presence: true, allow_nil: true
   validates :description, presence: false
 
+  def self.all_new_delayed_by_status
+    projects = Project.where('status = ? or status = ?', 'NEW', 'DELAYED')
+    projects_count = projects.group(:status).count
+  end
+
   def self.grouped_by_week(start)
     projects = Project.where(created_at: start.beginning_of_day..Time.zone.now)
     projects.group_by { |p| p.created_at.to_date.beginning_of_week }

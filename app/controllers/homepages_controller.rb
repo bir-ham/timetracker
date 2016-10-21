@@ -4,8 +4,22 @@ class HomepagesController < ApplicationController
   before_filter :authenticate_user!, only: :dashboard
 
   def dashboard
-    @invoice = Invoice.new
-    @all_incomes = @invoice.get_all_paid_invoices_amount
+    # Items and Tasks
+    @all_incomes = Item.all_paid_items + Task.all_paid_tasks
+
+    # Invoices
+    unpaid_invoices = Invoice.all_unpaid_invoices_by_status
+    @pending_invoices = unpaid_invoices['pending']
+    @overdue_invoices = unpaid_invoices['overdue']
+
+    # Projects
+    @new_delayed_projects_count = Project.all_new_delayed_by_status
+
+    # Sales
+    @waiting_sales_count = Sale.all_waiting_by_status
+
+    # Invited Users Invoices
+    @invited_users_invoices = Invoice.unpaid_invoices_by_invited_users
   end
 
   def landing_page

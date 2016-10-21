@@ -60,23 +60,16 @@ class Invoice < ActiveRecord::Base
     end
   end
 
-  def get_all_paid_invoices_amount
-    sales = Sale.joins(:invoice).where(invoices: {status: 'PAID'})
-    projects = Project.joins(:invoice).where(invoices: {status: 'PAID'})
+  def self.all_unpaid_invoices_by_status
+    unpaid_invoices = Hash.new
+    unpaid_invoices['pending'] = Invoice.where(status: 'PENDING')
+    unpaid_invoices['overdue'] = Invoice.where(status: 'OVERDUE')
+    return unpaid_invoices
+  end
 
-    paid_items = 0
-    for sale in sales
-      for item in sale.items
-        paid_items += item.total
-      end
-    end
-    paid_tasks = 0
-    for project in projects
-      for task in project.tasks
-        paid_tasks += task.total
-      end
-    end
-    return paid_items + paid_tasks
+  def self.unpaid_invoices_by_invited_users
+    invoices = Invoice.joins(:user).where('status != ? AND users.invited_by_id IS NOT NULL', 'PAID')
+    invoices.group_by { |i| i.user.first_name }
   end
 
   private
