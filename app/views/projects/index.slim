@@ -2,10 +2,22 @@
 
 .row
   .col-sm-12
-    = link_to new_project_path, class: 'btn btn-primary'
-      = icon ('pencil')
-      |&nbsp;
-      = I18n.t('projects.index.create_new_project')
+    .clearfix
+      .pull-left
+        = link_to new_project_path, class: 'btn btn-primary'
+          = icon ('pencil')
+          |&nbsp;
+          = I18n.t('projects.index.create_new_project')
+      .pull-right
+        .pull-right
+          = search_form_for @q, html: { class: 'form-inline' } do |f|
+            // Attributes may be chained. Search multiple attributes for one value...
+            .form-group
+              = f.search_field :name_or_status_or_description_cont, placeholder: 'Date, Status or Description', class: 'form-control'
+            '
+            = button_tag(type: :submit, class: 'btn btn-primary') do
+              = icon('search')
+
     .m-b-xl
     - unless @projects.empty?
       /.btn-toolbar.text-center

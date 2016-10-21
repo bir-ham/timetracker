@@ -1,7 +1,8 @@
 class SalesController < ApplicationController
 
   def index
-    @sales = Sale.all
+    @q = Sale.ransack(params[:q])
+    @sales = @q.result(distinct: true)
   end
 
   def new

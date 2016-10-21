@@ -1,14 +1,8 @@
 class ProjectsController < ApplicationController
 
   def index
-    @projects = Project.all
-    @task = Task.new
-
-    respond_to do |format|
-      format.html
-      format.csv { render text: @invoices.to_csv }
-      format.xls #{ render text: @invoices.to_csv(col_sep: "\t") }
-    end
+    @q = Project.ransack(params[:q])
+    @projects = @q.result(distinct: true)
   end
 
   def new

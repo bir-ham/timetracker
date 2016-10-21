@@ -20,6 +20,13 @@ class HomepagesController < ApplicationController
 
     # Invited Users Invoices
     @invited_users_invoices = Invoice.unpaid_invoices_by_invited_users
+
+    # Ransack link search
+    @Projects = Sale.ransack(params[:Projects])
+    @Projects = @Projects.result(distinct: true)
+
+    @sales = Sale.ransack(params[:sales])
+    @sales = @sales.result(distinct: true)
   end
 
   def landing_page
