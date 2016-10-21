@@ -99,7 +99,7 @@ en:
       no_tasks_invoice: No tasks for invoice
       no_tasks_project: No tasks for project
       no_tasks_sale: No tasks for sale
-      no_tasks_users: No tasks from ohter users
+      no_tasks_users: No tasks by other users
       tasks_pending_invoices: You have <strong>%{pendings_number}</strong> pending invoices
       tasks_overdue_invoices: You have <strong>%{overdues_number}</strong> overdue invoices
       tasks_send_customer: Send invoice <strong>%{invoice_name}</strong> to <small class="text-x-light-dark-grey">%{customer_name}</small>

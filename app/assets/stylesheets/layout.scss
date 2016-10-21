@@ -227,6 +227,14 @@ a {
   border-top: 2px solid $red;
 }
 
+.sub-header {
+  position: relative;
+  display: block;
+  padding: 10px 15px;
+  background-color: $light-grey;
+  margin-bottom: 10px;
+}
+
 // Progress bar
 .progress {
   background-color: $xx-light-grey;

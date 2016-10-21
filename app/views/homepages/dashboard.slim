@@ -129,7 +129,7 @@
       .panel-heading
         .panel-title = I18n.t('dashboards.index.tasks')
       .panel-body
-        p.text-uppercase = I18n.t('invoices.index.header')
+        .sub-header.text-uppercase = I18n.t('invoices.index.header')
         - unless @pending_invoices.empty? || @overdue_invoices.empty?
           - unless @pending_invoices.empty?
             p.text-primary = raw I18n.t('dashboards.index.tasks_pending_invoices', pendings_number: @pending_invoices.size)
@@ -165,7 +165,7 @@
         - else
           p.text-success = I18n.t('dashboards.index.no_tasks_invoice')
 
-        p.text-uppercase = I18n.t('projects.index.header')
+        .sub-header.text-uppercase = I18n.t('projects.index.header')
         - unless @new_delayed_projects_count['NEW'] == 0 && @new_delayed_projects_count['DELAYED'] == 0
           ul.list-group
             - unless @new_delayed_projects_count['NEW'] == 0
@@ -179,7 +179,7 @@
         - else
           p.text-success = I18n.t('dashboards.index.no_tasks_project')
 
-        p.text-uppercase = I18n.t('sales.index.header')
+        .sub-header.text-uppercase = I18n.t('sales.index.header')
         - unless @waiting_sales_count['WAITING'] == 0
           ul.list-group
             - unless @waiting_sales_count['WAITING'] == 0
@@ -188,7 +188,7 @@
                   = raw I18n.t('dashboards.index.tasks_waiting_sales', waitings_number: @waiting_sales_count['WAITING'])
         - else
           p.text-success = I18n.t('dashboards.index.no_tasks_project')
-        p.text-uppercase = I18n.t('users.index.header')
+        .sub-header.text-uppercase = I18n.t('users.index.header')
         - unless @invited_users_invoices.empty?
           ul.list-group
             - @invited_users_invoices.each do |key, value|
