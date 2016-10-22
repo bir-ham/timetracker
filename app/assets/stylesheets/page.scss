@@ -459,7 +459,10 @@ span.block {
 
 .dashboard-card {
   .fade-out-panel {
-    opacity: 0.3;
+    position: relative;
+  }
+  .fade-out-panel-body {
+    opacity: 0.2;
   }
   .first-user-prompt-btn {
     @extend .vertical-center;

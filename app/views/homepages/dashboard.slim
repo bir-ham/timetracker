@@ -13,9 +13,9 @@
         small Lorem ipsum dolor sit amet, consectetur adipiscing elit vestibulum.
 
   .col-sm-6.col-md-3
-    .panel.income.panel-default
+    .panel.income.panel-default.fade-out-panel
       .panel-body
-        div class = ('fade-out-panel' if total_paid_invoices == 0)
+        div class = ('fade-out-panel-body' if total_paid_invoices == 0)
           .clearfix
             .pull-left
               p.text-uppercase = I18n.t('dashboards.index.incomes')
@@ -44,9 +44,9 @@
   - projects_status_chart_data.each do |i|
     - total_projects += i[:total]
   .col-sm-6.col-md-3
-    .panel.task.panel-default
+    .panel.task.panel-default.fade-out-panel
       .panel-body
-        div class = ('fade-out-panel' if total_projects == 0)
+        div class = ('fade-out-panel-body' if total_projects == 0)
           .clearfix
             .pull-left
               p.text-uppercase = I18n.t('dashboards.index.projects')
@@ -83,9 +83,9 @@
   - sales_status_chart_data.each do |i|
     - total_sales += i[:total]
   .col-sm-6.col-md-3
-    .panel.panel-default
+    .panel.panel-default.fade-out-panel
       .panel-body
-        div class = ('fade-out-panel' if total_sales == 0)
+        div class = ('fade-out-panel-body' if total_sales == 0)
           .clearfix
             .pull-left
               p.text-uppercase = I18n.t('dashboards.index.sales')
@@ -113,26 +113,26 @@
         - if total_sales == 0
           = link_to I18n.t('dashboards.index.first_sale'), sales_path, class: 'btn btn-primary btn-sm first-user-prompt-btn'
 
-.row
+.row.dashboard-card
   .col-lg-6
-    .panel.panel-default.panel-transparent-header
+    .panel.panel-default.panel-transparent-header.fade-out-panel
       .panel-heading
         .panel-title = I18n.t('dashboards.index.invoicing_performance')
       .panel-body
-        div class = ('fade-out-panel' if total_paid_invoices == 0)
+        div class = ('fade-out-panel-body' if total_paid_invoices == 0)
           = content_tag :canvas, "", id: "invoicing-performance", data: {pending_invoices: pending_invoices_chart_data, overdue_invoices: overdue_invoices_chart_data}
 
-        /- if total_paid_invoices == 0
-          = link_to I18n.t('dashboards.index.first_invoice'), invoices_path, class: 'btn btn-primary btn-sm first-user-prompt-btn'
+        - if total_paid_invoices == 0
+          = link_to I18n.t('dashboards.index.first_invoice'), invoices_path, class: 'btn btn-primary btn-sm first-user-prompt-btn', style: 'left: 35%'
 
     - total_customers = 0
     - customers_chart_data.each do |c|
       - total_customers += (c[:customers_visit_per_week] + c[:customers_visit_average].to_i)
     .row.dashboard-card
       .col-sm-6.col-md-6
-        .panel.panel-default
+        .panel.panel-default.fade-out-panel
           .panel-body
-            div class = ('fade-out-panel' if total_customers == 0)
+            div class = ('fade-out-panel-body' if total_customers == 0)
               .clearfix
                 .pull-left
                   p.text-uppercase = I18n.t('dashboards.index.customers')
