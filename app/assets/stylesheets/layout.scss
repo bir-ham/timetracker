@@ -515,6 +515,28 @@ dt {
   }
 }
 
+// Vertical center
+.vertical-center {
+  position: absolute;
+  top: 50%;
+  @include transform-translate(-50%);
+}
+
+//.vertical-center {
+//  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+//  min-height: 10vh; /* These two lines are counted as one :-)       */
+
+//  display: flex;
+//  align-items: center;
+//}
+
+.vertical-center-small {
+  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+  min-height: 5vh; /* These two lines are counted as one :-)       */
+
+  display: flex;
+  align-items: center;
+}
 
 
 /* Extremely very extra small devices (phones, less than 480px) */

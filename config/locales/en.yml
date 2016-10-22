@@ -109,6 +109,10 @@ en:
       tasks_delayed_projects: You have <strong>%{delayeds_number}</strong> delayed projects
       tasks_waiting_sales: You have <strong>%{waitings_number}</strong> waiting sales
       tasks_user_invoices: "<strong>%{user_name}</strong> is currently working on <strong>%{invoices_number}</strong>"
+      first_invoice: Create your fisrt Invoice
+      first_project: Create your fisrt Project
+      first_sale: Add your fisrt Sale
+      first_customer: Add your fisrt customer
   accounts:
     new:
       header: Create an Account

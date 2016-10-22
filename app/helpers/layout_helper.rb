@@ -38,11 +38,12 @@ module LayoutHelper
   def is_footer_visible?
     sessions = controller_name == "sessions"
     accounts_new = controller_name == "accounts" && controller.action_name == "new"
+    accounts_create = controller_name == "accounts" && controller.action_name == "create"
     invitations_edit = controller_name == "invitations" && controller.action_name == "edit"
     accounts_subdomain = controller_name == "accounts" && controller.action_name == "subdomain"
     subdomain_check = controller_name == "accounts" && controller.action_name == "subdomain_check"
 
-    return true unless sessions || accounts_new || invitations_edit || accounts_subdomain || subdomain_check
+    return true unless sessions || accounts_new || accounts_create || invitations_edit || accounts_subdomain || subdomain_check
   end
 
 end

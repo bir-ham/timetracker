@@ -1,4 +1,9 @@
 - breadcrumb :root
+
+- total_paid_invoices = 0
+- paid_invoices_chart_data.each do |i|
+  - total_paid_invoices =+ i[:paid]
+
 .row.dashboard-card
   .col-sm-6.col-md-3
     .panel.profit.panel-default
@@ -10,85 +15,103 @@
   .col-sm-6.col-md-3
     .panel.income.panel-default
       .panel-body
-        .clearfix
-          .pull-left
-            p.text-uppercase = I18n.t('dashboards.index.incomes')
-          .pull-right
-            .main-icon = icon('money')
-        = content_tag :canvas, "", id: "incomes", data: {paid_invoices: paid_invoices_chart_data }
-        .clearfix
-          .pull-left
-            small = I18n.t('dashboards.index.last_week')
-            h4.m-t-xs.m-b-n.text-bold = number_to_currency(paid_invoices_chart_data[2][:paid])
-          .pull-right
-            small = I18n.t('dashboards.index.this_week')
-            h4.m-t-xs.m-b-n.text-bold
-              = number_to_currency( paid_invoices_chart_data[3][:paid])
-              - if  paid_invoices_chart_data[3][:paid].to_f >  paid_invoices_chart_data[2][:paid].to_f
-                |&nbsp;
-                span = icon('level-up text-success')
-              - else
-                |&nbsp;
-                span = icon('level-down text-danger')
+        div class = ('fade-out-panel' if total_paid_invoices == 0)
+          .clearfix
+            .pull-left
+              p.text-uppercase = I18n.t('dashboards.index.incomes')
+            .pull-right
+              .main-icon = icon('money')
+          = content_tag :canvas, "", id: "incomes", data: {paid_invoices: paid_invoices_chart_data }
+          .clearfix
+            .pull-left
+              small = I18n.t('dashboards.index.last_week')
+              h4.m-t-xs.m-b-n.text-bold = number_to_currency(paid_invoices_chart_data[2][:paid])
+            .pull-right
+              small = I18n.t('dashboards.index.this_week')
+              h4.m-t-xs.m-b-n.text-bold
+                = number_to_currency( paid_invoices_chart_data[3][:paid])
+                - if  paid_invoices_chart_data[3][:paid].to_f >  paid_invoices_chart_data[2][:paid].to_f
+                  |&nbsp;
+                  span = icon('level-up text-success')
+                - else
+                  |&nbsp;
+                  span = icon('level-down text-danger')
+
+        - if total_paid_invoices == 0
+          = link_to I18n.t('dashboards.index.first_invoice'), invoices_path, class: 'btn btn-primary btn-sm first-user-prompt-btn'
+
+  - total_projects = 0
+  - projects_status_chart_data.each do |i|
+    - total_projects += i[:total]
   .col-sm-6.col-md-3
     .panel.task.panel-default
       .panel-body
-        .clearfix
-          .pull-left
-            p.text-uppercase = I18n.t('dashboards.index.projects')
-          .pull-right
-            .main-icon = icon('suitcase')
-        = content_tag :canvas, "", id: "projects", data: {projects_status: projects_status_chart_data }
-        .clearfix
-          strong = I18n.t('dashboards.index.new_projects')
-          hr.m-t-n.m-b-n
+        div class = ('fade-out-panel' if total_projects == 0)
           .clearfix
-          .pull-left
-            small = I18n.t('dashboards.index.last_week')
-            h4.m-t-xs.m-b-n.text-bold = projects_status_chart_data[2][:new_projects]
-          .pull-right
-            small = I18n.t('dashboards.index.this_week')
-            h4.m-t-xs.m-b-n.text-bold
-              = projects_status_chart_data[3][:new_projects]
-              - if projects_status_chart_data[3][:new_projects].to_i > projects_status_chart_data[2][:new_projects].to_i
-                |&nbsp;
-                span = icon('level-up text-success')
-              - else
-                |&nbsp;
-                span = icon('level-down text-danger')
+            .pull-left
+              p.text-uppercase = I18n.t('dashboards.index.projects')
+            .pull-right
+              .main-icon = icon('suitcase')
+          = content_tag :canvas, "", id: "projects", data: {projects_status: projects_status_chart_data }
+          .clearfix
+            strong = I18n.t('dashboards.index.new_projects')
+            hr.m-t-n.m-b-n
+            .clearfix
+            .pull-left
+              small = I18n.t('dashboards.index.last_week')
+              h4.m-t-xs.m-b-n.text-bold = projects_status_chart_data[2][:new_projects]
+            .pull-right
+              small = I18n.t('dashboards.index.this_week')
+              h4.m-t-xs.m-b-n.text-bold
+                = projects_status_chart_data[3][:new_projects]
+                - if projects_status_chart_data[3][:new_projects].to_i > projects_status_chart_data[2][:new_projects].to_i
+                  |&nbsp;
+                  span = icon('level-up text-success')
+                - else
+                  |&nbsp;
+                  span = icon('level-down text-danger')
 
+        - if total_projects == 0
+          = link_to I18n.t('dashboards.index.first_project'), projects_path, class: 'btn btn-primary btn-sm first-user-prompt-btn'
         /strong = I18n.t('dashboards.index.paid_invoices')
         /- pecentage_of_paid_invoices = (@paid_invoices.size * 100)/@invoices.size
         /.progress.progress-small.m-t-xs.m-b-m
           .progress-bar.progress-bar-turquoise role="progressbar" aria-valuenow="#{pecentage_of_paid_invoices}" aria-valuemin="0" aria-valuemax="100" style="width: #{pecentage_of_paid_invoices}%;"
             .sr-only #{pecentage_of_paid_invoices}% Complete (success)
 
+  - total_sales = 0
+  - sales_status_chart_data.each do |i|
+    - total_sales += i[:total]
   .col-sm-6.col-md-3
     .panel.panel-default
       .panel-body
-        .clearfix
-          .pull-left
-            p.text-uppercase = I18n.t('dashboards.index.sales')
-          .pull-right
-            .main-icon = icon('shopping-cart')
-        = content_tag :canvas, "", id: "sales", data: {sales_status: sales_status_chart_data }
-        .clearfix
-          strong = I18n.t('dashboards.index.preparing_sales')
-          hr.m-t-n.m-b-n
+        div class = ('fade-out-panel' if total_sales == 0)
           .clearfix
-          .pull-left
-            small = I18n.t('dashboards.index.last_week')
-            h4.m-t-xs.m-b-n.text-bold = sales_status_chart_data[2][:preparing_sales]
-          .pull-right
-            small = I18n.t('dashboards.index.this_week')
-            h4.m-t-xs.m-b-n.text-bold
-              = sales_status_chart_data[3][:preparing_sales]
-              - if sales_status_chart_data[3][:preparing_sales].to_i > sales_status_chart_data[2][:preparing_sales].to_i
-                |&nbsp;
-                span = icon('level-up text-success')
-              - else
-                |&nbsp;
-                span = icon('level-down text-danger')
+            .pull-left
+              p.text-uppercase = I18n.t('dashboards.index.sales')
+            .pull-right
+              .main-icon = icon('shopping-cart')
+          = content_tag :canvas, "", id: "sales", data: {sales_status: sales_status_chart_data }
+          .clearfix
+            strong = I18n.t('dashboards.index.preparing_sales')
+            hr.m-t-n.m-b-n
+            .clearfix
+            .pull-left
+              small = I18n.t('dashboards.index.last_week')
+              h4.m-t-xs.m-b-n.text-bold = sales_status_chart_data[2][:preparing_sales]
+            .pull-right
+              small = I18n.t('dashboards.index.this_week')
+              h4.m-t-xs.m-b-n.text-bold
+                = sales_status_chart_data[3][:preparing_sales]
+                - if sales_status_chart_data[3][:preparing_sales].to_i > sales_status_chart_data[2][:preparing_sales].to_i
+                  |&nbsp;
+                  span = icon('level-up text-success')
+                - else
+                  |&nbsp;
+                  span = icon('level-down text-danger')
+
+        - if total_sales == 0
+          = link_to I18n.t('dashboards.index.first_sale'), sales_path, class: 'btn btn-primary btn-sm first-user-prompt-btn'
 
 .row
   .col-lg-6
@@ -96,33 +119,44 @@
       .panel-heading
         .panel-title = I18n.t('dashboards.index.invoicing_performance')
       .panel-body
-        = content_tag :canvas, "", id: "invoicing-performance", data: {pending_invoices: pending_invoices_chart_data, overdue_invoices: overdue_invoices_chart_data}
+        div class = ('fade-out-panel' if total_paid_invoices == 0)
+          = content_tag :canvas, "", id: "invoicing-performance", data: {pending_invoices: pending_invoices_chart_data, overdue_invoices: overdue_invoices_chart_data}
 
+        /- if total_paid_invoices == 0
+          = link_to I18n.t('dashboards.index.first_invoice'), invoices_path, class: 'btn btn-primary btn-sm first-user-prompt-btn'
+
+    - total_customers = 0
+    - customers_chart_data.each do |c|
+      - total_customers += (c[:customers_visit_per_week] + c[:customers_visit_average].to_i)
     .row.dashboard-card
       .col-sm-6.col-md-6
         .panel.panel-default
           .panel-body
-            .clearfix
-              .pull-left
-                p.text-uppercase = I18n.t('dashboards.index.customers')
-              .pull-right
-                .main-icon = icon('group')
-            = content_tag :canvas, "", id: "customers", data: {customers: customers_chart_data }
-            - customers_visit_this_week = customers_chart_data[3][:customers_visit_per_week]
-            .clearfix
-              .pull-left
-                small = I18n.t('dashboards.index.average_visits_per_week')
-                h4.m-t-xs.m-b-n.text-bold = customers_chart_data[0][:customers_visit_average]
-              .pull-right
-                small = I18n.t('dashboards.index.this_week_visits')
-                h4.m-t-xs.m-b-n.text-bold
-                  = customers_visit_this_week
-                  - if customers_visit_this_week.to_f > customers_chart_data[0][:customers_average].to_f
-                    |&nbsp;
-                    span = icon('level-up text-success')
-                  - else
-                    |&nbsp;
-                    span = icon('level-down text-danger')
+            div class = ('fade-out-panel' if total_customers == 0)
+              .clearfix
+                .pull-left
+                  p.text-uppercase = I18n.t('dashboards.index.customers')
+                .pull-right
+                  .main-icon = icon('group')
+              = content_tag :canvas, "", id: "customers", data: {customers: customers_chart_data }
+              - customers_visit_this_week = customers_chart_data[3][:customers_visit_per_week]
+              .clearfix
+                .pull-left
+                  small = I18n.t('dashboards.index.average_visits_per_week')
+                  h4.m-t-xs.m-b-n.text-bold = customers_chart_data[0][:customers_visit_average]
+                .pull-right
+                  small = I18n.t('dashboards.index.this_week_visits')
+                  h4.m-t-xs.m-b-n.text-bold
+                    = customers_visit_this_week
+                    - if customers_visit_this_week.to_f > customers_chart_data[0][:customers_average].to_f
+                      |&nbsp;
+                      span = icon('level-up text-success')
+                    - else
+                      |&nbsp;
+                      span = icon('level-down text-danger')
+
+            - if total_customers == 0
+              = link_to I18n.t('dashboards.index.first_customer'), customers_path, class: 'btn btn-primary btn-sm first-user-prompt-btn'
 
   .col-lg-6
     .panel.panel-default.panel-transparent-header
@@ -166,13 +200,14 @@
           p = I18n.t('dashboards.index.no_tasks_invoice')
 
         .sub-header.text-uppercase = I18n.t('projects.index.header')
-        - unless @new_delayed_projects_count['NEW'] == 0 && @new_delayed_projects_count['DELAYED'] == 0
+
+        - unless @new_delayed_projects_count['NEW'].nil? && @new_delayed_projects_count['DELAYED'].nil?
           ul.list-group
-            - unless @new_delayed_projects_count['NEW'] == 0
+            - unless @new_delayed_projects_count['NEW'].nil?
               li.list-group-item
                 = link_to projects_path, class: 'text-info'
                   = raw I18n.t('dashboards.index.tasks_new_projects', news_number: @new_delayed_projects_count['NEW'])
-            - unless @new_delayed_projects_count['DELAYED'] == 0
+            - unless @new_delayed_projects_count['DELAYED'].nil?
               li.list-group-item
                 = link_to projects_path, class: 'text-danger'
                   = raw I18n.t('dashboards.index.tasks_delayed_projects', delayeds_number: @new_delayed_projects_count['DELAYED'])
@@ -180,14 +215,15 @@
           p = I18n.t('dashboards.index.no_tasks_project')
 
         .sub-header.text-uppercase = I18n.t('sales.index.header')
-        - unless @waiting_sales_count['WAITING'] == 0
+        - unless @waiting_sales_count['WAITING'].nil?
           ul.list-group
-            - unless @waiting_sales_count['WAITING'] == 0
+            - unless @waiting_sales_count['WAITING'].nil?
               li.list-group-item
                 = link_to sales_path, class: 'text-danger'
                   = raw I18n.t('dashboards.index.tasks_waiting_sales', waitings_number: @waiting_sales_count['WAITING'])
         - else
-          p = I18n.t('dashboards.index.no_tasks_project')
+          p = I18n.t('dashboards.index.no_tasks_sale')
+
         .sub-header.text-uppercase = I18n.t('users.index.header')
         - unless @invited_users_invoices.empty?
           ul.list-group

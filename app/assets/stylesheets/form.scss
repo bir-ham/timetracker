@@ -152,6 +152,16 @@ abbr, accronym {
   }
 }
 
+// Search button
+.search-button {
+  padding: 0;
+  button {
+    border-width: 8px;
+    border: none;
+    padding: 9px 13px;
+  }
+}
+
 // Button toolbar
 .btn-toolbar.text-center .btn {
   float: none;
