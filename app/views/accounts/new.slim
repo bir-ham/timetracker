@@ -2,11 +2,11 @@
   .row.authentication-panel
     .col-md-6.col-md-offset-3
       .center-block.m-b-l
-        = link_to (image_tag ('logo-big')), root_path
+        = link_to (image_tag ('logo')), root_path
       .panel.panel-default
         .panel-body
           h2 = I18n.t('accounts.new.header')
-          p.text-muted = I18n.t('accounts.new.notice')
+          p.text-info = I18n.t('accounts.new.notice')
           .m-b-m
           = simple_form_for(@account, :url => {:action => 'create'},
                     html: { class: 'form-vertical' },

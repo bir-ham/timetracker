@@ -2,11 +2,11 @@
   .row.authentication-panel
     .col-md-6.col-md-offset-3
       .center-block.m-b-l
-        = link_to (image_tag ('logo-big')), root_url(subdomain: nil)
+        = link_to (image_tag ('logo')), root_url(subdomain: nil)
       .panel.panel-default
         .panel-body
           h2 = I18n.t('button.sign_in')
-          p.text-muted = I18n.t('devise.sessions.login_notice')
+          p.text-info = I18n.t('devise.sessions.login_notice')
           .m-b-m
           = flash_messages layout_flash: false
           = simple_form_for(resource, :as => resource_name,

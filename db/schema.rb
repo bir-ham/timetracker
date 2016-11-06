@@ -68,6 +68,8 @@ ActiveRecord::Schema.define(version: 20161002094048) do
     t.decimal  "total"
   end
 
+  add_index "items", ["sale_id"], name: "index_items_on_sale_id", using: :btree
+
   create_table "projects", force: :cascade do |t|
     t.string   "name"
     t.boolean  "archived",    default: false, null: false
@@ -139,4 +141,5 @@ ActiveRecord::Schema.define(version: 20161002094048) do
   add_index "users", ["invited_by_id"], name: "index_users_on_invited_by_id", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "items", "invoices", column: "sale_id"
 end

@@ -4,16 +4,18 @@ html {
   height: 100%;
 }
 
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
 body {
   background-color: $body-background-color;
   color: $body-text-color;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 13px;
-  line-height: 1.42857143;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
 }
 
 p {
-  font-size: 13px;
+  font-size: 14px;
 }
 
 a {
@@ -59,6 +61,29 @@ a {
 .has-error .form-control {
   border-color: $red;
   box-shadow: none;
+}
+
+// footer
+#footer {
+  padding: 10px;
+  background-color: $x-dark-mid-night-blue;
+  color: $dark-medium-grey;
+}
+
+.footer-inner {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin-top: -50px;
+  height: 50px;
+  padding: 7px;
+}
+
+// Logo
+.logo-small {
+  width: 95px;
+  height: 28px;
 }
 
 // Badge
@@ -538,6 +563,11 @@ dt {
   align-items: center;
 }
 
+// Sprite
+.sprite{
+  display: inline-block;
+  background: transparent url('sprite.png') no-repeat;
+}
 
 /* Extremely very extra small devices (phones, less than 480px) */
 @media (max-width: $screen-xxxs-max) {

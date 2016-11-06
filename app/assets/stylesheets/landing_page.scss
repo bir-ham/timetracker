@@ -44,17 +44,16 @@
   h1 {
     font-size: 34px;
     margin-bottom: 5px;
-    letter-spacing: -0.5px;
     margin-top: 50px;
     margin-bottom: 20px;
     font-size: 48px;
     color: #ffffff;
-    text-shadow: 0 1px 0 rgba(0,0,0,0.3);
+    text-shadow: 0 1px 0 rgba(0,0,0,0.4);
   }
   h5 {
     color: $medium-grey;
-    text-shadow: 0 1px 0 rgba(0,0,0,0.3);
-    margin-bottom: 30px;
+    text-shadow: 0 1px 0 rgba(0,0,0,0.4);
+    margin-bottom: 60px;
   }
 }
 
@@ -69,6 +68,25 @@
 }
 
 // sections
+.section-title {
+  margin-bottom: 50px;  
+}
+
+#features {
+  .icon-wrapper {
+    width: 100%;
+  }  
+  .icon-wrapper .icon {
+    width: 48px;
+    margin-right: 10px;
+    float: left;
+  }
+  .icon-wrapper .text {
+    width: 89%;
+    float: left;
+  }
+}
+
 #features, #pricing {
   margin-top: 1px;
   border-top: 2px solid $turquoise;
@@ -79,7 +97,7 @@
   border-bottom: 2px solid $turquoise !important;
 }
 
-#features, #clients, #testimonials, #contacts, #pricing {
+#features, #clients, #testimonials, #bottom-cta, #contacts, #pricing, #footer {
   padding: 50px 0 50px 0;
   border-bottom: 1px solid #e4e5e7;
   h3 {
@@ -113,7 +131,7 @@
 
 // pricing
 .pricing-plan {
-  margin: 20px 10px 0 10px;
+  margin: 0 10px 0 10px;
   border-radius: 4px;
   padding-bottom: 20px;
   background: #fff;
@@ -123,7 +141,7 @@
   li.pricing-title {
     background: $mid-night-blue;
     color: $white;
-    padding: 25px 10px 25px 10px;
+    padding: 15px 10px 15px 10px;
     border-radius: 4px 4px 0 0;
     font-size: 22px;
     font-weight: 600;
@@ -139,7 +157,7 @@
     color: $turquoise;
   }
   li {
-    padding: 10px 16px;
+    padding: 10px 15px;
     text-align: center;
     color: $x-light-dark-grey;
   }

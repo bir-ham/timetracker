@@ -31,7 +31,7 @@ en:
     exit: Exit
     search: Search
     ok: OK
-    sign_up: Sign up free
+    sign_up: Sign up for free
     invite_user: Invite user
     sign_out: Sign out
     sign_in: Sign in
@@ -50,6 +50,9 @@ en:
         header: Invoicing
         text: Create Invoces for the sold items or delivered projects. Optionally, import/export Invoices
           to/from exernal excel or CSV files. View and print Invoices in PDF format.
+      sale:
+        header: Sale managment
+        text: Track and record each sales you have been seling. Create an Invocie for the successful sales.    
       project:
         header: Project managment
         text: Track and record hours of projects you have been working on. Generate Invocie for the delivered projects.

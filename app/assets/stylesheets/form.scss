@@ -43,6 +43,10 @@ abbr, accronym {
   text-align: center;
 }
 
+.form-actions {
+  padding-left: 15px;  
+}
+
 //Checkbox
 .icheckbox_minimal-grey, .iradio_minimal-grey {
   display: inline-block;
@@ -119,6 +123,18 @@ abbr, accronym {
     color: $white;
     background-color: $x-dark-mid-night-blue;
     border-color: $x-dark-mid-night-blue;
+  }
+}
+
+.btn-grey {
+  @extend .btn-default;
+  color: $white;
+  background: $dark-medium-grey;
+  border-color: $dark-medium-grey;
+  &:hover, &.focus {
+    color: $white;
+    background-color: $xx-light-grey;
+    border-color: $xx-light-grey;
   }
 }
 

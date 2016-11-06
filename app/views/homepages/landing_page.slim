@@ -3,45 +3,60 @@
     = flash_messages if show_layout_flash?
     .row.text-center
       .col-sm-8.col-sm-offset-2
-        h1
+        h1.m-b-n
           = I18n.t('landing_page.home.welcome')
           |&nbsp;
           .turquoise.visible-all-inline = I18n.t('navigation.toolsio')
         h5 = I18n.t('landing_page.home.slogan')
-
+        
         = link_to I18n.t('landing_page.home.get_started'), new_account_path, class: 'btn btn-primary btn-lg'
 
-#features.background-xx-light-grey
+#features.background-white
   .container
     .row
       .col-sm-12
-        h3 = I18n.t('landing_page.features.header')
-    .row
-      .col-sm-4
-        h4.text-uppercase = I18n.t('landing_page.features.invoice.header')
-        .body-text
-          p = I18n.t('landing_page.features.invoice.text')
-          .m-t-m
-          = link_to I18n.t('button.learn_more'), '#', class: 'btn btn-primary btn-outline'
-      .col-sm-4
-        h4.text-uppercase = I18n.t('landing_page.features.project.header')
-        .body-text
-          p = I18n.t('landing_page.features.project.text')
-          .m-t-m
-          = link_to I18n.t('button.learn_more'), '#', class: 'btn btn-primary btn-outline'
-      .col-sm-4
-        h4.text-uppercase = I18n.t('landing_page.features.analysis.header')
-        .body-text
-          p = I18n.t('landing_page.features.analysis.text')
-          .m-t-m
-          = link_to I18n.t('button.learn_more'), '#', class: 'btn btn-primary btn-outline'
+        h3.section-title = I18n.t('landing_page.features.header')
+    .row.m-b-s
+      .col-sm-6
+        .icon-wrapper
+          .icon
+            .sprite.invoice 
+          .text
+            h4.text-uppercase = I18n.t('landing_page.features.invoice.header')
+            .body-text
+              p = I18n.t('landing_page.features.invoice.text')
+      .col-sm-6
+        .icon-wrapper
+          .icon
+            .sprite.sale
+          .text  
+            h4.text-uppercase = I18n.t('landing_page.features.sale.header')
+            .body-text
+              p = I18n.t('landing_page.features.sale.text')
+    .row.m-t-l
+      .col-sm-6
+        .icon-wrapper
+          .icon
+            .sprite.project
+          .text  
+            h4.text-uppercase = I18n.t('landing_page.features.project.header')
+            .body-text
+              p = I18n.t('landing_page.features.project.text')
+      .col-sm-6
+        .icon-wrapper
+          .icon
+            .sprite.analysis
+          .text  
+            h4.text-uppercase = I18n.t('landing_page.features.analysis.header')
+            .body-text
+              p = I18n.t('landing_page.features.analysis.text')
 
-#clients.background-white
+#clients.background-xx-light-grey
   .container
     .row
       .col-sm-12
-        h3 = I18n.t('landing_page.clients.header')
-    .row.text-center.m-t-l
+        h3.section-title = I18n.t('landing_page.clients.header')
+    .row.text-center.m-t-s
       .col-sm-6.col-sm-offset-3
         .row
           .col-sm-6
@@ -80,12 +95,12 @@
               h5 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, dolorum, fugiat, eligendi magni quibusdam iure cupiditate ex voluptas unde Lorem ipsum dolor sit amet..
               p- Jonathan Deo
 
-#pricing.background-white
+#pricing.background-xx-light-grey
   .container
     .row
       .col-sm-12
-        h3 = I18n.t('landing_page.pricing.header')
-    .row.m-t-l
+        h3.section-title = I18n.t('landing_page.pricing.header')
+    .row.m-t-s
       .col-sm-10.col-sm-offset-1
         .row
           .col-sm-4
@@ -105,7 +120,7 @@
               li
                 |Calendar
               li
-                = link_to I18n.t('button.learn_more'), '#', class: 'btn btn-primary'
+                = link_to I18n.t('button.learn_more'), '#', class: 'btn btn-grey'
           .col-sm-4
             ul.pricing-plan
               li.pricing-title
@@ -122,8 +137,8 @@
                 |Contacts
               li
                 |Calendar
-              li.plan-action
-                = link_to I18n.t('button.learn_more'), '#', class: 'btn btn-primary'
+              li
+                = link_to I18n.t('button.learn_more'), '#', class: 'btn btn-grey'
           .col-sm-4
             ul.pricing-plan
               li.pricing-title
@@ -141,13 +156,19 @@
               li
                 |Calendar
               li
-                = link_to I18n.t('button.learn_more'), '#', class: 'btn btn-primary'
+                = link_to I18n.t('button.learn_more'), '#', class: 'btn btn-grey'
 
-#contacts
+#bottom-cta.background-white
+  .container
+    .row.text-center
+      .col-sm-12
+        = link_to I18n.t('landing_page.home.get_started'), new_account_path, class: 'btn btn-primary btn-lg'        
+
+#contacts.background-xx-light-grey
   .container
     .row
       .col-sm-12
-        h3.text-uppercase.m-t-n.text-center = I18n.t('landing_page.contacts.header')
+        h3.section-title = I18n.t('landing_page.contacts.header')
     .row
       .col-sm-6.col-sm-offset-3
         p.text-center = I18n.t('landing_page.contacts.description')
