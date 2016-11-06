@@ -76,7 +76,7 @@ en:
         notice: Thank you for your message. We will contact you soon!
         error: Can not send message.
     footer:
-      copy_right: Copyright &copy; Toolsio, Ltd. 2016
+      copyright: Copyright &copy; Toolsio, Ltd. 2016
       address: Pyyntitie 2 C 50, 02230, Espoo, Finland
   dashboards:
     index:
@@ -242,7 +242,7 @@ en:
       user: User
       confirmation: Confirmation
       invoice_details: Invoice details
-      customer_and_user_details: Customer and User details
+      sale_and_project_details:  Sale and Project details
       select_customer: '-Select customer-'
       select_user: '-Select user-'
       select_status: '-Select status-'

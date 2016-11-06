@@ -10,8 +10,7 @@
     legend.custom-legend = I18n.t('projects.new.select_or_add_new_customer')
     = f.association :customer, collection: Customer.all, label_method: :name, value_method: :id, prompt: I18n.t('invoices.new.select_customer'), multiple: false, wrapper: :horizontal_form
 
-    .col-sm-3
-    .col-sm-9
+    .form-actions.col-sm-offset-3
       = link_to new_customer_path, class: 'btn btn-primary btn-sm'
         = icon('plus-circle')
         |&nbsp;
@@ -26,11 +25,11 @@
   - if @project.persisted?
     = f.input :archived, as: :boolean, wrapper: :horizontal_radio_and_checkboxes
 
-  .btn-toolbar.text-center
+  .form-actions.col-sm-offset-3
     - if (is_action_name? 'edit') || (is_action_name? 'update')
-      = link_to I18n.t('button.cancel'), project_path(@project), class: 'btn btn-primary btn-outline'
+      => link_to I18n.t('button.cancel'), project_path(@project), class: 'btn btn-primary btn-outline'
     - else
-      = link_to I18n.t('button.cancel'), projects_path, class: 'btn btn-primary btn-outline'
+      => link_to I18n.t('button.cancel'), projects_path, class: 'btn btn-primary btn-outline'
     = f.button :submit, class: 'btn-primary'
 
 - content_for :javascript_includes do

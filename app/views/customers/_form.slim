@@ -13,8 +13,7 @@
       .has-error
         = f.input :phone_number, wrapper: :horizontal_form, input_html: { min: 10, max: 15 }
         = f.input :email, wrapper: :horizontal_form
-        .col-sm-3
-        .col-sm-9
+        .form-actions.col-sm-offset-3
           span.help-block = @customer.errors[:base][0]
     - else
       = f.input :phone_number, wrapper: :horizontal_form, input_html: { min: 10, max: 15 }
@@ -22,9 +21,9 @@
 
   = f.input :address, wrapper: :horizontal_form
 
-  .btn-toolbar.text-center
+  .form-actions.col-sm-offset-3
     - if (is_action_name? 'edit') || (is_action_name? 'update')
-      = link_to I18n.t('button.cancel'), customer_path(@customer), class: 'btn btn-primary btn-outline'
+      => link_to I18n.t('button.cancel'), customer_path(@customer), class: 'btn btn-primary btn-outline'
     - else
-      = link_to I18n.t('button.cancel'), customers_path, class: 'btn btn-primary btn-outline'
-    = f.button :submit, class: 'btn-primary'
+      => link_to I18n.t('button.cancel'), customers_path, class: 'btn btn-primary btn-outline'
+    => f.button :submit, class: 'btn-primary'

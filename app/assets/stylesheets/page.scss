@@ -511,31 +511,6 @@ span.block {
 // Charts
 
 
-// Sprite
-.sprite.invoice {
-  height: 48px;
-  width: 48px;
-  background-position: top left;  
-}
-
-.sprite.sale {
-  height: 48px;
-  width: 48px;
-  background-position: -48px top;  
-}
-
-.sprite.project {
-  height: 48px;
-  width: 48px;
-  background-position: -96px top;  
-}
-
-.sprite.analysis {
-  height: 48px;
-  width: 48px;
-  background-position: -142px top;  
-}
-
 
 /* Extra small devices (phones, less than 768px) */
 @media (max-width: $screen-xs-max) {

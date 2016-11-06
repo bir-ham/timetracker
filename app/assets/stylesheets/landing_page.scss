@@ -59,12 +59,9 @@
 
 // company logo
 .company-logo {
-  color: #a7afb8;
   background: #f7f9fa;
-  padding: 30px 10px;
+  padding: 10px;
   margin: 0px 0 20px 0;
-  text-transform: uppercase;
-  font-weight: 600;
 }
 
 // sections
@@ -122,6 +119,9 @@
   }
   .item p {
     color: $turquoise;
+  }
+  .item h5 {
+    color: $medium-grey;
   }
   .fa {
     color: $turquoise;
@@ -197,6 +197,43 @@
 
 .animated {
   @include animation-duration(1s);
+}
+
+// Logo sprites
+.sprite.invoice {
+  height: 48px;
+  width: 48px;
+  background-position: top left;  
+}
+
+.sprite.sale {
+  height: 48px;
+  width: 48px;
+  background-position: -48px top;  
+}
+
+.sprite.project {
+  height: 48px;
+  width: 48px;
+  background-position: -96px top;  
+}
+
+.sprite.analysis {
+  height: 48px;
+  width: 48px;
+  background-position: -142px top;  
+}
+
+.sprite.logo-one {
+  height: 100px;
+  width: 100px;
+  background-position: -191px top;  
+}
+
+.sprite.logo-two {
+  height: 100px;
+  width: 100px;
+  background-position: -291px top;  
 }
 
 /* Small devices (tablets, 768px and up) */

@@ -17,7 +17,7 @@ body {
   color: $body-text-color;
   font-family: 'Open Sans', sans-serif;
   font-size: 14px;
-  line-height: 1.4;
+  line-height: 1.48;
 }
 
 p {
@@ -166,6 +166,10 @@ a {
 // Color
 .turquoise {
   color: $turquoise !important;
+}
+
+.xx-light-grey {
+  color: $xx-light-grey;
 }
 
 // Display

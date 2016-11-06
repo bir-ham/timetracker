@@ -3,6 +3,7 @@
   .col-sm-8.col-sm-offset-2
     .panel.panel-default
       .panel-body
-        h2.text-center = I18n.t('projects.new.header')
+        .form-actions.col-sm-offset-3
+          h2 = I18n.t('projects.new.header')
 
         = render "form"

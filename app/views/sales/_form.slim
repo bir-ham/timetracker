@@ -12,12 +12,12 @@
     = f.input :status, collection: [['PREPARING', 'PREPARING'], ['WAITING', 'WAITING'], ['DELIVERED', 'DELIVERED']], prompt: I18n.t('sales.new.select_status'), wrapper: :horizontal_form
   = f.input :description
 
-  .btn-toolbar.text-center
+  .form-actions.form.col-sm-offset-3
     - if (is_action_name? 'edit') || (is_action_name? 'update')
-      = link_to I18n.t('button.cancel'), sale_path(@sale), class: 'btn btn-primary btn-outline'
+      => link_to I18n.t('button.cancel'), sale_path(@sale), class: 'btn btn-primary btn-outline'
     - else
-      = link_to I18n.t('button.cancel'), sales_path, class: 'btn btn-primary btn-outline'
-    = f.button :submit, class: 'btn-primary'
+      => link_to I18n.t('button.cancel'), sales_path, class: 'btn btn-primary btn-outline'
+    => f.button :submit, class: 'btn-primary'
 
 - content_for :javascript_includes do
   = javascript_include_tag "date_time_picker"

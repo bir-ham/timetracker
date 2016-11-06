@@ -22,7 +22,7 @@
           .icon
             .sprite.invoice 
           .text
-            h4.text-uppercase = I18n.t('landing_page.features.invoice.header')
+            h4 = I18n.t('landing_page.features.invoice.header')
             .body-text
               p = I18n.t('landing_page.features.invoice.text')
       .col-sm-6
@@ -30,7 +30,7 @@
           .icon
             .sprite.sale
           .text  
-            h4.text-uppercase = I18n.t('landing_page.features.sale.header')
+            h4 = I18n.t('landing_page.features.sale.header')
             .body-text
               p = I18n.t('landing_page.features.sale.text')
     .row.m-t-l
@@ -39,7 +39,7 @@
           .icon
             .sprite.project
           .text  
-            h4.text-uppercase = I18n.t('landing_page.features.project.header')
+            h4 = I18n.t('landing_page.features.project.header')
             .body-text
               p = I18n.t('landing_page.features.project.text')
       .col-sm-6
@@ -47,7 +47,7 @@
           .icon
             .sprite.analysis
           .text  
-            h4.text-uppercase = I18n.t('landing_page.features.analysis.header')
+            h4 = I18n.t('landing_page.features.analysis.header')
             .body-text
               p = I18n.t('landing_page.features.analysis.text')
 
@@ -56,21 +56,27 @@
     .row
       .col-sm-12
         h3.section-title = I18n.t('landing_page.clients.header')
-    .row.text-center.m-t-s
+    .row.text-center
       .col-sm-6.col-sm-offset-3
         .row
           .col-sm-6
-              .company-logo logo
+            .company-logo 
+              .sprite.logo-one
           .col-sm-6
-              .company-logo logo
+            .company-logo 
+              .sprite.logo-two
           .col-sm-6
-              .company-logo logo
+            .company-logo 
+              .sprite.logo-one
           .col-sm-6
-              .company-logo logo
+            .company-logo 
+              .sprite.logo-two
           .col-sm-6
-              .company-logo logo
+            .company-logo 
+              .sprite.logo-one
           .col-sm-6
-              .company-logo logo
+            .company-logo 
+              .sprite.logo-two
 
 #testimonials
   .container
@@ -100,7 +106,7 @@
     .row
       .col-sm-12
         h3.section-title = I18n.t('landing_page.pricing.header')
-    .row.m-t-s
+    .row
       .col-sm-10.col-sm-offset-1
         .row
           .col-sm-4

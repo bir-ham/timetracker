@@ -1,7 +1,8 @@
-h2.text-center
-  = I18n.t('invoices.new.header')
-  '
-  small = I18n.t('invoices.new.invoice_details')
+.form-actions.col-sm-offset-3
+  h2
+    = I18n.t('invoices.new.header')
+    '
+    small = I18n.t('invoices.new.invoice_details')
 
 = f.input :date_of_an_invoice, as: :date_picker, wrapper: :horizontal_form
 
@@ -11,8 +12,7 @@ fieldset.custom-fieldset
     .has-error
       = f.input :payment_term, collection: 1..31, prompt: I18n.t('invoices.new.select_days'), include_blank: true, label: 'Payment term \n (in days)', wrapper: :horizontal_form
       = f.input :deadline, as: :date_picker, wrapper: :horizontal_form
-      .col-sm-3
-      .col-sm-9
+      .form-actions.col-sm-offset-3
         span.help-block = @invoice.errors[:base][0]
   - else
     = f.input :payment_term, collection: 1..31, prompt: I18n.t('invoices.new.select_days'),  include_blank: true, label: 'Payment term (in days)', wrapper: :horizontal_form

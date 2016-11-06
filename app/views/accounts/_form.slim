@@ -1,20 +1,20 @@
 = simple_form_for(@account,
               html: { class: 'form-horizontal' },
-              warpper: :horizontal_form,
-              warpper_mappings: {  check_boxes: :horizontal_radio_and_checkboxes,
+              wrapper: :horizontal_form,
+              wrapper_mappings: {  check_boxes: :horizontal_radio_and_checkboxes,
                 radio_buttons: :horizontal_radio_and_checkboxes,
                 file: :horizontal_file_input,
                 boolean: :horizontal_boolean} ) do |f|
-  = f.input :industry, wrapper: :horizontal_form
-  = f.input :phone_number, wrapper: :horizontal_form
-  = f.input :email, wrapper: :horizontal_form
-  = f.input :address1, wrapper: :horizontal_form
-  = f.input :address2, wrapper: :horizontal_form
-  = f.input :zip, wrapper: :horizontal_form
-  = f.input :town, wrapper: :horizontal_form
-  = f.input :country, prompt: 'Select country', wrapper: :horizontal_form
-  = f.input :logo, as: :image_preview, input_html: { preview_version: :thumb }, wrapper: :horizontal_form
+  = f.input :industry
+  = f.input :phone_number
+  = f.input :email
+  = f.input :address1
+  = f.input :address2
+  = f.input :zip
+  = f.input :town
+  = f.input :country, prompt: 'Select country'
+  = f.input :logo, as: :image_preview, input_html: { preview_version: :thumb }
 
-  .btn-toolbar.text-center
-    = link_to I18n.t('button.cancel'), current_account, class: 'btn btn-primary btn-outline'
-    = f.button :submit, class: 'btn-primary'
+  .form-actions.col-sm-offset-3
+    => link_to I18n.t('button.cancel'), current_account, class: 'btn btn-primary btn-outline'
+    => f.button :submit, class: 'btn-primary'
