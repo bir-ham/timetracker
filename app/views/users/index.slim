@@ -5,12 +5,9 @@
       h3 Invite User
       = simple_form_for(User.new, url: user_invitation_path,
               html: { class: 'form-inline'}) do |f|
-        '
-        = f.label I18n.t('users.index.email')
-        '
-        = f.input :email, placeholder: I18n.t('users.index.email'), label: false
-        '
-        = f.button :submit, I18n.t('users.index.invite_user'), class: 'btn-primary'
+        => f.label I18n.t('users.index.email')
+        => f.input :email, placeholder: I18n.t('users.index.email'), label: false
+        => f.button :submit, I18n.t('users.index.invite_user'), class: 'btn-primary'
 
     h3 Invited User
     table.table.table-striped.table-condensed

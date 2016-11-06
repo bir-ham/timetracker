@@ -4,12 +4,20 @@ html {
   height: 100%;
 }
 
+@font-face {
+  font-family: 'Open Sans', sans-serif;
+  src: font-url('OpenSans-Bold.ttf') format('truetype'),
+    font-url('OpenSans-Italic.ttf') format('truetype'),
+    font-url('OpenSans-Light.ttf') format('truetype'),
+    font-url('OpenSans-Regular.ttf') format('truetype');  
+}
+
 body {
   background-color: $body-background-color;
   color: $body-text-color;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-family: 'Open Sans', sans-serif;
   font-size: 14px;
-  line-height: 1.5;
+  line-height: 1.4;
 }
 
 p {
