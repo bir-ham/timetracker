@@ -4,12 +4,10 @@ html {
   height: 100%;
 }
 
-@import url('https://fonts.googleapis.com/css?family=Open+Sans');
-
 body {
   background-color: $body-background-color;
   color: $body-text-color;
-  font-family: 'Open Sans', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   font-size: 14px;
   line-height: 1.5;
 }
