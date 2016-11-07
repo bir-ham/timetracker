@@ -70,33 +70,28 @@
 }
 
 #features {
-  .icon-wrapper {
-    width: 100%;
+  blockquote {
+    overflow: hidden;
+    border: none;
   }  
-  .icon-wrapper .icon {
-    width: 48px;
-    margin-right: 10px;
-    float: left;
-  }
-  .icon-wrapper .text {
-    width: 89%;
-    float: left;
-  }
 }
 
 #features, #pricing {
-  margin-top: 1px;
-  border-top: 2px solid $turquoise;
+  margin-top: 2px;
+  box-shadow: 0 -1px 0 rgba(3,139,152,1);
 }
 
 #clients {
   margin-bottom: 1px;
-  border-bottom: 2px solid $turquoise !important;
+  border-bottom: solid 1px rgba(3,139,152,1);
+}
+
+#clients, #bottom-cta, #contacts {
+  box-shadow: 0 -1px 0 rgba(rgb(228,229,231),1);
 }
 
 #features, #clients, #testimonials, #bottom-cta, #contacts, #pricing, #footer {
   padding: 50px 0 50px 0;
-  border-bottom: 1px solid #e4e5e7;
   h3 {
     color: $mid-night-blue;
     margin-top: 0;
@@ -203,7 +198,7 @@
 .sprite.invoice {
   height: 48px;
   width: 48px;
-  background-position: top left;  
+  background-position: left top;  
 }
 
 .sprite.sale {
