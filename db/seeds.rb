@@ -12,8 +12,12 @@ users = User.create([{first_name: 'Birhanu', last_name: 'Hailemariam', email: 'b
 accounts = Account.create([{owner: users.first, subdomain: 'test'}, {owner: users.second, subdomain: 'test2'}] ) 
 user = users.first
 
-Apartment::Tenant.create(accounts[0].subdomain)
-Apartment::Tenant.switch!(accounts[0].subdomain)
+if Apartment::Tenant.current == 'public'
+  Apartment::Tenant.create(accounts.first.subdomain)
+  Apartment::Tenant.create(accounts.second.subdomain)
+end
+
+Apartment::Tenant.switch!(accounts.first.subdomain)
 
 customers = Customer.create([{ name: 'Customer1', phone_number: '+358542066330' , email: 'customer1@gmail.com', address: 'Address 1, 02230 Espoo' },
   { name: 'Customer2', phone_number: '+358542066331', email: 'customer2@gmail.com', address: 'Address 2, 02230 Espoo' },
