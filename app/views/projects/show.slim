@@ -7,7 +7,7 @@
         dt = I18n.t('projects.show.customer')
         dd = @project.customer.name
         dt = I18n.t('projects.show.user')
-        dd = @project.user.first_name
+        dd = current_user.first_name
         dt = I18n.t('projects.show.deadline')
         dd = @project.deadline
         dt = I18n.t('projects.show.status')
@@ -116,7 +116,7 @@
         |&nbsp;
         = I18n.t('button.delete')
 
-      = link_to edit_project_path(@project), class: 'btn btn-primary btn-outline' do
+      = link_to edit_project_path(@project), class: 'btn btn-primary' do
         = icon('pencil-square-o white')
         |&nbsp;
         = I18n.t('button.edit')

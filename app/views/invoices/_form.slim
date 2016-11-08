@@ -5,7 +5,6 @@
                 radio_buttons: :horizontal_radio_and_checkboxes,
                 file: :horizontal_file_input,
                 boolean: :horizontal_boolean} ) do |f|
-  = f.association :user, collection: User.all, label_method: :first_name, value_method: :id, label: I18n.t('invoices.new.user'), multiple: false, prompt: I18n.t('invoices.new.select.user')
   = f.input :date_of_an_invoice, as: :date_picker, wrapper: :horizontal_form
 
   fieldset.custom-fieldset

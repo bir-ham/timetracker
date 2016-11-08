@@ -9,7 +9,7 @@
       dt
         = I18n.t('invoices.show.user')
       dd
-        =h @invoice.user.first_name
+        =h current_user.first_name
       dt
         = I18n.t('invoices.show.date_of_an_invoice')
       dd =h @invoice.date_of_an_invoice
@@ -40,7 +40,7 @@
         dt
           = I18n.t('sales.show.user')
         dd
-          = @invoice.sale.user.first_name
+          = @invoice.current_user.first_name
         dt
           = I18n.t('sales.show.date')
         dd = @invoice.sale.date
@@ -74,7 +74,7 @@
         dt
           = I18n.t('projects.show.user')
         dd
-          = @invoice.project.user.first_name
+          = @invoice.current_user.first_name
         dt
           = I18n.t('projects.show.deadline')
         dd = @invoice.project.deadline

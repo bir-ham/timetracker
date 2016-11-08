@@ -13,7 +13,7 @@
           = search_form_for @q, html: { class: 'form-inline' } do |f|
             // Attributes may be chained. Search multiple attributes for one value...
             .input-group
-              = f.search_field :customer_name_or_user_first_name_or_name_or_status_or_description_cont, placeholder: 'Customer, Status or Description', class: 'form-control'
+              = f.search_field :customer_name_or_name_or_status_or_description_cont, placeholder: 'Customer, Status or Description', class: 'form-control'
               span.input-group-addon.search-button
                 = button_tag(type: :submit) do
                   = icon('search')
@@ -60,7 +60,7 @@
               .col-xs-2
                 strong.text-uppercase = I18n.t('projects.index.user')
                 .clearfix
-                span = project.user.first_name
+                span = current_user.first_name
               .col-xs-2
                 strong.text-uppercase = I18n.t('projects.index.customer')
                 .clearfix

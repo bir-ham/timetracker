@@ -2,7 +2,6 @@ class Project < ActiveRecord::Base
 
   has_one :invoice
   belongs_to :customer
-  belongs_to :user
   has_many :tasks, dependent: :destroy
 
   validates :customer, presence: true
