@@ -21,12 +21,16 @@
       = f.input :deadline, as: :date_picker, wrapper: :horizontal_form
 
   fieldset.custom-fieldset
-    legend.custom-legend = I18n.t('invoices.new.select_sale_or_project')
-    .bs-callout.bs-callout-sm.bs-callout-info-colored
-      h5.heading
-        = icon('info-circle')
-        |&nbsp;
-        = I18n.t('invoices.new.sale_or_project_already_selected')
+    - if @invoice.sale_id?
+      legend.custom-legend = I18n.t('invoices.new.sale')
+      .form-actions.col-sm-offset-3
+        p.text-info = I18n.t('invoices.new.sale_selected')
+      = f.association :sale, selected: @invoice.sale_id, label_method: lambda { |sale| "#{sale.date}" " to " "#{sale.customer.name}" }, disabled: true 
+    - elsif @invoice.project_id?  
+      legend.custom-legend = I18n.t('invoices.new.project')
+      .form-actions.col-sm-offset-3
+        p.text-info = I18n.t('invoices.new.project_selected')
+      = f.association :project, selected: @invoice.project_id, label_method: :name, disabled: true   
 
   = f.input :interest_in_arrears, label: 'Interest in arrears (in %)', input_html: { min: 0, max: 100 }
   = f.input :reference_number

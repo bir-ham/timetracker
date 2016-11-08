@@ -249,7 +249,10 @@ en:
       select_days: '-Select days-'
       select_sale_or_project: Select Sale or Project
       select_payment_term_or_deadline: Select either a Payment term or Deadline
-      sale_or_project_already_selected: Sale or Project already selected
+      sale: Sale
+      project: Project
+      sale_selected: This Sale is selected for this invoice. If you wnat to slect another Sale or Project delete this invoice and create an new invoice for the desired Sale or Project. 
+      project_selected: This Sale is selected for this invoice. If you wnat to slect another Sale or Project delete this invoice and create an new invoice for the desired Sale or Project. 
     edit:
       header: Edit Invoice
     show:

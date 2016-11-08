@@ -16,7 +16,7 @@ body {
   background-color: $body-background-color;
   color: $body-text-color;
   font-family: 'Open Sans', sans-serif;
-  font-size: 14px;
+  font-size: 13px;
   line-height: 1.48;
 }
 
@@ -424,6 +424,8 @@ dt {
   bottom: 0;
   height: 100%;
   width: 20px;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
   span {
     color: $white;
     transform: rotate(-90deg);
