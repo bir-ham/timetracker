@@ -168,6 +168,13 @@ a {
   color: $turquoise !important;
 }
 
+.body-text {
+  color: $body-text-color !important;
+  &:hover {
+    color: $dark-grey !important;
+  }
+}
+
 .xx-light-grey {
   color: $xx-light-grey;
 }
@@ -225,6 +232,7 @@ a {
   border: none;
   .panel-heading {
     background: transparent;
+    padding: 10px 0;
   }
   .panel-body {
     background: $white;
@@ -552,7 +560,7 @@ dt {
 
 // Vertical center
 .vertical-center {
-  position: absolute;
+  position: absolute; // Remember to give parent container position relative
   top: 50%;
   @include transform-translate(-50%);
 }

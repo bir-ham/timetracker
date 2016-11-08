@@ -450,6 +450,10 @@ span.block {
     @extend .vertical-center;
     left: 25%;
   }
+  .panel {
+    position: relative;
+    min-height: 292px;
+  }
 }
 
 .portlet .portlet-body {

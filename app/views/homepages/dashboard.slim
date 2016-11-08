@@ -7,8 +7,8 @@
 .row.dashboard-card
   .col-sm-6.col-md-3
     .panel.profit.panel-default
-      .panel-body.text-center
-        h2.m-t-s.m-b-s = number_to_currency(@all_incomes)
+      .panel-body.text-center.vertical-center
+        h2.m-t-n.m-b-s = number_to_currency(@all_incomes)
         h3.text-bold.m-b-n.text-success = I18n.t('dashboards.index.all_income')
         small Lorem ipsum dolor sit amet, consectetur adipiscing elit vestibulum.
 
@@ -18,7 +18,7 @@
         div class = ('fade-out-panel-body' if total_paid_invoices == 0)
           .clearfix
             .pull-left
-              p.text-uppercase = I18n.t('dashboards.index.incomes')
+              = link_to I18n.t('dashboards.index.incomes'), invoices_path, class: 'text-uppercase body-text'
             .pull-right
               .main-icon = icon('money')
           = content_tag :canvas, "", id: "incomes", data: {paid_invoices: paid_invoices_chart_data }
@@ -49,7 +49,7 @@
         div class = ('fade-out-panel-body' if total_projects == 0)
           .clearfix
             .pull-left
-              p.text-uppercase = I18n.t('dashboards.index.projects')
+              = link_to I18n.t('dashboards.index.projects'), projects_path, class: 'text-uppercase body-text'
             .pull-right
               .main-icon = icon('suitcase')
           = content_tag :canvas, "", id: "projects", data: {projects_status: projects_status_chart_data }
@@ -88,7 +88,7 @@
         div class = ('fade-out-panel-body' if total_sales == 0)
           .clearfix
             .pull-left
-              p.text-uppercase = I18n.t('dashboards.index.sales')
+              = link_to I18n.t('dashboards.index.sales'), sales_path, class: 'text-uppercase body-text'
             .pull-right
               .main-icon = icon('shopping-cart')
           = content_tag :canvas, "", id: "sales", data: {sales_status: sales_status_chart_data }
@@ -113,7 +113,7 @@
         - if total_sales == 0
           = link_to I18n.t('dashboards.index.first_sale'), sales_path, class: 'btn btn-primary btn-sm first-user-prompt-btn'
 
-.row.dashboard-card
+.row
   .col-lg-6
     .panel.panel-default.panel-transparent-header.fade-out-panel
       .panel-heading
@@ -135,7 +135,7 @@
             div class = ('fade-out-panel-body' if total_customers == 0)
               .clearfix
                 .pull-left
-                  p.text-uppercase = I18n.t('dashboards.index.customers')
+                  = link_to I18n.t('dashboards.index.customers'), customers_path, class: 'text-uppercase body-text'
                 .pull-right
                   .main-icon = icon('group')
               = content_tag :canvas, "", id: "customers", data: {customers: customers_chart_data }
