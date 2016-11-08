@@ -2,7 +2,6 @@ class Sale < ActiveRecord::Base
 
   has_one :invoice
   belongs_to :customer
-  belongs_to :user
   has_many :items, dependent: :destroy
 
   validates :customer, presence: true
@@ -12,6 +11,8 @@ class Sale < ActiveRecord::Base
   validates :description, presence: false
 
   validate :date_of_a_sale_cannot_be_in_the_past
+
+  self.per_page = 10
 
   def self.all_waiting_by_status
     sales = Sale.where(status: 'WAITING')
@@ -23,7 +24,7 @@ class Sale < ActiveRecord::Base
     sales.group_by { |s| s.created_at.to_date.beginning_of_week }
   end
 
-  def get_sales_without_invoice
+  def self.get_sales_without_invoice
     sales = Array.new
     for sale in Sale.all do
       sales.push(sale) if sale.invoice.nil?

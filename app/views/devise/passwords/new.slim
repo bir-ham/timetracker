@@ -2,7 +2,7 @@
   .row.authentication-panel
     .col-md-6.col-md-offset-3
       .center-block.m-b-l
-        = link_to (image_tag ('logo-big')), root_path
+        = link_to (image_tag ('logo')), root_path
       .panel.panel-default
         .panel-body
           h2 = I18n.t('devise.passwords.new.header')
@@ -18,5 +18,5 @@
 
       .center-block.m-b-l
         .text-center
-          p.m-b-n = I18n.t('landing_page.footer.copy_right')
-          p = I18n.t('landing_page.footer.address')
+          small.visible-all-block = raw I18n.t('landing_page.footer.copyright')
+          small.visible-all-block = I18n.t('landing_page.footer.address')

@@ -1,14 +1,15 @@
-h1.text-center
-  = I18n.t('invoices.new.header')
-  '
-  small = I18n.t('invoices.new.confirmation')
+.form-actions.col-sm-offset-3
+  h2
+    = I18n.t('invoices.new.header')
+    '
+    small = I18n.t('invoices.new.confirmation')
 .row
   .col-sm-6.col-sm-offset-3
     dl.dl-horizontal
       dt
         = I18n.t('invoices.show.user')
       dd
-        =h @invoice.user.first_name
+        =h current_user.first_name
       dt
         = I18n.t('invoices.show.date_of_an_invoice')
       dd =h @invoice.date_of_an_invoice
@@ -39,7 +40,7 @@ h1.text-center
         dt
           = I18n.t('sales.show.user')
         dd
-          = @invoice.sale.user.first_name
+          = @invoice.current_user.first_name
         dt
           = I18n.t('sales.show.date')
         dd = @invoice.sale.date
@@ -73,7 +74,7 @@ h1.text-center
         dt
           = I18n.t('projects.show.user')
         dd
-          = @invoice.project.user.first_name
+          = @invoice.current_user.first_name
         dt
           = I18n.t('projects.show.deadline')
         dd = @invoice.project.deadline

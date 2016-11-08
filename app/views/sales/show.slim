@@ -7,7 +7,7 @@
         dt = I18n.t('sales.show.customer')
         dd = @sale.customer.name
         dt = I18n.t('sales.show.user')
-        dd = @sale.user.first_name
+        dd = current_user.first_name
         dt = I18n.t('sales.show.date')
         dd = @sale.date.strftime("%d/%m/%Y")
         dt = I18n.t('sales.show.status')
@@ -110,7 +110,7 @@
         |&nbsp;
         = I18n.t('button.delete')
 
-      = link_to edit_sale_path(@sale), class: 'btn btn-primary btn-outline' do
+      = link_to edit_sale_path(@sale), class: 'btn btn-primary' do
         = icon('pencil-square-o white')
         |&nbsp;
         = I18n.t('button.edit')

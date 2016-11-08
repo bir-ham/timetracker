@@ -43,6 +43,10 @@ abbr, accronym {
   text-align: center;
 }
 
+.form-actions {
+  padding-left: 15px;  
+}
+
 //Checkbox
 .icheckbox_minimal-grey, .iradio_minimal-grey {
   display: inline-block;
@@ -122,6 +126,20 @@ abbr, accronym {
   }
 }
 
+.btn-grey {
+  @extend .btn-default;
+  color: $white;
+  background: $dark-medium-grey;
+  border-color: $dark-medium-grey;
+  border: 1px solid rgba(0,0,0,0.3);
+  box-shadow: inset 0 2px 0 rgba(255,255,255,0.3);
+  &:hover, &.focus {
+    color: $white;
+    background-color: $medium-grey;
+    border-color: $medium-grey;
+  }
+}
+
 .btn-outline {
   color: inherit;
   background-color: transparent !important;
@@ -152,9 +170,15 @@ abbr, accronym {
   }
 }
 
-// Button toolbar
-.btn-toolbar.text-center .btn {
-  float: none;
+// Search button
+.search-button {
+  padding: 0;
+  button {
+    background-color: $light-medium-grey;
+    border-width: 8px;
+    border: none;
+    padding: 9px 13px;
+  }
 }
 
 // dropdown-select

@@ -10,18 +10,18 @@
           boolean: :horizontal_boolean} ) do |f|
       ul.breadcrumb-multi-step-form
         - if @invoice.first_step?
-          li = link_to I18n.t('invoices.new.customer_and_user_details'), new_invoice_path, class: 'breadcrumb-multi-step-form-visited'
+          li = link_to I18n.t('invoices.new.sale_and_project_details'), new_invoice_path, class: 'breadcrumb-multi-step-form-visited'
           li = link_to I18n.t('invoices.new.invoice_details'), '#'
           li = link_to I18n.t('invoices.new.confirmation'), '#'
         - elsif @invoice.second_step?
           li
             = link_to '#', class: 'breadcrumb-multi-step-form-visited' do
-              = button_tag I18n.t('invoices.new.customer_and_user_details'), type: 'link', name: 'back_button', class: 'button-to-link'
+              = button_tag I18n.t('invoices.new.sale_and_project_details'), type: 'link', name: 'back_button', class: 'button-to-link'
             end
           li = link_to I18n.t('invoices.new.invoice_details'), '#', class: 'breadcrumb-multi-step-form-visited'
           li = link_to I18n.t('invoices.new.confirmation'), '#'
         - elsif @invoice.last_step?
-          li = link_to I18n.t('invoices.new.customer_and_user_details'), new_invoice_path, class: 'breadcrumb-multi-step-form-visited'
+          li = link_to I18n.t('invoices.new.sale_and_project_details'), new_invoice_path, class: 'breadcrumb-multi-step-form-visited'
           li
             = link_to '#', class: 'breadcrumb-multi-step-form-visited' do
               = button_tag I18n.t('invoices.new.invoice_details'), name: 'back_button', class: 'button-to-link'
@@ -33,8 +33,8 @@
 
           = render "#{@invoice.current_step}_step", f: f
 
-          .btn-toolbar.text-center
+          .form-actions.col-sm-offset-3
             = f.button :submit, 'Back', name: 'back_button', class: 'btn btn-primary btn-outline' unless @invoice.first_step?
             = f.button :submit, ('Continue' unless @invoice.last_step?), class: 'btn-primary'
-          .text-center.m-t-m
+          .form-actions.col-sm-offset-3.m-t-m
             = link_to I18n.t('button.cancel'), clear_invoice_params_url

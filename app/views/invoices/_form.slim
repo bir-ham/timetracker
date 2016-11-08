@@ -5,7 +5,6 @@
                 radio_buttons: :horizontal_radio_and_checkboxes,
                 file: :horizontal_file_input,
                 boolean: :horizontal_boolean} ) do |f|
-  = f.association :user, collection: User.all, label_method: :first_name, value_method: :id, label: I18n.t('invoices.new.user'), multiple: false, prompt: I18n.t('invoices.new.select.user')
   = f.input :date_of_an_invoice, as: :date_picker, wrapper: :horizontal_form
 
   fieldset.custom-fieldset
@@ -14,26 +13,32 @@
       .has-error
         = f.input :payment_term, collection: 1..31, prompt: 'Select days', include_blank: '-', label: 'Payment term \n (in days)', wrapper: :horizontal_form
         = f.input :deadline, as: :date, start_year: Date.today.year,  order: [:day, :month, :year], wrapper: :horizontal_form, prompt: '-'
-        .col-sm-3
-        .col-sm-9
+        .form-actions.col-sm-offset-3
           span.help-block = @invoice.errors[:base][0]
     - else
       = f.input :payment_term, collection: 1..31, prompt: I18n.t('invoices.new.select_days'),  include_blank: '-', label: 'Payment term (in days)', wrapper: :horizontal_form
       = f.input :deadline, as: :date_picker, wrapper: :horizontal_form
 
   fieldset.custom-fieldset
-    legend.custom-legend = I18n.t('invoices.new.select_sale_or_project')
-    .bs-callout.bs-callout-sm.bs-callout-info-colored
-      h5.heading
-        = icon('info-circle')
-        |&nbsp;
-        = I18n.t('invoices.new.sale_or_project_already_selected')
+    - if @invoice.sale_id?
+      legend.custom-legend = I18n.t('invoices.new.sale')
+      .form-actions.col-sm-offset-3
+        p.text-info = I18n.t('invoices.new.sale_selected')
+      = f.association :sale, selected: @invoice.sale_id, label_method: lambda { |sale| "#{sale.date}" " to " "#{sale.customer.name}" }, disabled: true 
+    - elsif @invoice.project_id?  
+      legend.custom-legend = I18n.t('invoices.new.project')
+      .form-actions.col-sm-offset-3
+        p.text-info = I18n.t('invoices.new.project_selected')
+      = f.association :project, selected: @invoice.project_id, label_method: :name, disabled: true   
 
   = f.input :interest_in_arrears, label: 'Interest in arrears (in %)', input_html: { min: 0, max: 100 }
   = f.input :reference_number
   = f.input :status, collection: [['PENDING', 'PENDING'], ['PAID', 'PAID'], ['OVERDUE', 'OVERDUE']], prompt: I18n.t('invoices.new.select_status')
   = f.input :description
 
-  .btn-toolbar.text-center
-    = link_to I18n.t('button.cancel'), invoices_path, class: 'btn btn-primary btn-outline'
-    = f.button :submit, class: 'btn-primary'
+  .form-actions.col-sm-offset-3
+    => link_to I18n.t('button.cancel'), invoices_path, class: 'btn btn-primary btn-outline'
+    => f.button :submit, class: 'btn-primary'
+
+- content_for :javascript_includes do
+  = javascript_include_tag "date_time_picker"

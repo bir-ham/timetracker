@@ -202,8 +202,11 @@ module DashboardHelper
     all_customers = Customer.joins(:sales, :projects)
     days_since_account_creation = Date.today - (current_account.created_at).to_date
     weeks_since_account_creation = days_since_account_creation/7
+    # Protect zero divison
+    if weeks_since_account_creation == 0
+      weeks_since_account_creation = 1
+    end  
     customers_visist_average = '%.2f' % (all_customers.size.to_f/weeks_since_account_creation.to_f)
-
     customers_by_week = Customer.grouped_by_week(4.weeks.ago)
 
     (4.weeks.ago.to_date..Date.today).select(&:monday?).map do |date|

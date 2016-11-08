@@ -29,8 +29,9 @@ en:
     edit: Edit
     back: Back
     exit: Exit
+    search: Search
     ok: OK
-    sign_up: Sign up free
+    sign_up: Sign up for free
     invite_user: Invite user
     sign_out: Sign out
     sign_in: Sign in
@@ -41,7 +42,7 @@ en:
     home:
       header: Home
       welcome: Welcome to
-      slogan: Automate and manage your Sales and Projects more efficently, right now!
+      slogan: Automate manage and track your Sales and Projects more efficently online!
       get_started: Get started for free
     features:
       header: Features
@@ -49,6 +50,9 @@ en:
         header: Invoicing
         text: Create Invoces for the sold items or delivered projects. Optionally, import/export Invoices
           to/from exernal excel or CSV files. View and print Invoices in PDF format.
+      sale:
+        header: Sale managment
+        text: Track and record each sales you have been seling. Create an Invocie for the successful sales.    
       project:
         header: Project managment
         text: Track and record hours of projects you have been working on. Generate Invocie for the delivered projects.
@@ -72,7 +76,7 @@ en:
         notice: Thank you for your message. We will contact you soon!
         error: Can not send message.
     footer:
-      copy_right: Copyright &copy; Toolsio, Ltd. 2016
+      copyright: Copyright &copy; Toolsio, Ltd. 2016
       address: Pyyntitie 2 C 50, 02230, Espoo, Finland
   dashboards:
     index:
@@ -108,6 +112,10 @@ en:
       tasks_delayed_projects: You have <strong>%{delayeds_number}</strong> delayed projects
       tasks_waiting_sales: You have <strong>%{waitings_number}</strong> waiting sales
       tasks_user_invoices: "<strong>%{user_name}</strong> is currently working on <strong>%{invoices_number}</strong>"
+      first_invoice: Create your fisrt Invoice
+      first_project: Create your fisrt Project
+      first_sale: Add your fisrt Sale
+      first_customer: Add your fisrt customer
   accounts:
     new:
       header: Create an Account
@@ -234,14 +242,17 @@ en:
       user: User
       confirmation: Confirmation
       invoice_details: Invoice details
-      customer_and_user_details: Customer and User details
+      sale_and_project_details:  Sale and Project details
       select_customer: '-Select customer-'
       select_user: '-Select user-'
       select_status: '-Select status-'
       select_days: '-Select days-'
       select_sale_or_project: Select Sale or Project
       select_payment_term_or_deadline: Select either a Payment term or Deadline
-      sale_or_project_already_selected: Sale or Project already selected
+      sale: Sale
+      project: Project
+      sale_selected: This Sale is selected for this invoice. If you wnat to slect another Sale or Project delete this invoice and create an new invoice for the desired Sale or Project. 
+      project_selected: This Sale is selected for this invoice. If you wnat to slect another Sale or Project delete this invoice and create an new invoice for the desired Sale or Project. 
     edit:
       header: Edit Invoice
     show:

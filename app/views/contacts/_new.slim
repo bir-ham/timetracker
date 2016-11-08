@@ -1,11 +1,10 @@
 = simple_form_for @contact, html: { class: 'form-horizontal' },
-              warpper: :horizontal_form do |f|
+              wrapper: :horizontal_form do |f|
 
-  = f.input :name, wrapper: :horizontal_form
-  = f.input :email, wrapper: :horizontal_form
-  = f.input :message, :as => :text, wrapper: :horizontal_form
+  = f.input :name
+  = f.input :email
+  = f.input :message
   .hidden
     = f.input :nickname, :hint => 'Leave this field blank!'
-
-  .btn-toolbar.text-center
+  .form-actions.col-sm-offset-3
     = f.button :submit, 'Send message', class: 'btn-primary'

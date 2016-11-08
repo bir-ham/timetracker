@@ -4,16 +4,24 @@ html {
   height: 100%;
 }
 
+@font-face {
+  font-family: 'Open Sans', sans-serif;
+  src: font-url('OpenSans-Bold.ttf') format('truetype'),
+    font-url('OpenSans-Italic.ttf') format('truetype'),
+    font-url('OpenSans-Light.ttf') format('truetype'),
+    font-url('OpenSans-Regular.ttf') format('truetype');  
+}
+
 body {
   background-color: $body-background-color;
   color: $body-text-color;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-size: 13px;
-  line-height: 1.42857143;
+  line-height: 1.48;
 }
 
 p {
-  font-size: 13px;
+  font-size: 14px;
 }
 
 a {
@@ -59,6 +67,29 @@ a {
 .has-error .form-control {
   border-color: $red;
   box-shadow: none;
+}
+
+// footer
+#footer {
+  padding: 10px;
+  background-color: $x-dark-mid-night-blue;
+  color: $dark-medium-grey;
+}
+
+.footer-inner {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin-top: -50px;
+  height: 50px;
+  padding: 7px;
+}
+
+// Logo
+.logo-small {
+  width: 95px;
+  height: 28px;
 }
 
 // Badge
@@ -137,6 +168,17 @@ a {
   color: $turquoise !important;
 }
 
+.body-text {
+  color: $body-text-color !important;
+  &:hover {
+    color: $dark-grey !important;
+  }
+}
+
+.xx-light-grey {
+  color: $xx-light-grey;
+}
+
 // Display
 .visible-all-inline-block {
   display: inline-block !important;
@@ -190,6 +232,7 @@ a {
   border: none;
   .panel-heading {
     background: transparent;
+    padding: 10px 0;
   }
   .panel-body {
     background: $white;
@@ -381,6 +424,8 @@ dt {
   bottom: 0;
   height: 100%;
   width: 20px;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
   span {
     color: $white;
     transform: rotate(-90deg);
@@ -515,7 +560,34 @@ dt {
   }
 }
 
+// Vertical center
+.vertical-center {
+  position: absolute; // Remember to give parent container position relative
+  top: 50%;
+  @include transform-translate(-50%);
+}
 
+//.vertical-center {
+//  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+//  min-height: 10vh; /* These two lines are counted as one :-)       */
+
+//  display: flex;
+//  align-items: center;
+//}
+
+.vertical-center-small {
+  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+  min-height: 5vh; /* These two lines are counted as one :-)       */
+
+  display: flex;
+  align-items: center;
+}
+
+// Sprite
+.sprite{
+  display: inline-block;
+  background: transparent url('sprite.png') no-repeat;
+}
 
 /* Extremely very extra small devices (phones, less than 480px) */
 @media (max-width: $screen-xxxs-max) {

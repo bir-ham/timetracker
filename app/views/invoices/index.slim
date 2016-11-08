@@ -26,3 +26,6 @@
 
     hr.x-light-turquoise-hr
     = link_to "Import products from file", invoice_imports_path, class: 'btn btn-outline btn-primary'
+
+- content_for :javascript_includes do
+  = javascript_include_tag "datatable"
