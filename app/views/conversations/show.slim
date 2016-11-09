@@ -1,7 +1,10 @@
-- page_header 'Conversation'
-
 .row
   .col-sm-12
+    - page_header 'Conversation'
+    p 
+      |Chatting with
+      = render 'conversations/participants', conversation: @conversation
+
     .panel.panel-default
       .panel-heading = @conversation.subject
       .panel-body
@@ -9,6 +12,10 @@
           - @conversation.receipts_for(current_user).each do |receipt|
             - message = receipt.message
             
-            = message.sender.name
-              says at = message.created_at.strftime("%-d %B %Y, %H:%M:%S") 
-            = message.body 
+            .media
+              = message.sender.avatar
+            .media-body
+              h6.media-heading
+                = message.sender.name
+                |says at = message.created_at.strftime("%-d %B %Y, %H:%M:%S") 
+              = message.body 

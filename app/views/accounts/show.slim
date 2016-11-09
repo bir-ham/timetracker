@@ -5,7 +5,7 @@
       .media
         .media-left
           h2.text-capitalize = @account.subdomain
-          = image_tag @account[:logo] ? @account.logo.normal : 'logo-placeholder-normal', class: 'thumbnail'
+          = image_tag @account[:logo] ? @account.logo.large : 'logo-placeholder-large', class: 'thumbnail'
         .media-body
           dl.dl-horizontal
             dt = I18n.t('accounts.show.url')
