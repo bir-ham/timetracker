@@ -31,7 +31,7 @@ class InvoicesController < ApplicationController
         @invoice.previous_step
       elsif @invoice.last_step?
         @invoice.status = 'PENDING'
-        @current_user.user_id = current_user.id
+        @invoice.user_id = current_user.id
         @invoice.save if @invoice.all_valid?
       else
         @invoice.next_step

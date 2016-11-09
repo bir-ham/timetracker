@@ -6,7 +6,6 @@ class Sale < ActiveRecord::Base
   has_many :items, dependent: :destroy
 
   validates :customer, presence: true
-  validates :user, presence: true
   validates :date, presence: true
   validates :status, presence: true, on: :update
   validates :description, presence: false

@@ -9,7 +9,7 @@
       dt
         = I18n.t('invoices.show.user')
       dd
-        = @invoice.first_name
+        = current_user.first_name
       dt
         = I18n.t('invoices.show.date_of_an_invoice')
       dd = @invoice.date_of_an_invoice
@@ -31,8 +31,8 @@
 
 - if @invoice.sale_id?
   .row
-    .col-sm-6.col-sm-offset-3
-      h3.text-center = I18n.t('sales.show.header')
+    .form-actions.col-sm-offset-3
+      h3 = I18n.t('sales.show.header')
       dl.dl-horizontal
         dt
           = I18n.t('sales.show.customer')
@@ -40,7 +40,7 @@
         dt
           = I18n.t('sales.show.user')
         dd
-          = @invoice.user.first_name
+          = current_user.first_name
         dt
           = I18n.t('sales.show.date')
         dd = @invoice.sale.date
@@ -65,8 +65,8 @@
             span -
 - elsif @invoice.project_id?
   .row
-    .col-sm-6.col-sm-offset-3
-      h3.text-center = I18n.t('projects.show.header')
+    .form-actions.col-sm-offset-3
+      h3 = I18n.t('projects.show.header')
       dl.dl-horizontal
         dt
           = I18n.t('projects.show.customer')
@@ -74,7 +74,7 @@
         dt
           = I18n.t('projects.show.user')
         dd
-          = @invoice.user.first_name
+          = current_user.first_name
         dt
           = I18n.t('projects.show.deadline')
         dd = @invoice.project.deadline

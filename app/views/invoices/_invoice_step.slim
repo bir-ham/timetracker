@@ -4,19 +4,19 @@
     '
     small = I18n.t('invoices.new.invoice_details')
 
-= f.input :date_of_an_invoice, as: :date_picker, wrapper: :horizontal_form
+= f.input :date_of_an_invoice, as: :date_picker
 
 fieldset.custom-fieldset
   legend.custom-legend = I18n.t('invoices.new.select_payment_term_or_deadline')
   - unless @invoice.errors[:base].empty?
     .has-error
-      = f.input :payment_term, collection: 1..31, prompt: I18n.t('invoices.new.select_days'), include_blank: true, label: 'Payment term \n (in days)', wrapper: :horizontal_form
-      = f.input :deadline, as: :date_picker, wrapper: :horizontal_form
+      = f.input :payment_term, collection: 1..31, prompt: I18n.t('invoices.new.select_days'), include_blank: true, label: 'Payment term \n (in days)'
+      = f.input :deadline, as: :date_picker, input_html: { value: Date.today }
       .form-actions.col-sm-offset-3
         span.help-block = @invoice.errors[:base][0]
   - else
-    = f.input :payment_term, collection: 1..31, prompt: I18n.t('invoices.new.select_days'),  include_blank: true, label: 'Payment term (in days)', wrapper: :horizontal_form
-    = f.input :deadline, as: :date_picker, wrapper: :horizontal_form
+    = f.input :payment_term, collection: 1..31, prompt: I18n.t('invoices.new.select_days'),  include_blank: true, label: 'Payment term (in days)'
+    = f.input :deadline, as: :date_picker, input_html: { value: Date.today }
 
 = f.input :interest_in_arrears, label: 'Interest in arrears (in %)', input_html: { min: 0, max: 100 }
 = f.input :reference_number, required: true
