@@ -43,7 +43,7 @@
         .col-sm-6.pull-right
           dl.dl-horizontal.pull-right
             dt = I18n.t('invoices.show.from')
-            dd = current_user.first_name
+            dd = @invoice.user.first_name
             .m-t-xl
             - if @invoice.sale_id?
               dt = I18n.t('invoices.show.invoice_for')
@@ -179,15 +179,14 @@
             .visible-all-blcok = current_account.town
             .visible-all-blcok = current_account.country
 
-    .btn-toolbar
-      = link_to '#confirmation-modal-container', class: 'btn btn-danger confirmation-button', data: { id: @invoice.id } do
-        = icon('trash')
-        |&nbsp;
-        = I18n.t('button.delete')
+    => link_to '#confirmation-modal-container', class: 'btn btn-danger confirmation-button', data: { id: @invoice.id } do
+      = icon('trash')
+      |&nbsp;
+      = I18n.t('button.delete')
 
-      = link_to edit_invoice_path(@invoice), class: 'btn btn-primary' do
-        = icon('pencil-square-o white')
-        |&nbsp;
-        = I18n.t('button.edit')
+    => link_to edit_invoice_path(@invoice), class: 'btn btn-primary' do
+      = icon('pencil-square-o white')
+      |&nbsp;
+      = I18n.t('button.edit')
 
 == render 'layouts/confirmation_modal'

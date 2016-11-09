@@ -26,6 +26,24 @@ jQuery ->
       className: 'text-center'
     } ]
 
+  # Customers
+  table = $("#customers").dataTable
+    oLanguage: {
+      sProcessing: "<img src='ajax-loader.gif'>"
+    },
+    bProcessing: true
+
+    bServerSide: true
+    sAjaxSource: $('#customers').data('source')
+
+    columnDefs: [ {
+      targets: 'no-sort',
+      orderable: false
+      }, {
+      targets: 'align-center',
+      className: 'text-center'
+    } ]
+
 
 
 

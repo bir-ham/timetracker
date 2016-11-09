@@ -1,11 +1,11 @@
 class Sale < ActiveRecord::Base
 
+  belongs_to :user
   has_one :invoice
   belongs_to :customer
   has_many :items, dependent: :destroy
 
   validates :customer, presence: true
-  validates :user, presence: true
   validates :date, presence: true
   validates :status, presence: true, on: :update
   validates :description, presence: false

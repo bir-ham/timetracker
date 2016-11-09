@@ -6,28 +6,16 @@
       |&nbsp;
       = I18n.t('customers.index.add_new_customer_button')
     .m-b-xl
-    - unless @customers.empty?
-      .table-responsive
-        table.table.table-striped
-          thead
-            tr
-              th = I18n.t('customers.show.name')
-              th = I18n.t('customers.show.phone_number')
-              th = I18n.t('customers.show.email')
-              th = I18n.t('customers.show.address')
-              th = I18n.t('button.view')
-          tbody
-            - @customers.each do |customer|
-              tr
-                td = customer.name
-                td = customer.phone_number
-                td = customer.email
-                td = customer.address
-                td
-                  = link_to customer, class: 'btn btn-info btn-xs' do
-                    = icon('eye')
-                    |&nbsp;
-                    = I18n.t('button.view')
+    - unless @customers.nil?
+      table#customers.table.table-striped.table-bordered cellspacing="0" width="100%" data-source="/customers.json"
+        thead
+          tr
+            th = I18n.t('customers.show.name')
+            th = I18n.t('customers.show.phone_number')
+            th = I18n.t('customers.show.email')
+            th = I18n.t('customers.show.address')
+            th = I18n.t('button.view')
+        tbody
 
     - else
       p.text-danger = I18n.t('customers.index.empty_customers')

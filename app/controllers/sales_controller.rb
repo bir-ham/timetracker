@@ -13,6 +13,7 @@ class SalesController < ApplicationController
   def create
     @sale = Sale.new(sale_params)
     @sale.status = 'PREPARING'
+    @sale.user_id = current_user.id
     if @sale.save
       if session[:new_action_called_from] == '/invoices/new'
         redirect_to new_invoice_path
@@ -58,7 +59,7 @@ class SalesController < ApplicationController
   private
 
   def sale_params
-    params.require(:sale).permit(:date, :customer_id, :status, :user_id, :description)
+    params.require(:sale).permit(:date, :customer_id, :status, :description)
   end
 
 end

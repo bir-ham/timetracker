@@ -1,11 +1,11 @@
 class Project < ActiveRecord::Base
 
+  belongs_to :user
   has_one :invoice
   belongs_to :customer
   has_many :tasks, dependent: :destroy
 
   validates :customer, presence: true
-  validates :user, presence: true
   validates :name, presence: true, uniqueness: true
   validates :deadline, presence: false
   validates :status, presence: true, on: :edit

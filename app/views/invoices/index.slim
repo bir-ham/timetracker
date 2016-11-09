@@ -6,7 +6,7 @@
       |&nbsp;
       = I18n.t('invoices.index.create_invoice')
     .m-b-xl
-    - unless @invoices.empty?
+    - unless @invoices.nil?
       table#invoices.table.table-striped.table-bordered cellspacing="0" width="100%" data-source="/invoices.json"
         thead
           tr
@@ -28,4 +28,4 @@
     = link_to "Import products from file", invoice_imports_path, class: 'btn btn-outline btn-primary'
 
 - content_for :javascript_includes do
-  = javascript_include_tag "datatable"
+  = javascript_include_tag "datatables"

@@ -131,8 +131,6 @@ abbr, accronym {
   color: $white;
   background: $dark-medium-grey;
   border-color: $dark-medium-grey;
-  border: 1px solid rgba(0,0,0,0.3);
-  box-shadow: inset 0 2px 0 rgba(255,255,255,0.3);
   &:hover, &.focus {
     color: $white;
     background-color: $medium-grey;
