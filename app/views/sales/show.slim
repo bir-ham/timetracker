@@ -7,7 +7,7 @@
         dt = I18n.t('sales.show.customer')
         dd = @sale.customer.name
         dt = I18n.t('sales.show.user')
-        dd = current_user.first_name
+        dd = @sale.user.first_name
         dt = I18n.t('sales.show.date')
         dd = @sale.date.strftime("%d/%m/%Y")
         dt = I18n.t('sales.show.status')

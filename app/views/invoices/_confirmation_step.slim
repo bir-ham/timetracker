@@ -9,22 +9,22 @@
       dt
         = I18n.t('invoices.show.user')
       dd
-        =h current_user.first_name
+        = @invoice.first_name
       dt
         = I18n.t('invoices.show.date_of_an_invoice')
-      dd =h @invoice.date_of_an_invoice
+      dd = @invoice.date_of_an_invoice
       dt
         = I18n.t('invoices.show.deadline')
-      dd =h @invoice.deadline
+      dd = @invoice.deadline
       dt
         = I18n.t('invoices.show.payment_term')
-      dd =h @invoice.payment_term
+      dd = @invoice.payment_term
       dt
         = I18n.t('invoices.show.interest_in_arrears')
-      dd =h @invoice.interest_in_arrears
+      dd = @invoice.interest_in_arrears
       dt
         = I18n.t('invoices.show.reference_number')
-      dd =h @invoice.reference_number
+      dd = @invoice.reference_number
       dt
         |Description:
       dd = @invoice.description
@@ -40,7 +40,7 @@
         dt
           = I18n.t('sales.show.user')
         dd
-          = @invoice.current_user.first_name
+          = @invoice.user.first_name
         dt
           = I18n.t('sales.show.date')
         dd = @invoice.sale.date
@@ -74,7 +74,7 @@
         dt
           = I18n.t('projects.show.user')
         dd
-          = @invoice.current_user.first_name
+          = @invoice.user.first_name
         dt
           = I18n.t('projects.show.deadline')
         dd = @invoice.project.deadline

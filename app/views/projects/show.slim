@@ -7,7 +7,7 @@
         dt = I18n.t('projects.show.customer')
         dd = @project.customer.name
         dt = I18n.t('projects.show.user')
-        dd = current_user.first_name
+        dd = @project.user.first_name
         dt = I18n.t('projects.show.deadline')
         dd = @project.deadline
         dt = I18n.t('projects.show.status')

@@ -1,5 +1,5 @@
 class InvoicesDatatable
-  delegate :params, :link_to, :content_tag, :current_account, :current_user, :number_to_currency, to: :@view
+  delegate :params, :link_to, :content_tag, :current_account, :number_to_currency, to: :@view
 
   def initialize(view)
     @view = view
@@ -52,7 +52,7 @@ class InvoicesDatatable
           invoice.id,
           name,
           customer_name,
-          current_user.first_name,
+          invoice.user.first_name,
           invoice.date_of_an_invoice.strftime("%d/%m/%Y"),
           number_to_currency(running_total),
           content_tag(:span, invoice.status, class: status_label_class),

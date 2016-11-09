@@ -13,6 +13,7 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new(project_params)
     @project.status = 'NEW'
+    @project.user_id = current_user.id
     if @project.save
       if session[:new_action_called_from] == '/invoices/new'
         redirect_to new_invoice_path
@@ -49,7 +50,7 @@ class ProjectsController < ApplicationController
   private
 
   def project_params
-    params.require(:project).permit(:name, :status, :deadline, :customer_id, :user_id, :archived)
+    params.require(:project).permit(:name, :status, :deadline, :customer_id, :archived)
   end
 
 end

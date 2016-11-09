@@ -43,7 +43,7 @@
         .col-sm-6.pull-right
           dl.dl-horizontal.pull-right
             dt = I18n.t('invoices.show.from')
-            dd = current_user.first_name
+            dd = @invoice.user.first_name
             .m-t-xl
             - if @invoice.sale_id?
               dt = I18n.t('invoices.show.invoice_for')

@@ -31,6 +31,7 @@ class InvoicesController < ApplicationController
         @invoice.previous_step
       elsif @invoice.last_step?
         @invoice.status = 'PENDING'
+        @current_user.user_id = current_user.id
         @invoice.save if @invoice.all_valid?
       else
         @invoice.next_step
@@ -84,7 +85,7 @@ class InvoicesController < ApplicationController
   private
     def invoice_params
       params.require(:invoice).permit(:date_of_an_invoice, :deadline, :payment_term, :interest_in_arrears,
-        :reference_number, :status, :description, :sale_id, :project_id, :customer_id, :user_id)
+        :reference_number, :status, :description, :sale_id, :project_id, :customer_id)
     end
 
 end
