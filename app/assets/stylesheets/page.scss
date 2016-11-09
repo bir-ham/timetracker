@@ -583,6 +583,13 @@ span.block {
   }
 }
 
+.messages {
+  max-height: 400px;
+  overflow-y: auto;
+  marign-bottom: 1em;
+  margin-top: 1em;
+}
+
 /* Small devices (tablets, 768px and upto desktops, 992px) */
 @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
 
