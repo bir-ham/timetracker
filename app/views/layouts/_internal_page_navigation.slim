@@ -39,7 +39,7 @@ nav#topbar.navbar.navbar-default.navbar-static-top role="navigation" style="marg
           li.summary
             a href="#" See all notifications
       li.dropdown
-        a.dropdown-toggle data-toggle="dropdown" href="#" 
+        = link_to conversations_path, class: 'dropdown-toggle', data: { toggle: :dropdown } do
           = icon('envelope fa-fw')
           span.badge.header-nav-icons.badge-orange 7
         ul.dropdown-menu.animated.flipInX

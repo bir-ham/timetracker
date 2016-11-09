@@ -43,4 +43,13 @@ class ApplicationController < ActionController::Base
   def after_invite_path_for(resource)
     users_path
   end
+
+  rescue_from ActiveRecord::RecordNotFound do 
+    flash[:error] = 'Resource not found.'
+    redirect_back_or root_path
+  end
+  
+  def redirect_back_or(path)
+    redirect_to request.referer || path 
+  end  
 end
