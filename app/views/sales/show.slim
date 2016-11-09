@@ -86,7 +86,7 @@
                 tr.background-white
                   == render 'sales/items/form', sale: @sale, f: f
 
-            .btn-toolbar.m-t-n
+            .m-t-n
               = button_tag(type: :submit, class: 'btn btn-primary btn-sm') do
                 - if is_action_name?('edit')
                   = icon('arrow-up')
@@ -103,16 +103,14 @@
                   |&nbsp;
                   = I18n.t('button.cancel')
 
+    => link_to '#confirmation-modal-container', class: 'btn btn-danger confirmation-button', data: { id: @sale.id } do
+      = icon('trash')
+      |&nbsp;
+      = I18n.t('button.delete')
 
-    .btn-toolbar
-      = link_to '#confirmation-modal-container', class: 'btn btn-danger confirmation-button', data: { id: @sale.id } do
-        = icon('trash')
-        |&nbsp;
-        = I18n.t('button.delete')
-
-      = link_to edit_sale_path(@sale), class: 'btn btn-primary' do
-        = icon('pencil-square-o white')
-        |&nbsp;
-        = I18n.t('button.edit')
+    => link_to edit_sale_path(@sale), class: 'btn btn-primary' do
+      = icon('pencil-square-o white')
+      |&nbsp;
+      = I18n.t('button.edit')
 
 == render 'layouts/confirmation_modal'

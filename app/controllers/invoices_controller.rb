@@ -2,13 +2,10 @@ class InvoicesController < ApplicationController
   #before_action :set_invoice, only: [:show, :edit, :upate, :destroy]
 
   def index
-    @invoices = Invoice.all
-
+    @invoices = Invoice.first
     respond_to do |format|
       format.html
       format.json { render json: InvoicesDatatable.new(view_context) }
-      format.csv { render text: @invoices.to_csv }
-      format.xls #{ render text: @invoices.to_csv(col_sep: "\t") }
     end
   end
 

@@ -2,9 +2,11 @@ class CustomersController < ApplicationController
   #before_action :set_invoice, only: [:show, :edit, :upate, :destroy]
 
   def index
-    @customers = Customer.all
-    #@search = InvoiceSearch.new(params[:search])
-    #@invoices = @search.scope
+    @customers = Customer.first
+    respond_to do |format|
+      format.html
+      format.json { render json: CustomersDatatable.new(view_context) }
+    end
   end
 
   def new
