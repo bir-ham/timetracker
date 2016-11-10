@@ -72,25 +72,25 @@ class Invoice < ActiveRecord::Base
   end
 
   private
-    def choose_xor_deadline_payment_term
-      unless deadline.blank? ^ payment_term.blank?
-        errors.add(:base, 'specify deadline or payment term. Not both filled, nor both empty')
-      end
+  def choose_xor_deadline_payment_term
+    unless deadline.blank? ^ payment_term.blank?
+      errors.add(:base, 'specify deadline or payment term. Not both filled, nor both empty')
     end
+  end
 
-    def choose_xor_sale_project
-      unless sale.blank? ^ project.blank?
-        errors.add(:base, 'specify sale or project. Not both filled, nor both empty')
-      end
+  def choose_xor_sale_project
+    unless sale.blank? ^ project.blank?
+      errors.add(:base, 'specify sale or project. Not both filled, nor both empty')
     end
+  end
 
-    def date_of_an_invoice_or_deadline_cannot_be_in_the_past
-      if date_of_an_invoice.present? && date_of_an_invoice < Date.today
-        errors.add(:date_of_an_invoice, "can't be in the past")
-      end
-      if deadline.present? && deadline < Date.today
-        errors.add(:deadline, "can't be in the past")
-      end
+  def date_of_an_invoice_or_deadline_cannot_be_in_the_past
+    if date_of_an_invoice.present? && date_of_an_invoice < Date.today
+      errors.add(:date_of_an_invoice, "can't be in the past")
     end
+    if deadline.present? && deadline < Date.today
+      errors.add(:deadline, "can't be in the past")
+    end
+  end
 
 end

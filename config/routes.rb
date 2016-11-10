@@ -26,7 +26,11 @@ Rails.application.routes.draw do
     resources :customers
     resources :accounts, only: [:show, :edit, :update, :destroy]
     get '/clear-invoice-params', to: 'invoices#clear_invoice_params', via: [:destroy], as: :clear_invoice_params
-    resources :conversations, only: [:index, :show, :destroy]
+    resources :conversations, only: [:index, :show, :destroy] do
+      member do
+        post :reply
+      end
+    end
     resources :messages, only: [:new, :create]
   end
   # The priority is based upon order of creation: first created -> highest priority.

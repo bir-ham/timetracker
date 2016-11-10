@@ -19,3 +19,8 @@
                 = message.sender.name
                 |says at = message.created_at.strftime("%-d %B %Y, %H:%M:%S") 
               = message.body 
+
+    = form_tag reply_conversation_path(@conversation), method: :post do
+      .form-group
+        = text_area_tag 'body', nil, cols: 3, class: 'form-control', placeholder: 'Type something...', require: true
+      = submit_tag 'Send Message', class: 'btn btn-primary
