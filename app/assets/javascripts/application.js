@@ -21,6 +21,9 @@
 //= require bootstrap/carousel
 //= require bootstrap/modal
 
+// Chosen
+//= require choosen-jquery
+
 // Datetimepicker
 //= require moment
 //= require bootstrap-datetimepicker
@@ -30,3 +33,4 @@
 //= require confirmation_modal
 //= require custome_collapse
 //= require scroll
+//= require messages
