@@ -22,7 +22,10 @@
 //= require bootstrap/modal
 
 // Chosen
-//= require choosen-jquery
+//= require chosen-jquery
+
+// ImageSelect
+//= require ImageSelect.jquery.js
 
 // Datetimepicker
 //= require moment

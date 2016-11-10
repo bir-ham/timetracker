@@ -1,5 +1,4 @@
-class ConversationController < ApplicationController
-  before_action :authenticate_user!
+class ConversationsController < ApplicationController
   before_action :get_mailbox
   before_action :get_conversation, except: [:index]
   
