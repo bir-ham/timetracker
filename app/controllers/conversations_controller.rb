@@ -1,6 +1,6 @@
 class ConversationsController < ApplicationController
   before_action :get_mailbox
-  before_action :get_conversation, except: [:index]
+  before_action :get_conversation, except: [:index, :empty_trash]
   before_action :get_box, only: [:index]
 
   def index
@@ -34,6 +34,14 @@ class ConversationsController < ApplicationController
   def restore
     @conversation.untrash(current_user)
     flash[:success] 'The conversation is restored'
+    redirect_to conversation_path
+  end
+
+  def empty_trash
+    @mailbox.trash.each do |conversation|
+      conversation.receipts_for(current_user).update_all(delete: true) 
+    end   
+    flash[:success] = 'Your trash is cleaned!'
     redirect_to conversation_path
   end
 

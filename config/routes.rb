@@ -30,6 +30,7 @@ Rails.application.routes.draw do
       member do
         post :reply
         post :restore
+        post :empty_trash
       end
     end
     resources :messages, only: [:new, :create]

@@ -8,6 +8,9 @@
       = mailbox_section 'trash', @box
 
   .col-sm-9  
+    - if @inbox == 'trash'
+      = link_to 'Empty trash', empty_trash_conversations_path, class: 'btn btn-danger', method: :delete,
+        data: { confirm: 'Are you sure?' s}
     .list-group
       = render partial: 'conversations/conversation', collection: @conversations
 
