@@ -45,6 +45,12 @@ class ConversationsController < ApplicationController
     redirect_to conversation_path
   end
 
+  def mark_as_read
+    @conversation.mark_as_read(current_user)
+    flash[:success] = 'Conversation is marked as read.'
+    redirect_to conversation_path  
+  end
+
   private
   def get_box
     if params[:box].blank? or !["inbox","sent","trash"].include?(params[:inbox])
