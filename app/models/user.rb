@@ -14,4 +14,9 @@ class User < ActiveRecord::Base
   def self.invited_users
     invited_users = User.where.not(invited_by_id: nil)
   end
+
+  def mailboxer_email(object)
+    email  
+  end
+
 end
