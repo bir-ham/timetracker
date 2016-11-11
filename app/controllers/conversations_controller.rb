@@ -1,8 +1,17 @@
 class ConversationsController < ApplicationController
   before_action :get_mailbox
   before_action :get_conversation, except: [:index]
-  
+  before_action :get_box, only: [:index]
+
   def index
+    if @box.eql? 'inbox'
+      @conversations = @mailbox.inbox
+    elsif @box.eql? 'sent'
+      @conversations = @mailbox.sent
+    elsif
+     @conversations = @mailbox.trash
+    end      
+
     @conversations = @mailbox.inbox.paginate(page: params[:page], per_page: 10)
   end
 
@@ -17,6 +26,13 @@ class ConversationsController < ApplicationController
   end
 
   private
+  def get_box
+    if params[:box].blank? or !["inbox","sent","trash"].include?(params[:inbox])
+      params[:box] = 'inbox'
+    end
+    @box = params[:box]    
+  end
+
   def get_mailbox
     @mailbox ||= current_user.mailbox
   end
