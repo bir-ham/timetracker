@@ -1,6 +1,19 @@
 li.list-group-item.clearfix
-  = link_to conversation subject, conversation_path(conversation) 
-  p = render 'conversations/participants', conversation: conversation
+  = link_to conversation.subject, conversation_path(conversation) 
 
-  p = conversation.last_message.body
-  small(span.text-muted = conversation.last_message.created_at.strftime("%-d %B %Y, %H:%M:%S"))
+  .btn-group-vertical.pull-right
+    - if conversation.is_trashed?(current_user)
+      = link_to 'Restore', restore_conversation_path(conversation), class: 'btn btn-info btn-xs', method: :post
+    - else
+      = link_to 'Move to trash', conversation_path(conversation), class: 'btn btn-danger btn-xs', method: :delete,
+        data: { confirm: 'Are you sure' }
+
+  p = render 'conversations/participants', conversation: conversation 
+        
+  p 
+    = conversation.last_message.body
+    '
+    small
+      |(
+      span.text-muted = conversation.last_message.created_at.strftime("%-d %B %Y, %H:%M:%S")
+      |)
