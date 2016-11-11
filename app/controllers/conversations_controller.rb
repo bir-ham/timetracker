@@ -25,6 +25,18 @@ class ConversationsController < ApplicationController
     redirect_to conversation_path(@conversation)  
   end
 
+  def destroy
+    @conversation.move_to_trash(current_user)
+    flash[:success] = 'The conversation is moved to trash.'
+    redirect_to conversation_path
+  end
+
+  def restore
+    @conversation.untrash(current_user)
+    flash[:success] 'The conversation is restored'
+    redirect_to conversation_path
+  end
+
   private
   def get_box
     if params[:box].blank? or !["inbox","sent","trash"].include?(params[:inbox])
