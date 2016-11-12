@@ -8,9 +8,8 @@
           - @conversation.receipts_for(current_user).each do |receipt|
             .media
               - message = receipt.message
-              - bindig
               .media-left
-                = image_tag message.sender[:avatar] ? message.sender.avatar.small : 'avatar-placeholder-small'
+                = image_tag (message.sender[:avatar] ? message.sender.avatar.small : 'avatar-placeholder-small'), class: 'img-rounded'
               .media-body
                 h6.media-heading
                   = message.sender.first_name

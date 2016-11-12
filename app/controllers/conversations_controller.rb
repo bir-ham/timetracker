@@ -4,15 +4,15 @@ class ConversationsController < ApplicationController
   before_action :get_box, only: [:index]
 
   def index
-    if @box.eql? 'inbox'
+    if @box.eql? "inbox"
       @conversations = @mailbox.inbox
-    elsif @box.eql? 'sent'
-      @conversations = @mailbox.sent
-    elsif
-     @conversations = @mailbox.trash
-    end      
+    elsif @box.eql? "sent"
+      @conversations = @mailbox.sentbox
+    else
+      @conversations = @mailbox.trash
+    end
 
-    @conversations = @mailbox.inbox.paginate(page: params[:page], per_page: 10)
+    @conversations = @conversations.paginate(page: params[:page], per_page: 10)
   end
 
   def show
