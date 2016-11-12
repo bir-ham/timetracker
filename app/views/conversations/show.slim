@@ -1,26 +1,24 @@
+- page_header 'Conversation'
 .row
   .col-sm-12
-    - page_header 'Conversation'
-    p 
-      |Chatting with
-      = render 'conversations/participants', conversation: @conversation
-
     .panel.panel-default
       .panel-heading = @conversation.subject
       .panel-body
         .messages
           - @conversation.receipts_for(current_user).each do |receipt|
-            - message = receipt.message
-            
             .media
-              = message.sender.avatar
-            .media-body
-              h6.media-heading
-                = message.sender.name
-                |says at = message.created_at.strftime("%-d %B %Y, %H:%M:%S") 
-              = message.body 
+              - message = receipt.message
+              - bindig
+              .media-left
+                = image_tag message.sender[:avatar] ? message.sender.avatar.small : 'avatar-placeholder-small'
+              .media-body
+                h6.media-heading
+                  = message.sender.first_name
+                  |&nbsp;sent you a message at 
+                  = message.created_at.strftime("%-d %B %Y, %H:%M:%S") 
+                = message.body 
 
     = form_tag reply_conversation_path(@conversation), method: :post do
       .form-group
         = text_area_tag 'body', nil, cols: 3, class: 'form-control', placeholder: 'Type something...', require: true
-      = submit_tag 'Send Message', class: 'btn btn-primary
+      = submit_tag 'Send Message', class: 'btn btn-primary'

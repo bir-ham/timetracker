@@ -33,7 +33,7 @@ class ConversationsController < ApplicationController
 
   def restore
     @conversation.untrash(current_user)
-    flash[:success] 'The conversation is restored'
+    flash[:success] = 'The conversation is restored'
     redirect_to conversation_path
   end
 
@@ -64,7 +64,7 @@ class ConversationsController < ApplicationController
   end
 
   def get_conversation
-    @conversations ||= @mailbox.conversations.find(params[:id])
+    @conversation ||= @mailbox.conversations.find(params[:id])
   end
 
 end  

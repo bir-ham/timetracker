@@ -26,7 +26,7 @@
             td = user.email
             td = user_status(user)
             td
-              = link_to 'Send message', new_message_path(to: user.id), 'btn btn-default btn-sm'
+              = link_to 'Send', new_message_path(to: user.id), class: 'btn btn-default btn-sm'
 
     .pull-right
       = will_paginate          
