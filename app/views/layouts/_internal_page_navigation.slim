@@ -39,25 +39,19 @@ nav#topbar.navbar.navbar-default.navbar-static-top role="navigation" style="marg
           li.summary
             a href="#" See all notifications
       li.dropdown
-        = link_to conversations_path, class: 'dropdown-toggle', data: { toggle: :dropdown } do
+        a.dropdown-toggle data-toggle="dropdown" href="#" 
           = icon('envelope fa-fw')
           span.badge.header-nav-icons.badge-orange 7
         ul.dropdown-menu.animated.flipInX
           .title You have 4 new messages
           li
-            a href="#"
-              It is a long established.
+            = link_to 'Messge 1', conversations_path
           li
-            a href="#"
-              There are many variations.
+            = link_to 'Messge 2', conversations_path
           li
-            a href="#"
-              Lorem Ipsum is simply dummy.
-          li
-            a href="#"
-              Contrary to popular belief.
+            = link_to 'Messge 3', conversations_path
           li.summary
-            a href="#" See All Messages
+            = link_to 'See all messages', conversations_path
       li.dropdown.settings
         a.dropdown-toggle data-toggle="dropdown" href="#"
           = icon('cogs fa-fw')
