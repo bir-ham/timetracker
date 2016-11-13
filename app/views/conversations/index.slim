@@ -3,25 +3,24 @@
 .row.messages
   .col-sm-3
     .well.well-sm
+      = link_to I18n.t('conversations.index.new_message'), new_message_path, class: 'btn btn-primary btn-block'
+      hr.m-t-s.m-b-s
       ul.nav.nav-pills.nav-stacked
-        li
-          = link_to I18n.t('conversations.index.new_message'), new_message_path, class: 'btn btn-primary btn-sm'
-        hr.m-t-s.m-b-s
-        li.mailbox-list class = ('active' if 'inbox' == @box)
+        li class = ('active' if 'inbox' == @box)
           = link_to conversations_path(box: 'inbox') do
             = icon 'inbox'
             |&nbsp;
             = I18n.t('conversations.index.inbox')
             .pull-right 
               span.badge = @mailbox.inbox.size
-        li.mailbox-list class = ('active' if 'sent' == @box)
+        li class = ('active' if 'sent' == @box)
           = link_to conversations_path(box: 'sent') do
             = icon 'send'
             |&nbsp;
             = I18n.t('conversations.index.sent')
             .pull-right 
               span.badge = @mailbox.sentbox.size
-        li.mailbox-list class = ('active' if 'trash' == @box)
+        li class = ('active' if 'trash' == @box)
           = link_to conversations_path(box: 'trash') do
             = icon 'trash'
             |&nbsp;

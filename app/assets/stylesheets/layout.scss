@@ -185,6 +185,10 @@ a {
   background-color: $dark-medium-grey;
 }
 
+.nav-pills > li > a { 
+  border-radius: 0;
+}
+
 // Display
 .visible-all-inline-block {
   display: inline-block !important;

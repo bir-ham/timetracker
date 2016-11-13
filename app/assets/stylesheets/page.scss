@@ -597,15 +597,15 @@ span.block {
   .nav-stacked .pull-right {
     margin-top: -2px;
   }
-  .mailbox-list .active .badge {
+  .nav-stacked .active .badge {
     color: $dark-medium-grey;
     background-color: $white;
   } 
-  .mailbox-list .badge {
+  .nav-stacked .badge {
     color: $white;
     background-color: $dark-medium-grey;
   }   
-  .mailbox-list a {
+  .nav-stacked a {
     color: $dark-medium-grey;
   }
 }
