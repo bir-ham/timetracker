@@ -350,6 +350,12 @@ en:
         error_delete: "Item couldn't be deleted, try again after refreshing the page"
         confirmation_msg: Are you sure to delete this item?
         warning_msg: If you click delete, the item will be deleted.
+  messages:
+    new:
+      header: New message 
+  conversations:
+    index:
+             
 
   settings:
     index:

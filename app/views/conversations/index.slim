@@ -2,17 +2,21 @@
 
 .row
   .col-sm-3
-    ul.nav.nav-pills.nav-stacked
-      = mailbox_section 'inbox', @box
-      = mailbox_section 'sent', @box
-      = mailbox_section 'trash', @box
+    .well.well-sm
+      ul.nav.nav-pills.nav-stacked
+        li.m-b-s
+          = link_to 'Send', new_message_path, class: 'btn btn-primary btn-sm'
+        = mailbox_section 'inbox', @box
+        = mailbox_section 'sent', @box
+        = mailbox_section 'trash', @box
 
   .col-sm-9  
-    - if @inbox == 'trash'
-      = link_to 'Empty trash', empty_trash_conversations_path, class: 'btn btn-danger', method: :delete,
-        data: { confirm: 'Are you sure?' }
-    ul.list-group
-      = render partial: 'conversations/conversation', collection: @conversations
+    .well.well-sm
+      - if @inbox == 'trash'
+        = link_to 'Empty trash', empty_trash_conversations_path, class: 'btn btn-danger', method: :delete,
+          data: { confirm: 'Are you sure?' }
+      ul.list-group
+        = render partial: 'conversations/conversation', collection: @conversations
 
     .pull-right  
       = will_paginate

@@ -124,10 +124,6 @@ a {
   background-color: transparent;
 }
 
-.nav > li > a {
-  padding: 13px 20px;
-}
-
 // Font awesome
 
 // Background
@@ -177,6 +173,18 @@ a {
 
 .xx-light-grey {
   color: $xx-light-grey;
+}
+
+// Navpil active
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+  color: #fff;
+  background-color: $dark-medium-grey;
+}
+
+.nav > li > a:hover, .nav > li > a:focus {
+  text-decoration: none;
+  background-color: $dark-medium-grey !important;
+  color: $white;
 }
 
 // Display
