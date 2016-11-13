@@ -359,6 +359,8 @@ en:
       empty_inbox: Inbox is empty             
       empty_sent: Sent is empty 
       empty_trash: Trash is empty 
+    show: 
+      reply: Reply  
   settings:
     index:
       header: Settings

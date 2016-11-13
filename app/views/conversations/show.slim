@@ -1,26 +1,29 @@
 - page_header 'Conversation'
 .row
   .col-sm-12
-    .panel.panel-default
-      .panel-heading 
-        - @conversation.receipts_for(current_user).each do |receipt|
-          .clearfix
-            .pull-left
-              h4 = @conversation.subject
-              h6 = receipt.message.sender.first_name
-            .pull-right 
-              small = receipt.message.created_at.strftime("%-d %B %Y, %H:%M:%S") 
-      .panel-body
-        .messages
-          - @conversation.receipts_for(current_user).each do |receipt|
-            .media
-              - message = receipt.message
-              .media-left
-                = image_tag (message.sender[:avatar] ? message.sender.avatar.small : 'avatar-placeholder-small'), class: 'img-rounded'
-              .media-body
-                p = message.body 
-
     = form_tag reply_conversation_path(@conversation), method: :post do
       .form-group
         = text_area_tag 'body', nil, cols: 3, class: 'form-control', placeholder: 'Type something...', require: true
-      = submit_tag 'Send Message', class: 'btn btn-primary'
+      .clearfix
+        .pull-right
+          = submit_tag I18n.t('conversations.show.reply'), class: 'btn btn-primary'
+    hr.medium-grey-hr
+
+    - @conversation.receipts_for(current_user).each do |receipt|
+      - message = receipt.message
+      .panel.panel-default.m-b-s
+        .panel-heading 
+          .clearfix
+            .pull-left
+              h4 = @conversation.subject
+            .pull-right 
+              small = receipt.message.created_at.strftime("%-d %B %Y, %H:%M:%S") 
+        .panel-body
+          .messages
+            .media
+              .media-left
+                = image_tag (message.sender[:avatar] ? message.sender.avatar.small : 'avatar-placeholder-small'), class: 'img-rounded'
+                small = message.sender.first_name
+              .media-body
+                p = message.body 
+

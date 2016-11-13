@@ -110,6 +110,10 @@ a {
   border-top: 1px solid $x-light-turquoise;
 }
 
+.medium-grey-hr {
+  border-top: 1px solid $medium-grey;
+}
+
 // Thumbnail
 .thumbnail {
   @include border-radius(0);
@@ -354,6 +358,10 @@ dt {
 
 .img-bordered-xxs {
   border-radius: 2px !important;
+}
+
+.img-rounded {
+  border-radius: 3px;
 }
 
 // Custome note box
