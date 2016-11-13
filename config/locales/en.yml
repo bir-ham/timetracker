@@ -355,8 +355,10 @@ en:
       header: New message 
   conversations:
     index:
-             
-
+      new_message: New message
+      empty_inbox: Inbox is empty             
+      empty_sent: Sent is empty 
+      empty_trash: Trash is empty 
   settings:
     index:
       header: Settings

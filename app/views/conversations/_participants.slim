@@ -1,3 +1,4 @@
 - conversation.participants.each do |participant|
   - unless participant == current_user
-    = image_tag (participant[:avatar] ? participant.avatar.small : 'avatar-placeholder-small'), class: 'img-rounded'
+    //= image_tag (participant[:avatar] ? participant.avatar.small : 'avatar-placeholder-small'), class: 'img-rounded'
+    strong = participant.first_name

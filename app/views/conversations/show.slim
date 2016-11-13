@@ -2,7 +2,14 @@
 .row
   .col-sm-12
     .panel.panel-default
-      .panel-heading = @conversation.subject
+      .panel-heading 
+        - @conversation.receipts_for(current_user).each do |receipt|
+          .clearfix
+            .pull-left
+              h4 = @conversation.subject
+              h6 = receipt.message.sender.first_name
+            .pull-right 
+              small = receipt.message.created_at.strftime("%-d %B %Y, %H:%M:%S") 
       .panel-body
         .messages
           - @conversation.receipts_for(current_user).each do |receipt|
@@ -11,11 +18,7 @@
               .media-left
                 = image_tag (message.sender[:avatar] ? message.sender.avatar.small : 'avatar-placeholder-small'), class: 'img-rounded'
               .media-body
-                h6.media-heading
-                  = message.sender.first_name
-                  |&nbsp;sent you a message at 
-                  = message.created_at.strftime("%-d %B %Y, %H:%M:%S") 
-                = message.body 
+                p = message.body 
 
     = form_tag reply_conversation_path(@conversation), method: :post do
       .form-group
