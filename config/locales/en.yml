@@ -30,6 +30,7 @@ en:
     back: Back
     exit: Exit
     search: Search
+    send: Send
     ok: OK
     sign_up: Sign up for free
     invite_user: Invite user
@@ -363,7 +364,17 @@ en:
       sent: Sent
       trash: Trash
     show: 
-      reply: Reply  
+      reply: Reply
+    reply:
+      success: Reply is sent    
+    destroy:
+      desuccess: 'Conversation is moved to trash.'    
+    restore:
+      resuccess: 'Conversation is restored' 
+    empty_trash:
+      success: 'Your trash is cleaned!'   
+    mark_as_read:
+      success: 'Conversation is marked as an read.'      
   settings:
     index:
       header: Settings

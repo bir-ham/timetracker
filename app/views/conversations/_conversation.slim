@@ -10,7 +10,7 @@ tr.clickable-row data-href="#{conversation_href}"
     = conversation.last_message.created_at.strftime("%-d %B %Y, %H:%M:%S")  
   td.text-center  
     - if conversation.is_trashed?(current_user)
-        = link_to 'Restore', restore_conversation_path(conversation), class: 'btn btn-info btn-xs', method: :post do
+        = link_to restore_conversation_path(conversation), class: 'btn btn-info btn-xs', method: :post do
           = icon('undo')
     - else
         = link_to conversation_path(conversation), class: 'btn btn-danger btn-xs', method: :delete,

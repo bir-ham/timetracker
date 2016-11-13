@@ -6,7 +6,7 @@
       ul.nav.nav-pills.nav-stacked
         li
           = link_to I18n.t('conversations.index.new_message'), new_message_path, class: 'btn btn-primary btn-sm'
-        hr  
+        hr.m-t-s.m-b-s
         li.mailbox-list class = ('active' if 'inbox' == @box)
           = link_to conversations_path(box: 'inbox') do
             = icon 'inbox'

@@ -21,33 +21,33 @@ class ConversationsController < ApplicationController
 
   def reply
     current_user.reply_to_conversation(@conversation, params[:body])
-    flash[:success] = 'Reply sent'
+    flash[:success] = I18n.t('conversations.reply.success')
     redirect_to conversation_path(@conversation)  
   end
 
   def destroy
     @conversation.move_to_trash(current_user)
-    flash[:success] = 'The conversation is moved to trash.'
-    redirect_to conversation_path
+    flash[:success] = I18n.t('conversations.destroy.success')
+    redirect_to conversations_path
   end
 
   def restore
     @conversation.untrash(current_user)
-    flash[:success] = 'The conversation is restored'
-    redirect_to conversation_path
+    flash[:success] = I18n.t('conversations.restore.success')
+    redirect_to conversations_path
   end
 
   def empty_trash
     @mailbox.trash.each do |conversation|
       conversation.receipts_for(current_user).update_all(delete: true) 
     end   
-    flash[:success] = 'Your trash is cleaned!'
-    redirect_to conversation_path
+    flash[:success] = I18n.t('conversations.empty_trash.success') 
+    redirect_to conversations_path
   end
 
   def mark_as_read
     @conversation.mark_as_read(current_user)
-    flash[:success] = 'Conversation is marked as read.'
+    flash[:success] = I18n.t('conversations.mark_as_read.success') 
     redirect_to conversation_path  
   end
 
