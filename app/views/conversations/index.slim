@@ -7,21 +7,27 @@
         li
           = link_to I18n.t('conversations.index.new_message'), new_message_path, class: 'btn btn-primary btn-sm'
         hr  
-        li class = ('active' if 'inbox' == @box)
+        li.mailbox-list class = ('active' if 'inbox' == @box)
           = link_to conversations_path(box: 'inbox') do
             = icon 'inbox'
             |&nbsp;
             = I18n.t('conversations.index.inbox')
-        li class = ('active' if 'sent' == @box)
+            .pull-right 
+              span.badge = @mailbox.inbox.size
+        li.mailbox-list class = ('active' if 'sent' == @box)
           = link_to conversations_path(box: 'sent') do
             = icon 'send'
             |&nbsp;
             = I18n.t('conversations.index.sent')
-        li class = ('active' if 'trash' == @box)
+            .pull-right 
+              span.badge = @mailbox.sentbox.size
+        li.mailbox-list class = ('active' if 'trash' == @box)
           = link_to conversations_path(box: 'trash') do
             = icon 'trash'
             |&nbsp;
             = I18n.t('conversations.index.trash')
+            .pull-right 
+              span.badge = @mailbox.trash.size
 
   .col-sm-9  
     .well.well-sm

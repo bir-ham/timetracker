@@ -584,10 +584,30 @@ span.block {
   }
 }
 
-.messages .nav > li > a:hover, .nav > li > a:focus {
-  text-decoration: none;
-  background-color: $dark-medium-grey !important;
-  color: $white;
+.messages {
+  .nav > li > a:hover, .nav > li > a:focus {
+    text-decoration: none;
+    background-color: $dark-medium-grey;
+    color: $white;
+  }
+  .nav > li > a:hover .badge, .nav > li > a:focus .badge {
+    background-color: $white;
+    color: $dark-medium-grey;
+  }
+  .nav-stacked .pull-right {
+    margin-top: -2px;
+  }
+  .mailbox-list .active .badge {
+    color: $dark-medium-grey;
+    background-color: $white;
+  } 
+  .mailbox-list .badge {
+    color: $white;
+    background-color: $dark-medium-grey;
+  }   
+  .mailbox-list a {
+    color: $dark-medium-grey;
+  }
 }
 
 #message_body {
