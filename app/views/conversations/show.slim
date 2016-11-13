@@ -15,7 +15,7 @@
         .panel-heading 
           .clearfix
             .pull-left
-              h4 = @conversation.subject
+              h4.m-t-xxs.m-b-n = @conversation.subject
             .pull-right 
               small = receipt.message.created_at.strftime("%-d %B %Y, %H:%M:%S") 
         .panel-body

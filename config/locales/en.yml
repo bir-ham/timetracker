@@ -359,6 +359,9 @@ en:
       empty_inbox: Inbox is empty             
       empty_sent: Sent is empty 
       empty_trash: Trash is empty 
+      inbox: Inbox
+      sent: Sent
+      trash: Trash
     show: 
       reply: Reply  
   settings:

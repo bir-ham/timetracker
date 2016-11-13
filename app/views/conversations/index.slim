@@ -1,15 +1,27 @@
 - page_header 'Your Conversations'
 
-.row
+.row.messages
   .col-sm-3
     .well.well-sm
       ul.nav.nav-pills.nav-stacked
         li
           = link_to I18n.t('conversations.index.new_message'), new_message_path, class: 'btn btn-primary btn-sm'
         hr  
-        = mailbox_section 'inbox', @box
-        = mailbox_section 'sent', @box
-        = mailbox_section 'trash', @box
+        li class = ('active' if 'inbox' == @box)
+          = link_to conversations_path(box: 'inbox') do
+            = icon 'inbox'
+            |&nbsp;
+            = I18n.t('conversations.index.inbox')
+        li class = ('active' if 'sent' == @box)
+          = link_to conversations_path(box: 'sent') do
+            = icon 'send'
+            |&nbsp;
+            = I18n.t('conversations.index.sent')
+        li class = ('active' if 'trash' == @box)
+          = link_to conversations_path(box: 'trash') do
+            = icon 'trash'
+            |&nbsp;
+            = I18n.t('conversations.index.trash')
 
   .col-sm-9  
     .well.well-sm
