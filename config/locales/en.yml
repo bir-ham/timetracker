@@ -356,6 +356,7 @@ en:
       header: New message 
   conversations:
     index:
+      header: Conversations
       new_message: New message
       empty_inbox: Inbox is empty             
       empty_sent: Sent is empty 
@@ -363,14 +364,17 @@ en:
       inbox: Inbox
       sent: Sent
       trash: Trash
+      remove: Remove
+      restore: Restore 
     show: 
+      header: Show
       reply: Reply
     reply:
       success: Reply is sent    
     destroy:
-      desuccess: 'Conversation is moved to trash.'    
+      success: 'Conversation is moved to trash.'    
     restore:
-      resuccess: 'Conversation is restored' 
+      success: 'Conversation is restored' 
     empty_trash:
       success: 'Your trash is cleaned!'   
     mark_as_read:

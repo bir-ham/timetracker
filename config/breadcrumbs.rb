@@ -31,7 +31,7 @@ crumb :edit_project do |project|
   parent :projects
 end
 
-crumb :new_project do |project|
+crumb :new_project do 
   link I18n.t('projects.new.header'), new_project_path
   parent :projects
 end
@@ -51,7 +51,7 @@ crumb :edit_sale do |sale|
   parent :invoices
 end
 
-crumb :new_sale do |sale|
+crumb :new_sale do 
   link I18n.t('sales.new.header'), new_sale_path
   parent :sales
 end
@@ -71,7 +71,7 @@ crumb :edit_invoice do |invoice|
   parent :invoices
 end
 
-crumb :new_invoice do |invoice|
+crumb :new_invoice do
   link I18n.t('invoices.new.header'), new_invoice_path
   parent :invoices
 end
@@ -91,9 +91,24 @@ crumb :edit_customer do |customer|
   parent :invoices
 end
 
-crumb :new_customer do |customer|
+crumb :new_customer do
   link I18n.t('customers.new.header'), new_customer_path
   parent :customers
+end
+
+# conversation
+crumb :conversations do
+  link I18n.t('conversations.index.header'), conversations_path
+end
+
+crumb :show_conversation do |conversation|
+  link I18n.t('conversations.show.header'), conversation_path(conversation)
+  parent :conversations
+end
+
+crumb :new_message do
+  link I18n.t('messages.new.header'), new_messges_path
+  parent :conversations
 end
 
 # crumb :projects do

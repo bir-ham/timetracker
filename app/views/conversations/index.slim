@@ -1,3 +1,5 @@
+- breadcrumb :conversations
+
 .row.messages
   .col-sm-3
     .well.well-sm
@@ -38,16 +40,21 @@
               th From
               th Message
               th Date
-              th.text-center Status
+              th.text-center 
+                - if @box == 'inbox' || @box == 'sent'
+                  = I18n.t('conversations.index.remove')
+                - elsif @box == 'trash'   
+                  = I18n.t('conversations.index.restore') 
+
           tbody
             = render partial: 'conversations/conversation', collection: @conversations
       - else
         - if @box == 'inbox'
-          p.text-danger = I18n.t('conversations.index.empty_inbox')
+          p.text-info = I18n.t('conversations.index.empty_inbox')
         - elsif @box == 'sent'
-          p.text-danger = I18n.t('conversations.index.empty_sent')  
+          p.text-info = I18n.t('conversations.index.empty_sent')  
         - elsif @box == 'trash'    
-          p.text-danger = I18n.t('conversations.index.empty_trash')
+          p.text-info = I18n.t('conversations.index.empty_trash')
 
     .pull-right  
       = will_paginate

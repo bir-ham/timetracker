@@ -515,6 +515,36 @@ span.block {
 
 // Charts
 
+// Messages
+.messages {
+  .nav > li > a:hover, .nav > li > a:focus {
+    text-decoration: none;
+    background-color: $light-mid-night-blue;
+    color: $white;
+  }
+  .nav > li > a:hover .badge, .nav > li > a:focus .badge {
+    background-color: $white;
+    color: $light-mid-night-blue;
+  }
+  .nav-stacked .pull-right {
+    margin-top: -2px;
+  }
+  .nav-stacked .active .badge {
+    color: $light-mid-night-blue;
+    background-color: $white;
+  } 
+  .nav-stacked .badge {
+    color: $white;
+    background-color: $light-mid-night-blue;
+  }   
+  .nav-stacked a {
+    color: $light-mid-night-blue;
+  }
+}
+
+#message_body {
+  min-height: 150px;
+}
 
 
 /* Extra small devices (phones, less than 768px) */
@@ -582,36 +612,6 @@ span.block {
       margin: 0 0 0 55px;
     }
   }
-}
-
-.messages {
-  .nav > li > a:hover, .nav > li > a:focus {
-    text-decoration: none;
-    background-color: $dark-medium-grey;
-    color: $white;
-  }
-  .nav > li > a:hover .badge, .nav > li > a:focus .badge {
-    background-color: $white;
-    color: $dark-medium-grey;
-  }
-  .nav-stacked .pull-right {
-    margin-top: -2px;
-  }
-  .nav-stacked .active .badge {
-    color: $dark-medium-grey;
-    background-color: $white;
-  } 
-  .nav-stacked .badge {
-    color: $white;
-    background-color: $dark-medium-grey;
-  }   
-  .nav-stacked a {
-    color: $dark-medium-grey;
-  }
-}
-
-#message_body {
-  min-height: 150px;
 }
 
 /* Small devices (tablets, 768px and upto desktops, 992px) */

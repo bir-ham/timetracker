@@ -181,8 +181,9 @@ a {
 
 // Navpills active
 .nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
-  color: #fff;
-  background-color: $dark-medium-grey;
+  color: $light-mid-night-blue;
+  background: $light-grey;
+  border: 1px solid $light-mid-night-blue;
 }
 
 .nav-pills > li > a { 

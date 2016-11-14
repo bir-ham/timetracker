@@ -1,8 +1,10 @@
+- breadcrumb :show_conversation, @conversation
+
 .row
   .col-sm-12
     = form_tag reply_conversation_path(@conversation), method: :post do
       .form-group
-        = text_area_tag 'body', nil, cols: 3, class: 'form-control', placeholder: 'Type something...', require: true
+        = text_area_tag 'body', nil, cols: 3, class: 'form-control', placeholder: 'Type something...', required: true
       .clearfix
         .pull-right
           = submit_tag I18n.t('conversations.show.reply'), class: 'btn btn-primary'
