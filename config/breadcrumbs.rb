@@ -107,7 +107,7 @@ crumb :show_conversation do |conversation|
 end
 
 crumb :new_message do
-  link I18n.t('messages.new.header'), new_messges_path
+  link I18n.t('messages.new.header'), new_message_path
   parent :conversations
 end
 

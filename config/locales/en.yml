@@ -39,6 +39,14 @@ en:
     learn_more: Learn more
   navigation:
     toolsio: Toolsio
+    see_all_messages: See all messages
+    admin_options: Admin options 
+    profile: Profile
+    calender: Calender 
+    inbox: Inbox
+    tasks: Tasks
+    unread_messages: You have %{unread_messages_number} new messages
+    notifications: See all notifications
   landing_page:
     home:
       header: Home
@@ -366,7 +374,6 @@ en:
       trash: Trash
       remove: Remove
       restore: Restore 
-      see_all_messages: See all messages
     show: 
       header: Show
       reply: Reply
