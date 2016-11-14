@@ -41,17 +41,16 @@ nav#topbar.navbar.navbar-default.navbar-static-top role="navigation" style="marg
       li.dropdown
         a.dropdown-toggle data-toggle="dropdown" href="#" 
           = icon('envelope fa-fw')
-          span.badge.header-nav-icons.badge-orange 7
-        ul.dropdown-menu.animated.flipInX
-          .title You have 4 new messages
-          li
-            = link_to 'Messge 1', conversations_path
-          li
-            = link_to 'Messge 2', conversations_path
-          li
-            = link_to 'Messge 3', conversations_path
+          - unless current_user.unread_inbox_count == 0
+            span.badge.header-nav-icons.badge-orange = current_user.unread_inbox_count
+        ul.dropdown-menu.unread-emails
+          .title You have #{current_user.unread_inbox_count} new messages
+          - unread_messages = current_user.mailbox.inbox(unread: true).limit(5)
+          - unread_messages.each do |msg|
+            li
+              = link_to truncate(msg.last_message.body, lenght: 17), conversations_path
           li.summary
-            = link_to 'See all messages', conversations_path
+            = link_to I18n.t('conversations.index.see_all_messages'), conversations_path
       li.dropdown.settings
         a.dropdown-toggle data-toggle="dropdown" href="#"
           = icon('cogs fa-fw')

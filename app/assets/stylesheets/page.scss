@@ -546,6 +546,11 @@ span.block {
   min-height: 150px;
 }
 
+.dropdown-menu.unread-emails {
+  a {
+    min-width: 200px;
+  } 
+}
 
 /* Extra small devices (phones, less than 768px) */
 @media (max-width: $screen-xs-max) {

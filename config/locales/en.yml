@@ -366,6 +366,7 @@ en:
       trash: Trash
       remove: Remove
       restore: Restore 
+      see_all_messages: See all messages
     show: 
       header: Show
       reply: Reply
