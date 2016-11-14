@@ -9,14 +9,13 @@
           |&nbsp;
           = I18n.t('projects.index.create_new_project')
       .pull-right
-        .pull-right
-          = search_form_for @q, html: { class: 'form-inline' } do |f|
-            // Attributes may be chained. Search multiple attributes for one value...
-            .input-group
-              = f.search_field :customer_name_or_name_or_status_or_description_cont, placeholder: 'Customer, Status or Description', class: 'form-control'
-              span.input-group-addon.search-button
-                = button_tag(type: :submit) do
-                  = icon('search')
+        = search_form_for @q, html: { class: 'form-inline' } do |f|
+          // Attributes may be chained. Search multiple attributes for one value...
+          .input-group
+            = f.search_field :customer_name_or_name_or_status_or_description_cont, placeholder: 'Customer, Status or Description', class: 'form-control'
+            span.input-group-addon.search-button
+              = button_tag(type: :submit) do
+                = icon('search')
 
     .m-b-xl
     .row

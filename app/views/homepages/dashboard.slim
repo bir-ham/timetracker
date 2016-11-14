@@ -205,11 +205,11 @@
           ul.list-group
             - unless @new_delayed_projects_count['NEW'].nil?
               li.list-group-item
-                = link_to projects_path, class: 'text-info'
+                = link_to '/projects?utf8=✓&q%5Bcustomer_name_or_name_or_status_or_description_cont%5D=new&button=', class: 'text-info'
                   = raw I18n.t('dashboards.index.tasks_new_projects', news_number: @new_delayed_projects_count['NEW'])
             - unless @new_delayed_projects_count['DELAYED'].nil?
               li.list-group-item
-                = link_to projects_path, class: 'text-danger'
+                = link_to '/projects?utf8=✓&q%5Bcustomer_name_or_name_or_status_or_description_cont%5D=delayed&button=', class: 'text-danger'
                   = raw I18n.t('dashboards.index.tasks_delayed_projects', delayeds_number: @new_delayed_projects_count['DELAYED'])
         - else
           p = I18n.t('dashboards.index.no_tasks_project')
@@ -219,7 +219,7 @@
           ul.list-group
             - unless @waiting_sales_count['WAITING'].nil?
               li.list-group-item
-                = link_to sales_path, class: 'text-danger'
+                = link_to 'sales?utf8=✓&q%5Bcustomer_name_or_status_or_description_cont%5D=waiting&button=', class: 'text-danger'
                   = raw I18n.t('dashboards.index.tasks_waiting_sales', waitings_number: @waiting_sales_count['WAITING'])
         - else
           p = I18n.t('dashboards.index.no_tasks_sale')
