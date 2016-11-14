@@ -3,7 +3,7 @@ jQuery ->
     dom: "<'row'<'col-sm-4'l><'col-sm-4 text-center'B><'col-sm-4'f>>tp",
 
     oLanguage: {
-      sProcessing: "<img src='ajax-loader.gif'>"
+      sProcessing: "<img src='/assets/ajax-loader.gif'>"
     },
     bProcessing: true
 
@@ -29,7 +29,7 @@ jQuery ->
   # Customers
   table = $("#customers").dataTable
     oLanguage: {
-      sProcessing: "<img src='ajax-loader.gif'>"
+      sProcessing: "<img src='/assets/ajax-loader.gif'>"
     },
     bProcessing: true
 

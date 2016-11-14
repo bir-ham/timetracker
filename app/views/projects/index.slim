@@ -19,6 +19,7 @@
                   = icon('search')
 
     .m-b-xl
+    .row
     - unless @projects.empty?
       /.form-actions.col-sm-offset-3
         = link_to "Download CSV", projects_path(format: "csv"), class: 'btn btn-outline btn-primary btn-sm'
@@ -42,46 +43,47 @@
             - text_color = 'text-danger'
           - else
               | Unknown status
-          .well.well-sm.m-b-xs.well-left-text
-            .well-text-container class = (background)
-              span = project.status
+          .col-sm-6    
+            .well.well-sm.m-b-xs.well-left-text
+              .well-text-container class = (background)
+                span = project.status
 
-            .clearfix
-              .pull-left
-                h5.m-t-n class = (text_color)
-                  = project.name
-              .pull-right
-                = link_to project, class: 'btn btn-info btn-sm' do
-                  = icon('eye')
-                  |&nbsp;
-                  = I18n.t('button.view')
+              .clearfix
+                .pull-left
+                  h5.m-t-n class = (text_color)
+                    = project.name
+                .pull-right
+                  = link_to project, class: 'btn btn-info btn-sm' do
+                    = icon('eye')
+                    |&nbsp;
+                    = I18n.t('button.view')
 
-            .row.m-b-n
-              .col-xs-2
-                strong.text-uppercase = I18n.t('projects.index.user')
-                .clearfix
-                span = project.user.first_name
-              .col-xs-2
-                strong.text-uppercase = I18n.t('projects.index.customer')
-                .clearfix
-                span = project.customer.name
-              .col-xs-2
-                strong.text-uppercase = I18n.t('projects.index.deadline')
-                .clearfix
-                span = project.deadline
-              .col-xs-2
-                strong.text-uppercase = I18n.t('projects.index.progress')
-                - progress = project.progress
-                - progress_percentage = 60
-                .progress.progress-small.m-t-xxs.m-b-n
-                  .progress-bar.progress-bar-success role="progressbar" aria-valuenow="#{progress_percentage}" aria-valuemin="0" aria-valuemax="100" style="width: #{progress_percentage}%;"
-              .col-xs-2
-                strong.text-uppercase = I18n.t('projects.index.invoiced')
-                .clearfix
-                - unless project.invoice.nil?
-                  h4.m-t-n.m-b-n = icon ('check-circle-o text-success')
-                - else
-                  h4.m-t-n.m-b-n = icon ('times-circle-o text-danger')
+              .row.m-b-n
+                .col-xs-2
+                  strong.text-uppercase = I18n.t('projects.index.user')
+                  .clearfix
+                  span = project.user.first_name
+                .col-xs-2
+                  strong.text-uppercase = I18n.t('projects.index.customer')
+                  .clearfix
+                  span = project.customer.name
+                .col-xs-2
+                  strong.text-uppercase = I18n.t('projects.index.deadline')
+                  .clearfix
+                  span = project.deadline
+                .col-xs-2
+                  strong.text-uppercase = I18n.t('projects.index.progress')
+                  - progress = project.progress
+                  - progress_percentage = 60
+                  .progress.progress-small.m-t-xxs.m-b-n
+                    .progress-bar.progress-bar-success role="progressbar" aria-valuenow="#{progress_percentage}" aria-valuemin="0" aria-valuemax="100" style="width: #{progress_percentage}%;"
+                .col-xs-2
+                  strong.text-uppercase = I18n.t('projects.index.invoiced')
+                  .clearfix
+                  - unless project.invoice.nil?
+                    h4.m-t-n.m-b-n = icon ('check-circle-o text-success')
+                  - else
+                    h4.m-t-n.m-b-n = icon ('times-circle-o text-danger')
 
       .pull-right
         = will_paginate @projects, renderer: BootstrapPagination::Rails

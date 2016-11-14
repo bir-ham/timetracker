@@ -12,10 +12,10 @@ fieldset.custom-fieldset
         = f.association :sale, collection: @sales, label_method: lambda { |sale| "#{sale.date}" " to " "#{sale.customer.name}" }, value_method: :id, prompt: I18n.t('sales.new.select_sale'), multiple: false, required: true, disabled: true
       - else
         = f.association :sale, collection: @sales, label_method: lambda { |sale| "#{sale.date}" " to " "#{sale.customer.name}" }, value_method: :id, prompt: I18n.t('sales.new.select_sale'), multiple: false, required: true
-        .m-t-l
+        .m-t-xl
         h5.horizontal-line-with-text
           span OR
-        .m-b-s
+        .m-b-xl
         - if @projects.nil?
           = f.association :project, collection: @projects, label_method: :name, value_method: :id, prompt: I18n.t('projects.new.select_project'), multiple: false, required: true, disabled: true
         - else
@@ -32,10 +32,10 @@ fieldset.custom-fieldset
           = I18n.t('sales.index.add_new_sale')
     - else
       = f.association :sale, collection: @sales, label_method: lambda { |sale| "#{sale.date}" " to " "#{sale.customer.name}" }, value_method: :id, prompt: I18n.t('sales.new.select_sale'), multiple: false, required: true
-    .m-t-l
+    .m-t-xl
     h5.horizontal-line-with-text
       span OR
-    .m-b-s
+    .m-b-xl
     - if @projects.nil?
       = f.association :project, collection: @projects, label_method: :name, value_method: :id, prompt: I18n.t('projects.new.no_select_project'), multiple: false, required: true, disabled: true
       .form-actions.col-sm-offset-3
