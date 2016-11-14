@@ -1,0 +1,43 @@
+- conversation_href = conversation_path(conversation)
+
+- if conversation.is_unread?(current_user)
+  tr.clickable-row data-href="#{conversation_href}"
+    td
+      strong = render 'conversations/participants', conversation: conversation 
+    td
+      strong = link_to conversation.subject, conversation_path(conversation)
+      |&nbsp;
+      strong 
+        small.text-muted = truncate(conversation.last_message.body, lenght: 17)
+    td
+      strong = conversation.last_message.created_at.strftime("%-d %B %Y, %H:%M:%S")  
+    td.text-center  
+      - if conversation.is_trashed?(current_user)
+        = link_to restore_conversation_path(conversation), class: 'btn btn-info btn-xs', method: :post do
+            = icon('undo')
+      - else
+        = link_to conversation_path(conversation), class: 'btn btn-danger btn-xs', method: :delete,
+          data: { confirm: 'Are you sure' } do
+            = icon('trash')
+- else  
+  tr.clickable-row data-href="#{conversation_href}"
+    td
+      = render 'conversations/participants', conversation: conversation 
+    td
+      = link_to conversation.subject, conversation_path(conversation)
+      |&nbsp;
+      small.text-muted = truncate(conversation.last_message.body, lenght: 17)
+    td
+      = conversation.last_message.created_at.strftime("%-d %B %Y, %H:%M:%S")  
+    td.text-center  
+      - if conversation.is_trashed?(current_user)
+        = link_to restore_conversation_path(conversation), class: 'btn btn-info btn-xs', method: :post do
+            = icon('undo')
+      - else
+        = link_to conversation_path(conversation), class: 'btn btn-danger btn-xs', method: :delete,
+          data: { confirm: 'Are you sure' } do
+            = icon('trash')
+
+
+   
+        

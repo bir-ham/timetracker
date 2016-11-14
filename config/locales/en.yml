@@ -30,6 +30,7 @@ en:
     back: Back
     exit: Exit
     search: Search
+    send: Send
     ok: OK
     sign_up: Sign up for free
     invite_user: Invite user
@@ -38,6 +39,14 @@ en:
     learn_more: Learn more
   navigation:
     toolsio: Toolsio
+    see_all_messages: See all messages
+    admin_options: Admin options 
+    profile: Profile
+    calender: Calender 
+    inbox: Inbox
+    tasks: Tasks
+    unread_messages: You have %{unread_messages_number} new messages
+    notifications: See all notifications
   landing_page:
     home:
       header: Home
@@ -350,7 +359,36 @@ en:
         error_delete: "Item couldn't be deleted, try again after refreshing the page"
         confirmation_msg: Are you sure to delete this item?
         warning_msg: If you click delete, the item will be deleted.
-
+  messages:
+    new:
+      header: New message 
+    create:
+      success: 'Message has been sent!'  
+  conversations:
+    index:
+      header: Conversations
+      new_message: New message
+      empty_inbox: Inbox is empty             
+      empty_sent: Sent is empty 
+      empty_trash: Trash is empty 
+      inbox: Inbox
+      sent: Sent
+      trash: Trash
+      remove: Remove
+      restore: Restore 
+    show: 
+      header: Show
+      reply: Reply
+    reply:
+      success: Reply is sent    
+    destroy:
+      success: 'Conversation is moved to trash.'    
+    restore:
+      success: 'Conversation is restored' 
+    empty_trash:
+      success: 'Your trash is cleaned!'   
+    mark_as_read:
+      success: 'Conversation is marked as an read.'      
   settings:
     index:
       header: Settings

@@ -33,6 +33,9 @@ html, body {
   .navbar-header #logo span.fa {
     display: none;
   }
+  .navbar-brand {
+    padding: 12px 35px;
+  }
   .topbar-main {
     display: block;
     height: 100%;
@@ -71,6 +74,9 @@ html, body {
   }
   .navbar-top-links li {
     display: inline-block;
+  }
+  .dropdown-toggle {
+    padding: 13px 15px;
   }
   .navbar-top-links li > a {
     height: 100%;
@@ -514,7 +520,42 @@ span.block {
 
 // Charts
 
+// Messages
+.messages {
+  .nav > li > a:hover, .nav > li > a:focus {
+    text-decoration: none;
+    background-color: $light-mid-night-blue;
+    color: $white;
+  }
+  .nav > li > a:hover .badge, .nav > li > a:focus .badge {
+    background-color: $white;
+    color: $light-mid-night-blue;
+  }
+  .nav-stacked .pull-right {
+    margin-top: -2px;
+  }
+  .nav-stacked .active .badge {
+    color: $light-mid-night-blue;
+    background-color: $white;
+  } 
+  .nav-stacked .badge {
+    color: $white;
+    background-color: $light-mid-night-blue;
+  }   
+  .nav-stacked a {
+    color: $light-mid-night-blue;
+  }
+}
 
+#message_body {
+  min-height: 150px;
+}
+
+.dropdown-menu.unread-emails {
+  a {
+    min-width: 200px;
+  } 
+}
 
 /* Extra small devices (phones, less than 768px) */
 @media (max-width: $screen-xs-max) {

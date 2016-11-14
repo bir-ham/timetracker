@@ -1,0 +1,30 @@
+- breadcrumb :show_conversation, @conversation
+
+.row
+  .col-sm-12
+    = form_tag reply_conversation_path(@conversation), method: :post do
+      .form-group
+        = text_area_tag 'body', nil, cols: 3, class: 'form-control', placeholder: 'Type something...', required: true
+      .clearfix
+        .pull-right
+          = submit_tag I18n.t('conversations.show.reply'), class: 'btn btn-primary'
+    hr.medium-grey-hr
+
+    - @conversation.receipts_for(current_user).each do |receipt|
+      - message = receipt.message
+      .panel.panel-default.m-b-s
+        .panel-heading 
+          .clearfix
+            .pull-left
+              h4.m-t-xxs.m-b-n = @conversation.subject
+            .pull-right 
+              small = receipt.message.created_at.strftime("%-d %B %Y, %H:%M:%S") 
+        .panel-body
+          .messages
+            .media
+              .media-left
+                = image_tag (message.sender[:avatar] ? message.sender.avatar.small : 'avatar-placeholder-small'), class: 'img-rounded'
+                small = message.sender.first_name
+              .media-body
+                p = message.body 
+

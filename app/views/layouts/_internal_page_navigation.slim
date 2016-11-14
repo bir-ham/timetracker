@@ -5,10 +5,7 @@ nav#topbar.navbar.navbar-default.navbar-static-top role="navigation" style="marg
       span.icon-bar
       span.icon-bar
       span.icon-bar
-    = link_to root_path, id: 'logo', class: 'navbar-brand'
-      span.fa.fa-rocket
-      span.logo-text = I18n.t('navigation.toolsio')
-      span.logo-text-icon style="display: none" µ
+    = link_to (image_tag ('logo-reverse'), class: 'logo-small'), root_url, class: 'navbar-brand'
     
   .topbar-main  
     = link_to '#', id: 'menu-toggle', class: 'hidden-xs'
@@ -23,7 +20,7 @@ nav#topbar.navbar.navbar-default.navbar-static-top role="navigation" style="marg
         a.dropdown-toggle data-toggle="dropdown" href="#" 
           = icon('bell fa-fw')
           span.badge.header-nav-icons.badge-light-blue 3
-        ul.dropdown-menu.notification.animated.flipInX
+        ul.dropdown-menu.notification
           li
             a href="#"
               span.label.label-success NEW
@@ -37,56 +34,51 @@ nav#topbar.navbar.navbar-default.navbar-static-top role="navigation" style="marg
               span.label.label-danger ERR
               |Contrary to popular belief.
           li.summary
-            a href="#" See all notifications
+            = link_to I18n.t('navigation.notifications'), '#'
       li.dropdown
         a.dropdown-toggle data-toggle="dropdown" href="#" 
           = icon('envelope fa-fw')
-          span.badge.header-nav-icons.badge-orange 7
-        ul.dropdown-menu.animated.flipInX
-          .title You have 4 new messages
-          li
-            a href="#"
-              It is a long established.
-          li
-            a href="#"
-              There are many variations.
-          li
-            a href="#"
-              Lorem Ipsum is simply dummy.
-          li
-            a href="#"
-              Contrary to popular belief.
+          - unless current_user.unread_inbox_count == 0
+            span.badge.header-nav-icons.badge-orange = current_user.unread_inbox_count
+        ul.dropdown-menu.unread-emails
+          .title = raw I18n.t('navigation.unread_messages', unread_messages_number: current_user.unread_inbox_count)
+          - unread_messages = current_user.mailbox.inbox(unread: true).limit(5)
+          - unread_messages.each do |msg|
+            li
+              = link_to truncate(msg.last_message.body, lenght: 17), conversations_path
           li.summary
-            a href="#" See All Messages
+            = link_to I18n.t('navigation.see_all_messages'), conversations_path
       li.dropdown.settings
         a.dropdown-toggle data-toggle="dropdown" href="#"
           = icon('cogs fa-fw')
           |&nbsp;
           span.caret
-        ul.dropdown-menu.settings.animated.flipInX
-          .title Admin options
+        ul.dropdown-menu.settings
+          .title = I18n.t('navigation.admin_options')
           li
             a href="#"
               = icon('user')
               |&nbsp;
-              |My Profile
+              = I18n.t('navigation.profile')
           li
             a href="#"
               = icon('calendar')
               |&nbsp;
-              |My Calendar
+              = I18n.t('navigation.calender')
           li
-            a href="#"
+            = link_to conversations_path
               = icon('envelope')
               |&nbsp;
-              |My Inbox
-              span.badge.badge-danger 3
+              = I18n.t('navigation.inbox')
+              .pull-right 
+                span.badge = current_user.unread_inbox_count
           li
-            a href="#"
+            = link_to '#'
               = icon('tasks')
               |&nbsp;
-              |My Tasks
-              span.badge.badge-success 7
+              = I18n.t('navigation.tasks')
+              .pull-right 
+                span.badge 7
           li.divider role="separator"  
           li
             = link_to destroy_user_session_path, method: 'delete' do

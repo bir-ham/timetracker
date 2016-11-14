@@ -7,11 +7,11 @@ Rails.application.config.assets.version = '1.0'
 Rails.application.config.assets.paths << Rails.root.join('public', 'assets', 'javascripts')
 Rails.application.config.assets.paths << Rails.root.join('public', 'assets', 'stylesheets')
 
-Rails.application.config.assets.precompile += %w( landing_page.css )
-Rails.application.config.assets.precompile += %w( charts.js )
-Rails.application.config.assets.precompile += %w( date_time_picker.js )
-Rails.application.config.assets.precompile += %w( datatables.js.coffee )
-Rails.application.config.assets.precompile += %w( Chart.js )
+Rails.application.config.assets.precompile += %w( landing_page )
+Rails.application.config.assets.precompile += %w( charts )
+Rails.application.config.assets.precompile += %w( date_time_picker )
+Rails.application.config.assets.precompile += %w( datatables )
+Rails.application.config.assets.precompile += %w( Chart )
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
 # Rails.application.config.assets.precompile += %w( search.js )

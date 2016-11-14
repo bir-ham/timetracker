@@ -110,6 +110,10 @@ a {
   border-top: 1px solid $x-light-turquoise;
 }
 
+.medium-grey-hr {
+  border-top: 1px solid $medium-grey;
+}
+
 // Thumbnail
 .thumbnail {
   @include border-radius(0);
@@ -122,10 +126,6 @@ a {
 
 .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
   background-color: transparent;
-}
-
-.nav > li > a {
-  padding: 13px 20px;
 }
 
 // Font awesome
@@ -177,6 +177,17 @@ a {
 
 .xx-light-grey {
   color: $xx-light-grey;
+}
+
+// Navpills active
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+  color: $light-mid-night-blue;
+  background: $light-grey;
+  border: 1px solid $light-mid-night-blue;
+}
+
+.nav-pills > li > a { 
+  border-radius: 0;
 }
 
 // Display
@@ -346,6 +357,10 @@ dt {
 
 .img-bordered-xxs {
   border-radius: 2px !important;
+}
+
+.img-rounded {
+  border-radius: 3px;
 }
 
 // Custome note box

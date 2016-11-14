@@ -17,6 +17,7 @@
           th Second name
           th Email
           th Status
+          th.text-center Message
       tbody
         - @users.each do |user|
           tr
@@ -24,4 +25,9 @@
             td = user.last_name
             td = user.email
             td = user_status(user)
+            td.text-center
+              = link_to I18n.t('button.send'), new_message_path(to: user.id), class: 'btn btn-primary btn-outline btn-sm'
+
+    .pull-right
+      = will_paginate          
 
