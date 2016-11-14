@@ -362,6 +362,8 @@ en:
   messages:
     new:
       header: New message 
+    create:
+      success: 'Message has been sent!'  
   conversations:
     index:
       header: Conversations
