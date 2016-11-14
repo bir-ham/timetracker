@@ -16,7 +16,7 @@ class ConversationsController < ApplicationController
   end
 
   def show
-    
+    @conversation.mark_as_read(current_user)
   end
 
   def reply
@@ -43,12 +43,6 @@ class ConversationsController < ApplicationController
     end   
     flash[:success] = I18n.t('conversations.empty_trash.success') 
     redirect_to conversations_path
-  end
-
-  def mark_as_read
-    @conversation.mark_as_read(current_user)
-    flash[:success] = I18n.t('conversations.mark_as_read.success') 
-    redirect_to conversation_path  
   end
 
   private

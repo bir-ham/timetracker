@@ -46,7 +46,4 @@ module LayoutHelper
     return true unless sessions || accounts_new || accounts_create || invitations_edit || accounts_subdomain || subdomain_check
   end
 
-  def page_header(text)
-    content_for(:page_header) { text.to_s }
-  end
 end
