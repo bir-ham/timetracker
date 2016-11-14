@@ -2,7 +2,7 @@
 
 - total_paid_invoices = 0
 - paid_invoices_chart_data.each do |i|
-  - total_paid_invoices =+ i[:paid]
+  - total_paid_invoices += i[:paid]
 
 .row.dashboard-card
   .col-sm-6.col-md-3
@@ -25,12 +25,12 @@
           .clearfix
             .pull-left
               small = I18n.t('dashboards.index.last_week')
-              h4.m-t-xs.m-b-n.text-bold = number_to_currency(paid_invoices_chart_data[2][:paid])
+              h4.m-t-xs.m-b-n.text-bold = number_to_currency(paid_invoices_chart_data[3][:paid])
             .pull-right
               small = I18n.t('dashboards.index.this_week')
               h4.m-t-xs.m-b-n.text-bold
-                = number_to_currency( paid_invoices_chart_data[3][:paid])
-                - if  paid_invoices_chart_data[3][:paid].to_f >  paid_invoices_chart_data[2][:paid].to_f
+                = number_to_currency( paid_invoices_chart_data[4][:paid])
+                - if  paid_invoices_chart_data[4][:paid].to_f >  paid_invoices_chart_data[3][:paid].to_f
                   |&nbsp;
                   span = icon('level-up text-success')
                 - else
@@ -59,12 +59,12 @@
             .clearfix
             .pull-left
               small = I18n.t('dashboards.index.last_week')
-              h4.m-t-xs.m-b-n.text-bold = projects_status_chart_data[2][:new_projects]
+              h4.m-t-xs.m-b-n.text-bold = projects_status_chart_data[3][:new_projects]
             .pull-right
               small = I18n.t('dashboards.index.this_week')
               h4.m-t-xs.m-b-n.text-bold
-                = projects_status_chart_data[3][:new_projects]
-                - if projects_status_chart_data[3][:new_projects].to_i > projects_status_chart_data[2][:new_projects].to_i
+                = projects_status_chart_data[4][:new_projects]
+                - if projects_status_chart_data[4][:new_projects].to_i > projects_status_chart_data[3][:new_projects].to_i
                   |&nbsp;
                   span = icon('level-up text-success')
                 - else
@@ -98,12 +98,12 @@
             .clearfix
             .pull-left
               small = I18n.t('dashboards.index.last_week')
-              h4.m-t-xs.m-b-n.text-bold = sales_status_chart_data[2][:preparing_sales]
+              h4.m-t-xs.m-b-n.text-bold = sales_status_chart_data[3][:preparing_sales]
             .pull-right
               small = I18n.t('dashboards.index.this_week')
               h4.m-t-xs.m-b-n.text-bold
-                = sales_status_chart_data[3][:preparing_sales]
-                - if sales_status_chart_data[3][:preparing_sales].to_i > sales_status_chart_data[2][:preparing_sales].to_i
+                = sales_status_chart_data[4][:preparing_sales]
+                - if sales_status_chart_data[4][:preparing_sales].to_i > sales_status_chart_data[3][:preparing_sales].to_i
                   |&nbsp;
                   span = icon('level-up text-success')
                 - else
@@ -139,7 +139,7 @@
                 .pull-right
                   .main-icon = icon('group')
               = content_tag :canvas, "", id: "customers", data: {customers: customers_chart_data }
-              - customers_visit_this_week = customers_chart_data[3][:customers_visit_per_week]
+              - customers_visit_this_week = customers_chart_data[4][:customers_visit_per_week]
               .clearfix
                 .pull-left
                   small = I18n.t('dashboards.index.average_visits_per_week')
