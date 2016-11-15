@@ -22,8 +22,8 @@ describe 'sales' do
     submit_form
 
     expect(page).to have_text I18n.t('sales.new.notice_create')
-    expect(page).to have_text Date.today
-    expect(page).to have_text 'PENDING'
+    expect(page).to have_text Date.today.strftime('%d/%m/%Y')
+    expect(page).to have_text 'PREPARING'
     expect(page).to have_text @customer.name
   end
 
@@ -35,14 +35,14 @@ describe 'sales' do
     expect(page).to have_text "can't be blank"
   end
 
-  it "allows projects to be edited" do
+  it "allows sale to be edited" do
     sale = create(:sale, user: user)
 
     visit sales_path
-    first('.well').click_link I18n.t('button.view')
+    click_sale_header_link sale.date.strftime('%d/%m/%Y') 
     click_link I18n.t('button.edit')
 
-    fill_in "Date", with: Date.today
+    fill_in "Date", with: Date.today.strftime('%d/%m/%Y')
     fill_in "Description", with: 'Lorem lipsum edited'
     submit_form
 
@@ -51,4 +51,9 @@ describe 'sales' do
     expect(page).to have_text "Lorem lipsum edited"
   end
 
+  def click_sale_header_link(sale_date)
+    within find("h4", text: sale_date) do
+      page.first("a").click
+    end
+  end
 end

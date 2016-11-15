@@ -42,9 +42,8 @@ describe 'projects' do
   	project = create(:project)
 
   	visit projects_path
-    click_link I18n.t('button.view')
+    click_project_header_link project.name
   	click_link I18n.t('button.edit')
-    #click_edit_project_button project.name
 
   	fill_in "Name", with: "Project 1 edited"
     check 'Archived'
@@ -56,9 +55,9 @@ describe 'projects' do
     expect(page).to have_text I18n.t('projects.show.archived')
   end
 
-  #def click_edit_project_button(project_name)
-  #	within find("h3", text: project_name) do
-  #		page.first("a").click
-  #	end
-  #end
+  def click_project_header_link(project_name)
+  	within find("h4", text: project_name) do
+  		page.first("a").click
+  	end
+  end
 end
