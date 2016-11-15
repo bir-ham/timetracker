@@ -271,7 +271,6 @@ en:
       header: Edit Invoice
     show:
       header: Invoice
-      id: Id
       name: Name
       invoice_for: Invoice for
       date_of_an_invoice: Date of an invoice

@@ -11,6 +11,11 @@ RSpec.describe Project, type: :model do
     it { should allow_value('', nil).for(:description) }
   end
 
+  it 'should validate user and status on save' do
+    expect(build(:project, name: 'Project 1', deadline: Date.today, user: create(:user), status: 'NEW')).to be_valid
+    expect(build(:project, name: 'Project 1', deadline: Date.today, user: create(:user), status: nil)).to be_invalid
+  end
+
   describe "associations" do
     it { should belong_to :user }
     it { should belong_to :customer }

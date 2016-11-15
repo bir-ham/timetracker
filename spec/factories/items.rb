@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :item do
-
+    
     name "Item"
     quantity 1
     unit "Piece"
