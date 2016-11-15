@@ -5,6 +5,7 @@ class Invoice < ActiveRecord::Base
   belongs_to :sale, dependent: :destroy
   belongs_to :project, dependent: :destroy
 
+  validates :user, presence: true, on: :create 
   validates :sale, presence: true, allow_nil: true, if: lambda { |i| i.current_step == 'sale_project' }
   validates :project, presence: true, allow_nil: true, if: lambda { |i| i.current_step == 'sale_project' }
   validates :date_of_an_invoice, presence: true, if: lambda { |i| i.current_step == 'invoice' }

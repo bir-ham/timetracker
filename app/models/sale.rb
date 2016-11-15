@@ -5,6 +5,7 @@ class Sale < ActiveRecord::Base
   belongs_to :customer
   has_many :items, dependent: :destroy
 
+  validates :user, presence: true, on: :create 
   validates :customer, presence: true
   validates :date, presence: true
   validates :status, presence: true, on: :create

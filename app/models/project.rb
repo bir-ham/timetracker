@@ -5,6 +5,7 @@ class Project < ActiveRecord::Base
   belongs_to :customer
   has_many :tasks, dependent: :destroy
 
+  validates :user, presence: true, on: :create 
   validates :customer, presence: true
   validates :name, presence: true, uniqueness: true
   validates :deadline, presence: false
