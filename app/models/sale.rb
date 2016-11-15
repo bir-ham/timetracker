@@ -7,7 +7,7 @@ class Sale < ActiveRecord::Base
 
   validates :customer, presence: true
   validates :date, presence: true
-  validates :status, presence: true, on: :update
+  validates :status, presence: true, on: :create
   validates :description, presence: false
 
   validate :date_of_a_sale_cannot_be_in_the_past

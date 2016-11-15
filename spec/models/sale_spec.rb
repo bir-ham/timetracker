@@ -8,8 +8,8 @@ RSpec.describe Sale, type: :model do
   end
 
   it 'should validate user and status on save' do
-    expect(build(:sale, date: Date.today, user: create(:user), status: 'PENDING')).to be_valid
-    expect(build(:sale, date: Date.today, user: create(:user), status: nil)).to be_invalid
+    expect(build(:sale, date: Date.today, user: create(:user), customer: crate(:create), status: 'PENDING')).to be_valid
+    expect(build(:sale, date: Date.today, user: create(:user), customer: crate(:create), status: nil)).to be_invalid
   end
 
   describe 'associations' do

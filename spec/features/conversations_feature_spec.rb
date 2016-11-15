@@ -10,7 +10,7 @@ describe 'conversations' do
   end
 
   it 'allows user to send email' do
-    click_link I18n.t('navigation.see_all_messages'
+    click_link I18n.t('navigation.see_all_messages')
 
     expect(page).to have_text I18n.t('conversations.index.inbox')
     expect(page).to have_link I18n.t('conversations.index.new_message')
@@ -33,7 +33,7 @@ describe 'conversations' do
   end
 
   it 'allows user to read sent email' do
-    click_link I18n.t('navigation.see_all_messages'
+    click_link I18n.t('navigation.see_all_messages')
 
     expect(page).to have_text I18n.t('conversations.index.sent')
 

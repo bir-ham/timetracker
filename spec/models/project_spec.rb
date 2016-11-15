@@ -3,17 +3,17 @@ require 'rails_helper'
 RSpec.describe Project, type: :model do
   describe "validations" do
     it { should validate_presence_of :customer }
-    it { should validate_presence_of :user}
     it { should validate_presence_of :name }
 
-    it { should allow_value('', nil).for(:status) }
     it { should allow_value('', nil).for(:deadline) }
     it { should allow_value('', nil).for(:description) }
   end
 
   it 'should validate user and status on save' do
-    expect(build(:project, name: 'Project 1', deadline: Date.today, user: create(:user), status: 'NEW')).to be_valid
-    expect(build(:project, name: 'Project 1', deadline: Date.today, user: create(:user), status: nil)).to be_invalid
+    expect(build(:project, name: 'Project 1', deadline: Date.today, user: create(:user), 
+        customer: create(:customer), status: 'NEW')).to be_valid
+    expect(build(:project, name: 'Project 2', deadline: Date.today, user: create(:user), 
+        customer: create(:customer), status: nil)).to be_invalid
   end
 
   describe "associations" do
