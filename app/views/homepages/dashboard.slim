@@ -13,66 +13,63 @@
         small Lorem ipsum dolor sit amet, consectetur adipiscing elit vestibulum.
 
   .col-sm-6.col-md-3
-    .panel.income.panel-default.fade-out-panel
-      .panel-body
-        div class = ('fade-out-panel-body' if total_paid_invoices == 0)
-          .clearfix
-            .pull-left
-              = link_to I18n.t('dashboards.index.incomes'), invoices_path, class: 'text-uppercase body-text'
-            .pull-right
-              .main-icon = icon('money')
-          = content_tag :canvas, "", id: "incomes", data: {paid_invoices: paid_invoices_chart_data }
-          .clearfix
-            .pull-left
-              small = I18n.t('dashboards.index.last_week')
-              h4.m-t-xs.m-b-n.text-bold = number_to_currency(paid_invoices_chart_data[3][:paid])
-            .pull-right
-              small = I18n.t('dashboards.index.this_week')
-              h4.m-t-xs.m-b-n.text-bold
-                = number_to_currency( paid_invoices_chart_data[4][:paid])
-                - if  paid_invoices_chart_data[4][:paid].to_f >  paid_invoices_chart_data[3][:paid].to_f
-                  |&nbsp;
-                  span = icon('level-up text-success')
-                - else
-                  |&nbsp;
-                  span = icon('level-down text-danger')
-
+    .panel.income.panel-default 
+      .panel-body class = ('fade-out-contents text-center' if total_paid_invoices == 0)
         - if total_paid_invoices == 0
           = link_to I18n.t('dashboards.index.first_invoice'), invoices_path, class: 'btn btn-primary btn-sm first-user-prompt-btn'
+        .clearfix
+          .pull-left
+            = link_to I18n.t('dashboards.index.incomes'), invoices_path, class: 'text-uppercase body-text'
+          .pull-right
+            .main-icon = icon('money')
+        = content_tag :canvas, "", id: "incomes", data: {paid_invoices: paid_invoices_chart_data }
+        .clearfix
+          .pull-left
+            small = I18n.t('dashboards.index.last_week')
+            h4.m-t-xs.m-b-n.text-bold = number_to_currency(paid_invoices_chart_data[2][:paid])
+          .pull-right
+            small = I18n.t('dashboards.index.this_week')
+            h4.m-t-xs.m-b-n.text-bold
+              = number_to_currency( paid_invoices_chart_data[3][:paid])
+              - if  paid_invoices_chart_data[3][:paid].to_f >  paid_invoices_chart_data[2][:paid].to_f
+                |&nbsp;
+                span = icon('level-up text-success')
+              - else
+                |&nbsp;
+                span = icon('level-down text-danger')
 
   - total_projects = 0
   - projects_status_chart_data.each do |i|
     - total_projects += i[:total]
   .col-sm-6.col-md-3
-    .panel.task.panel-default.fade-out-panel
-      .panel-body
-        div class = ('fade-out-panel-body' if total_projects == 0)
-          .clearfix
-            .pull-left
-              = link_to I18n.t('dashboards.index.projects'), projects_path, class: 'text-uppercase body-text'
-            .pull-right
-              .main-icon = icon('suitcase')
-          = content_tag :canvas, "", id: "projects", data: {projects_status: projects_status_chart_data }
-          .clearfix
-            strong = I18n.t('dashboards.index.new_projects')
-            hr.m-t-n.m-b-n
-            .clearfix
-            .pull-left
-              small = I18n.t('dashboards.index.last_week')
-              h4.m-t-xs.m-b-n.text-bold = projects_status_chart_data[3][:new_projects]
-            .pull-right
-              small = I18n.t('dashboards.index.this_week')
-              h4.m-t-xs.m-b-n.text-bold
-                = projects_status_chart_data[4][:new_projects]
-                - if projects_status_chart_data[4][:new_projects].to_i > projects_status_chart_data[3][:new_projects].to_i
-                  |&nbsp;
-                  span = icon('level-up text-success')
-                - else
-                  |&nbsp;
-                  span = icon('level-down text-danger')
-
+    .panel.task.panel-default
+      .panel-body class = ('fade-out-contents text-center' if total_projects == 0)
         - if total_projects == 0
           = link_to I18n.t('dashboards.index.first_project'), projects_path, class: 'btn btn-primary btn-sm first-user-prompt-btn'
+        .clearfix
+          .pull-left
+            = link_to I18n.t('dashboards.index.projects'), projects_path, class: 'text-uppercase body-text'
+          .pull-right
+            .main-icon = icon('suitcase')
+        = content_tag :canvas, "", id: "projects", data: {projects_status: projects_status_chart_data }
+        .clearfix
+          strong = I18n.t('dashboards.index.new_projects')
+          hr.m-t-n.m-b-n
+          .clearfix
+          .pull-left
+            small = I18n.t('dashboards.index.last_week')
+            h4.m-t-xs.m-b-n.text-bold = projects_status_chart_data[2][:new_projects]
+          .pull-right
+            small = I18n.t('dashboards.index.this_week')
+            h4.m-t-xs.m-b-n.text-bold
+              = projects_status_chart_data[3][:new_projects]
+              - if projects_status_chart_data[3][:new_projects].to_i > projects_status_chart_data[2][:new_projects].to_i
+                |&nbsp;
+                span = icon('level-up text-success')
+              - else
+                |&nbsp;
+                span = icon('level-down text-danger')
+
         /strong = I18n.t('dashboards.index.paid_invoices')
         /- pecentage_of_paid_invoices = (@paid_invoices.size * 100)/@invoices.size
         /.progress.progress-small.m-t-xs.m-b-m
@@ -83,80 +80,74 @@
   - sales_status_chart_data.each do |i|
     - total_sales += i[:total]
   .col-sm-6.col-md-3
-    .panel.panel-default.fade-out-panel
-      .panel-body
-        div class = ('fade-out-panel-body' if total_sales == 0)
-          .clearfix
-            .pull-left
-              = link_to I18n.t('dashboards.index.sales'), sales_path, class: 'text-uppercase body-text'
-            .pull-right
-              .main-icon = icon('shopping-cart')
-          = content_tag :canvas, "", id: "sales", data: {sales_status: sales_status_chart_data }
-          .clearfix
-            strong = I18n.t('dashboards.index.preparing_sales')
-            hr.m-t-n.m-b-n
-            .clearfix
-            .pull-left
-              small = I18n.t('dashboards.index.last_week')
-              h4.m-t-xs.m-b-n.text-bold = sales_status_chart_data[3][:preparing_sales]
-            .pull-right
-              small = I18n.t('dashboards.index.this_week')
-              h4.m-t-xs.m-b-n.text-bold
-                = sales_status_chart_data[4][:preparing_sales]
-                - if sales_status_chart_data[4][:preparing_sales].to_i > sales_status_chart_data[3][:preparing_sales].to_i
-                  |&nbsp;
-                  span = icon('level-up text-success')
-                - else
-                  |&nbsp;
-                  span = icon('level-down text-danger')
-
+    .panel.panel-default
+      .panel-body class = ('fade-out-contents text-center' if total_sales == 0)
         - if total_sales == 0
           = link_to I18n.t('dashboards.index.first_sale'), sales_path, class: 'btn btn-primary btn-sm first-user-prompt-btn'
+        .clearfix
+          .pull-left
+            = link_to I18n.t('dashboards.index.sales'), sales_path, class: 'text-uppercase body-text'
+          .pull-right
+            .main-icon = icon('shopping-cart')
+        = content_tag :canvas, "", id: "sales", data: {sales_status: sales_status_chart_data }
+        .clearfix
+          strong = I18n.t('dashboards.index.preparing_sales')
+          hr.m-t-n.m-b-n
+          .clearfix
+          .pull-left
+            small = I18n.t('dashboards.index.last_week')
+            h4.m-t-xs.m-b-n.text-bold = sales_status_chart_data[2][:preparing_sales]
+          .pull-right
+            small = I18n.t('dashboards.index.this_week')
+            h4.m-t-xs.m-b-n.text-bold
+              = sales_status_chart_data[3][:preparing_sales]
+              - if sales_status_chart_data[3][:preparing_sales].to_i > sales_status_chart_data[2][:preparing_sales].to_i
+                |&nbsp;
+                span = icon('level-up text-success')
+              - else
+                |&nbsp;
+                span = icon('level-down text-danger')
 
-.row
+.row.dashboard-card
   .col-lg-6
-    .panel.panel-default.panel-transparent-header.fade-out-panel
+    .panel.panel-default.panel-transparent-header
       .panel-heading
         .panel-title = I18n.t('dashboards.index.invoicing_performance')
-      .panel-body
-        div class = ('fade-out-panel-body' if total_paid_invoices == 0)
-          = content_tag :canvas, "", id: "invoicing-performance", data: {pending_invoices: pending_invoices_chart_data, overdue_invoices: overdue_invoices_chart_data}
-
+      .panel-body class = ('fade-out-contents text-center' if total_paid_invoices == 0)
         - if total_paid_invoices == 0
-          = link_to I18n.t('dashboards.index.first_invoice'), invoices_path, class: 'btn btn-primary btn-sm first-user-prompt-btn', style: 'left: 35%'
+          = link_to I18n.t('dashboards.index.first_invoice'), invoices_path, class: 'btn btn-primary btn-sm first-user-prompt-btn invoice'
+        = content_tag :canvas, "", id: "invoicing-performance", data: {pending_invoices: pending_invoices_chart_data, overdue_invoices: overdue_invoices_chart_data}
 
     - total_customers = 0
     - customers_chart_data.each do |c|
       - total_customers += (c[:customers_visit_per_week] + c[:customers_visit_average].to_i)
     .row.dashboard-card
       .col-sm-6.col-md-6
-        .panel.panel-default.fade-out-panel
-          .panel-body
-            div class = ('fade-out-panel-body' if total_customers == 0)
-              .clearfix
-                .pull-left
-                  = link_to I18n.t('dashboards.index.customers'), customers_path, class: 'text-uppercase body-text'
-                .pull-right
-                  .main-icon = icon('group')
-              = content_tag :canvas, "", id: "customers", data: {customers: customers_chart_data }
-              - customers_visit_this_week = customers_chart_data[4][:customers_visit_per_week]
-              .clearfix
-                .pull-left
-                  small = I18n.t('dashboards.index.average_visits_per_week')
-                  h4.m-t-xs.m-b-n.text-bold = customers_chart_data[0][:customers_visit_average]
-                .pull-right
-                  small = I18n.t('dashboards.index.this_week_visits')
-                  h4.m-t-xs.m-b-n.text-bold
-                    = customers_visit_this_week
-                    - if customers_visit_this_week.to_f > customers_chart_data[0][:customers_average].to_f
-                      |&nbsp;
-                      span = icon('level-up text-success')
-                    - else
-                      |&nbsp;
-                      span = icon('level-down text-danger')
-
+        .panel.panel-default
+          .panel-body class = ('fade-out-contents text-center' if total_customers == 0)
             - if total_customers == 0
-              = link_to I18n.t('dashboards.index.first_customer'), customers_path, class: 'btn btn-primary btn-sm first-user-prompt-btn'
+              = link_to I18n.t('dashboards.index.first_customer'), customers_path, class: 'btn btn-primary btn-sm first-user-prompt-btn customer'
+            .clearfix
+              .pull-left
+                = link_to I18n.t('dashboards.index.customers'), customers_path, class: 'text-uppercase body-text'
+              .pull-right
+                .main-icon = icon('group')
+            = content_tag :canvas, "", id: "customers", data: {customers: customers_chart_data }
+            - customers_visit_this_week = customers_chart_data[3][:customers_visit_per_week]
+            .clearfix
+              .pull-left
+                small = I18n.t('dashboards.index.average_visits_per_week')
+                h4.m-t-xs.m-b-n.text-bold = customers_chart_data[0][:customers_visit_average]
+              .pull-right
+                small = I18n.t('dashboards.index.this_week_visits')
+                h4.m-t-xs.m-b-n.text-bold
+                  = customers_visit_this_week
+                  - if customers_visit_this_week.to_f > customers_chart_data[0][:customers_average].to_f
+                    |&nbsp;
+                    span = icon('level-up text-success')
+                  - else
+                    |&nbsp;
+                    span = icon('level-down text-danger')
 
   .col-lg-6
     .panel.panel-default.panel-transparent-header
@@ -197,7 +188,7 @@
                     = link_to invoice, class: 'text-danger'
                       = raw I18n.t('dashboards.index.tasks_send_customer', invoice_name: invoice_name, customer_name: invoice.sale.customer.name)
         - else
-          p = I18n.t('dashboards.index.no_tasks_invoice')
+          p.text-info = I18n.t('dashboards.index.no_tasks_invoice')
 
         .sub-header.text-uppercase = I18n.t('projects.index.header')
 
@@ -212,7 +203,7 @@
                 = link_to '/projects?utf8=✓&q%5Bcustomer_name_or_name_or_status_or_description_cont%5D=delayed&button=', class: 'text-danger'
                   = raw I18n.t('dashboards.index.tasks_delayed_projects', delayeds_number: @new_delayed_projects_count['DELAYED'])
         - else
-          p = I18n.t('dashboards.index.no_tasks_project')
+          p.text-info = I18n.t('dashboards.index.no_tasks_project')
 
         .sub-header.text-uppercase = I18n.t('sales.index.header')
         - unless @waiting_sales_count['WAITING'].nil?
@@ -222,7 +213,7 @@
                 = link_to 'sales?utf8=✓&q%5Bcustomer_name_or_status_or_description_cont%5D=waiting&button=', class: 'text-danger'
                   = raw I18n.t('dashboards.index.tasks_waiting_sales', waitings_number: @waiting_sales_count['WAITING'])
         - else
-          p = I18n.t('dashboards.index.no_tasks_sale')
+          p.text-info = I18n.t('dashboards.index.no_tasks_sale')
 
         .sub-header.text-uppercase = I18n.t('users.index.header')
         - unless @invited_users_invoices.empty?
@@ -232,7 +223,7 @@
                 = link_to users_path, class: 'text-info'
                   = raw I18n.t('dashboards.index.tasks_user_invoices', user_name: key, invoices_number: value.count)
         - else
-          p = I18n.t('dashboards.index.no_tasks_users')
+          p.text-info = I18n.t('dashboards.index.no_tasks_users')
 
 - content_for :javascript_includes do
   // ChartsJS

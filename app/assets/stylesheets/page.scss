@@ -446,19 +446,12 @@ span.block {
 }
 
 .dashboard-card {
-  .fade-out-panel {
-    position: relative;
-  }
-  .fade-out-panel-body {
-    opacity: 0.2;
+  .fade-out-contents canvas, .fade-out-contents .clearfix {
+    opacity: 0.4;
   }
   .first-user-prompt-btn {
-    @extend .vertical-center;
-    left: 25%;
-  }
-  .panel {
-    position: relative;
-    min-height: 292px;
+    position: absolute;
+    top: 50%;
   }
 }
 
@@ -557,6 +550,15 @@ span.block {
   } 
 }
 
+/* X Extra small devices (phones, less than 768px) */
+@media (max-width: $screen-xxs-max) {
+  .dashboard-card {
+    .first-user-prompt-btn {
+      width: 80% !important;
+    }
+  }  
+}
+
 /* Extra small devices (phones, less than 768px) */
 @media (max-width: $screen-xs-max) {
   #topbar .navbar-header {
@@ -580,6 +582,14 @@ span.block {
     position: relative;
     top: 100px;
   }
+  .dashboard-card {
+    .first-user-prompt-btn {
+      width: 90%;
+    }
+    .panel {
+      min-height: 230px;
+    }
+  }  
 }
 
 /* Small devices (tablets, 768px and up) */
@@ -626,12 +636,43 @@ span.block {
 
 /* Small devices (tablets, 768px and upto desktops, 992px) */
 @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+  .dashboard-card {
+    .first-user-prompt-btn.invoice {
+      left: 36%;
+    }
+    .first-user-prompt-btn {
+      left: 28%;
+    }
+    .first-user-prompt-btn.customer {
+      left: 28%;
+    }
+    .panel {
+      min-height: 230px;
+    }
+  }  
 
 }
 
 /* Medium devices (desktops, 992px and upto large desktops, 1200px) */
 @media (min-width: $screen-md-min) and (max-width: $screen-md-max) {
-
+  .dashboard-card {
+    .first-user-prompt-btn.invoice {
+      left: 36%;
+    }
+    .first-user-prompt-btn {
+      left: 10%;
+    }
+    .first-user-prompt-btn.invoice {
+      left: 36%;
+    }
+    .first-user-prompt-btn.customer {
+      left: 28%;
+    }
+  }  
+  .panel {
+    position: relative;
+    min-height: 230px;
+  }
 }
 
 /* Large devices (large desktops, 1200px and up) */
@@ -639,6 +680,18 @@ span.block {
   .visible-lg {
     display: block!important;
   }
+  .dashboard-card {
+    .first-user-prompt-btn.invoice {
+      left: 36%;
+    }
+    .first-user-prompt-btn {
+      left: 26%;
+    }
+    .panel {
+      position: relative;
+      min-height: 295px;
+    }
+  }  
 
 }
 
