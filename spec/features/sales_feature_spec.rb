@@ -15,9 +15,6 @@ describe 'sales' do
     click_link I18n.t('sales.index.add_new_sale')
 
     fill_in "Date", with: Date.today
-    within('.sale_user') do
-      select_generic(user.first_name, from: 'sale[user_id]')
-    end
     within('.sale_customer') do
       select_generic(@customer.name, from: 'sale[customer_id]')
     end

@@ -15,10 +15,6 @@ describe 'invoices' do
     visit invoices_path
     click_link I18n.t('invoices.index.create_invoice')
 
-    within('.invoice_user') do
-      select_generic(user.first_name, from: 'invoice[user_id]')
-    end
-
     within('.invoice_sale') do
       select_generic("#{@sale.date} to #{@sale.customer.name}", from: 'invoice[sale_id]')
     end
@@ -48,10 +44,6 @@ describe 'invoices' do
   it 'display invoice validations' do
     visit invoices_path
     click_link I18n.t('invoices.index.create_invoice')
-
-    within('.invoice_user') do
-      select_generic(user.first_name, from: 'invoice[user_id]')
-    end
 
     within('.invoice_sale') do
       select_generic("#{@sale.date} to #{@sale.customer.name}", from: 'invoice[sale_id]')

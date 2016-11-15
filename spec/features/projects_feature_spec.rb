@@ -14,11 +14,8 @@ describe 'projects' do
   	visit projects_path
   	click_link I18n.t('projects.index.create_new_project')
 
-    fill_in "Name", with: "Project foo"
+    fill_in "Name", with: "Project 1"
   	fill_in "Deadline", with: Date.today
-    within('.project_user') do
-      select_generic(user.first_name, from: 'project[user_id]')
-    end
     within('.project_customer') do
       select_generic(@customer.name, from: 'project[customer_id]')
     end
@@ -29,7 +26,7 @@ describe 'projects' do
   	expect(page).to have_text I18n.t('projects.new.notice_create')
     expect(page).to have_text Date.today
     expect(page).to have_text @customer.name
-  	expect(page).to have_text "Project foo"
+  	expect(page).to have_text "Project 1"
     expect(page).to have_text "NEW"
   end
 
@@ -49,7 +46,7 @@ describe 'projects' do
   	click_link I18n.t('button.edit')
     #click_edit_project_button project.name
 
-  	fill_in "Name", with: "Project foo edited"
+  	fill_in "Name", with: "Project 1 edited"
     check 'Archived'
 
   	submit_form
