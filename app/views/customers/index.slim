@@ -18,7 +18,7 @@
         tbody
 
     - else
-      p.text-danger = I18n.t('customers.index.empty_customers')
+      p.text-info = I18n.t('customers.index.empty_customers')
 
 - content_for :javascript_includes do
   = javascript_include_tag "datatables"

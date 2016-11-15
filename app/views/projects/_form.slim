@@ -16,7 +16,7 @@
         |&nbsp;
         = I18n.t('customers.index.add_new_customer_button')
 
-  = f.input :deadline, as: :date_picker, wrapper: :horizontal_form
+  = f.input :deadline, as: :date_picker, input_html: {  class: "datepicker", value: Time.now.strftime('%d/%m/%Y') }
   - if (is_action_name? 'edit') || (is_action_name? 'update')
     = f.input :status, collection: [['NEW', 'NEW'], ['ONGOING', 'ONGOING'], ['DELAYED', 'DELAYED'], ['FINISHED', 'FINISHED'] ], prompt: false
   = f.input :description

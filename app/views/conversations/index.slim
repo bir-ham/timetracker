@@ -50,11 +50,11 @@
             = render partial: 'conversations/conversation', collection: @conversations
       - else
         - if @box == 'inbox'
-          p.text-info = I18n.t('conversations.index.empty_inbox')
+          p.m-t-m.text-info = I18n.t('conversations.index.empty_inbox')
         - elsif @box == 'sent'
-          p.text-info = I18n.t('conversations.index.empty_sent')  
+          p.m-t-m.text-info = I18n.t('conversations.index.empty_sent')  
         - elsif @box == 'trash'    
-          p.text-info = I18n.t('conversations.index.empty_trash')
+          p.m-t-m.text-info = I18n.t('conversations.index.empty_trash')
 
     .pull-right  
       = will_paginate
