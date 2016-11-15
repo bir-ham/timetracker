@@ -442,18 +442,23 @@ span.block {
 
 .dashboard-card .main-icon .fa {
   font-size: 2em;
-  margin-top: -5px;
 }
 
 .dashboard-card {
   .fade-out-contents canvas, .fade-out-contents .clearfix {
     opacity: 0.4;
   }
+  .fade-out-contents .clearfix {
+    text-align: left;
+  }
   .first-user-prompt-btn {
     position: absolute;
-    top: 50%;
+    top: 45%;
     z-index: 1;
   }
+  .first-user-prompt-btn.invoice {
+    top: 50%;
+  }  
 }
 
 .portlet .portlet-body {
@@ -480,6 +485,9 @@ span.block {
 .projects, .sales {
   form table .form-group {
     margin-bottom: 10px;
+  }
+  .panel-body .col-xs-2 h4.invoiced {
+    margin: 0 0 0 25px;
   }
 }
 
@@ -672,7 +680,7 @@ span.block {
   }  
   .panel {
     position: relative;
-    min-height: 230px;
+    min-height: 240px;
   }
 }
 
@@ -690,7 +698,7 @@ span.block {
     }
     .panel {
       position: relative;
-      min-height: 295px;
+      min-height: 300px;
     }
   }  
 

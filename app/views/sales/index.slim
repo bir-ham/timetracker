@@ -18,54 +18,54 @@
 
     .m-b-xl
     .row
-    - unless @sales.empty?
-      - @sales.each do |sale|
-        - background = ''
-        - text_color = ''
-        - case sale.status
-        - when 'DELIVERED'
-          - background = 'background-success'
-          - text_color = 'text-success'
-        - when 'PREPARING'
-          - background = 'background-info'
-          - text_color = 'text-info'
-        - when 'WAITING'
-          - background = 'background-warning'
-          - text_color = 'text-warning'
-        - else
-          | Unknown status
-        .col-sm-6  
-          .well.well-sm.m-b-xs.well-left-text
-            .well-text-container class = (background)
-              span = sale.status
-            .clearfix
-              .pull-left
-                h5.m-t-n class = (text_color)
-                  = sale.date.strftime("%d/%m/%Y")
-              .pull-right
-                = link_to sale, class: 'btn btn-info btn-sm' do
-                  = icon('eye')
-                  |&nbsp;
-                  = I18n.t('button.view')
+      - unless @sales.empty?
+        - @sales.each do |sale|
+          - label_class = ''
+          - text_class = ''
+          - panel_class = ''
+          - case sale.status
+          - when 'DELIVERED'
+            - label_class = 'label-success'
+            - panel_class = 'panel-success-bottom-outline'
+            - text_class = 'text-success'
+          - when 'PREPARING'
+            - label_class = 'label-info'
+            - panel_class = 'panel-info-bottom-outline'
+            - text_class = 'text-info'
+          - when 'WAITING'
+            - label_class = 'label-warning'
+            - panel_class = 'panel-warning-bottom-outline'
+            - text_class = 'text-warning'
+          - else
+            | Unknown status
 
-            .row.m-b-n
-              .col-xs-2
-                strong.text-uppercase = I18n.t('sales.index.user')
+          .col-sm-6  
+            .panel.panel-default class = (panel_class)
+              .panel-body
                 .clearfix
-                span = sale.user.first_name
-              .col-xs-2
-                strong.text-uppercase = I18n.t('sales.index.customer')
-                .clearfix
-                span = sale.customer.name
-              .col-xs-2
-                strong.text-uppercase = I18n.t('sales.index.invoiced')
-                .clearfix
-                - unless sale.invoice.nil?
-                  h4.m-t-n.m-b-n = icon ('check-circle-o text-success')
-                - else
-                  h4.m-t-n.m-b-n = icon ('times-circle-o text-danger')
+                  .pull-left
+                    h4.m-t-n = link_to sale.date.strftime("%d/%m/%Y"), sale, class: "#{text_class}"
+                  .pull-right
+                    span.label class = (label_class) = sale.status
 
-      .pull-right
-        = will_paginate @projects, renderer: BootstrapPagination::Rails
-    - else
-      p.text-danger = I18n.t('sales.index.empty_sales')
+                .row.m-b-n
+                  .col-xs-2
+                    strong.text-uppercase = I18n.t('sales.index.user')
+                    .clearfix
+                    span = sale.user.first_name
+                  .col-xs-2
+                    strong.text-uppercase = I18n.t('sales.index.customer')
+                    .clearfix
+                    span = sale.customer.name
+                  .col-xs-2
+                    strong.text-uppercase = I18n.t('sales.index.invoiced')
+                    .clearfix
+                    - unless sale.invoice.nil?
+                      h4.invoiced = icon ('check-circle-o text-success')
+                    - else
+                      h4.invoiced = icon ('times-circle-o text-danger')
+
+        .pull-right
+          = will_paginate @projects, renderer: BootstrapPagination::Rails
+      - else
+        p.text-info = I18n.t('sales.index.empty_sales')
