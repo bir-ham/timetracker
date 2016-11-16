@@ -6,6 +6,7 @@ describe 'customers' do
 
   before(:all) do
     Capybara.current_driver = Capybara.javascript_driver
+    Capybara.default_max_wait_time = 5
   end
     
   before do

@@ -5,7 +5,7 @@ describe 'invoices' do
   let(:user) { account.owner }
 
   before(:all) do
-    Capybara.current_driver = :webkit
+    Capybara.current_driver = Capybara.javascript_driver
   end
 
   before do

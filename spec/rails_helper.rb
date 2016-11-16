@@ -56,8 +56,12 @@ RSpec.configure do |config|
     end
   end
 
+  config.before(:each) do
+    DatabaseCleaner.start
+  end
+
   # After each spec run, just to insure consistency between specs
-  config.after(:each) do
+  config.append_after(:each) do
     DatabaseCleaner.clean
     Apartment::Tenant.reset
     drop_schemas
