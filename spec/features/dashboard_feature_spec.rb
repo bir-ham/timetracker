@@ -33,7 +33,7 @@ describe 'conversations' do
     expect(page).to have_text Date.today
 
     visit root_path
-    within find("h4") do
+    within (".projects") do
       expect(page).to have_text '1'
     end
 
