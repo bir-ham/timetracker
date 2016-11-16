@@ -6,7 +6,7 @@ module FormHelper
     if Capybara.current_driver == :rack_test
       Capybara.app_host = "http://#{subdomain}.example.com"
     else
-      Capybara.app_host = "http://#{subdomain}.lvh.me:3000"
+      Capybara.app_host = "http://#{subdomain}.lvh.me"
       Capybara.server_port = 31234
     end
   end

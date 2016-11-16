@@ -5,7 +5,7 @@ describe 'customers' do
   let(:user) { account.owner }
 
   before(:all) do
-    Capybara.current_driver = :webkit
+    Capybara.current_driver = Capybara.javascript_driver
   end
     
   before do
@@ -26,6 +26,8 @@ describe 'customers' do
     submit_form
 
     expect(page).to have_text I18n.t('customers.create.notice_create')
+    
+    sleep 2
     
     expect(page).to have_text "Alex"
   end
@@ -72,6 +74,10 @@ describe 'customers' do
       expect(page).to have_text I18n.t('customers.destroy.success_delete')
       expect(page).to_not have_text @customer.name
     end
+  end
+  
+  after(:all) do
+    Capybara.use_default_driver
   end
 
 end
