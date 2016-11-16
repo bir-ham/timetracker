@@ -6,7 +6,8 @@ module FormHelper
     if Capybara.current_driver == :rack_test
       Capybara.app_host = "http://#{subdomain}.example.com"
     else
-      Capybara.app_host = "http://#{subdomain}.lvh.me"
+      Capybara.app_host = "http://#{subdomain}.lvh.me:3000"
+      Capybara.server_port = 31234
     end
   end
 
@@ -16,7 +17,6 @@ module FormHelper
     else
       visit new_user_session_path
     end
-
     fill_in 'Email', with: user.email
     fill_in 'Password', with: (opts[:password] || user.password)
     click_button I18n.t('button.sign_in')

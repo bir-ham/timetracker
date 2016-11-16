@@ -70,6 +70,8 @@ Capybara::Webkit.configure do |config|
 
   # Wildcards are allowed in URL expressions.
   config.allow_url("*.lvh.me")
+  config.debug = true
+  config.allow_unknown_urls
 end
 
 

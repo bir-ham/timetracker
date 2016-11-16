@@ -4,6 +4,10 @@ describe 'customers' do
   let!(:account) { create(:account_with_schema) }
   let(:user) { account.owner }
 
+  before(:all) do
+    Capybara.current_driver = :webkit
+  end
+    
   before do
     set_subdomain(account.subdomain)
     sign_user_in(user)
@@ -22,6 +26,7 @@ describe 'customers' do
     submit_form
 
     expect(page).to have_text I18n.t('customers.create.notice_create')
+    
     expect(page).to have_text "Alex"
   end
 
