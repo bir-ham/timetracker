@@ -7,10 +7,10 @@
 //= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
 //= require dataTables/extras/dataTables.responsive
 //= require dataTables/extras/dataTables.buttons
-//= require buttons.bootstrap
-//= require buttons.html5
-//= require buttons.flash
-//= require buttons.print
+//= require buttons/buttons.bootstrap
+//= require buttons/buttons.html5
+//= require buttons/buttons.flash
+//= require buttons/buttons.print
 //= require bootstrap/dropdown
 //= require bootstrap/collapse
 //= require bootstrap/transition
@@ -31,6 +31,9 @@
 //= require moment
 //= require bootstrap-datetimepicker
 //= require pickers
+
+// Fullcalendar
+//= require fullcalendar/fullcalendar.min
 
 // Local files
 //= require confirmation_modal
