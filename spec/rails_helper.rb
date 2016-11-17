@@ -5,7 +5,7 @@ require 'rspec/rails'
 require 'database_cleaner'
 require 'capybara/rspec'
 require 'email_spec'
-require 'capybara/webkit'
+require 'selenium-webdriver'
 
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
@@ -21,41 +21,21 @@ RSpec.configure do |config|
   config.order = "random"
   config.infer_spec_type_from_file_location!
   config.use_transactional_fixtures = false
+  config.include Capybara::DSL
   config.add_setting(:seed_tables)
 
   config.before(:suite) do
-    if config.use_transactional_fixtures?
-      raise(<<-MSG)
-        Delete line `config.use_transactional_fixtures = true` from rails_helper.rb
-        (or set it to false) to prevent uncommitted transactions being used in
-        JavaScript-dependent specs.
-
-        During testing, the app-under-test that the browser driver connects to
-        uses a different database connection to the database connection used by
-        the spec. The app's database connection would not be able to access
-        uncommitted transaction data setup over the spec's database connection.
-      MSG
-    end
     DatabaseCleaner.clean_with(:truncation)
-  end  
-
+  end
+ 
   config.before(:each) do
     DatabaseCleaner.strategy = :transaction
   end
-
-  config.before(:each, type: :feature) do
-    # :rack_test driver's Rack app under test shares database connection
-    # with the specs, so continue to use transaction strategy for speed.
-    driver_shares_db_connection_with_specs = Capybara.current_driver == :rack_test
-
-    if !driver_shares_db_connection_with_specs
-      # Driver is probably for an external browser with an app
-      # under test that does *not* share a database connection with the
-      # specs, so use truncation strategy.
-      DatabaseCleaner.strategy = :truncation
-    end
+ 
+  config.before(:each, :js => true) do
+    DatabaseCleaner.strategy = :truncation
   end
-
+ 
   config.before(:each) do
     DatabaseCleaner.start
   end
@@ -79,18 +59,13 @@ end
 
 Capybara.configure do |config|
   config.app_host = 'http://example.com'
-  config.javascript_driver = :webkit
+  config.javascript_driver = :selenium
   config.always_include_port = true
 end
 
-Capybara::Webkit.configure do |config|
-  # Allow a specific domain without issuing a warning.
-  config.allow_url("lvh.me")
-
-  # Wildcards are allowed in URL expressions.
-  config.allow_url("*.lvh.me")
-  config.debug = true
-  config.allow_unknown_urls
+Capybara.register_driver :selenium do |app|
+  Capybara::Selenium::Driver.new(app, :browser => :chrome)
 end
 
-
+Capybara.current_driver = :selenium_chrome
+Capybara.default_max_wait_time = 5

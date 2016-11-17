@@ -7,7 +7,6 @@ module FormHelper
       Capybara.app_host = "http://#{subdomain}.example.com"
     else
       Capybara.app_host = "http://#{subdomain}.lvh.me"
-      Capybara.server_port = 31234
     end
   end
 

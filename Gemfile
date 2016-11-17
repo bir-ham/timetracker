@@ -66,7 +66,8 @@ group :development, :test do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'quiet_assets'
-  gem 'capybara-webkit'
+  gem 'selenium-webdriver'
+  gem 'chromedriver-helper'
 end
 
 group :production do

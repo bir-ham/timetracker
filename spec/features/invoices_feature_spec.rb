@@ -1,12 +1,8 @@
 require 'rails_helper'
 
-describe 'invoices' do
+describe 'invoices', js: true do
   let!(:account) { create(:account_with_schema) }
   let(:user) { account.owner }
-
-  before(:all) do
-    Capybara.current_driver = Capybara.javascript_driver
-  end
 
   before do
     set_subdomain(account.subdomain)
@@ -24,7 +20,7 @@ describe 'invoices' do
     end
 
     submit_form
-
+    sleep 10
     fill_in 'Reference number', with: '1234'
     fill_in 'Description', with: 'Lorem lipsum'
     fill_in 'invoice_date_of_an_invoice', with: Date.today
@@ -119,10 +115,6 @@ describe 'invoices' do
       expect(page).to_not have_text @invoice.date_of_an_invoice
       expect(page).to_not have_text @invoice.customer
     end
-  end
-
-  after(:all) do
-    Capybara.use_default_driver
   end
 
 end
