@@ -1,7 +1,6 @@
-initialize_calendar
-
-initialize_calendar ->
+initialize_calendar = ->
   $('.calendar').each ->
-  calendar.fullCalendar {}
+    calendar = $(this)
+    calendar.fullCalendar {}
 
-$(document).on 'turbolinks:load', initialize_calendar
+$(document).on 'ready', initialize_calendar
