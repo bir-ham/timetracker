@@ -40,3 +40,4 @@
 //= require custome_collapse
 //= require scroll
 //= require messages
+//= require calendar
