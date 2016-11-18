@@ -20,6 +20,19 @@ initialize_calendar = ->
           $('.end_hidden').val(moment(start).format('YYYY-MM-DD HH:mm'))
 
         calendar.fullCalendar('unselect')  
+      ,
+      eventDrop: (event, delta, revertFunc)
+        event_data = ->
+          event: {
+            id: event.id,
+            start: event.start.format(),
+            end: event.end.format()
+          } 
+        $.ajax({
+          url: event.update_url,
+          data: event_data,
+          type: 'PATCH'
+        })   
     }
 
 $(document).on 'ready', initialize_calendar
