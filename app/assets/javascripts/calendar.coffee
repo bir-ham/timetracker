@@ -32,7 +32,14 @@ initialize_calendar = ->
           url: event.update_url,
           data: event_data,
           type: 'PATCH'
-        })   
+        })  
+      ,
+      eventClick: (event, jsEvent, view) ->
+        $.getScript event.edit_url, ->
+          $('#event_date_range').val(moment(start).format("MM/DD/YYYY HH:mm")+ ' - ' +
+            moment(start).format("MM/DD/YYYY HH:mm")).date_range_picker()
+          $('.start_hidden').val(moment(start).format('YYYY-MM-DD HH:mm'))
+          $('.end_hidden').val(moment(start).format('YYYY-MM-DD HH:mm'))   
     }
 
 $(document).on 'ready', initialize_calendar
