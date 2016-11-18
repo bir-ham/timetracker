@@ -11,7 +11,7 @@ initialize_calendar = ->
       selectHelper: true,
       editable: true,
       eventLimit: true,
-
+      events: '/events.json'
       select: (start, end) ->
         $.getScript '/events/new', ->
           $('#event_date_range').val(moment(start).format("MM/DD/YYYY HH:mm")+ ' - ' +
