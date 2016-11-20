@@ -196,18 +196,17 @@ html, body {
 
 // Modal
 .modal-header {
-  padding: 5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   border-bottom: 1px solid $light-grey;
   background: $xxx-light-grey;
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
 }
 
-.modal-footer {
-  .btn-toolbar {
-    margin: 0;
-    padding: 0;
-  }
+.modal-body, .modal-footer {
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 // List
