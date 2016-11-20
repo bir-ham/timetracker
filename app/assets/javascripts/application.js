@@ -35,9 +35,13 @@
 // Fullcalendar
 //= require fullcalendar/fullcalendar.min
 
+// Daterangepicker
+//= require daterangepicker
+
 // Local files
 //= require confirmation_modal
 //= require custome_collapse
 //= require scroll
 //= require messages
 //= require calendar
+//= require date_range_picker

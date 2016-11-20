@@ -1,20 +1,18 @@
-class EventsController < ApplicationController 
-  before_action :set_event, only: [:show, :edit, :upadte, :destroy]
+class EventsController < ApplicationController
+  before_action :set_event, only: [:show, :edit, :update, :destroy]
 
   def index
     @events = Event.where(start: params[:start]..params[:end])
   end
 
   def show
-    
   end
 
   def new
     @event = Event.new
   end
-  
+
   def edit
-    
   end
 
   def create
@@ -26,12 +24,11 @@ class EventsController < ApplicationController
     @event.update(event_params)
   end
 
-  def destory
-    @event.destory
+  def destroy
+    @event.destroy
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_event
       @event = Event.find(params[:id])
     end
