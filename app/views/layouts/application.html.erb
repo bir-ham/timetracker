@@ -18,7 +18,7 @@
     <%= csrf_meta_tags %>
   </head>  
 
-  <body class="#{controller.controller_name} #{controller.action_name}">
+  <body class="<%= controller.controller_name%> <%= controller.action_name%>">
     <%- if user_signed_in? %>
       <%= render 'layouts/internal_page_navigation' %>
     <% end %>  
@@ -30,7 +30,7 @@
       <%= render 'layouts/side_nav' %>
     <% end %>  
 
-    <div id="<%= 'wrapper' if user_signed_in? %>" %>
+    <div id="<%= 'wrapper' if user_signed_in? %>" >
       <div class="<%= 'inner-container' if user_signed_in? %>" >
         <%- if user_signed_in? %>
           <%= render 'layouts/page_title_breadcrumb' %>
@@ -43,7 +43,7 @@
           <%= yield %>
           <div id="remote_container"></div>
         </div>
-          
+      </div>    
       <%- if user_signed_in? %>
         <%= render 'layouts/footer' %>
       <% end %>  
