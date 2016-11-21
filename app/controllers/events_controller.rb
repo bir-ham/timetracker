@@ -17,6 +17,9 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
+    if @event.color.empty?
+      @event.color = '#199CD5'
+    end  
     @event.save
   end
 
