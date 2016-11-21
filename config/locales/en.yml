@@ -318,7 +318,6 @@ en:
       notice_create: "Sale created!"
       select_customer: '-Select Customer-'
       select_user: '-Select User-'
-      select_status: '-Select status-'
       select_sale: '-Select Sale-'
       no_select_sale: '-No Sale to select-'
     create:
@@ -399,7 +398,9 @@ en:
       success: 'Conversation is marked as an read.'   
   events:
     index:
-      header: Calendar       
+      header: Calendar     
+    new:
+      select_color: '-Select color-'
   settings:
     index:
       header: Settings
