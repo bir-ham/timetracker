@@ -187,6 +187,10 @@ en:
     update:
       header: Update Project
       notice_update: "Project updated!"
+    destroy: 
+      confirmation_msg: Are you sure to delete this project?  
+      success_delete: "Project (%{project_name}) is deleted!"
+      error_delete: "Project couldn't be deleted, try again after refreshing the page"
     tasks:
       header: "Tasks"
       show:
@@ -333,6 +337,10 @@ en:
     update:
       header: Update Sale
       success_update: "Sale updated!"
+    destroy: 
+      confirmation_msg: Are you sure to delete this sale?  
+      success_delete: "Sale (%{sale_date}) is deleted!"
+      error_delete: "Invoice couldn't be deleted, try again after refreshing the page"
     items:
       header: Items
       new:
