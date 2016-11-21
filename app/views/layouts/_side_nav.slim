@@ -44,5 +44,11 @@ aside#sidebar.navbar-default.navbar-static-side role="navigation" data-step="2" 
           = icon('user fa-fw')
             .icon-bg.bg-orange
           span.menu-title = I18n.t('users.index.header')
+      li class = ('active' if is_controller_name? 'events')
+        = link_to users_path do
+          = icon('calendar')
+            .icon-bg.bg-orange
+          span.menu-title = I18n.t('events.index.header')
+    
 
 

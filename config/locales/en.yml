@@ -388,7 +388,10 @@ en:
     empty_trash:
       success: 'Your trash is cleaned!'   
     mark_as_read:
-      success: 'Conversation is marked as an read.'      
+      success: 'Conversation is marked as an read.'   
+  events:
+    index:
+      header: Calendar       
   settings:
     index:
       header: Settings

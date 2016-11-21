@@ -5,8 +5,8 @@
   = f.input_field :end, as: :hidden, value: Date.today, class: 'input-sm end_hidden' 
   = f.input :color, as: :select, collection: [['Black','black'], ['Green','green'], ['Red','red']] 
   
-  = f.button :submit 
-  = link_to 'Delete', 
+  => f.button :submit 
+  => link_to 'Delete', 
         event, 
         method: :delete, 
         class: 'btn btn-danger', 
