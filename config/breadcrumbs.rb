@@ -111,6 +111,11 @@ crumb :new_message do
   parent :conversations
 end
 
+# events
+crumb :events do
+  link I18n.t('events.index.header'), events_path
+end
+
 # crumb :projects do
 #   link "Projects", projects_path
 # end
