@@ -2,8 +2,8 @@ class Invoice < ActiveRecord::Base
   attr_accessor :current_step
 
   belongs_to  :user
-  belongs_to :sale
-  belongs_to :project
+  belongs_to :sale, dependent: :destroy
+  belongs_to :project, dependent: :destroy
 
   validates :sale, presence: true, allow_nil: true, if: lambda { |i| i.current_step == 'sale_project' }
   validates :project, presence: true, allow_nil: true, if: lambda { |i| i.current_step == 'sale_project' }
