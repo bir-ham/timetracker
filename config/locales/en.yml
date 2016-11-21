@@ -134,6 +134,7 @@ en:
       header: Edit accout information
     show:
       header: View Account
+      company: Company
       url: URL
       subdomain: Subdomain
       industry: Industry
@@ -152,7 +153,7 @@ en:
       company_name: Your subdomain is most likely your company name
       continue_button: Continue
       error: can't be blank
-      dont_have_an_account: Don't have and account? Sign up now for free
+      dont_have_an_account: Don't have an account? Sign up for free now!
   projects:
     index:
       header: Projects

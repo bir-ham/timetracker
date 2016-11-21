@@ -69,6 +69,10 @@ a {
   box-shadow: none;
 }
 
+.alert-dismissable .close, .alert-dismissible .close {
+  top: 0; 
+}
+
 // footer
 #footer {
   padding: 10px;

@@ -178,14 +178,16 @@
             .visible-all-blcok = current_account.town
             .visible-all-blcok = current_account.country
 
-    => link_to '#confirmation-modal-container', class: 'btn btn-danger confirmation-button', data: { id: @invoice.id } do
-      = icon('trash')
-      |&nbsp;
-      = I18n.t('button.delete')
+      
+      hr.m-t-xl        
+      => link_to '#confirmation-modal-container', class: 'btn btn-danger confirmation-button', data: { id: @invoice.id } do
+        = icon('trash')
+        |&nbsp;
+        = I18n.t('button.delete')
 
-    => link_to edit_invoice_path(@invoice), class: 'btn btn-primary' do
-      = icon('pencil-square-o white')
-      |&nbsp;
-      = I18n.t('button.edit')
+      => link_to edit_invoice_path(@invoice), class: 'btn btn-primary' do
+        = icon('pencil-square-o white')
+        |&nbsp;
+        = I18n.t('button.edit')
 
 == render 'layouts/confirmation_modal'
