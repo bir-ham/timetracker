@@ -4,7 +4,7 @@
     .well
       .media
         .media-left
-          = image_tag @account[:logo] ? @account.logo.large : 'logo-placeholder-large', class: 'thumbnail'
+          = image_tag @account[:logo] ? @account.logo.large : 'logo-placeholder-large', class: 'thumbnail img-rounded'
         .media-body
           dl.dl-horizontal
             dt = I18n.t('accounts.show.company')
