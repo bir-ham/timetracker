@@ -100,4 +100,12 @@ if Apartment::Tenant.current == 'public'
     { user: user, sale: sales[8], date_of_an_invoice: 7.days.ago, deadline: Date.tomorrow, status: 'PAID', reference_number: '54334', description: 'Invoice description' },
     { user: user, sale: sales[9], date_of_an_invoice: 2.weeks.ago, deadline: Date.tomorrow, status: 'PENDING', reference_number: '23765', description: 'Invoice description' },
     { user: user, sale: sales[10], date_of_an_invoice: 3.weeks.ago, deadline: Date.tomorrow, status: 'PAID', reference_number: '34622', description: 'Invoice descri3tion' }])
+
+  Event.create([{ title: 'Event 1', start: 2.days.ago, end: Date.yesterday, color: '#7DA40D' },
+    { title: 'Event 2', start: DateTime.now - 2, end: (DateTime.now - 2) + 6.hours, color: '#faca0a' },
+    { title: 'Event 3', start: Date.today, end: Date.tomorrow, color: '#7DA40D' },
+    { title: 'Event 4', start: DateTime.now + 4, end: (DateTime.now + 4) + 4.hours, color: '#be0a0a' },
+    { title: 'Event 5', start: Date.today + 6, end: Date.today + 7, color: '#be0a0a' },
+    { title: 'Event 6', start: DateTime.now + 2, end: (DateTime.now + 2) + 3.hours, color: '#199CD5' }])
 end
+

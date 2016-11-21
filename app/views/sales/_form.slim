@@ -8,7 +8,7 @@
   = f.input :date, as: :date_picker, input_html: {  class: "datepicker", value: Time.now.strftime('%d/%m/%Y') }
   = f.association :customer, collection: Customer.all, label_method: :name, value_method: :id, prompt: I18n.t('sales.new.select_customer'), multiple: false, required: true
   - if (is_action_name? 'edit') || (is_action_name? 'update')
-    = f.input :status, collection: [['PREPARING', 'PREPARING'], ['WAITING', 'WAITING'], ['DELIVERED', 'DELIVERED']], prompt: I18n.t('sales.new.select_status'), wrapper: :horizontal_form
+    = f.input :status, collection: [['PREPARING', 'PREPARING'], ['WAITING', 'WAITING'], ['DELIVERED', 'DELIVERED']]
   = f.input :description
 
   .form-actions.form.col-sm-offset-3

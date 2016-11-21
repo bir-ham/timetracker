@@ -69,6 +69,10 @@ a {
   box-shadow: none;
 }
 
+.alert-dismissable .close, .alert-dismissible .close {
+  top: 0; 
+}
+
 // footer
 #footer {
   padding: 10px;
@@ -478,6 +482,11 @@ dt {
 .pagination > .active > a, .pagination > .active > a:hover, .pagination > .active > a:focus, .pagination > .active > span, .pagination > .active > span:hover, .pagination > .active > span:focus {
   background-color: $turquoise;
   border-color: $dark-turquoise;
+}
+
+// Pagination
+.pagination {
+  margin: 20px 15px;
 }
 
 // Margins

@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="description">
+    <meta content="" name="author">
+
+    <title> Toolsio</title>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%- unless user_signed_in? %>
+      <%= stylesheet_link_tag    'landing_page', media: 'all', 'data-turbolinks-track' => true %>
+    <% end %>  
+    <%= javascript_include_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= yield :javascript_includes %>
+    <%= csrf_meta_tags %>
+  </head>  
+
+  <body class="<%= controller.controller_name%> <%= controller.action_name%>">
+    <%- if user_signed_in? %>
+      <%= render 'layouts/internal_page_navigation' %>
+    <% end %>  
+    <%- if !user_signed_in? && is_landing_header_nav_visible? %>
+      <%= render 'layouts/landing_page_navigation' %>
+    <% end %>  
+
+    <%- if user_signed_in? %>
+      <%= render 'layouts/side_nav' %>
+    <% end %>  
+
+    <div id="<%= 'wrapper' if user_signed_in? %>" >
+      <div class="<%= 'inner-container' if user_signed_in? %>" >
+        <%- if user_signed_in? %>
+          <%= render 'layouts/page_title_breadcrumb' %>
+        <% end %>  
+        <div class="<%= 'page-content' if user_signed_in? %>" >
+          <%-if user_signed_in? %>
+            <%= flash_messages if show_layout_flash? %>
+          <% end %>  
+
+          <%= yield %>
+          <div id="remote_container"></div>
+        </div>
+      </div>    
+      <%- if user_signed_in? %>
+        <%= render 'layouts/footer' %>
+      <% end %>  
+    </div> 
+    <%- if is_footer_visible? && !user_signed_in? %>
+      <%== render 'layouts/footer' %>
+      <a href="#" class="back-to-top">
+        <%= icon ('chevron-up') %>  
+      </a>
+    <% end %>    
+  </body>
+</html>        

@@ -50,9 +50,9 @@ class SalesController < ApplicationController
   def destroy
     @sale = Sale.find(params[:id])
     if @sale.destroy
-      redirect_to @sale, notice: I18n.t('sales.destroy.success_delete')
+      redirect_to @sale, notice: I18n.t('sales.destroy.success_delete', sale_date: @sale.date)
     else
-      flash.now[:error] = I18n.t('sales.distroy.error_delete')
+      flash.now[:error] = I18n.t('sales.destroy.error_delete')
     end
   end
 

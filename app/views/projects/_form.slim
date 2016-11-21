@@ -18,7 +18,7 @@
 
   = f.input :deadline, as: :date_picker, input_html: {  class: "datepicker", value: Time.now.strftime('%d/%m/%Y') }
   - if (is_action_name? 'edit') || (is_action_name? 'update')
-    = f.input :status, collection: [['NEW', 'NEW'], ['ONGOING', 'ONGOING'], ['DELAYED', 'DELAYED'], ['FINISHED', 'FINISHED'] ], prompt: false
+    = f.input :status, collection: [['NEW', 'NEW'], ['ONGOING', 'ONGOING'], ['DELAYED', 'DELAYED'], ['FINISHED', 'FINISHED'] ]
   = f.input :description
 
   - if @project.persisted?
