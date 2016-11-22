@@ -42,13 +42,13 @@
               = image_tag (current_user[:avatar] ? current_user.avatar.small : 'avatar-placeholder-small'), class: 'thumbnail img-rounded'
             .media-body
               dl.dl-horizontal
-                dt = I18n.t('current_user.first_name')
+                dt = I18n.t('accounts_current_user.first_name')
                 dd = current_user.first_name
-                dt = I18n.t('current_user.last_name')
+                dt = I18n.t('accounts_current_user.last_name')
                 dd = current_user.last_name
-                dt = I18n.t('current_user.email')
+                dt = I18n.t('accounts_current_user.email')
                 dd = current_user.email
-                dt = I18n.t('current_user.member_since')
+                dt = I18n.t('accounts_current_user.member_since')
                 dd 
                   - days_since_registration = 1
                   - if (Date.today - (current_user.created_at).to_date).to_i > 0
@@ -57,7 +57,7 @@
                 dt
                 dd
                   .m-t-m
-                  = link_to edit_account_path(@account), class: 'btn btn-primary' do
+                  = link_to edit_user_path(current_user), class: 'btn btn-primary' do
                     = icon('pencil-square-o white')
                     |&nbsp;
                     = I18n.t('button.edit')    

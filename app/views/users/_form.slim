@@ -1,4 +1,4 @@
-= simple_form_for(@user,
+= simple_form_for(@user, :url => {:action => 'create'},
               html: { class: 'form-horizontal' },
               wrapper: :horizontal_form,
               wrapper_mappings: {  check_boxes: :horizontal_radio_and_checkboxes,
