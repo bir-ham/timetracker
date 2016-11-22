@@ -6,19 +6,26 @@
 #   cities = City.create([{ name: 'Chicago'  }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-users = User.create([{first_name: 'Birhanu', last_name: 'Hailemariam', email: 'birhanuh@gmail.com', password: 'pw', confirmed_at: Date.yesterday },
-  {first_name: 'Birhanu2', last_name: 'Hailemariam2', email: 'birhanuh2@gmail.com', password: 'pw', confirmed_at: Date.yesterday }])
+users = [User.new(first_name: 'Birhanu', last_name: 'Hailemariam', email: 'birhanuh@gmail.com', password: 'pw', confirmed_at: Date.yesterday ),
+  User.new(first_name: 'Birhanu2', last_name: 'Hailemariam2', email: 'birhanuh2@gmail.com', password: 'pw', confirmed_at: Date.yesterday )]
 
-accounts = Account.create([{owner: users.first, subdomain: 'test'}, {owner: users.second, subdomain: 'test2'}] ) 
-user = users.first
+account_one = Account.new(owner: users.first, subdomain: 'test')
+account_two = Account.new(owner: users.second, subdomain: 'test2') 
 
 if Apartment::Tenant.current == 'public'
-  Apartment::Tenant.create(accounts.first.subdomain)
-  Apartment::Tenant.create(accounts.second.subdomain)
+  Apartment::Tenant.create(account_two.subdomain)
+  Apartment::Tenant.switch!(account_two.subdomain)
+  account_two.save
+  Apartment::Tenant.switch!('public')
 end
 
 if Apartment::Tenant.current == 'public'
-  Apartment::Tenant.switch!(accounts.first.subdomain)
+  Apartment::Tenant.create(account_one.subdomain)
+  Apartment::Tenant.switch!(account_one.subdomain)
+  account_one.save
+  
+  user = User.first
+
   customers = Customer.create([{ name: 'Customer1', phone_number: '+358542066330' , email: 'customer1@gmail.com', address: 'Address 1, 02230 Espoo' },
     { name: 'Customer2', phone_number: '+358542066331', email: 'customer2@gmail.com', address: 'Address 2, 02230 Espoo' },
     { name: 'Customer3', phone_number: '+358542066332', email: 'customer3@gmail.com', address: 'Address 3, 02230 Espoo' },
