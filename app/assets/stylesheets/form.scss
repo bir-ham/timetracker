@@ -152,6 +152,14 @@ abbr, accronym {
   }
 }
 
+.btn-danger.btn-outline {
+  color: $red;
+  &:hover {
+    color: $white;
+    background: $red !important;
+  }
+}
+
 .btn-toolbar {
   margin-top: 10px;
   margin-bottom: 5px;

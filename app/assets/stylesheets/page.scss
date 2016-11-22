@@ -1,5 +1,6 @@
 html, body {
   height: 100%;
+  line-height: 1.428571429; // 20/14
 }
 
 // navbar
@@ -329,9 +330,6 @@ span.block {
 
 .navbar-static-side {
   transition: 0.3s all linear;
-  .link-container a {
-    display: inherit;
-  }
 }
 
 .navbar-static-side ul li {
@@ -478,6 +476,12 @@ span.block {
   border-bottom: 1px solid $light-dark-grey;
   a, small {
     color: #d9d9d9;
+  }
+  .link-container {
+    margin-top: 10px;
+  }
+  .link-container a {
+    display: block;
   }
 }
 
