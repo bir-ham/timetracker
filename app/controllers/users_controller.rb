@@ -5,22 +5,29 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @sale = User.find(params[:id])
+    @user = User.find(params[:id])
   end
 
   def update
     @user = User.find(params[:id])
-    @item = Item.new
-    if @user.update_attributes(user_params)
+    params[:user].delete(:password) if params[:user][:password].blank?
+    if @user.update(user_params)
       redirect_to current_account, notice: I18n.t('users.update.success_update')
     else
       render :edit
-    end
+    end    
   end
 
+
   private
+
   def user_params
     params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
+  end
+
+  #Need :current_password for password update
+  def user_params_password_update
+    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :current_password)
   end
 
 end
