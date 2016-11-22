@@ -145,8 +145,14 @@ en:
       zip: Zip
       town: Town
       country: Country
-      delete_account: Delete this accout
-    update:
+      delete_account: Delete this accout      
+    current_user:
+      first_name: First name
+      last_name: Last name
+      email: Email
+      member_since: Member since    
+      days: "%{days} days"
+      update:
       success_update: "Account information updated!"
     subdomain:
       header: Enter your subdomain
@@ -154,12 +160,6 @@ en:
       continue_button: Continue
       error: can't be blank
       dont_have_an_account: Don't have an account? Sign up for free now!
-  current_user:
-    first_name: First name
-    last_name: Last name
-    email: Email
-    member_since: Member since    
-    days: "%{days} days"
   projects:
     index:
       header: Projects
