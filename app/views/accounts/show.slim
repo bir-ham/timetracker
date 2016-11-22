@@ -42,18 +42,18 @@
               = image_tag (current_user[:avatar] ? current_user.avatar.small : 'avatar-placeholder-small'), class: 'thumbnail img-rounded'
             .media-body
               dl.dl-horizontal
-                dt = I18n.t('accounts_current_user.first_name')
+                dt = I18n.t('accounts.show.current_user.first_name')
                 dd = current_user.first_name
-                dt = I18n.t('accounts_current_user.last_name')
+                dt = I18n.t('accounts.show.current_user.last_name')
                 dd = current_user.last_name
-                dt = I18n.t('accounts_current_user.email')
+                dt = I18n.t('accounts.show.current_user.email')
                 dd = current_user.email
-                dt = I18n.t('accounts_current_user.member_since')
+                dt = I18n.t('accounts.show.current_user.member_since')
                 dd 
                   - days_since_registration = 1
                   - if (Date.today - (current_user.created_at).to_date).to_i > 0
                     - days_since_registration = (Date.today - (current_user.created_at).to_date).to_i
-                  = I18n.t('current_user.days', days: days_since_registration)
+                  = I18n.t('accounts.show.current_user.days', days: days_since_registration)
                 dt
                 dd
                   .m-t-m

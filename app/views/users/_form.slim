@@ -1,4 +1,4 @@
-= simple_form_for(@user, :url => {:action => 'create'},
+= simple_form_for(current_user, :url => {:action => 'update'},
               html: { class: 'form-horizontal' },
               wrapper: :horizontal_form,
               wrapper_mappings: {  check_boxes: :horizontal_radio_and_checkboxes,
@@ -6,7 +6,7 @@
                 file: :horizontal_file_input,
                 boolean: :horizontal_boolean} ) do |f|
   = f.input :first_name
-  = f.input :lastt_name
+  = f.input :last_name
   = f.input :email
   = f.input :password
   = f.input :password_confirmation
