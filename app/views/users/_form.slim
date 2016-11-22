@@ -1,0 +1,19 @@
+= simple_form_for(@user,
+              html: { class: 'form-horizontal' },
+              wrapper: :horizontal_form,
+              wrapper_mappings: {  check_boxes: :horizontal_radio_and_checkboxes,
+                radio_buttons: :horizontal_radio_and_checkboxes,
+                file: :horizontal_file_input,
+                boolean: :horizontal_boolean} ) do |f|
+  = f.input :first_name
+  = f.input :lastt_name
+  = f.input :email
+  = f.input :password
+  = f.input :password_confirmation
+  = f.input :avatar, as: :image_preview, input_html: { preview_version: :thumb }
+
+  .form-actions.form.col-sm-offset-3
+    - if (is_action_name? 'edit') || (is_action_name? 'update')
+      => link_to I18n.t('button.cancel'), @back, class: 'btn btn-primary btn-outline'
+    => f.button :submit, class: 'btn-primary'
+
