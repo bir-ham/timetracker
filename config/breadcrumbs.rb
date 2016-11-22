@@ -48,7 +48,7 @@ end
 
 crumb :edit_sale do |sale|
   link I18n.t('sales.edit.header'), sale_path(sale)
-  parent :invoices
+  parent :sales
 end
 
 crumb :new_sale do 
@@ -88,7 +88,7 @@ end
 
 crumb :edit_customer do |customer|
   link I18n.t('customers.edit.header'), customer_path(customer)
-  parent :invoices
+  parent :customers
 end
 
 crumb :new_customer do
@@ -114,6 +114,12 @@ end
 # events
 crumb :events do
   link I18n.t('events.index.header'), events_path
+end
+
+# users
+crumb :edit_user do |user|
+  link I18n.t('users.edit.header'), user_path(user)
+  parent :show_account, current_account
 end
 
 # crumb :projects do

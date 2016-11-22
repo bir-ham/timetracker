@@ -146,14 +146,14 @@ en:
       town: Town
       country: Country
       delete_account: Delete this accout      
-    current_user:
-      first_name: First name
-      last_name: Last name
-      email: Email
-      member_since: Member since    
-      days: "%{days} days"
-      update:
-      success_update: "Account information updated!"
+      current_user:
+        first_name: First name
+        last_name: Last name
+        email: Email
+        member_since: Member since    
+        days: "%{days} days"
+        update:
+        success_update: "Account information updated!"
     subdomain:
       header: Enter your subdomain
       company_name: Your subdomain is most likely your company name
@@ -227,6 +227,8 @@ en:
       authorized_user: Authorized user
       invite_user: Invite User
       email: Email
+    edit:
+      header: Edit user  
   customers:
     index:
       header: Customers
