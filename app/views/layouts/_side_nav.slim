@@ -6,7 +6,7 @@ aside#sidebar.navbar-default.navbar-static-side role="navigation" data-step="2" 
         .logo-container
           = link_to (image_tag current_account[:logo] ? current_account.logo.medium : 'logo-placeholder-medium', class: 'img-rounded'), current_account, id: 'company-logo-link'
         .link-container
-          = link_to current_account.subdomain, current_account, class: 'text-uppercase m-t-s'
+          = link_to current_account.subdomain, current_account, class: 'text-uppercase'
           = link_to current_account do
             small
               = icon('user')
