@@ -28,7 +28,11 @@
           = f.input :password, autocomplete: "off" 
 
           = f.input :password_confirmation, autocomplete: "off" 
-
+          
+          .form-actions.col-sm-offset-3    
+            i 
+              |(we need your current password to confirm your changes)
+          = f.input :current_password, autocomplete: "off" 
           
           .form-actions.form.col-sm-offset-3
             => link_to I18n.t('button.cancel'), :back, class: 'btn btn-primary btn-outline'
