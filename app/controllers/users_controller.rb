@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     params[:user].delete(:password) if params[:user][:password].blank?
-    if @user.update(user_params)
+    if @user.update_attributes(user_params)
       redirect_to current_account, notice: I18n.t('users.update.success_update')
     else
       render :edit

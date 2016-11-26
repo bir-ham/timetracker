@@ -41,7 +41,7 @@ a {
   border-color: $x-light-grass;
 }
 
-.alert-danger {
+.alert-danger, .alert-error {
   color: $dark-red;
   background: $white-red;
   border-color: $x-light-red;
