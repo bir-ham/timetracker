@@ -12,9 +12,6 @@ class User < ActiveRecord::Base
 
   validates :first_name, presence: true
   validates :last_name, presence: true
-  validates :email, presence: true
-  validates :password, :presence =>true, :confirmation => true, :length => { :within => 2..40 }, :on => :create
-  validates :password, :confirmation => true, :length => { :within => 2..40 }, :on => :update, :unless => lambda{ |user| user.password.blank? } 
 
   mount_uploader :avatar, Uploader
 

@@ -1,6 +1,6 @@
 - breadcrumb :show_account, @account
 .row
-  .col-sm-6
+  .col-sm-8
     .well
       .media
         .media-left
@@ -36,31 +36,31 @@
                 |&nbsp;
                 = I18n.t('button.edit')
           
-          hr        
-          .media
-            .media-left
-              = image_tag (current_user[:avatar] ? current_user.avatar.small : 'avatar-placeholder-small'), class: 'thumbnail img-rounded'
-            .media-body
-              dl.dl-horizontal
-                dt = I18n.t('accounts.show.current_user.first_name')
-                dd = current_user.first_name
-                dt = I18n.t('accounts.show.current_user.last_name')
-                dd = current_user.last_name
-                dt = I18n.t('accounts.show.current_user.email')
-                dd = current_user.email
-                dt = I18n.t('accounts.show.current_user.member_since')
-                dd 
-                  - days_since_registration = 1
-                  - if (Date.today - (current_user.created_at).to_date).to_i > 0
-                    - days_since_registration = (Date.today - (current_user.created_at).to_date).to_i
-                  = I18n.t('accounts.show.current_user.days', days: days_since_registration)
-                dt
-                dd
-                  .m-t-m
-                  = link_to edit_user_path(current_user), class: 'btn btn-primary' do
-                    = icon('pencil-square-o white')
-                    |&nbsp;
-                    = I18n.t('button.edit')    
+      hr        
+      .media
+        .media-left
+          = image_tag (current_user[:avatar] ? current_user.avatar.small : 'avatar-placeholder-small'), class: 'thumbnail img-rounded'
+        .media-body
+          dl.dl-horizontal
+            dt = I18n.t('accounts.show.current_user.first_name')
+            dd = current_user.first_name
+            dt = I18n.t('accounts.show.current_user.last_name')
+            dd = current_user.last_name
+            dt = I18n.t('accounts.show.current_user.email')
+            dd = current_user.email
+            dt = I18n.t('accounts.show.current_user.member_since')
+            dd 
+              - days_since_registration = 1
+              - if (Date.today - (current_user.created_at).to_date).to_i > 0
+                - days_since_registration = (Date.today - (current_user.created_at).to_date).to_i
+              = I18n.t('accounts.show.current_user.days', days: days_since_registration)
+            dt
+            dd
+              .m-t-m
+              = link_to edit_user_registration_path(current_user), class: 'btn btn-primary' do
+                = icon('pencil-square-o white')
+                |&nbsp;
+                = I18n.t('button.edit')    
     .m-b-xl
     = link_to '#confirmation-modal-container', class: 'btn btn-danger btn-outline confirmation-button', data: { id: @account.id } do
       = icon('trash')

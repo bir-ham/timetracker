@@ -13,7 +13,7 @@ end
 Rails.application.routes.draw do
   constraints(SubdomainPresent) do
     root 'homepages#dashboard', as: :subdomain_root
-    devise_for :users
+    devise_for :users, controllers: { registrations: 'registrations' }
     resources :users, only: [:index, :edit, :update]
     resources :sales do
       resources :items, except: [:index, :show], controller: 'sales/items'
