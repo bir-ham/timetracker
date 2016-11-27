@@ -10,14 +10,17 @@ class ContactsController < ApplicationController
     @contact = Contact.new(contact_params)
     @contact.request = request
   
-    if contact_params.value?""
-      flash[:alert] = 'All fields are required.'
-      redirect_to root_path
-    elsif @contact.deliver
-      redirect_to root_path, notice: 'Thank you for your message. We will contact you soon!'
+    if @contact.invalid?
+      session[:contact] = params[:contact]
+      redirect_to root_path, :flash => { :error => @contact.errors.full_messages.join(', ') }
     else
-      flash[:alert] = 'Cannot send message. Try again.'
-      redirect_to root_path   
+      if @contact.deliver
+        redirect_to root_path, notice: 'Thank you for your message. We will contact you soon!'  
+        session[:contact] = params[:contact] = ''
+      else
+        flash[:alert] = 'Cannot send message. Try again.'
+        redirect_to root_path   
+      end  
     end  
   end
 
