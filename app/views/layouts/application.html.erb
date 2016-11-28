@@ -7,7 +7,7 @@
     <meta content="" name="description">
     <meta content="" name="author">
 
-    <title> Toolsio</title>
+    <title><%= yield(:title) %></title>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%- unless user_signed_in? %>
