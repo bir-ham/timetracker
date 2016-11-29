@@ -456,6 +456,10 @@ span.block {
   .first-user-prompt-btn.invoice {
     top: 50%;
   }  
+  .panel {
+    position: relative;
+    min-height: 200px;
+  }
 }
 
 .portlet .portlet-body {
@@ -602,9 +606,6 @@ span.block {
     .first-user-prompt-btn {
       width: 90%;
     }
-    .panel {
-      min-height: 230px;
-    }
   }  
 }
 
@@ -662,9 +663,6 @@ span.block {
     .first-user-prompt-btn.customer {
       left: 28%;
     }
-    .panel {
-      min-height: 230px;
-    }
   }  
 
 }
@@ -685,10 +683,6 @@ span.block {
       left: 28%;
     }
   }  
-  .panel {
-    position: relative;
-    min-height: 240px;
-  }
 }
 
 /* Large devices (large desktops, 1200px and up) */
@@ -702,10 +696,6 @@ span.block {
     }
     .first-user-prompt-btn {
       left: 26%;
-    }
-    .panel {
-      position: relative;
-      min-height: 300px;
     }
   }  
 

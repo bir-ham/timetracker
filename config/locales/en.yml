@@ -133,7 +133,7 @@ en:
     edit:
       header: Edit accout information
     show:
-      header: View Account
+      header: Account
       company: Company
       url: URL
       subdomain: Subdomain
