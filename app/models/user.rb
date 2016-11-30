@@ -11,7 +11,6 @@ class User < ActiveRecord::Base
   has_many :invoices
 
 
-
   mount_uploader :avatar, Uploader
 
   def self.invited_users
