@@ -3,8 +3,7 @@ class RegistrationsController < Devise::RegistrationsController
   protected
 
   def update_resource(resource, user_params)
-    user_params.delete :current_password
-    resource.update_without_password(user_params)
+    resource.update_with_password(user_params)
   end
 
   def after_update_path_for(resource)
@@ -12,7 +11,7 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def user_params 
-    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :current_password)
+    params.require(:user).permit(:first_name, :last_name, :email, :current_password, :password, :password_confirmation)
   end
 
 end
