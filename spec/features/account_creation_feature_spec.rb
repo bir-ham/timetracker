@@ -53,7 +53,7 @@ describe 'account creation' do
     #binding.pry #inserts a breakpoint here
     fill_in 'First name', with: 'Birhanu'
     fill_in 'Last name', with: 'Hailemariam'
-    fill_in 'Email', with: 'birhanuh@gmail.com'
+    fill_in 'Email', with: 'birhanu@example.com'
     within('.account_owner_password') do
       fill_in 'Password', with: 'pw'
     end
