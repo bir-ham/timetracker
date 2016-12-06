@@ -12,13 +12,7 @@ describe 'account creation' do
     before :each do
       open_email 'birhanu@example.com'
       expect(current_email).to have_body_text("You can confirm your account email through the link below:")
-      visit_in_email 'Confirm my account'
-      expect(page).to have_content('Your account was successfully confirmed')
-    end
-
-    it "confirms user" do
-      user = User.find_for_authentication(email: 'birhanu@example.com')
-      expect(user).to be_confirmed
+      expect(current_email).to have_link 'Confirm my account'
     end
 
     it 'allows user to create account' do
@@ -42,7 +36,10 @@ describe 'account creation' do
       user = create(:user)
       subdomain = Account.first.subdomain
       sign_user_in(user, subdomain: subdomain)
-      expect { visit new_account_url(subdomain: subdomain) }.to raise_error ActionController::RoutingError
+      #expect { visit new_account_url(subdomain: subdomain) }.to raise_error ActionController::RoutingError
+      
+      visit new_account_url(subdomain: subdomain) 
+      expect(current_path).to eq root_path
     end
   end
 
@@ -53,7 +50,7 @@ describe 'account creation' do
     #binding.pry #inserts a breakpoint here
     fill_in 'First name', with: 'Birhanu'
     fill_in 'Last name', with: 'Hailemariam'
-    fill_in 'Email', with: 'birhanuh@gmail.com'
+    fill_in 'Email', with: 'birhanu@example.com'
     within('.account_owner_password') do
       fill_in 'Password', with: 'pw'
     end

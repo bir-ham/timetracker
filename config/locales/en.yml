@@ -240,7 +240,7 @@ en:
     update:
       success_update: Customer updated
     destroy:
-      success_delete: Customer deleted
+      success_delete: "Customer %{name} is deleted"
       confirmation_msg: Are you sure to delete this customer?
     create:
       notice_create: Customer created
@@ -271,7 +271,6 @@ en:
       header: Edit Invoice
     show:
       header: Invoice
-      id: Id
       name: Name
       invoice_for: Invoice for
       date_of_an_invoice: Date of an invoice

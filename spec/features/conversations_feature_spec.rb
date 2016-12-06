@@ -10,7 +10,7 @@ describe 'conversations' do
   end
 
   it 'allows user to send email' do
-    click_link I18n.t('navigation.see_all_messages'
+    click_link I18n.t('navigation.see_all_messages')
 
     expect(page).to have_text I18n.t('conversations.index.inbox')
     expect(page).to have_link I18n.t('conversations.index.new_message')
@@ -18,7 +18,7 @@ describe 'conversations' do
     click_link I18n.t('conversations.index.new_message')
     expect(page).to have_text I18n.t('messages.new.header')
 
-    within('.chosen-it') do
+    within('.recipients') do
       select_generic(user.first_name)
     end
     fill_in 'message[subject]', with: 'Test title'
@@ -27,13 +27,25 @@ describe 'conversations' do
     submit_form_button
 
     expect(page).to have_text I18n.t('messages.create.success')
-    within('.badge') do
+
+    within('.messages-badge') do
       expect(page).to have_text '1'
     end
   end
 
   it 'allows user to read sent email' do
-    click_link I18n.t('navigation.see_all_messages'
+    click_link I18n.t('navigation.see_all_messages')
+
+    # Send email manually to test Sent 
+    click_link I18n.t('conversations.index.new_message')
+    within('.recipients') do
+      select_generic(user.first_name)
+    end
+    fill_in 'message[subject]', with: 'Test title'
+    fill_in 'message[body]', with: 'Lorem lipsum'
+
+    submit_form_button
+    click_link I18n.t('navigation.see_all_messages')
 
     expect(page).to have_text I18n.t('conversations.index.sent')
 

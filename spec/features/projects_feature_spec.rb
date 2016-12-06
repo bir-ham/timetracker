@@ -14,11 +14,8 @@ describe 'projects' do
   	visit projects_path
   	click_link I18n.t('projects.index.create_new_project')
 
-    fill_in "Name", with: "Project foo"
+    fill_in "Name", with: "Project 1"
   	fill_in "Deadline", with: Date.today
-    within('.project_user') do
-      select_generic(user.first_name, from: 'project[user_id]')
-    end
     within('.project_customer') do
       select_generic(@customer.name, from: 'project[customer_id]')
     end
@@ -29,7 +26,7 @@ describe 'projects' do
   	expect(page).to have_text I18n.t('projects.new.notice_create')
     expect(page).to have_text Date.today
     expect(page).to have_text @customer.name
-  	expect(page).to have_text "Project foo"
+  	expect(page).to have_text "Project 1"
     expect(page).to have_text "NEW"
   end
 
@@ -45,11 +42,10 @@ describe 'projects' do
   	project = create(:project)
 
   	visit projects_path
-    click_link I18n.t('button.view')
+    click_project_header_link project.name
   	click_link I18n.t('button.edit')
-    #click_edit_project_button project.name
 
-  	fill_in "Name", with: "Project foo edited"
+  	fill_in "Name", with: "Project 1 edited"
     check 'Archived'
 
   	submit_form
@@ -59,9 +55,9 @@ describe 'projects' do
     expect(page).to have_text I18n.t('projects.show.archived')
   end
 
-  #def click_edit_project_button(project_name)
-  #	within find("h3", text: project_name) do
-  #		page.first("a").click
-  #	end
-  #end
+  def click_project_header_link(project_name)
+  	within find("h4", text: project_name) do
+  		page.first("a").click
+  	end
+  end
 end

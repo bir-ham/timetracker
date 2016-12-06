@@ -42,7 +42,7 @@
   - projects_status_chart_data.each do |i|
     - total_projects += i[:total]
   .col-sm-6.col-md-3
-    .panel.task.panel-default
+    .panel.projects.panel-default
       .panel-body class = ('fade-out-contents text-center' if total_projects == 0)
         - if total_projects == 0
           = link_to I18n.t('dashboards.index.first_project'), new_project_path, class: 'btn btn-primary btn-sm first-user-prompt-btn'

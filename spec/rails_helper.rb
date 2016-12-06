@@ -5,7 +5,7 @@ require 'rspec/rails'
 require 'database_cleaner'
 require 'capybara/rspec'
 require 'email_spec'
-require 'capybara/webkit'
+require 'selenium-webdriver'
 
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
@@ -21,28 +21,28 @@ RSpec.configure do |config|
   config.order = "random"
   config.infer_spec_type_from_file_location!
   config.use_transactional_fixtures = false
+  config.include Capybara::DSL
   config.add_setting(:seed_tables)
 
   config.before(:suite) do
-    #DatabaseCleaner.strategy = :transaction
-    DatabaseCleaner.clean_with(:truncation, {except: config.seed_tables})
+    DatabaseCleaner.clean_with(:truncation)
   end
-
-  # Before each spec run, just to insure consistency between specs
+ 
   config.before(:each) do
-    DatabaseCleaner.strategy = :transaction
+    #DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.strategy = :truncation
   end
-
+ 
   config.before(:each, :js => true) do
-    DatabaseCleaner.strategy = :truncation, {except: config.seed_tables}
+    DatabaseCleaner.strategy = :truncation
   end
-
+ 
   config.before(:each) do
     DatabaseCleaner.start
   end
 
   # After each spec run, just to insure consistency between specs
-  config.after(:each) do
+  config.append_after(:each) do
     DatabaseCleaner.clean
     Apartment::Tenant.reset
     drop_schemas
@@ -60,16 +60,11 @@ end
 
 Capybara.configure do |config|
   config.app_host = 'http://example.com'
-  config.javascript_driver = :webkit
+  config.javascript_driver = :selenium
   config.always_include_port = true
 end
 
-Capybara::Webkit.configure do |config|
-  # Allow a specific domain without issuing a warning.
-  config.allow_url("lvh.me")
-
-  # Wildcards are allowed in URL expressions.
-  config.allow_url("*.lvh.me")
+Capybara.register_driver :selenium do |app|
+  Capybara::Selenium::Driver.new(app, :browser => :chrome)
 end
-
 
