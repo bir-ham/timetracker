@@ -12,12 +12,12 @@ describe 'account creation' do
     before :each do
       open_email 'birhanu@example.com'
       expect(current_email).to have_body_text("You can confirm your account email through the link below:")
-      visit_in_email 'Confirm my account'
-      expect(page).to have_content('Your account was successfully confirmed')
+      expect(current_email).to have_link 'Confirm my account'
     end
 
     it "confirms user" do
       user = User.find_for_authentication(email: 'birhanu@example.com')
+      user.confimed_at = Date.today
       expect(user).to be_confirmed
     end
 
