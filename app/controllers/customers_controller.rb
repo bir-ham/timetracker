@@ -50,7 +50,7 @@ class CustomersController < ApplicationController
   def destroy
     @customer = Customer.find(params[:id])
     if @customer.destroy
-      redirect_to customers_url, notice: I18n.t('customers.destroy.success_delete')
+      redirect_to customers_url, notice: I18n.t('customers.destroy.success_delete', name: @customer.name)
     else
       flash.now[:error] = I18n.t('invoices.distroy.error_delete')
     end

@@ -35,9 +35,9 @@ describe 'customers', js: true do
 
   describe 'when customer exists' do    
     before do
+      switch_schema account
       @customer = create(:customer)
       
-      sleep 2
       visit customers_path
       
       click_link I18n.t('button.view')
@@ -60,16 +60,18 @@ describe 'customers', js: true do
     it 'allows customer to be deleted' do
       click_link I18n.t('button.delete')
 
-      wait_for_ajax
-
       expect(page).to have_text I18n.t('customers.destroy.confirmation_msg')
 
+      sleep 2
+      
       within('.modal-footer') do
         click_link I18n.t('button.delete')
       end
 
-      expect(page).to have_text I18n.t('customers.destroy.success_delete')
-      expect(page).to_not have_text @customer.name
+      expect(page).to have_text I18n.t('customers.destroy.success_delete', name: @customer.name)
+      within('.alert') do
+        expect(page).to have_text @customer.name
+      end  
     end
   end
 

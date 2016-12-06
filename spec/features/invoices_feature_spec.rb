@@ -7,6 +7,7 @@ describe 'invoices', js: true do
   before do
     set_subdomain(account.subdomain)
     sign_user_in(user)
+    switch_schema account
     @customer = create(:customer)
     @sale = create(:sale, user: user, customer: @customer)
   end
@@ -20,7 +21,7 @@ describe 'invoices', js: true do
     end
 
     submit_form
-    sleep 10
+    
     fill_in 'Reference number', with: '1234'
     fill_in 'Description', with: 'Lorem lipsum'
     fill_in 'invoice_date_of_an_invoice', with: Date.today
@@ -70,6 +71,7 @@ describe 'invoices', js: true do
 
   describe 'when invoice exists' do
     before(:each) do
+      switch_schema account
       @invoice = create(:invoice, user: user, sale: @sale, deadline: Date.tomorrow, payment_term: '')
       visit invoices_path
 
@@ -106,7 +108,9 @@ describe 'invoices', js: true do
       wait_for_ajax
 
       expect(page).to have_text I18n.t('invoices.destroy.confirmation_msg')
-
+      
+      sleep 2
+      
       within('.modal-footer') do
         click_link I18n.t('button.delete')
       end
