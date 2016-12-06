@@ -15,12 +15,6 @@ describe 'account creation' do
       expect(current_email).to have_link 'Confirm my account'
     end
 
-    it "confirms user" do
-      user = User.find_for_authentication(email: 'birhanu@example.com')
-      user.confimed_at = Date.today
-      expect(user).to be_confirmed
-    end
-
     it 'allows user to create account' do
       expect(page.current_url).to include(subdomain)
       expect(Account.all.count).to eq(1)
@@ -42,7 +36,10 @@ describe 'account creation' do
       user = create(:user)
       subdomain = Account.first.subdomain
       sign_user_in(user, subdomain: subdomain)
-      expect { visit new_account_url(subdomain: subdomain) }.to raise_error ActionController::RoutingError
+      #expect { visit new_account_url(subdomain: subdomain) }.to raise_error ActionController::RoutingError
+      
+      visit new_account_url(subdomain: subdomain) 
+      expect(current_path).to eq root_path
     end
   end
 
