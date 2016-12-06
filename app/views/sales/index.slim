@@ -44,7 +44,7 @@
               .panel-body
                 .clearfix.m-b-m
                   .pull-left
-                    h4.m-t-n = link_to sale.date.strftime("%d/%m/%Y"), sale, class: "#{text_class}"
+                    h4.m-t-n.m-b-n = link_to sale.date.strftime("%d/%m/%Y"), sale, class: "#{text_class}"
                   .pull-right
                     span.label class = (label_class) = sale.status
 

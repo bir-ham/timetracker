@@ -20,7 +20,7 @@ describe 'customers', js: true do
     fill_in "Address", with: "Kifle ketam: Bole, Kebele: 21, House number: 324"
 
     submit_form
-
+    
     expect(page).to have_text I18n.t('customers.create.notice_create')    
     expect(page).to have_text "Alex"
   end
@@ -37,7 +37,7 @@ describe 'customers', js: true do
     before do
       @customer = create(:customer)
       
-      sleep 5
+      sleep 2
       visit customers_path
       
       click_link I18n.t('button.view')
