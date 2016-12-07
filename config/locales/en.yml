@@ -286,6 +286,8 @@ en:
       payment_term: Payment term
       interest_in_arrears: Interest in arrears
       reference_number: Reference number
+      edit_project: Edit Project
+      edit_sale: Edit Sale
     create:
       notice_create: "Invoice created!"
     update:

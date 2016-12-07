@@ -17,20 +17,20 @@ describe 'invoices', js: true do
     click_link I18n.t('invoices.index.create_invoice')
 
     within('.invoice_sale') do
-      select_generic("#{@sale.date} to #{@sale.customer.name}", from: 'invoice[sale_id]')
+      select_generic("#{@sale.date} to #{@sale.customer.name}", from: 'invoice_sale_id')
     end
 
     submit_form
     
-    fill_in 'Reference number', with: '1234'
-    fill_in 'Description', with: 'Lorem lipsum'
-    fill_in 'invoice_date_of_an_invoice', with: Date.today
-    fill_in 'invoice_deadline', with: Date.tomorrow
+    fill_in 'invoice_reference_number', with: '1234'
+    fill_in 'invoice_date_of_an_invoice', with: Date.today.tomorrow.strftime('%d/%m/%Y')
+    fill_in 'invoice_deadline', with: Date.tomorrow.strftime('%d/%m/%Y')
+    fill_in 'invoice_description', with: 'Lorem lipsum'
 
     #select_date_and_time(DateTime.now, from: 'invoice_deadline')
 
     submit_form
-
+  
     expect(page).to have_text Date.tomorrow
     expect(page).to have_text '1234'
 
@@ -47,20 +47,20 @@ describe 'invoices', js: true do
     click_link I18n.t('invoices.index.create_invoice')
 
     within('.invoice_sale') do
-      select_generic("#{@sale.date} to #{@sale.customer.name}", from: 'invoice[sale_id]')
+      select_generic("#{@sale.date} to #{@sale.customer.name}", from: 'invoice_sale_id')
     end
 
     submit_form
 
-    fill_in 'Reference number', with: 'abcd'
-    fill_in 'Description', with: 'Lorem lipsum'
+    fill_in 'invoice_reference_number', with: 'abcd'
+    fill_in 'invoice_description', with: 'Lorem lipsum'
 
     within('.invoice_payment_term') do
       select_generic(13, from: 'invoice_payment_term')
     end
 
-    fill_in 'invoice_date_of_an_invoice', with: Date.today
-    fill_in 'invoice_deadline', with: 7.days.ago
+    fill_in 'invoice_date_of_an_invoice', with: Date.today.tomorrow.strftime('%d/%m/%Y')
+    fill_in 'invoice_deadline', with: 7.days.ago.tomorrow.strftime('%d/%m/%Y')
 
     submit_form
 
@@ -72,7 +72,7 @@ describe 'invoices', js: true do
   describe 'when invoice exists' do
     before(:each) do
       switch_schema account
-      @invoice = create(:invoice, user: user, sale: @sale, deadline: Date.tomorrow, payment_term: '')
+      @invoice = create(:invoice, user: user, sale: @sale, deadline: Date.tomorrow, status: 'PENDING', payment_term: '')
       visit invoices_path
 
       visit "/invoices/#{@invoice.id}"
@@ -87,25 +87,22 @@ describe 'invoices', js: true do
     it 'allows invoice to be edited' do
       click_link I18n.t('button.edit')
 
-      within('.invoice_sale') do
-        select_generic("#{@sale.date} to #{@sale.customer.name}", from: 'invoice[sale_id]')
-      end
+      expect(page).to have_text "#{@sale.date} to #{@sale.customer.name}"
 
-      fill_in 'invoice_date_of_an_invoice', with: Date.today
-      fill_in 'Reference number', with: '1234'
-      fill_in 'Description', with: 'Lorem lipsum edited'
-      fill_in 'invoice_deadline', with: Date.tomorrow
+      fill_in 'invoice_date_of_an_invoice', with: Date.today.strftime('%d/%m/%Y')
+      fill_in 'invoice_reference_number', with: '1234'
+      fill_in 'invoice_deadline', with: Date.tomorrow.strftime('%d/%m/%Y')
+      fill_in 'invoice_description', with: 'Lorem lipsum edited'
 
       submit_form
+
       expect(page).to have_text I18n.t('invoices.update.success_update')
       expect(page).to have_text @customer.name
       expect(page).to have_text 'Lorem lipsum edited'
     end
 
-    it 'allows invoice to be deleted', js: true do
+    it 'allows invoice to be deleted' do
       click_link I18n.t('button.delete')
-
-      wait_for_ajax
 
       expect(page).to have_text I18n.t('invoices.destroy.confirmation_msg')
       
@@ -114,10 +111,8 @@ describe 'invoices', js: true do
       within('.modal-footer') do
         click_link I18n.t('button.delete')
       end
-
+ 
       expect(page).to have_text I18n.t('invoices.destroy.success_delete')
-      expect(page).to_not have_text @invoice.date_of_an_invoice
-      expect(page).to_not have_text @invoice.customer
     end
   end
 
