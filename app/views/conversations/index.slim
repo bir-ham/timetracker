@@ -5,7 +5,7 @@
   .col-sm-3
     .well.well-sm
       = link_to I18n.t('conversations.index.new_message'), new_message_path, class: 'btn btn-primary btn-block'
-      hr.m-t-s.m-b-s
+      hr.m-t-m.m-b-m
       ul.nav.nav-pills.nav-stacked
         li class = ('active' if 'inbox' == @box)
           = link_to conversations_path(box: 'inbox') do
@@ -32,7 +32,7 @@
   .col-sm-9  
     .well.well-sm
       - if @inbox == 'trash'
-        = link_to 'Empty trash', empty_trash_conversations_path, class: 'btn btn-danger', method: :delete,
+        = link_to I18n.t('conversations.index.empty_trash'), empty_trash_conversations_path, class: 'btn btn-danger', method: :delete,
           data: { confirm: 'Are you sure?' }
       - unless @conversations.empty?
         table.table.table.table-hover.table-bordered

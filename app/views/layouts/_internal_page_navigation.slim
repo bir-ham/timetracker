@@ -45,7 +45,7 @@ nav#topbar.navbar.navbar-default.navbar-static-top role="navigation" style="marg
           - unread_messages = current_user.mailbox.inbox(unread: true).limit(5)
           - unread_messages.each do |msg|
             li
-              = link_to truncate(msg.last_message.body, lenght: 17), conversations_path
+              = link_to truncate(msg.last_message.body, lenght: 17), conversations_path, class: 'text-bold'
           li.summary
             = link_to I18n.t('navigation.see_all_messages'), conversations_path
       li.dropdown.settings
