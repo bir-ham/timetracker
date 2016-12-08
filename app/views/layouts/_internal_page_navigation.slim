@@ -56,7 +56,7 @@ nav#topbar.navbar.navbar-default.navbar-static-top role="navigation" style="marg
         ul.dropdown-menu.settings
           .title = I18n.t('navigation.admin_options')
           li
-            a href="#"
+            = link_to current_account
               = icon('user')
               |&nbsp;
               = I18n.t('navigation.profile')
