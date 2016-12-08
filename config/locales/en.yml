@@ -399,7 +399,8 @@ en:
       trash: Trash
       remove: Remove
       restore: Restore 
-      description: Internal messaging serivce. Here, you can compose, read, reply and delete messages.
+      description: Internal messaging serivce, compose, read, reply and delete messages.
+      empty_trash: 'Empty trash'
     show: 
       header: Show
       reply: Reply
