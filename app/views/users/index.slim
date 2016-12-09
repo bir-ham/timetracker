@@ -27,7 +27,8 @@
             td = user.email
             td = user_status(user)
             td.text-center
-              = link_to I18n.t('button.send'), new_message_path(to: user.id), class: 'btn btn-primary btn-outline btn-sm'
+              - unless current_user == user
+                = link_to I18n.t('button.send'), new_message_path(to: user.id), class: 'btn btn-primary btn-outline btn-sm'
 
     .pull-right
       = will_paginate          
