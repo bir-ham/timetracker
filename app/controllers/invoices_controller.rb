@@ -23,14 +23,15 @@ class InvoicesController < ApplicationController
     @invoice = Invoice.new(session[:invoice_params])
     @invoice.current_step = session[:invoice_step]
 
+    @sales = Sale.get_sales_without_invoice
+    @projects = Project.get_projects_without_invoice
     @invoice.user = current_user
+    @invoice.status = 'PENDING'
 
     if @invoice.valid?
       if params[:back_button]
         @invoice.previous_step
       elsif @invoice.last_step?
-        @invoice.status = 'PENDING'
-        @invoice.user_id = current_user.id
         @invoice.save if @invoice.all_valid?
       else
         @invoice.next_step
