@@ -3,10 +3,6 @@ require 'rails_helper'
 describe 'account creation' do
   let(:subdomain) { generate(:subdomain) }
   before(:each) { sign_up(subdomain) }
-  
-  before(:suite) do
-    DatabaseCleaner.clean_with(:truncation)
-  end
 
   it 'shows confirmation message' do
     expect(page).to have_text I18n.t('devise.registrations.signed_up_but_unconfirmed')
