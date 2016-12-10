@@ -20,13 +20,4 @@ machine:
     - sudo apt-get update
     - sudo apt-get install google-chrome-stable  
 
-## Customize database setup
-database:
-  override:
-    # replace Circle's generated database.yml
-    - cp config/database.yml.ci config/database.yml
-    - bundle exec rake db:create db:schema:load --trace
 
-test:
-  minitest_globs:
-    - test/**/*_test.rb
