@@ -1,0 +1,32 @@
+## Customize the test machine
+machine:
+
+  timezone:
+    America/New_York # List of timezones http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+
+  # Version of ruby to use
+  ruby:
+    version:
+      2.3.1
+
+  # Add some environment variables
+  environment:
+    ACCEPTANCE_TESTS: test
+    TESTOPTS: --seed=7862
+
+  post:
+    - wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+    - sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+    - sudo apt-get update
+    - sudo apt-get install google-chrome-stable  
+
+## Customize database setup
+database:
+  override:
+    # replace Circle's generated database.yml
+    - cp config/database.yml.ci config/database.yml
+    - bundle exec rake db:create db:schema:load --trace
+
+test:
+  minitest_globs:
+    - test/**/*_test.rb
