@@ -8,8 +8,8 @@ RSpec.describe Sale, type: :model do
     it { should allow_value('', nil).for(:description) }
   end
 
-  it 'should validate user and status on save' do
-    expect(build(:sale, date: Date.today, user: create(:user), customer: create(:customer), status: 'PENDING')).to be_valid
+  it 'should validate user and status on create' do
+    expect(build(:sale, date: Date.today, user: create(:user), customer: create(:customer), status: 'PREPARING')).to be_valid
     expect(build(:sale, date: Date.today, user: create(:user), customer: create(:customer), status: nil)).to be_invalid
   end
 

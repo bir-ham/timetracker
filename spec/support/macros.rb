@@ -12,10 +12,6 @@ def drop_schemas
   end
 end
 
-def switch_schema(account)
-  Apartment::Tenant.switch!(account.subdomain) if account.subdomain? 
-end
-
 def is_modal_body_javascript_loaded?
   page.has_css?('.modal-body')
 end 
