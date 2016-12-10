@@ -5,6 +5,7 @@ describe 'customers', js: true do
   let(:user) { account.owner }
 
   before do
+    Apartment::Tenant.switch!(account.subdomain) if account.subdomain? 
     set_subdomain(account.subdomain)
     sign_user_in(user)
   end
@@ -35,7 +36,6 @@ describe 'customers', js: true do
 
   describe 'when customer exists' do    
     before do
-      switch_schema account
       @customer = create(:customer)
       
       visit customers_path
@@ -75,4 +75,10 @@ describe 'customers', js: true do
     end
   end
 
+  after do
+    # Reset tentant back to `public`
+    Apartment::Tenant.reset
+    # Rollback transaction
+    DatabaseCleaner.clean
+  end
 end

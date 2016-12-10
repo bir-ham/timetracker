@@ -7,7 +7,7 @@ describe 'invoices', js: true do
   before do
     set_subdomain(account.subdomain)
     sign_user_in(user)
-    switch_schema account
+    Apartment::Tenant.switch!(account.subdomain) if account.subdomain? 
     @customer = create(:customer)
     @sale = create(:sale, user: user, customer: @customer)
   end
@@ -71,7 +71,6 @@ describe 'invoices', js: true do
 
   describe 'when invoice exists' do
     before(:each) do
-      switch_schema account
       @invoice = create(:invoice, user: user, sale: @sale, deadline: Date.tomorrow, status: 'PENDING', payment_term: '')
       visit invoices_path
 
@@ -114,6 +113,13 @@ describe 'invoices', js: true do
  
       expect(page).to have_text I18n.t('invoices.destroy.success_delete')
     end
+  end
+
+  after do
+    # Reset tentant back to `public`
+    Apartment::Tenant.reset
+    # Rollback transaction
+    DatabaseCleaner.clean
   end
 
 end
