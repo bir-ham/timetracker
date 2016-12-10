@@ -42,8 +42,8 @@ RSpec.configure do |config|
 
   # After each spec run, just to insure consistency between specs
   config.append_after(:each) do
+    Apartment::Tenant.reset    
     DatabaseCleaner.clean
-    Apartment::Tenant.reset
     drop_schemas
     Capybara.app_host = 'http://example.com'
     reset_mailer
