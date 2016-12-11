@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'accounts' do
+describe 'edit accounts', js: true do
   let!(:account) { create(:account_with_schema) }
   let(:user) { account.owner }
 
@@ -14,7 +14,7 @@ describe 'accounts' do
       click_link('company-logo-link')     
     end
     it 'allows account to be edited' do
-      click_link I18n.t('button.edit')       
+      find(:xpath, "//a[@href='/accounts/#{account.id}/edit']").click
       
       fill_in 'Industry', with: 'Lorem'
       fill_in 'Phone number', with: '12345678910'
@@ -31,7 +31,7 @@ describe 'accounts' do
     end  
 
     xit 'allows account to be deleted' do
-      click_link I18n.t('button.delete')
+      find(:xpath, "//a[@href='/users/edit.1']").click
       
       expect(page).to have_text I18n.t('invoices.destroy.confirmation_msg')     
      

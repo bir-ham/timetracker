@@ -1,13 +1,17 @@
+- provide(:title, I18n.t('conversations.index.header'))
 - breadcrumb :show_conversation, @conversation
 
 .row
-  .col-sm-12
+  .col-sm-9
     = form_tag reply_conversation_path(@conversation), method: :post do
       .form-group
-        = text_area_tag 'body', nil, cols: 3, class: 'form-control', placeholder: 'Type something...', required: true
+        = text_area_tag 'body', nil, class: 'form-control', placeholder: 'Type something...', required: true
       .clearfix
         .pull-right
-          = submit_tag I18n.t('conversations.show.reply'), class: 'btn btn-primary'
+          = button_tag(type: :submit, class: 'btn btn-primary') do
+            = icon('reply')
+            |&nbsp;
+            = I18n.t('conversations.show.reply')
     hr.medium-grey-hr
 
     - @conversation.receipts_for(current_user).each do |receipt|

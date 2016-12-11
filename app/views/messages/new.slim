@@ -1,7 +1,7 @@
 - breadcrumb :new_message, @message
 
 .row
-  .col-sm-12
+  .col-sm-9
     .panel.panel-default
       .panel-body
         h2 = I18n.t('messages.new.header')
@@ -15,7 +15,7 @@
             = text_field_tag 'message[subject]', nil, class: 'form-control', required: true
           .form-group
             = label_tag 'message[body]', 'Message'
-            = text_area_tag 'message[body]', nil, cols: 3, class: 'form-control', required: true
+            = text_area_tag 'message[body]', nil, class: 'form-control', required: true
 
           .pull-right  
             = button_tag(type: :submit, class: 'btn btn-primary') do

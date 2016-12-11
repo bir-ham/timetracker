@@ -1,10 +1,41 @@
 #title-breadcrumb-option-demo.page-title-breadcrumb
   .page-header.pull-left
-    - unless is_controller_name? 'homepages'
-      h2.page-title = controller.controller_name
-    - else
+
+    - case controller_name
+
+    - when 'homepages'
       h2.page-title = I18n.t('dashboards.index.header')  
-    small Descripiton text goes
+      small = I18n.t('dashboards.index.description')  
+    - when 'sales'  
+      h2.page-title = controller.controller_name
+      small = I18n.t('sales.index.description')  
+    - when 'sales'  
+      h2.page-title = controller.controller_name
+      small = I18n.t('sales.index.description')  
+    - when 'projects'  
+      h2.page-title = controller.controller_name
+      small = I18n.t('projects.index.description')  
+    - when 'customers'  
+      h2.page-title = controller.controller_name
+      small = I18n.t('customers.index.description')  
+    - when 'invoices'  
+      h2.page-title = controller.controller_name
+      small = I18n.t('invoices.index.description')  
+    - when 'conversations'  
+      h2.page-title = controller.controller_name
+      small = I18n.t('conversations.index.description')  
+    - when 'accounts'  
+      h2.page-title = controller.controller_name
+      small = I18n.t('accounts.show.description')  
+    - when 'users'  
+      h2.page-title = controller.controller_name
+      small = I18n.t('users.index.description')    
+    - when 'events'  
+      h2.page-title = controller.controller_name
+      small = I18n.t('events.index.description')              
+    - else
+      h2.page-title = controller_name
+      
     
   == breadcrumbs display_single_fragment: true, class: 'breadcrumb page-breadcrumb pull-right', style: :bootstrap
 

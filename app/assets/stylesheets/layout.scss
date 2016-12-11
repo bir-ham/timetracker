@@ -41,6 +41,12 @@ a {
   border-color: $x-light-grass;
 }
 
+.alert-error {
+  color: $dark-orange;
+  background: $white-orange;
+  border-color: $x-light-orange;
+}
+
 .alert-danger {
   color: $dark-red;
   background: $white-red;
@@ -356,10 +362,6 @@ dt {
 //Image
 .img-circle {
   border-radius: 50% !important;
-}
-
-.img-bordered-xxs {
-  border-radius: 2px !important;
 }
 
 .img-rounded {

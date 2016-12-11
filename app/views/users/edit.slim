@@ -1,10 +1,9 @@
-- provide(:title, I18n.t('projects.index.header'))
-- breadcrumb :edit_project, @project
+- breadcrumb :edit_user, current_user
 .row
   .col-sm-8.col-sm-offset-2
     .panel.panel-default
       .panel-body
         .form-actions.col-sm-offset-3
-          h2 = I18n.t('projects.edit.header')
+          h2 = I18n.t('users.edit.header')
 
         = render "form"

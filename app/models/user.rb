@@ -1,9 +1,11 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :lockable, :timeoutable and :omniauthable
-  devise :invitable, :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable, :confirmable
+  devise :invitable, :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable, 
+    :confirmable, :registerable
   acts_as_messageable
-
+  before_save :set_admin
+  
   has_many :invoices
 
   validates :first_name, presence: true
@@ -20,8 +22,8 @@ class User < ActiveRecord::Base
   end
 
   private
-    def set_admin
-      self.admin = User.count == 0  
-    end
+  def set_admin
+    self.admin = User.count == 0  
+  end
 
 end

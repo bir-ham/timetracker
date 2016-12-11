@@ -1,3 +1,4 @@
+- provide(:title, 'Toolsio')
 #home.jumbotron
   .container
     = flash_messages if show_layout_flash?
@@ -20,26 +21,26 @@
       .col-sm-6
         .sprite.invoice.pull-left
         blockquote
-          h4 = I18n.t('landing_page.features.invoice.header')
+          h4.m-t-n = I18n.t('landing_page.features.invoice.header')
           .body-text
             p = I18n.t('landing_page.features.invoice.text')
       .col-sm-6
         .sprite.sale.pull-left
         blockquote  
-          h4 = I18n.t('landing_page.features.sale.header')
+          h4.m-t-n = I18n.t('landing_page.features.sale.header')
           .body-text
             p = I18n.t('landing_page.features.sale.text')
     .row.m-t-l
       .col-sm-6
         .sprite.project.pull-left
         blockquote  
-          h4 = I18n.t('landing_page.features.project.header')
+          h4.m-t-n = I18n.t('landing_page.features.project.header')
           .body-text
             p = I18n.t('landing_page.features.project.text')
       .col-sm-6
         .sprite.analysis.pull-left
         blockquote  
-          h4 = I18n.t('landing_page.features.analysis.header')
+          h4.m-t-n = I18n.t('landing_page.features.analysis.header')
           .body-text
             p = I18n.t('landing_page.features.analysis.text')
 

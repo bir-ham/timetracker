@@ -39,7 +39,7 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     @task = Task.new
     if @project.update(project_params)
-      flash.now[:success] = I18n.t('projects.update.notice_update')
+      flash.now[:success] = I18n.t('projects.update.success_update')
       render :show
     else
       render :edit
@@ -57,7 +57,6 @@ class ProjectsController < ApplicationController
   end
 
   private
-
   def project_params
     params.require(:project).permit(:name, :status, :deadline, :customer_id, :archived)
   end
