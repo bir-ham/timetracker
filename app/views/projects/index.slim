@@ -88,4 +88,5 @@
           = will_paginate @projects, renderer: BootstrapPagination::Rails
 
       - else
-        p.text-info = I18n.t('projects.index.empty_projects')
+        .col-sm-12
+          p.text-info = I18n.t('projects.index.empty_projects')

@@ -4,7 +4,7 @@ FactoryGirl.define do
     association :customer
 
     date Date.today
-    status "PENDING"
+    status "PREPARING"
     description "Text"
 
     factory :sale_with_item do

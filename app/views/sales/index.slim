@@ -69,4 +69,5 @@
         .pull-right
           = will_paginate @projects, renderer: BootstrapPagination::Rails
       - else
-        p.text-info = I18n.t('sales.index.empty_sales')
+        .col-sm-12
+          p.text-info = I18n.t('sales.index.empty_sales')
