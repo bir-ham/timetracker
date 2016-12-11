@@ -1,15 +1,15 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :lockable, :timeoutable and :omniauthable
-  devise :invitable, :database_authenticatable, :recoverable, :rememberable, :trackable, 
-      :validatable, :confirmable, :registerable
-  
+  devise :invitable, :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable, 
+    :confirmable, :registerable
   acts_as_messageable
-
   before_save :set_admin
   
   has_many :invoices
 
+  validates :first_name, presence: true
+  validates :last_name, presence: true
 
   mount_uploader :avatar, Uploader
 

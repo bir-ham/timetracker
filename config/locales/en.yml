@@ -161,6 +161,8 @@ en:
       continue_button: Continue
       error: can't be blank
       dont_have_an_account: Don't have an account? Sign up for free now!
+    update:
+      success_update: "Account updated!"  
   projects:
     index:
       header: Projects
@@ -195,7 +197,7 @@ en:
       header: Edit Project
     update:
       header: Update Project
-      notice_update: "Project updated!"
+      success_update: "Project updated!"
     destroy: 
       confirmation_msg: Are you sure to delete this project?  
       success_delete: "Project (%{project_name}) is deleted!"

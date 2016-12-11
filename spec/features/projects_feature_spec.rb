@@ -50,8 +50,8 @@ describe 'projects' do
 
   	submit_form
 
-  	expect(page).to have_text I18n.t('projects.update.notice_update')
-  	expect(page).to have_text I18n.t('projects.update.notice_update')
+  	expect(page).to have_text I18n.t('projects.update.success_update')
+  	expect(page).to have_text I18n.t('projects.update.success_update')
     expect(page).to have_text I18n.t('projects.show.archived')
   end
 
