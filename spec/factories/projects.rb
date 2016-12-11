@@ -5,6 +5,8 @@ FactoryGirl.define do
 
     sequence(:name) { |n| "My Project #{n}"}
     deadline Date.today
+    status 'NEW'
+    description "Text"
     archived false
 
     factory :project_with_task do

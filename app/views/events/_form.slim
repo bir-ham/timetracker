@@ -1,0 +1,15 @@
+= simple_form_for @event, remote: true do |f| 
+  = f.input :title 
+  = f.input :date_range, input_html: { class: "input-sm date-range-picker" } 
+  = f.input_field :start, as: :hidden, value: Date.today, class: 'input-sm start_hidden' 
+  = f.input_field :end, as: :hidden, value: Date.today, class: 'input-sm end_hidden' 
+  = f.input :color, as: :select, collection: [['Green','#7DA40D'], ['Yellow','#faca0a'], ['Red','#be0a0a']], prompt: I18n.t('events.new.select_color')    
+  
+  => link_to 'Delete', 
+        event, 
+        method: :delete, 
+        class: 'btn btn-danger', 
+        data: { confirm: 'Are you sure?' }, 
+        remote: true unless @event.new_record? 
+  => f.button :submit, class: 'btn-primary'      
+

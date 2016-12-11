@@ -46,6 +46,15 @@ class ProjectsController < ApplicationController
     end
 
   end
+  
+  def destroy
+    @project = Project.find(params[:id])
+    if @project.destroy
+      redirect_to @project, notice: I18n.t('projects.destroy.success_delete', project_name: @project.name)
+    else
+      flash.now[:error] = I18n.t('projects.destroy.error_delete')
+    end
+  end
 
   private
 

@@ -49,6 +49,7 @@ gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: '
 gem 'ransack', github: 'activerecord-hackery/ransack'
 gem 'mailboxer'
 gem 'chosen-rails'
+gem 'jbuilder', '~> 2.0'
 
 group :development, :test do
   gem 'pry-remote'
@@ -65,7 +66,8 @@ group :development, :test do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'quiet_assets'
-  gem 'capybara-webkit'
+  gem 'selenium-webdriver'
+  gem 'chromedriver-helper'
 end
 
 group :production do

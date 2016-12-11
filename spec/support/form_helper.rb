@@ -16,7 +16,6 @@ module FormHelper
     else
       visit new_user_session_path
     end
-
     fill_in 'Email', with: user.email
     fill_in 'Password', with: (opts[:password] || user.password)
     click_button I18n.t('button.sign_in')

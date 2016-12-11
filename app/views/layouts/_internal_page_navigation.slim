@@ -36,7 +36,7 @@ nav#topbar.navbar.navbar-default.navbar-static-top role="navigation" style="marg
           li.summary
             = link_to I18n.t('navigation.notifications'), '#'
       li.dropdown
-        a.dropdown-toggle data-toggle="dropdown" href="#" 
+        a.dropdown-toggle.messages-badge data-toggle="dropdown" href="#" 
           = icon('envelope fa-fw')
           - unless current_user.unread_inbox_count == 0
             span.badge.header-nav-icons.badge-orange = current_user.unread_inbox_count
@@ -61,7 +61,7 @@ nav#topbar.navbar.navbar-default.navbar-static-top role="navigation" style="marg
               |&nbsp;
               = I18n.t('navigation.profile')
           li
-            a href="#"
+            = link_to events_path
               = icon('calendar')
               |&nbsp;
               = I18n.t('navigation.calender')

@@ -15,7 +15,7 @@
           - case @sale.status
           - when 'PREPARING'
             span.label.label-info = @sale.status
-          - when 'WAITTING'
+          - when 'WAITING'
             span.label.label-danger = @sale.status
           - when 'DELIVERED'
             span.label.label-success = @sale.status
@@ -30,87 +30,87 @@
             span -
 
       h5.m-b-n = I18n.t('sales.items.header')
-      .table-responsive
-        = simple_form_for([@sale, @item]) do |f|
-          .table-responsive
-            table.table.table-striped.m-b-n
-              thead
-                tr
-                  th = I18n.t('sales.items.show.name')
-                  th = I18n.t('sales.items.show.quantity')
-                  th = I18n.t('sales.items.show.unit')
-                  th = I18n.t('sales.items.show.unit_price')
-                  th = I18n.t('sales.items.show.vat')
-                  - unless @sale.items.empty?
-                    th = I18n.t('sales.items.show.total')
-                    th.text-center = I18n.t('button.edit')
-                    th.text-center = I18n.t('button.delete')
-              tbody
-                - running_total = 0
-                - @sale.items.each do |item|
-                  tr
-                    - if params[:action] == 'edit' && params[:id] == "#{item.id}"
-                      td.background-light-grey = item.name
-                      td.background-light-grey = item.quantity
-                      td.background-light-grey = item.unit
-                      td.background-light-grey = item.unit_price
-                      td.background-light-grey = item.vat
-                      td.background-light-grey = number_to_currency(item.total)
-                      td.background-light-grey.text-center
-                        = link_to edit_sale_item_path(@sale,item), class: 'btn btn-info btn-xs disabled' do
-                          = icon('pencil-square-o')
-                      td.background-light-grey.text-center
-                        = link_to [@sale, item], method: :delete, class: 'btn btn-danger btn-xs disabled' do
-                          = icon('trash')
-                    - else
-                      td = item.name
-                      td = item.quantity
-                      td = item.unit
-                      td = item.unit_price
-                      td = item.vat
-                      td = number_to_currency(item.total)
-                      td.text-center
-                        = link_to edit_sale_item_path(@sale,item), class: 'btn btn-info btn-xs' do
-                          = icon('pencil-square-o')
-                      td.text-center
-                        = link_to [@sale, item], method: :delete, class: 'btn btn-danger btn-xs' do
-                          = icon('trash')
-
-                  - running_total += item.total
+      = simple_form_for([@sale, @item]) do |f|
+        .table-responsive
+          table.table.table-striped.m-b-n
+            thead
+              tr
+                th = I18n.t('sales.items.show.name')
+                th = I18n.t('sales.items.show.quantity')
+                th = I18n.t('sales.items.show.unit')
+                th = I18n.t('sales.items.show.unit_price')
+                th = I18n.t('sales.items.show.vat')
                 - unless @sale.items.empty?
-                  tr.background-white
-                    td colspan="5"
-                    td = number_to_currency(running_total)
-                    td
-                    td
+                  th = I18n.t('sales.items.show.total')
+                  th.text-center = I18n.t('button.edit')
+                  th.text-center = I18n.t('button.delete')
+            tbody
+              - running_total = 0
+              - @sale.items.each do |item|
+                tr
+                  - if params[:action] == 'edit' && params[:id] == "#{item.id}"
+                    td.background-light-grey = item.name
+                    td.background-light-grey = item.quantity
+                    td.background-light-grey = item.unit
+                    td.background-light-grey = item.unit_price
+                    td.background-light-grey = item.vat
+                    td.background-light-grey = number_to_currency(item.total)
+                    td.background-light-grey.text-center
+                      = link_to edit_sale_item_path(@sale,item), class: 'btn btn-info btn-xs disabled' do
+                        = icon('pencil-square-o')
+                    td.background-light-grey.text-center
+                      = link_to [@sale, item], method: :delete, class: 'btn btn-danger btn-xs disabled' do
+                        = icon('trash')
+                  - else
+                    td = item.name
+                    td = item.quantity
+                    td = item.unit
+                    td = item.unit_price
+                    td = item.vat
+                    td = number_to_currency(item.total)
+                    td.text-center
+                      = link_to edit_sale_item_path(@sale,item), class: 'btn btn-info btn-xs' do
+                        = icon('pencil-square-o')
+                    td.text-center
+                      = link_to [@sale, item], method: :delete, class: 'btn btn-danger btn-xs' do
+                        = icon('trash')
+
+                - running_total += item.total
+              - unless @sale.items.empty?
                 tr.background-white
-                  == render 'sales/items/form', sale: @sale, f: f
+                  td colspan="5"
+                  td = number_to_currency(running_total)
+                  td
+                  td
+              tr.background-white
+                == render 'sales/items/form', sale: @sale, f: f
 
-            .m-t-n
-              = button_tag(type: :submit, class: 'btn btn-primary btn-sm') do
-                - if is_action_name?('edit')
-                  = icon('arrow-up')
-                  |&nbsp;
-                  = I18n.t('sales.items.update.update_item')
-                - else
-                  = icon('plus-circle')
-                  |&nbsp;
-                  = I18n.t('sales.items.new.add_item')
-
+          .m-t-n
+            = button_tag(type: :submit, class: 'btn btn-primary btn-sm') do
               - if is_action_name?('edit')
-                = link_to sale_path(@sale), class: 'btn btn-primary btn-sm btn-outline' do
-                  = icon('times')
-                  |&nbsp;
-                  = I18n.t('button.cancel')
+                = icon('arrow-up')
+                |&nbsp;
+                = I18n.t('sales.items.update.update_item')
+              - else
+                = icon('plus-circle')
+                |&nbsp;
+                = I18n.t('sales.items.new.add_item')
 
-    => link_to '#confirmation-modal-container', class: 'btn btn-danger confirmation-button', data: { id: @sale.id } do
-      = icon('trash')
-      |&nbsp;
-      = I18n.t('button.delete')
+            - if is_action_name?('edit')
+              = link_to sale_path(@sale), class: 'btn btn-primary btn-sm btn-outline' do
+                = icon('times')
+                |&nbsp;
+                = I18n.t('button.cancel')
 
-    => link_to edit_sale_path(@sale), class: 'btn btn-primary' do
-      = icon('pencil-square-o white')
-      |&nbsp;
-      = I18n.t('button.edit')
+      hr.m-t-xl         
+      => link_to '#confirmation-modal-container', class: 'btn btn-danger confirmation-button', data: { id: @sale.id } do
+        = icon('trash')
+        |&nbsp;
+        = I18n.t('button.delete')
+
+      => link_to edit_sale_path(@sale), class: 'btn btn-primary' do
+        = icon('pencil-square-o white')
+        |&nbsp;
+        = I18n.t('button.edit')
 
 == render 'layouts/confirmation_modal'

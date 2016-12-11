@@ -1,4 +1,4 @@
-$(document).ready ->
+jQuery ->
   $('.form_datetime').datetimepicker({
     autoclose: true,
     todayBtn: true,

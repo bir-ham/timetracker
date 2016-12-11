@@ -17,7 +17,6 @@ body {
   color: $body-text-color;
   font-family: 'Open Sans', sans-serif;
   font-size: 13px;
-  line-height: 1.9;
 }
 
 p {
@@ -67,6 +66,10 @@ a {
 .has-error .form-control {
   border-color: $red;
   box-shadow: none;
+}
+
+.alert-dismissable .close, .alert-dismissible .close {
+  top: 0; 
 }
 
 // footer
@@ -478,6 +481,11 @@ dt {
 .pagination > .active > a, .pagination > .active > a:hover, .pagination > .active > a:focus, .pagination > .active > span, .pagination > .active > span:hover, .pagination > .active > span:focus {
   background-color: $turquoise;
   border-color: $dark-turquoise;
+}
+
+// Pagination
+.pagination {
+  margin: 20px 15px;
 }
 
 // Margins

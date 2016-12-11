@@ -35,11 +35,11 @@ describe 'accounts' do
       
       expect(page).to have_text I18n.t('invoices.destroy.confirmation_msg')     
      
-      wait_until_modal_dialog_javascript_loads do
-        within('.modal-footer') do 
-          click_link I18n.t('button.delete')
-        end
-      end  
+      sleep 2
+      
+      within('.modal-footer') do 
+        click_link I18n.t('button.delete')
+      end 
         
       expect(page).to have_text I18n.t('invoices.destroy.success_delete')
       expect(page).to_not have_text @invoice.date_of_an_invoice

@@ -4,10 +4,12 @@
     .well
       .media
         .media-left
-          h2.text-capitalize.m-t-n = @account.subdomain
           = image_tag @account[:logo] ? @account.logo.large : 'logo-placeholder-large', class: 'thumbnail'
         .media-body
           dl.dl-horizontal
+            dt = I18n.t('accounts.show.company')
+            dd
+              h4.text-capitalize.m-t-n.m-b-n = @account.subdomain
             dt = I18n.t('accounts.show.url')
             dd www.#{@account.subdomain}.toolsio.com
             dt = I18n.t('accounts.show.industry')

@@ -134,6 +134,7 @@ en:
       header: Edit accout information
     show:
       header: View Account
+      company: Company
       url: URL
       subdomain: Subdomain
       industry: Industry
@@ -152,7 +153,7 @@ en:
       company_name: Your subdomain is most likely your company name
       continue_button: Continue
       error: can't be blank
-      dont_have_an_account: Don't have and account? Sign up now for free
+      dont_have_an_account: Don't have an account? Sign up for free now!
   projects:
     index:
       header: Projects
@@ -187,6 +188,10 @@ en:
     update:
       header: Update Project
       notice_update: "Project updated!"
+    destroy: 
+      confirmation_msg: Are you sure to delete this project?  
+      success_delete: "Project (%{project_name}) is deleted!"
+      error_delete: "Project couldn't be deleted, try again after refreshing the page"
     tasks:
       header: "Tasks"
       show:
@@ -235,7 +240,7 @@ en:
     update:
       success_update: Customer updated
     destroy:
-      success_delete: Customer deleted
+      success_delete: "Customer %{name} is deleted"
       confirmation_msg: Are you sure to delete this customer?
     create:
       notice_create: Customer created
@@ -266,7 +271,6 @@ en:
       header: Edit Invoice
     show:
       header: Invoice
-      id: Id
       name: Name
       invoice_for: Invoice for
       date_of_an_invoice: Date of an invoice
@@ -282,6 +286,8 @@ en:
       payment_term: Payment term
       interest_in_arrears: Interest in arrears
       reference_number: Reference number
+      edit_project: Edit Project
+      edit_sale: Edit Sale
     create:
       notice_create: "Invoice created!"
     update:
@@ -314,7 +320,6 @@ en:
       notice_create: "Sale created!"
       select_customer: '-Select Customer-'
       select_user: '-Select User-'
-      select_status: '-Select status-'
       select_sale: '-Select Sale-'
       no_select_sale: '-No Sale to select-'
     create:
@@ -333,6 +338,10 @@ en:
     update:
       header: Update Sale
       success_update: "Sale updated!"
+    destroy: 
+      confirmation_msg: Are you sure to delete this sale?  
+      success_delete: "Sale (%{sale_date}) is deleted!"
+      error_delete: "Invoice couldn't be deleted, try again after refreshing the page"
     items:
       header: Items
       new:
@@ -388,7 +397,12 @@ en:
     empty_trash:
       success: 'Your trash is cleaned!'   
     mark_as_read:
-      success: 'Conversation is marked as an read.'      
+      success: 'Conversation is marked as an read.'   
+  events:
+    index:
+      header: Calendar     
+    new:
+      select_color: '-Select color-'
   settings:
     index:
       header: Settings

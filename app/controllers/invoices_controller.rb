@@ -25,13 +25,13 @@ class InvoicesController < ApplicationController
 
     @sales = Sale.get_sales_without_invoice
     @projects = Project.get_projects_without_invoice
+    @invoice.user = current_user
+    @invoice.status = 'PENDING'
 
     if @invoice.valid?
       if params[:back_button]
         @invoice.previous_step
       elsif @invoice.last_step?
-        @invoice.status = 'PENDING'
-        @invoice.user_id = current_user.id
         @invoice.save if @invoice.all_valid?
       else
         @invoice.next_step
@@ -54,12 +54,10 @@ class InvoicesController < ApplicationController
   # GET /invoices/1/edit
   def edit
     @invoice = Invoice.find(params[:id])
-    @sales = Sale.get_sales_without_invoice
   end
 
   def update
     @invoice = Invoice.find(params[:id])
-    @sales = Sale.get_sales_without_invoice
     if @invoice.update_attributes(invoice_params)
       flash.now[:success] = I18n.t('invoices.update.success_update')
       render :show

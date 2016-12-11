@@ -49,7 +49,6 @@ class InvoicesDatatable
         end
 
         [
-          invoice.id,
           name,
           customer_name,
           invoice.user.first_name,

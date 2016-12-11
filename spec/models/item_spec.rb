@@ -11,6 +11,7 @@ RSpec.describe Item, type: :model do
 
   describe 'associations' do
     it { should belong_to :sale }
+    it { should have_one :invoice }
   end
 
 end

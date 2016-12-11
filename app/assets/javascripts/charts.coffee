@@ -25,9 +25,9 @@ jQuery ->
     overdue_invoices_data.push(parseFloat(invoice.paid))
     return
 
-  invoicesData = {
-    type: 'bar',
-    data: {
+  invoicesData =
+    type: 'bar'
+    data: 
       labels: paid_invoices_labels,
       datasets: [{
         label: 'Paid'
@@ -48,21 +48,21 @@ jQuery ->
         hoverBackgroundColor: "rgba(190,10,10,0.9)",
         borderWidth: 2
       }]
-    },
-    scaleBeginAtZero : true,
-    scaleShowGridLines : true,
-    scaleGridLineColor : "rgba(0,0,0,.05)",
-    scaleGridLineWidth : 1,
-    barShowStroke : true,
-    barStrokeWidth : 1,
-    barValueSpacing : 5,
-    barDatasetSpacing : 1,
-    responsive:true,
-    options: {
-      legend: {
+  
+    scaleBeginAtZero : true
+    scaleShowGridLines : true
+    scaleGridLineColor : "rgba(0,0,0,.05)"
+    scaleGridLineWidth : 1
+    barShowStroke : true
+    barStrokeWidth : 1
+    barValueSpacing : 5
+    barDatasetSpacing : 1
+    responsive:true
+    
+    options: 
+      legend: 
         borderWidth: false
-      }
-      scales: {
+      scales: 
         xAxes: [{
           ticks: {
             beginAtZero:true
@@ -71,15 +71,13 @@ jQuery ->
             display:false
           }
         }]
-      }
-    }
-  }
+  
   new Chart($('#invoicing-performance'), invoicesData)
 
   # Incomes
-  incomesData = {
-    type: 'line',
-    data: {
+  incomesData =
+    type: 'line'
+    data: 
       labels : paid_invoices_labels,
       datasets : [{
         backgroundColor: "rgba(125,164,13, 0.75)",
@@ -89,29 +87,25 @@ jQuery ->
         pointBackgroundColor: "rgba(125,164,13, 1)",
         data: paid_invoices_data
       }]
-    }
-    options: {
+    
+    options: 
       legend: {
         display: false,
         labels: {
           display: false
         }
       },
-      scales: {
+      scales: 
         xAxes: [{
           display: false
         }]
         yAxes: [{
           paddingLeft: -10
-          margins: {
+          margins:
             left: -10,
-            bottom: -10,
-          }
+            bottom: -10
         }]
-      }
-    }
-
-  }
+    
   new Chart($('#incomes'), incomesData)
 
   # Projects doughnut chart
@@ -121,29 +115,24 @@ jQuery ->
   ongoing_projects = projects_status[0].ongoing_projects + projects_status[1].ongoing_projects + projects_status[2].ongoing_projects + projects_status[3].ongoing_projects
   finished_projects = projects_status[0].finished_projects + projects_status[1].finished_projects + projects_status[2].finished_projects + projects_status[3].finished_projects
 
-  projectsData =  {
-    type: 'doughnut',
-    data: {
+  projectsData =
+    type: 'doughnut'
+    data: 
       labels: ['NEW', 'PENDING', 'FINISHED', 'OVERDUE'],
       datasets: [{
         data: [new_projects, delayed_projects, ongoing_projects, finished_projects],
         backgroundColor: ["rgba(25,156,213,0.75)", "rgba(240,115,15,0.75)", "rgba(125,164,13,0.75)", "rgba(190,10,10,0.75)"]
         hoverBackgroundColor: ["rgba(25,156,213,1)", "rgba(240,115,15,1)",  "rgba(240,115,15,1)", "rgba(240,115,15,1)"]
       }]
-    },
-    options: {
-      animation: {
-        animateScale: true,
+    options: 
+      animation: 
+        animateScale: true
         animateRotate: true
-      }
-      legend: {
-        display: false,
-        labels: {
-          display: false,
-        }
-      }
-    }
-  }
+      legend: 
+        display: false
+        labels: 
+          display: false
+       
   new Chart($('#projects'), projectsData)
 
   # Sales area graph
@@ -161,10 +150,10 @@ jQuery ->
     waiting_sales_data.push(sale.waiting_sales)
     return
 
-  salesData = {
-    type: 'line',
-    data: {
-      labels: sales_status_dates,
+  salesData =
+    type: 'line'
+    data: 
+      labels: sales_status_dates
       datasets: [{
         label: 'Delivered'
         backgroundColor: "rgba(125,164,13, 0.75)",
@@ -190,21 +179,16 @@ jQuery ->
         pointBackgroundColor: "rgba(240,115,15,1)",
         data: waiting_sales_data
       }]
-    },
-    options: {
-      legend: {
-        display: false,
-        labels: {
-          display: false,
-        }
-      },
-      scales: {
+    options: 
+      legend: 
+        display: false
+        labels: 
+          display: false
+      scales: 
         xAxes: [{
           display: false
         }]
-      }
-    }
-  }
+
   new Chart($('#sales'), salesData)
 
   # Customers
@@ -218,42 +202,34 @@ jQuery ->
     customers_visit_per_week.push(customer.customers_visit_per_week)
     customers_visit_labels.push(customer.date_name)
 
-  customersData = {
-    type: 'line',
-    data: {
-      labels : customers_visit_labels,
-      datasets: [
-        {
-          borderColor: "#7DA40D",
-          borderWidth: 1,
-          fill: false,
-          pointRadius: 2,
-          pointBackgroundColor: "#7DA40D",
-          data:  customers_visit_per_week
-        },
-        {
-          borderColor: "#be0a0a",
-          borderWidth: 1,
-          fill: false,
-          pointRadius: 2,
-          pointBackgroundColor: "#be0a0a",
-          data: customers_visit_average
-        }
-      ]
-    },
-    options: {
-      legend: {
-        display: false,
-        labels: {
-          display: false
-        }
+  customersData =
+    type: 'line'
+    data: 
+      labels : customers_visit_labels
+      datasets: [{
+        borderColor: "#7DA40D",
+        borderWidth: 1,
+        fill: false,
+        pointRadius: 2,
+        pointBackgroundColor: "#7DA40D",
+        data:  customers_visit_per_week
       },
-      scales: {
+      {
+        borderColor: "#be0a0a",
+        borderWidth: 1,
+        fill: false,
+        pointRadius: 2,
+        pointBackgroundColor: "#be0a0a",
+        data: customers_visit_average
+      }]
+    options: 
+      legend: 
+        display: false
+        labels: 
+          display: false
+      scales: 
         xAxes: [{
           display: false
         }]
-      }
-    }
-
-  }
+     
   new Chart($('#customers'), customersData)

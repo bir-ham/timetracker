@@ -196,18 +196,17 @@ html, body {
 
 // Modal
 .modal-header {
-  padding: 5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   border-bottom: 1px solid $light-grey;
   background: $xxx-light-grey;
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
 }
 
-.modal-footer {
-  .btn-toolbar {
-    margin: 0;
-    padding: 0;
-  }
+.modal-body, .modal-footer {
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 // List
@@ -487,7 +486,11 @@ span.block {
     margin-bottom: 10px;
   }
   .panel-body .col-xs-2 h4.invoiced {
-    margin: 0 0 0 25px;
+    margin: 2px 0 0 25px;
+  }
+  .progress.progress-small {
+    margin-top: 7px;
+    margin-bottom: 0;
   }
 }
 

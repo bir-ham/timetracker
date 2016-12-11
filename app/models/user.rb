@@ -19,4 +19,9 @@ class User < ActiveRecord::Base
     email  
   end
 
+  private
+    def set_admin
+      self.admin = User.count == 0  
+    end
+
 end
