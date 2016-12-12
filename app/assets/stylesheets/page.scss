@@ -158,6 +158,7 @@ html, body {
 
 .dropdown-menu {
   .title {
+    @extend .text-info;
     padding: 12px 12px;
     text-align: center;
     border-bottom: 1px solid light-grey;

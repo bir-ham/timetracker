@@ -82,7 +82,7 @@ class InvoicesDatatable
     end
 
     def sort_column
-      columns = %w[id first_name date_of_an_invoice deadline running_total status_type invoice]
+      columns = %w[created_at date_of_an_invoice]
       columns[params[:iSortCol_0].to_i]
     end
 

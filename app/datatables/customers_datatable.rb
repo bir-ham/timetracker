@@ -49,11 +49,11 @@ class CustomersDatatable
     end
 
     def sort_column
-      columns = %w[id first_name date_of_an_customer deadline running_total status_type customer]
+      columns = %w[id name phone_number email address]
       columns[params[:iSortCol_0].to_i]
     end
 
     def sort_direction
-      params[:sSortDir_0] == "desc" ? "desc" : "asc"
+      params[:sSortDir_0] == "asc" ? "desc" : "asc"
     end
 end
