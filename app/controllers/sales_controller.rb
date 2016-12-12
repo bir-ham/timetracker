@@ -7,6 +7,7 @@ class SalesController < ApplicationController
 
   def new
     @sale = Sale.new
+    @customer = Customer.first
     session[:new_action_called_from] = URI(request.referer).path
   end
 

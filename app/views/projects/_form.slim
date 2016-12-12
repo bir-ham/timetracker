@@ -8,10 +8,13 @@
   = f.input :name
   fieldset.custom-fieldset
     legend.custom-legend = I18n.t('projects.new.select_or_add_new_customer')
-    = f.association :customer, collection: Customer.all, label_method: :name, value_method: :id, prompt: I18n.t('invoices.new.select_customer'), multiple: false, wrapper: :horizontal_form
+    - if @customer.nil?
+      = f.association :customer, collection: Customer.all, label_method: :name, value_method: :id, prompt: I18n.t('invoices.new.select_customer'), multiple: false, wrapper: :horizontal_form, disabled: true
+    - else
+      = f.association :customer, collection: Customer.all, label_method: :name, value_method: :id, prompt: I18n.t('invoices.new.select_customer'), multiple: false, wrapper: :horizontal_form
 
     .form-actions.col-sm-offset-3
-      = link_to new_customer_path, class: 'btn btn-primary btn-sm'
+      = link_to new_customer_path, class: 'btn btn-primary btn-sm btn-outline'
         = icon('plus-circle')
         |&nbsp;
         = I18n.t('customers.index.add_new_customer_button')

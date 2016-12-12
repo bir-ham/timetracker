@@ -7,6 +7,7 @@ class ProjectsController < ApplicationController
 
   def new
     @project = Project.new
+    @customer = Customer.first
     session[:new_action_called_from] = URI(request.referer).path
   end
 

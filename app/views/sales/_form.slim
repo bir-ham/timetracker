@@ -6,7 +6,19 @@
                 file: :horizontal_file_input,
                 boolean: :horizontal_boolean} ) do |f|
   = f.input :date, as: :date_picker, input_html: {  class: "datepicker", value: Time.now.strftime('%d/%m/%Y') }
-  = f.association :customer, collection: Customer.all, label_method: :name, value_method: :id, prompt: I18n.t('sales.new.select_customer'), multiple: false, required: true
+  fieldset.custom-fieldset
+    legend.custom-legend = I18n.t('projects.new.select_or_add_new_customer')
+    - if @customer.nil?
+      = f.association :customer, collection: Customer.all, label_method: :name, value_method: :id, prompt: I18n.t('sales.new.select_customer'), multiple: false, required: true, disabled: true
+    - else
+      = f.association :customer, collection: Customer.all, label_method: :name, value_method: :id, prompt: I18n.t('sales.new.select_customer'), multiple: false, required: true
+    
+    .form-actions.col-sm-offset-3
+      = link_to new_customer_path, class: 'btn btn-primary btn-sm btn-outline'
+        = icon('plus-circle')
+        |&nbsp;
+        = I18n.t('customers.index.add_new_customer_button')
+        
   - if (is_action_name? 'edit') || (is_action_name? 'update')
     = f.input :status, collection: [['PREPARING', 'PREPARING'], ['WAITING', 'WAITING'], ['DELIVERED', 'DELIVERED']]
   = f.input :description
