@@ -25,9 +25,4 @@ class UsersController < ApplicationController
     params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
   end
 
-  #Need :current_password for password update
-  def user_params_password_update
-    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :current_password)
-  end
-
 end

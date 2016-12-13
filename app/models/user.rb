@@ -22,8 +22,9 @@ class User < ActiveRecord::Base
   end
 
   private
-  def set_admin
-    self.admin = User.count == 0  
-  end
+    def set_admin
+      self.admin = User.count == 0 
+      nil
+    end
 
 end

@@ -24,15 +24,15 @@
               |Currently waiting confirmation for: = resource.unconfirmed_email 
 
           .form-actions.col-sm-offset-3.m-b-xs    
-            i 
-              |(leave blank if you don't want to change it)
+            i.text-info 
+              |(Leave blank if you don't want to change it)
           = f.input :password, autocomplete: "off" 
 
           = f.input :password_confirmation, autocomplete: "off" 
           
           .form-actions.col-sm-offset-3.m-b-xs    
-            i 
-              |(we need your current password to confirm your changes)
+            i.text-info 
+              |(We need your current password to confirm your changes)
           = f.input :current_password, autocomplete: "off" 
           
           .form-actions.form.col-sm-offset-3
