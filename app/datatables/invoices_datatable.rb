@@ -50,9 +50,9 @@ class InvoicesDatatable
 
         [
           name,
+          invoice.date_of_an_invoice.strftime("%d/%m/%Y"),
           customer_name,
           invoice.user.first_name,
-          invoice.date_of_an_invoice.strftime("%d/%m/%Y"),
           number_to_currency(running_total),
           content_tag(:span, invoice.status, class: status_label_class),
           link_to(content_tag(:i, " View", class: 'fa fa-eye'), invoice, class: 'btn btn-info btn-xs')

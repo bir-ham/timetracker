@@ -93,6 +93,7 @@ en:
       description: Summary of your business activties are shown infographically.  
       invoices: Invoices
       all_income: All income
+      all_income_description: Cumulative of all of your incomes (paid-invoices) statred since using this sevice.  
       customers: Customers
       paid_invoices: Paid invoces
       tasks: Tasks
@@ -287,6 +288,7 @@ en:
     show:
       header: Invoice
       name: Name
+      sale_project: Sale/Project
       invoice_for: Invoice for
       date_of_an_invoice: Date of an invoice
       from: From

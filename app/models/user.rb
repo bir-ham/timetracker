@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   # :lockable, :timeoutable and :omniauthable
   devise :invitable, :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable, 
     :confirmable, :registerable
+  
   acts_as_messageable
   before_save :set_admin
   
