@@ -438,8 +438,12 @@ span.block {
   font-size: 5.5em;
 }
 
-.dashboard-card .main-icon .fa {
-  font-size: 2em;
+.dashboard-card .main-icon {
+  margin-top: -3px;
+  margin-bottom: 3px;
+  .fa {
+    font-size: 2em;
+  }  
 }
 
 .dashboard-card {

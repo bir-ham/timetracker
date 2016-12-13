@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'account creation' do
+describe 'account creation', truncation: true do
   let(:subdomain) { generate(:subdomain) }
   before(:each) { sign_up(subdomain) }
 
