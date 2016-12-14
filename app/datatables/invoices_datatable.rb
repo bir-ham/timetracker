@@ -50,9 +50,9 @@ class InvoicesDatatable
 
         [
           name,
+          invoice.date_of_an_invoice.strftime("%d/%m/%Y"),
           customer_name,
           invoice.user.first_name,
-          invoice.date_of_an_invoice.strftime("%d/%m/%Y"),
           number_to_currency(running_total),
           content_tag(:span, invoice.status, class: status_label_class),
           link_to(content_tag(:i, " View", class: 'fa fa-eye'), invoice, class: 'btn btn-info btn-xs')
@@ -82,7 +82,7 @@ class InvoicesDatatable
     end
 
     def sort_column
-      columns = %w[id first_name date_of_an_invoice deadline running_total status_type invoice]
+      columns = %w[created_at date_of_an_invoice]
       columns[params[:iSortCol_0].to_i]
     end
 

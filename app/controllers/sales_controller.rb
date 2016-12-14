@@ -2,11 +2,12 @@ class SalesController < ApplicationController
 
   def index
     @q = Sale.ransack(params[:q])
-    @sales = @q.result(distinct: true).paginate(:page => params[:page]).order("created_at ASC")
+    @sales = @q.result(distinct: true).paginate(:page => params[:page]).order("created_at DESC")
   end
 
   def new
     @sale = Sale.new
+    @customer = Customer.first
     session[:new_action_called_from] = URI(request.referer).path
   end
 

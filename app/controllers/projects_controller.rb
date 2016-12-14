@@ -2,11 +2,12 @@ class ProjectsController < ApplicationController
 
   def index
     @q = Project.ransack(params[:q])
-    @projects = @q.result(distinct: true).paginate(:page => params[:page]).order("created_at ASC")
+    @projects = @q.result(distinct: true).paginate(:page => params[:page]).order("created_at DESC")
   end
 
   def new
     @project = Project.new
+    @customer = Customer.first
     session[:new_action_called_from] = URI(request.referer).path
   end
 

@@ -11,7 +11,7 @@
       .panel-body.text-center.vertical-center
         h2.m-t-n.m-b-s = number_to_currency(@all_incomes)
         h3.text-bold.m-b-n.text-success = I18n.t('dashboards.index.all_income')
-        small Lorem ipsum dolor sit amet, consectetur adipiscing elit vestibulum.
+        small = I18n.t('dashboards.index.all_income_description')
 
   .col-sm-6.col-md-3
     .panel.income.panel-default 

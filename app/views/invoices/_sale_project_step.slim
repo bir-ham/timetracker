@@ -25,7 +25,7 @@ fieldset.custom-fieldset
     - if @sales.empty?
       = f.association :sale, collection: @sales, label_method: lambda { |sale| "#{sale.date}" " to " "#{sale.customer.name}" }, value_method: :id, prompt: I18n.t('sales.new.no_select_sale'), multiple: false, required: true, disabled: true
       .form-actions.col-sm-offset-3
-        = link_to new_sale_path, class: 'btn btn-primary btn-sm m-b-m'
+        = link_to new_sale_path, class: 'btn btn-primary btn-sm btn-outline m-b-m'
           = icon ('plus')
           |&nbsp;
           = I18n.t('sales.index.add_new_sale')
@@ -35,10 +35,10 @@ fieldset.custom-fieldset
     h5.horizontal-line-with-text
       span OR
     .m-b-xl
-    - if @projects.nil?
+    - if @projects.empty?
       = f.association :project, collection: @projects, label_method: :name, value_method: :id, prompt: I18n.t('projects.new.no_select_project'), multiple: false, required: true, disabled: true
       .form-actions.col-sm-offset-3
-        = link_to new_project_path, class: 'btn btn-primary btn-sm m-b-m'
+        = link_to new_project_path, class: 'btn btn-primary btn-sm btn-outline m-b-m'
           = icon ('pencil')
           |&nbsp;
           = I18n.t('projects.index.create_new_project')

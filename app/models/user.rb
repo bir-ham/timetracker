@@ -3,8 +3,9 @@ class User < ActiveRecord::Base
   # :lockable, :timeoutable and :omniauthable
   devise :invitable, :database_authenticatable, :recoverable, :rememberable, :trackable, :validatable, 
     :confirmable, :registerable
+  
   acts_as_messageable
-  before_save :set_admin
+  before_save :set_admin, on: :create
   
   has_many :invoices
 
@@ -22,8 +23,9 @@ class User < ActiveRecord::Base
   end
 
   private
-  def set_admin
-    self.admin = User.count == 0  
-  end
+    def set_admin
+      self.admin = User.count == 1 
+      nil
+    end
 
 end

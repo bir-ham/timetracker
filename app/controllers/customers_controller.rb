@@ -19,6 +19,8 @@ class CustomersController < ApplicationController
     if @customer.save
       if session[:new_action_called_from] == '/projects/new'
         redirect_to new_project_path
+      elsif session[:new_action_called_from] == '/sales/new'
+        redirect_to new_sale_path  
       else
         redirect_to customers_path, notice: I18n.t('customers.create.notice_create')
       end

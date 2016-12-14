@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'edit accounts', js: true do
+describe 'edit accounts' do
   let!(:account) { create(:account_with_schema) }
   let(:user) { account.owner }
 
@@ -30,8 +30,22 @@ describe 'edit accounts', js: true do
       expect(page).to have_text 'FI'
     end  
 
-    xit 'allows account to be deleted' do
+    it 'allows user profile to be edited' do
       find(:xpath, "//a[@href='/users/edit.1']").click
+      
+      fill_in 'First name', with: user.first_name
+      fill_in 'Last name', with: 'Hailemariam2'
+      fill_in 'Email', with: user.email
+      fill_in 'Password', with: user.password
+      fill_in 'Password confirmation', with: user.password
+      fill_in 'Current password', with: user.password
+
+      submit_form
+      expect(page).to have_text 'Hailemariam2'
+    end  
+
+    xit 'allows account to be deleted', js: true do
+      click_link I18n.t('button.delete')
       
       expect(page).to have_text I18n.t('invoices.destroy.confirmation_msg')     
      
