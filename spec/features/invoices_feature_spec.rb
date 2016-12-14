@@ -8,6 +8,7 @@ describe 'invoices', js: true do
     set_subdomain(account.subdomain)
     sign_user_in(user)
     Apartment::Tenant.switch!(account.subdomain) if account.subdomain? 
+    #page.driver.browser.manage.window.resize_to(1200,2400)
     @customer = create(:customer)
     @sale = create(:sale, user: user, customer: @customer)
   end
