@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
     :confirmable, :registerable
   
   acts_as_messageable
-  before_save :set_admin
+  before_save :set_admin, on: :create
   
   has_many :invoices
 
@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
 
   private
     def set_admin
-      self.admin = User.count == 0 
+      self.admin = User.count == 1 
       nil
     end
 
