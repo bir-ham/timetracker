@@ -9,21 +9,21 @@ default: &default
 development:
   <<: *default
   adapter: postgresql
-  database: toolsio_development
+  database: toolsio_development_rails
   encoding: unicode
   host: localhost
   pool: 5 
 
 test:
   <<: *default
-  database: toolsio_test
+  database: toolsio_test_rails
   encoding: unicode
   host: localhost
   pool: 5 
 
 production:
   <<: *default
-  database: toolsio_production
+  database: toolsio_production_rails
   username: timetracker
   password: <%= ENV['TIME_TRACKER_DATABASE_PASSWORD'] %>
   encoding: unicode
